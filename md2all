@@ -74,11 +74,11 @@ echo "=> With Template file : $StyleTemplate"
 echo "=> And CSS file : $StyleCss"
 echo "============================================================="
 
-#INITIAL MD2HTML CODE:
-# pandoc "$Title".md --from=markdown+emoji --to=html5 --self-contained --highlight-style=tango --template="$StyleTemplate" -c "$StyleCss" --number-sections --standalone --webtex="http://latex.codecogs.com/svg.latex?" -o "$Title".html
+# EXPORT MD to HTML : BY DEFAULT, EXPORT WEB LATEX from MD to HTML
+pandoc "$Title".md --from=markdown+emoji --to=html5 --self-contained --highlight-style="$HighlightStyle" --standalone --webtex="http://latex.codecogs.com/svg.latex?" --template="$StyleTemplate" -c "$StyleCss" --filter "$GraphvizFilter" --filter pandoc-pyplot --filter pandoc-plantuml --number-sections -o "$Title".html
 
-# pandoc "$Title".md --from=markdown+emoji --to=html5 --self-contained --highlight-style="$HighlightStyle" --filter "$GraphvizFilter" --filter pandoc-pyplot --filter pandoc-plantuml --template="$StyleTemplate" -c "$StyleCss" --number-sections --standalone --webtex="http://latex.codecogs.com/svg.latex?" -o "$Title".html
-pandoc -s --mathjax -c "$StyleCss" --from=markdown+emoji --to=html5 --template="$StyleTemplate" --highlight-style="$HighlightStyle" --filter "$GraphvizFilter" --filter pandoc-pyplot --filter pandoc-plantuml --number-sections < "$Title".md -o "$Title".html
+# ALTERNATIVELY, EXPORT LATEX via MATHJAX
+#pandoc -s --mathjax -c "$StyleCss" --from=markdown+emoji --to=html5 --template="$StyleTemplate" --highlight-style="$HighlightStyle" --filter "$GraphvizFilter" --filter pandoc-pyplot --filter pandoc-plantuml --number-sections < "$Title".md -o "$Title".html
 
 echo "============================================================="
 echo "=> Make PDF file : $Title.pdf ..."
@@ -87,8 +87,6 @@ echo "============================================================="
 Author=$(head -2 "$Title".md | tail -1)
 Author=${Author:2}
 
-# INITIAL MD2HTML CODE:
-#wkhtmltopdf --encoding 'utf-8' --print-media-type --footer-line --footer-spacing 2 --footer-font-name "$FooterFont" --footer-font-size "$FooterSize" --footer-left "$Author" --footer-right "[page] / [topage]" --margin-top "$TopMargin" --margin-left "$LeftMargin" --margin-right "$RightMargin" --margin-bottom "$BottomMargin" -O "$PageOrientation" -s "$PageSize" --javascript-delay 500 --no-stop-slow-scripts "$Title".html "$Title".pdf
+# EXPORT HTML to PDF
+wkhtmltopdf --encoding 'utf-8' --print-media-type --footer-line --footer-spacing 2 --footer-font-name "$FooterFont" --footer-font-size "$FooterSize" --footer-left "$Author" --footer-right "[page] / [topage]" --margin-top "$TopMargin" --margin-left "$LeftMargin" --margin-right "$RightMargin" --margin-bottom "$BottomMargin" -O "$PageOrientation" -s "$PageSize" --debug-javascript --enable-javascript --javascript-delay 1000 "$Title".html "$Title".pdf
 
-# MY CODE:
-wkhtmltopdf --encoding 'utf-8' --print-media-type --footer-line --footer-spacing 2 --footer-font-name "$FooterFont" --footer-font-size "$FooterSize" --footer-left "$Author" --footer-right "[page] / [topage]" --margin-top "$TopMargin" --margin-left "$LeftMargin" --margin-right "$RightMargin" --margin-bottom "$BottomMargin" -O "$PageOrientation" -s "$PageSize" --debug-javascript --enable-javascript --javascript-delay 1000 --no-stop-slow-scripts "$Title".html "$Title".pdf
