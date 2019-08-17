@@ -14,7 +14,10 @@ LaTeX is a good tool but styling markdown with CSS is easier and more flexible t
     * \`\`\`{.YourLanguage .numberLines startFrom="4"} *(Your code comes here)* \`\`\`
   * **A Beautiful Custom Dark Code Theme** named ***Massilia Theme***, inspired by Prism.js' okaidia.css dark theme. This code Highlighting theme is easily customisable in two files: a Pandoc exported and customised theme file, named ***massilia.theme***, and a ***massilia.css*** file.
   * **Automatic Code Language Detection AND Labelisation**, both in HTML and PDF exports. Nothing to do here... **AUTOMATIC ! :+1:** 
-* [**Matplotlib**](https://matplotlib.org): Natively include Matplotlib rendered images in your HTML and PDF exports, in **Python language** with **Matplotplib's pyplot syntax**. All you need is to type your Matplotlib code in your md file as follows: \`\`\`{.pyplot } *(Matplotlib code comes here)* \`\`\`. For more info, cf:
+* [**Matplotlib**](https://matplotlib.org): Natively include Matplotlib rendered images in your HTML and PDF exports, in **Python language** with **Matplotplib's pyplot syntax**. All you need is to type your Matplotlib code in your md file as follows: 
+  * \`\`\`{.pyplot } *(Matplotlib code comes here)* \`\`\`. 
+
+  For more info, cf:
   * [MatplotLib Gallery](https://matplotlib.org/gallery/index.html)
   * [Matplotlib Official Site](https://matplotlib.org/) for more info.
   * [A Matplotlib Tutorial for beginners, by Nicolas P. Rougier](https://github.com/rougier/matplotlib-tutorial)
