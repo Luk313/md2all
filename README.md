@@ -10,12 +10,12 @@ LaTeX is a good tool but styling markdown with CSS is easier and more flexible t
 * **Style the HTML and PDF export files in CSS and JS**, via media print for PDF export, edit contents with markdown and you can generate beautiful documents in HTML and PDF.
 * **Beautiful Code Highlightling**: via **[Prism.js](https://prismjs.com/)**. This includes:
   * **Automatic LineNumbering**: Natively included in md2all. All you need is to type your code in your md file as follows:
-    * \`\`\`{.YourLanguage .numberLines} *(Your code comes here)* \`\`\`, or, if you need more precision:
+    * \`\`\`{.YourLanguage .numberLines} *(Your code comes here)* \`\`\` , or, if you need more precision:
     * \`\`\`{.YourLanguage .numberLines startFrom="4"} *(Your code comes here)* \`\`\`
   * **A Beautiful Custom Dark Code Theme** named ***Massilia Theme***, inspired by Prism.js' okaidia.css dark theme. This code Highlighting theme is easily customisable in two files: a Pandoc exported and customised theme file, named ***massilia.theme***, and a ***massilia.css*** file.
   * **Automatic Code Language Detection AND Labelisation**, both in HTML and PDF exports. Nothing to do here... **AUTOMATIC ! :+1:** 
 * [**Matplotlib**](https://matplotlib.org): Natively include Matplotlib rendered images in your HTML and PDF exports, in **Python language** with **Matplotplib's pyplot syntax**. All you need is to type your Matplotlib code in your md file as follows: 
-  * \`\`\`{.pyplot } *(Matplotlib code comes here)* \`\`\`. 
+  * \`\`\`{.pyplot } *(Matplotlib code comes here)* \`\`\`
 
   For more info, cf:
   * [MatplotLib Gallery](https://matplotlib.org/gallery/index.html)
@@ -25,7 +25,7 @@ LaTeX is a good tool but styling markdown with CSS is easier and more flexible t
   * [Graphviz Gallery](https://www.graphviz.org/gallery/)
   * [Graphviz Documentation](https://www.graphviz.org/documentation/)
 * [**PlantUML**](http://plantuml.com): Natively include PlantUML Diagrams rendered as SVGs in your HTML and PDF exports. All you need to do is type your ***PlantUML Language*** code in your md file as follows:
-  * \`\`\`{.plantuml} *(PlantUML code comes here)* \`\`\`.
+  * \`\`\`{.plantuml} *(PlantUML code comes here)* \`\`\`
 
   For more info, cf:
   * [PlantUML Official Site](http://plantuml.com)
