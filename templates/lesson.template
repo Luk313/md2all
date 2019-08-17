@@ -32,7 +32,7 @@ $for(css)$
   <link rel="stylesheet" href="$css$">
 $endfor$
 $if(math)$
-  $math$
+  <span class="latex">$math$</span>
 $endif$
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
@@ -63,12 +63,16 @@ $endif$
 $endif$
 $if(toc)$
 <nav id="$idprefix$TOC">
-$table-of-contents$
+<span class="toc-title">Table Of Contents</span>
+<span>$table-of-contents$</span>
 </nav>
 $endif$
 $body$
 $for(include-after)$
 $include-after$
 $endfor$
+<script src="/home/luke/.config/md2htmlpdf/js/default.js"></script>
+<link rel="stylesheet" href="/home/luke/.config/md2htmlpdf/css/massilia.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/prism.min.js"></script>
 </body>
 </html>
