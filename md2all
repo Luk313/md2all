@@ -62,6 +62,8 @@ if [ $# -eq 2 ]; then
 	StyleCss="$1"
 	Title=`echo $2 | cut -f1 -d'.'`
 	StyleTemplate="$HOME/.config/md2all/templates/default.template"
+	GraphvizFilter="$HOME/.config/md2all/graphviz/default.py"
+	HighlightStyle="$HOME/.config/md2all/css/massilia.theme"
 	echo "============================================================="
 	echo "=> You invoque md2all with default template file"
 	echo "============================================================="
