@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Valéry Bruniaux" />
+  <title>Test du multi-colonnage</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+@charset "UTF-8";
+body {
+font-size: 120%;
+font-weight: normal;
+font-style: normal;
+color: black;
+overflow: auto;
+}
+body, p, .warning, .inlinewarning {
+font-family: "Souvenir Lt Bt", Andika, "Amerigo BT", Century, "Bookman URW", "Bitstream Vera Serif", "Free Sans", Georgia, Serif, Aerial, "Times New Roman", "STSong", "PT Serif";
+line-height: 1.5rem;
+}
+p {
+text-align: justify;
+margin : 0.1rem 0 0 0;
+}
+sub, sup {
+font-size: 70%;
+}
+h1, h2, h3, h4, h5, h6, .title {
+font-family: OpenDyslexic, "Lucida Sans", "Bitstream Vera Sans", "Arial Rounded MT Bold", Arbeka, "Lucida Grande", "Lucida Sans Unicode", "Luxi Sans", "Lato", sans-serif, "Aerial";
+font-weight: bold;
+font-style: italic;
+line-height: 2rem;
+}
+.title {
+font-size: 200%;
+text-align: center;
+border: 1px solid black;
+border-radius: 10px;
+padding : 0.5rem;
+box-shadow: 3px 3px 3px #aaa;
+background: lightgrey;
+}
+h1 {
+font-size: 150%;
+margin-top : 1rem;
+margin-bottom : 0.5rem;
+border-bottom : 1px solid grey;
+background-color: lightgrey;
+}
+h2 {
+font-size: 125%;
+margin-top : 0.4rem;
+margin-bottom : -0.1rem;
+text-decoration: underline;
+}
+h3 {
+font-size: 110%;
+margin-top : 0.3rem;
+margin-bottom : -0.20rem;
+}
+h4, h5, h6 {
+font-size: 100%;
+margin-top : 0.2rem;
+margin-bottom : -0.30rem;
+}
+.header-section-number:after {
+content: ') ';
+}
+table {
+border-collapse: collapse;
+margin-top: 0.5rem;
+margin-bottom: 0.5rem;
+margin-left:auto; margin-right:auto;
+width: 85%;
+}
+table, th, td {
+border: 1px solid black;
+padding: 5px;
+font-weight: normal;
+font-style: normal;
+}
+tr:nth-child(even), th {
+background-color: lightgrey;
+}
+ol,ul {
+list-style-type: none;
+list-style-position: inside;
+text-align: justify;
+margin : 0;
+}
+ol {
+counter-reset: li-counter;
+}
+ol[start="0"] {
+counter-reset: li-counter -1;
+}
+ol[start="1"] {
+counter-reset: li-counter 0;
+}
+ol[start="2"] {
+counter-reset: li-counter 1;
+}
+ol[start="3"] {
+counter-reset: li-counter 2;
+}
+ol[start="4"] {
+counter-reset: li-counter 3;
+}
+ol[start="5"] {
+counter-reset: li-counter 4;
+}
+ol[start="6"] {
+counter-reset: li-counter 5;
+}
+ol[start="7"] {
+counter-reset: li-counter 6;
+}
+ol[start="8"] {
+counter-reset: li-counter 7;
+}
+ol[start="9"] {
+counter-reset: li-counter 8;
+}
+ol[start="10"] {
+counter-reset: li-counter 9;
+}
+ol[start="100"] {
+counter-reset: li-counter 99;
+}
+ol[start="1000"] {
+counter-reset: li-counter 999;
+}
+li {
+position: relative;
+margin-bottom: 0px;
+padding-left: 0.5em;
+}
+li:before {
+position: absolute;
+top: 0;
+left: -1em;
+width: 1em;
+height: 1em;
+font-size: 1em;
+line-height: 1;
+text-align: center;
+}
+ul > li:before {
+font-size: 1.1em;
+content: "➫";
+}
+ol > li:before {
+color: #f5f5f5;
+border: 3px solid #c5c5c5;
+border-radius: 50%;
+background-color: #464646;
+content: counter(li-counter);
+counter-increment: li-counter;
+}
+.cols {
+display: table;
+width: 100%;
+border-collapse: collapse;
+}
+.col12 {
+display: table-cell;
+width: 50%;
+padding: 0 0.5em 0 0;
+border-right: 1px solid;
+}
+.col22 {
+display: table-cell;
+width: 50%;
+padding: 0 0 0 0.5em;
+border-left: 1px solid;
+}
+.col13 {
+display: table-cell;
+width: 33.33333%;
+padding: 0 0.4em 0 0;
+border-right: 1px solid;
+}
+.col23 {
+display: table-cell;
+width: 33.33333%;
+padding: 0 0.4em 0 0.4em;
+border-left: 1px solid;
+}
+.col33 {
+display: table-cell;
+width: 33.33333%;
+padding: 0 0 0 0.4em;
+border-left: 1px solid;
+}
+.warning {
+margin-left:auto; margin-right:auto;
+width: 98%;
+background-color: yellow;
+border: 1px solid black;
+border-radius: 10px;
+padding : 0.5rem;
+box-shadow: 3px 3px 3px #aaa;
+}
+.inlinewarning {
+background-color: yellow;
+text-decoration: underline;
+}
+.sourceCode {
+text-align: left;
+}
+img {
+margin: auto;
+text-align: center;
+}
+figure {
+text-align: center;
+font-style: italic;
+font-size: smaller;
+text-indent: 0;
+margin: 0em;
+padding: 0em;
+}
+figcaption {
+}
+.center {
+display: block;
+margin: auto;
+text-align: center;
+}
+.floatleft {
+float: left;
+text-align: center;
+font-style: italic;
+font-size: smaller;
+text-indent: 0;
+margin: 0;
+padding: 0em 0.5em 0 0;
+}
+.floatright {
+float: right;
+text-align: center;
+font-style: italic;
+font-size: smaller;
+text-indent: 0;
+margin: 0;
+padding: 0 0 0 0.5em;
+}
+p, td, div, ul, li {
+-webkit-hyphens: auto;
+-moz-hyphens: auto;
+-ms-hyphens: auto;
+-o-hyphens: auto;
+hyphens: auto;
+word-wrap: break-word;
+word-break: break-word;
+}
+@page
+{
+size: 21cm 29.7cm;
+margin: 0.75cm 1cm 1cm 1cm;
+}
+@media print
+{
+p
+{
+widows: 1;
+orphans: 1;
+}
+.pagebreakafter
+{
+page-break-after: always;
+}
+.pagebreakbefore
+{
+page-break-before: always;
+}
+div, code, pre, blockquote, li, span, table
+{
+page-break-inside: avoid;
+}
+h1, h2, h3, h4
+{
+page-break-after: avoid;
+}
+}
+.pagebreakbefore {
+page-break-before: always;
+}
+</style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<p class="title">Test du multi-colonnage</p>
+<!--
+<p class="author">Valéry Bruniaux</p>
+<p class="date">17/08/2019</p>
+-->
+</header>
+<h1 id="test-du-système-de-colones"><span class="header-section-number">1</span> Test du système de colones</h1>
+<p>Premier paragraphe normal Premier paragraphe normal</p>
+<p><br />
+</p>
+<p>Premier paragraphe normal Premier paragraphe normal</p>
+<div class="cols">
+<div class="col12">
+<p>colonne 1 paragraphe normal colonne 1 paragraphe normal colonne 1 paragraphe normal</p>
+</div>
+<div class="col22">
+<p>colonne 2 paragraphe normal colonne 2 paragraphe normal colonne 2 paragraphe normal colonne 2 paragraphe normal</p>
+</div>
+</div>
+<p>Paragraphe intermédiaire Paragraphe intermédiaire</p>
+<p>Paragraphe intermédiaire Paragraphe intermédiaire</p>
+<div class="cols">
+<div class="col13">
+<p>colonne 1 paragraphe normal colonne 1 paragraphe normal colonne 1 paragraphe normal</p>
+</div>
+<div class="col23">
+<p>colonne 2 paragraphe normal colonne 2 paragraphe normal colonne 2 paragraphe normal colonne 2 paragraphe normal</p>
+</div>
+<div class="col33">
+<p>colonne 3 paragraphe normal colonne 3 paragraphe normal colonne 3 paragraphe normal colonne 3 paragraphe normal</p>
+</div>
+</div>
+<p>Dernier paragraphe normal Dernier paragraphe normal</p>
+<p>Dernier paragraphe normal Dernier paragraphe normal</p>
+</body>
+</html>

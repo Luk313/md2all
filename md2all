@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Author : Valéry Bruniaux
+# Author : Rodrigo SCHWENCKE & Valery BRUNIAUX
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -30,49 +30,55 @@ Title=`echo $3 | cut -f1 -d'.'`
 
 if [[ $# -lt 1 || $# -gt 3 ]]; then
 		echo "============================================================="
-		echo "==> md2htmlpdf require 1, 2 or 3 arguments"
+		echo "==> md2all require 1, 2 or 3 arguments"
 		echo "============================================================="
-		echo "Usage with 1 argument : md2htmlpdf markdownFile.md"
-		echo "Example : md2htmlpdf examples/proportionnalite.md"
+		echo "Usage with 1 argument : md2all markdownFile.md"
+		echo "Example : md2all examples/proportionnalite.md"
 		echo "============================================================="
-		echo "Usage with 2 arguments : md2htmlpdf cssFile.css markdownFile.md"
-		echo "Example : md2htmlpdf css/lesson.css examples/proportionnalite.md"
+		echo "Usage with 2 arguments : md2all cssFile.css markdownFile.md"
+		echo "Example : md2all css/lesson.css examples/proportionnalite.md"
 		echo "============================================================="
-		echo "Usage with 3 arguments : md2htmlpdf templateFile.template cssFile.css markdownFile.md"
+		echo "Usage with 3 arguments : md2all templateFile.template cssFile.css markdownFile.md"
 		echo "1) Template file to apply"
 		echo "2) Css file to apply"
 		echo "3) Markdown file to convert"
-		echo "Example : md2htmlpdf templates/lesson.template css/lesson.css examples/proportionnalite.md"
+		echo "Example : md2all templates/lesson.template css/lesson.css examples/proportionnalite.md"
 		echo "============================================================="
 		exit 1
 fi
 
 if [ $# -eq 1 ]; then
 	Title=`echo $1 | cut -f1 -d'.'`
-	StyleTemplate="$HOME/.config/md2htmlpdf/templates/default.template"
-	StyleCss="$HOME/.config/md2htmlpdf/css/default.css"
+	StyleTemplate="$HOME/.config/md2all/templates/default.template"
+	StyleCss="$HOME/.config/md2all/css/default.css"
+	GraphvizFilter="$HOME/.config/md2all/graphviz/default.py"
+	HighlightStyle="$HOME/.config/md2all/css/massilia.theme"
 	echo "============================================================="
-	echo "=> You invoque md2htmlpdf with default template and css files"
+	echo "=> You invoque md2all with default template and css files"
 	echo "============================================================="
 fi
 
 if [ $# -eq 2 ]; then
 	StyleCss="$1"
 	Title=`echo $2 | cut -f1 -d'.'`
-	StyleTemplate="$HOME/.config/md2htmlpdf/templates/default.template"
+	StyleTemplate="$HOME/.config/md2all/templates/default.template"
 	echo "============================================================="
-	echo "=> You invoque md2htmlpdf with default template file"
+	echo "=> You invoque md2all with default template file"
 	echo "============================================================="
 fi
 
 echo "============================================================="
 echo "=> Processing Markdown file : "$Title".md"
-echo "=> Make html file : $Title.htlm"
+echo "=> Make HTML file : $Title.html"
 echo "=> With Template file : $StyleTemplate"
 echo "=> And CSS file : $StyleCss"
 echo "============================================================="
 
-pandoc "$Title".md --from=markdown+emoji --to=html5 --self-contained --highlight-style=tango --template="$StyleTemplate" -c "$StyleCss" --number-sections --standalone --webtex="http://latex.codecogs.com/svg.latex?" -o "$Title".html
+#INITIAL MD2HTML CODE:
+# pandoc "$Title".md --from=markdown+emoji --to=html5 --self-contained --highlight-style=tango --template="$StyleTemplate" -c "$StyleCss" --number-sections --standalone --webtex="http://latex.codecogs.com/svg.latex?" -o "$Title".html
+
+# pandoc "$Title".md --from=markdown+emoji --to=html5 --self-contained --highlight-style="$HighlightStyle" --filter "$GraphvizFilter" --filter pandoc-pyplot --filter pandoc-plantuml --template="$StyleTemplate" -c "$StyleCss" --number-sections --standalone --webtex="http://latex.codecogs.com/svg.latex?" -o "$Title".html
+pandoc -s --mathjax -c "$StyleCss" --from=markdown+emoji --to=html5 --template="$StyleTemplate" --highlight-style="$HighlightStyle" --filter "$GraphvizFilter" --filter pandoc-pyplot --filter pandoc-plantuml --number-sections < "$Title".md -o "$Title".html
 
 echo "============================================================="
 echo "=> Make PDF file : $Title.pdf ..."
@@ -81,5 +87,8 @@ echo "============================================================="
 Author=$(head -2 "$Title".md | tail -1)
 Author=${Author:2}
 
-wkhtmltopdf --encoding 'utf-8' --print-media-type --footer-line --footer-spacing 2 --footer-font-name "$FooterFont" --footer-font-size "$FooterSize" --footer-left "$Author" --footer-right "[page] / [topage]" --margin-top "$TopMargin" --margin-left "$LeftMargin" --margin-right "$RightMargin" --margin-bottom "$BottomMargin" -O "$PageOrientation" -s "$PageSize" --javascript-delay 500 --no-stop-slow-scripts "$Title".html "$Title".pdf
+# INITIAL MD2HTML CODE:
+#wkhtmltopdf --encoding 'utf-8' --print-media-type --footer-line --footer-spacing 2 --footer-font-name "$FooterFont" --footer-font-size "$FooterSize" --footer-left "$Author" --footer-right "[page] / [topage]" --margin-top "$TopMargin" --margin-left "$LeftMargin" --margin-right "$RightMargin" --margin-bottom "$BottomMargin" -O "$PageOrientation" -s "$PageSize" --javascript-delay 500 --no-stop-slow-scripts "$Title".html "$Title".pdf
 
+# MY CODE:
+wkhtmltopdf --encoding 'utf-8' --print-media-type --footer-line --footer-spacing 2 --footer-font-name "$FooterFont" --footer-font-size "$FooterSize" --footer-left "$Author" --footer-right "[page] / [topage]" --margin-top "$TopMargin" --margin-left "$LeftMargin" --margin-right "$RightMargin" --margin-bottom "$BottomMargin" -O "$PageOrientation" -s "$PageSize" --debug-javascript --enable-javascript --javascript-delay 1000 --no-stop-slow-scripts "$Title".html "$Title".pdf

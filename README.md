@@ -115,6 +115,52 @@ The caption !]{.floatright}
 ```
 - Image is a block in the center with caption under : ```![The caption](theImage.png)```
 
+### Multiple columns
+
+Insert your columns in a block :
+
+```
+::: cols
+
+:::
+```
+
+#### 2 columns
+
+```
+::: cols
+
+::: col12
+First column
+:::
+
+::: col22
+Second column
+:::
+
+:::
+```
+
+#### 3 columns
+
+```
+::: cols
+
+::: col13
+First column
+:::
+
+::: col23
+Second column
+:::
+
+::: col33
+Third column
+:::
+
+:::
+```
+
 ### Warning block
 
 ::: warning  
