@@ -41,9 +41,9 @@ If you want to use LaTeX equations, you can choose alternatively one (or both) o
 * **Graphviz**: You must install the **graphviz** package, of your preferred Linux distribution.
 * **PlantUML**: You must install the **plantuml** package, and the **pandoc-plantuml-filter** package, of your preferred Linux distribution.
 
-# How to use md2all ?
+# Usage of md2all :
 
-**md2all** requires 1, 2 or 3 arguments.
+## **md2all** requires 1, 2 or 3 arguments.
 
 - **Usage with 1 argument** : *md2all myMarkdownDile.md* exports the md file, both in html and pdf, in the same folder.
 
@@ -59,8 +59,6 @@ If you want to use LaTeX equations, you can choose alternatively one (or both) o
 	3) Markdown file to convert
 
 	**Example** : *md2all templates/lesson.template css/lesson.css examples/proportionnalite.md*
-
-# Syntax for markdown file ?
 
 ## Header and Pandoc Title Block
 
@@ -90,9 +88,7 @@ But Pandoc includes a lot of extensions that are very useful like [GFM - GitHub 
 
 The example file [proportionnalite.md](https://raw.githubusercontent.com/ValeryBruniaux/md2all/master/examples/proportionnalite.md) shows you how to use them.
 
-## Tips
-
-### Images floating
+## Images floating
 
 - Image float to left and text fill the right : ```![](theImage.png){.floatleft}```
 - Image float to right and text fill the left : ```![](theImage.png){.floatright}```
@@ -115,7 +111,7 @@ The caption !]{.floatright}
 ```
 - Image is a block in the center with caption under : ```![The caption](theImage.png)```
 
-### Multiple columns
+## Multiple columns
 
 Insert your columns in a block :
 
@@ -125,7 +121,7 @@ Insert your columns in a block :
 :::
 ```
 
-#### 2 columns
+### 2 columns
 
 ```
 ::: cols
@@ -141,7 +137,7 @@ Second column
 :::
 ```
 
-#### 3 columns
+### 3 columns
 
 ```
 ::: cols
@@ -161,17 +157,17 @@ Third column
 :::
 ```
 
-### Warning block
+## Warning block
 
 ::: warning  
 You can add a warning block by using this syntax.  
 :::
 
-### Mathematical expressions
+## Mathematical expressions
 
 Use the [standard Latex syntax](https://en.wikibooks.org/wiki/LaTeX/Mathematics) : $math expression here$ or $$math$$ if you want a center block formula
 
-### Blank line
+## Blank line
 
 Insert blank lines in Markdown is not always easy. You can insert a blank line between Line 1 and Line 2 like this :
 
@@ -181,7 +177,7 @@ Line 1
 
 Line 2
 
-### Your own style :+1: !
+## Your own style :+1: !
 
 One Pandoc Markdown extension is very powerful. You can assign a **class name** to a piece of text and **decorate** it as you want in the **CSS file**.
 
@@ -198,7 +194,7 @@ text-decoration: underline;
 }
 ```
 
-### Force page breaks (before or after)
+## Force page breaks (before or after)
 
 You can use the previous tip to force page breaks. At the end of the default CSS file you can find the **@media print** section.
 
@@ -214,4 +210,4 @@ You can also assign these 2 classes to any piece of text using the previous tip.
 
 # Fonts examples
 
-You can find fonts used in the examples in the [Fonts directory](https://github.com/ValeryBruniaux/md2all/tree/master/fonts).
+You can find fonts used in the examples in the [Fonts directory](https://github.com/Luk313/md2all/tree/master/fonts).
