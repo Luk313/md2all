@@ -3,7 +3,7 @@
 
 # What to do with md2all ?
 
-* **Edit your Markdown** file for beautiful exports in HTML and PDF. HTML and PDF files look pretty the same, so you can **put the HTML file on the web** and/or **print the PDF file** for your students.
+* **Edit your Markdown** file for beautiful exports in HTML and PDF. Both HTML and PDF files should look pretty the same, so you can **put the HTML file on the web** and/or **print the PDF file** for your students.
 * **LaTeX Formulas**:
 The purpose is to replace **LaTeX** to **produce standard documents** like lessons, articles, etc.
 LaTeX is a good tool but styling markdown with CSS is easier and more flexible than old LaTeX syntax.
