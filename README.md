@@ -10,7 +10,7 @@ LaTeX is a good tool but styling markdown with CSS is easier and more flexible t
 * **Style the HTML and PDF export files in CSS and JS**, via media print for PDF export, edit contents with markdown and you can generate beautiful documents in HTML and PDF.
 * **Beautiful Code Highlightling**: via **[Prism.js](https://prismjs.com/)**. This includes:
   * **Automatic LineNumbering**: Natively included in md2all. All you need is to type your code in your md file as follows: \`\`\`{.YourLanguage .numberLines} *(Your code comes here)* \`\`\`, or if you nedd more precision: \`\`\`{.YourLanguage .numberLines startFrom="4"} *(Your code comes here)* \`\`\`
-  *** A Beautiful Custom Code Dark Theme** named ***Massilia Theme***, inspired by Prism.js' okaidia.css dark theme. This code Highlighting theme is easily customisable in two files: a Pandoc exported and customised theme file, named ***massilia.theme***, and a ***massilia.css*** file.
+  * **A Beautiful Custom Code Dark Theme** named ***Massilia Theme***, inspired by Prism.js' okaidia.css dark theme. This code Highlighting theme is easily customisable in two files: a Pandoc exported and customised theme file, named ***massilia.theme***, and a ***massilia.css*** file.
   * **Automatic Code Language Detection AND Labelisation**, both in HTML and PDF exports. Nothing to do here... **AUTOMATIC ! :+1:** 
 * [**Graphviz**](https://www.graphviz.org): Natively include Graphviz rendered images in your HTML and PDF exports, with ***.dot language*** syntax. All you need is to type your Graphviz code in your md file as follows: \`\`\`{.graph } *(Graphviz code comes here)* \`\`\`. For more info, cf:
   * [Graphviz Gallery](https://www.graphviz.org/gallery/)
