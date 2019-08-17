@@ -24,7 +24,10 @@ LaTeX is a good tool but styling markdown with CSS is easier and more flexible t
 * [**Graphviz**](https://www.graphviz.org): Natively include Graphviz rendered images in your HTML and PDF exports, with ***.dot language*** syntax. All you need is to type your Graphviz code in your md file as follows: \`\`\`{.graph } *(Graphviz code comes here)* \`\`\`. For more info, cf:
   * [Graphviz Gallery](https://www.graphviz.org/gallery/)
   * [Graphviz Documentation](https://www.graphviz.org/documentation/)
-* [**PlantUML**](http://plantuml.com): Natively include PlantUML Diagrams rendered as SVGs in your HTML and PDF exports. All you need to do is type your ***PlantUML Language*** code in your md file as follows: \`\`\`{.plantuml} *(PlantUML code comes here)* \`\`\`. For more info, cf:
+* [**PlantUML**](http://plantuml.com): Natively include PlantUML Diagrams rendered as SVGs in your HTML and PDF exports. All you need to do is type your ***PlantUML Language*** code in your md file as follows:
+  * \`\`\`{.plantuml} *(PlantUML code comes here)* \`\`\`.
+
+  For more info, cf:
   * [PlantUML Official Site](http://plantuml.com)
   * [Just Some Diagrams and Example Gallery](http://plantuml.com/fr/sequence-diagram)
 * Easy PDF page layout with froce page breaks (*before* or *after*)
