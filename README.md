@@ -12,9 +12,13 @@ LaTeX is a good tool but styling markdown with CSS is easier and more flexible t
   * **Automatic LineNumbering**: Natively included in md2all. All you need is to type your code in your md file as follows: \`\`\`{.YourLanguage .numberLines} *(Your code comes here)* \`\`\`, or if you nedd more precision: \`\`\`{.YourLanguage .numberLines startFrom="4"} *(Your code comes here)* \`\`\`
   * **A Beautiful Custom Code Dark Theme** named ***Massilia Theme***, inspired by Prism.js' okaidia.css dark theme. This code Highlighting theme is easily customisable in two files: a Pandoc exported and customised theme file, named ***massilia.theme***, and a ***massilia.css*** file.
   * **Automatic Code Language Detection AND Labelisation**, both in HTML and PDF exports. Nothing to do here... **AUTOMATIC ! :+1:** 
+* [**Matplotlib**](https://matplotlib.org): Natively include Matplotlib rendered images in your HTML and PDF exports, in **Python language** with **Matplotplib's pyplot syntax**. All you need is to type your Matplotlib code in your md file as follows: \`\`\`{.pyplot } *(Matplotlib code comes here)* \`\`\`. For more info, cf:
+  * [MatplotLib Gallery](https://matplotlib.org/gallery/index.html)
+  * [Matplotlib Official Site](https://matplotlib.org/) for more info.
+  * [A Matplotlib Tutorial for beginners, by Nicolas P. Rougier](https://github.com/rougier/matplotlib-tutorial)
 * [**Graphviz**](https://www.graphviz.org): Natively include Graphviz rendered images in your HTML and PDF exports, with ***.dot language*** syntax. All you need is to type your Graphviz code in your md file as follows: \`\`\`{.graph } *(Graphviz code comes here)* \`\`\`. For more info, cf:
   * [Graphviz Gallery](https://www.graphviz.org/gallery/)
-  * [Graphviz Documentation](https://www.graphviz.org/documentation/) for more info.
+  * [Graphviz Documentation](https://www.graphviz.org/documentation/)
 * [**PlantUML**](http://plantuml.com): Natively include PlantUML Diagrams rendered as SVGs in your HTML and PDF exports. All you need to do is type your ***PlantUML Language*** code in your md file as follows: \`\`\`{.plantuml} *(PlantUML code comes here)* \`\`\`. For more info, cf:
   * [PlantUML Official Site](http://plantuml.com)
   * [Just Some Diagrams and Example Gallery](http://plantuml.com/fr/sequence-diagram)
@@ -22,28 +26,32 @@ LaTeX is a good tool but styling markdown with CSS is easier and more flexible t
 
 # What do I need to install ?
 
-**md2all** mainly uses 2 external tools :
+**md2all** mainly uses 2 external tools you **must** install at first, via your preferred package manager:
 
  * [pandoc](https://pandoc.org/) for HTML export
  * [wkhtmltopdf](https://wkhtmltopdf.org/) for PDF export. ⚠️ if you want footers in PDF you need the QT-patched version in Arch Linux !
 
-You can install these tools with your favorite distribution.
+Optionnally, If you wish to use the following additionnal fonctionnalities, You **can** install these tools via your preferred package manager:
 
 * **LaTeX :**
 If you want to use LaTeX equations, you can choose alternatively one (or both) of the following:
-  * __offline :__ do NOT install any local LaTeX distribution (by default), and use **internet access** to reach the transform application [codecogs](http://latex.codecogs.com/svg.latex) to convert LaTeX formulas in SVG.
-  * or, alternatively, __online :__ install your preferred local LaTeX distribution: **md2all** will automatically export LaTeX formulas of the md file in [MathJax](https://www.mathjax.org) format in the HTML export file, and hence PDF.  Configuration: Just swap commented lines in /usr/bin/md2all corresponding to the pandoc part of the file.
-* **Maplotlib**: You must install *Python* and the *Matplotlib* package.
-* **Graphviz**: You must install the *Graphviz package*, of your preferred Linux distribution.
-* **PlantUML**: You must install the *PlantUML package*, of your preferred Linux distribution. 
+  * __online :__ do NOT install any local LaTeX distribution (by default), and use **internet access** to reach the transform application [codecogs](http://latex.codecogs.com/svg.latex) to convert LaTeX formulas in SVG.
+  * or, alternatively, __offline :__ install your preferred local LaTeX distribution: **md2all** will automatically export LaTeX formulas of your md file in [MathJax](https://www.mathjax.org) format in the HTML export file, and hence PDF. Configuration: Just swap commented lines in /usr/bin/md2all corresponding to the pandoc part of the file.
+* **Maplotlib**: You must install **python** (>=3.xx advised), the **python-matplotlib** package, and the **pandoc-pyplot** package.
+* **Graphviz**: You must install the **graphviz** package, of your preferred Linux distribution.
+* **PlantUML**: You must install the **plantuml** package, and the **pandoc-plantuml-filter** package, of your preferred Linux distribution.
 
 # How to use md2all ?
 
-**md2all** requires 1 or 3 arguments.
+**md2all** requires 1, 2 or 3 arguments.
 
 - **Usage with 1 argument** : *md2all myMarkdownDile.md* exports the md file, both in html and pdf, in the same folder.
 
 	**Example** : *md2all examples/proportionnalite.md*
+
+- **Usage with 2 arguments** : md2all cssFile.css markdownFile.md
+	1) Css file to apply
+	2) Markdown file to convert
 
 - **Usage with 3 arguments** : md2all templateFile.template cssFile.css markdownFile.md
 	1) Template file to apply
@@ -64,7 +72,7 @@ At the beginning of markdown file put a [Pandoc Title Block](https://pandoc.org/
 % My Name  
 % 20/04/2018  
 
-This block supports multilines :
+This block supports multilines, but continuation lines must begin with leading space, thus:
 
 % The Wonderful title  
   You can have a multilines title like this  
