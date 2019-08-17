@@ -1,46 +1,62 @@
-# What is md2htmlpdf ?
-**md2thmlpdf** can **convert markdown files to HTML and PDF** with predefined styles.
+# What is md2all ?
+**md2all** is a command line OpenSource tool which can **convert Markdown files to HTML and PDF** with predefined CSS styles, and further JS treatment.
 
-# What to do with md2htmlpdf ?
+# What to do with md2all ?
 
-The purpose is to replace Latex to **produce standard documents** like lessons, articles, etc.
-Latex is a good tool but styling with CSS is easier and more flexible than old Latex syntax.
-
-**With md2htmlpdf, you edit your style in CSS file, edit contents with markdown and you can generate beautiful documents in HTML and PDF.**
-
-HTML and PDF files look pretty the same, so you can **put the HTML file on the web** or **print the PDF file** for your students.
+* **Edit your Markdown** file for beautiful exports in HTML and PDF. HTML and PDF files look pretty the same, so you can **put the HTML file on the web** and/or **print the PDF file** for your students.
+* **LaTeX Formulas**:
+The purpose is to replace **LaTeX** to **produce standard documents** like lessons, articles, etc.
+LaTeX is a good tool but styling markdown with CSS is easier and more flexible than old LaTeX syntax.
+* **Style the HTML and PDF export files in CSS and JS**, via media print for PDF export, edit contents with markdown and you can generate beautiful documents in HTML and PDF.
+* **Beautiful Code Highlightling**: via **[Prism.js](https://prismjs.com/)**. This includes:
+  * **Automatic LineNumbering**: Natively included in md2all. All you need is to type your code in your md file as follows: \`\`\`{.YourLanguage .numberLines} *(Your code comes here)* \`\`\`, or if you nedd more precision: \`\`\`{.YourLanguage .numberLines startFrom="4"} *(Your code comes here)* \`\`\`
+  *** A Beautiful Custom Code Dark Theme** named ***Massilia Theme***, inspired by Prism.js' okaidia.css dark theme. This code Highlighting theme is easily customisable in two files: a Pandoc exported and customised theme file, named ***massilia.theme***, and a ***massilia.css*** file.
+  * **Automatic Code Language Detection AND Labelisation**, both in HTML and PDF exports. Nothing to do here... **AUTOMATIC ! :+1:** 
+* [**Graphviz**](https://www.graphviz.org): Natively include Graphviz rendered images in your HTML and PDF exports, with ***.dot language*** syntax. All you need is to type your Graphviz code in your md file as follows: \`\`\`{.graph } *(Graphviz code comes here)* \`\`\`. For more info, cf:
+  * [Graphviz Gallery](https://www.graphviz.org/gallery/)
+  * [Graphviz Documentation](https://www.graphviz.org/documentation/) for more info.
+* [**PlantUML**](http://plantuml.com): Natively include PlantUML Diagrams rendered as SVGs in your HTML and PDF exports. All you need to do is type your ***PlantUML Language*** code in your md file as follows: \`\`\`{.plantuml} *(PlantUML code comes here)* \`\`\`. For more info, cf:
+  * [PlantUML Official Site](http://plantuml.com)
+  * [Just Some Diagrams and Example Gallery](http://plantuml.com/fr/sequence-diagram)
+* Easy PDF page layout with froce page breaks (*before* or *after*)
 
 # What do I need to install ?
 
-**md2htmlpdf** uses 2 external tools :
+**md2all** mainly uses 2 external tools :
 
- - [pandoc](https://pandoc.org/)
- - [wkhtmltopdf](https://wkhtmltopdf.org/) ⚠️ if you want footers in PDF you need the QT-patched version in Arch Linux !
+ * [pandoc](https://pandoc.org/) for HTML export
+ * [wkhtmltopdf](https://wkhtmltopdf.org/) for PDF export. ⚠️ if you want footers in PDF you need the QT-patched version in Arch Linux !
 
-You can install theese tools with your favorite distribution.
+You can install these tools with your favorite distribution.
 
-If you want to use equations, you need **internet access** to reach the transform application [codecogs](http://latex.codecogs.com/svg.latex)
+* **LaTeX :**
+If you want to use LaTeX equations, you can choose alternatively one (or both) of the following:
+  * __offline :__ do NOT install any local LaTeX distribution (by default), and use **internet access** to reach the transform application [codecogs](http://latex.codecogs.com/svg.latex) to convert LaTeX formulas in SVG.
+  * or, alternatively, __online :__ install your preferred local LaTeX distribution: **md2all** will automatically export LaTeX formulas of the md file in [MathJax](https://www.mathjax.org) format in the HTML export file, and hence PDF.  Configuration: Just swap commented lines in /usr/bin/md2all corresponding to the pandoc part of the file.
+* **Maplotlib**: You must install *Python* and the *Matplotlib* package.
+* **Graphviz**: You must install the *Graphviz package*, of your preferred Linux distribution.
+* **PlantUML**: You must install the *PlantUML package*, of your preferred Linux distribution. 
 
-# How to use md2htmlpdf ?
+# How to use md2all ?
 
-**md2htmlpdf** requires 1 or 3 arguments.
+**md2all** requires 1 or 3 arguments.
 
-- **Usage with 1 argument** : md2htmlpdf markdownFile.md
+- **Usage with 1 argument** : *md2all myMarkdownDile.md* exports the md file, both in html and pdf, in the same folder.
 
-	**Example** : *md2htmlpdf examples/proportionnalite.md*
+	**Example** : *md2all examples/proportionnalite.md*
 
-- **Usage with 3 arguments** : md2htmlpdf templateFile.template cssFile.css markdownFile.md
+- **Usage with 3 arguments** : md2all templateFile.template cssFile.css markdownFile.md
 	1) Template file to apply
-	1) Css file to apply
-	1) Markdown file to convert
+	2) Css file to apply
+	3) Markdown file to convert
 
-	**Example** : *md2htmlpdf templates/lesson.template css/lesson.css examples/proportionnalite.md*
+	**Example** : *md2all templates/lesson.template css/lesson.css examples/proportionnalite.md*
 
 # Syntax for markdown file ?
 
 ## Header and Pandoc Title Block
 
-All [pandoc extensions](https://pandoc.org/MANUAL.html#pandocs-markdown) for markdown are usable (equation, emoji, tables, ...)
+All [pandoc extensions](https://pandoc.org/MANUAL.html#pandocs-markdown) for markdown are usable (equation, emoji, tables, ...).
 
 At the beginning of markdown file put a [Pandoc Title Block](https://pandoc.org/MANUAL.html#metadata-blocks) to describe your document like this :
 
@@ -64,7 +80,7 @@ After a blank line you can write your document using markdown syntax. Look examp
 You can edit your text using the [standard Markdown syntax](http://commonmark.org/help/).
 But Pandoc includes a lot of extensions that are very useful like [GFM - GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/#GitHub-flavored-markdown). So you can easily write : code blocks, task lists, tables, [emojis](https://www.webpagefx.com/tools/emoji-cheat-sheet/) :smiley:, strikethrough...
 
-The example file [proportionnalite.md](https://raw.githubusercontent.com/ValeryBruniaux/md2htmlpdf/master/examples/proportionnalite.md) shows you how to use them.
+The example file [proportionnalite.md](https://raw.githubusercontent.com/ValeryBruniaux/md2all/master/examples/proportionnalite.md) shows you how to use them.
 
 ## Tips
 
@@ -144,4 +160,4 @@ You can also assign these 2 classes to any piece of text using the previous tip.
 
 # Fonts examples
 
-You can find fonts used in the examples in the [Fonts directory](https://github.com/ValeryBruniaux/md2htmlpdf/tree/master/fonts).
+You can find fonts used in the examples in the [Fonts directory](https://github.com/ValeryBruniaux/md2all/tree/master/fonts).

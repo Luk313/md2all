@@ -1,6 +1,7 @@
 #!/bin/sh
 
-# Author : Valéry Bruniaux
+# Ce logiciel est initialement un clone de md2html (Valéry Bruniaux)
+# Author: Rodrigo SCHWENCKE
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,19 +20,25 @@ echo "================================================"
 echo "==> Install bin file in /usr/bin/"
 echo "================================================"
 
-sudo cp md2htmlpdf /usr/bin/
-sudo chmod 755 /usr/bin/md2htmlpdf
+sudo cp md2all /usr/bin/
+sudo chmod 755 /usr/bin/md2all
 
 echo "================================================"
-echo "==> Install config dir in ~/.config/md2htmlpdf/"
+echo "==> Install config dir in ~/.config/md2all/"
 echo "================================================"
 
-mkdir $HOME/.config/md2htmlpdf
-cp -R -i css $HOME/.config/md2htmlpdf/
-ln -s -i $HOME/.config/md2htmlpdf/css/lesson.css $HOME/.config/md2htmlpdf/css/default.css
+mkdir $HOME/.config/md2all
+cp -R -i css $HOME/.config/md2all/
+ln -s -i $HOME/.config/md2all/css/lesson.css $HOME/.config/md2all/css/default.css
 
-cp -R -i templates $HOME/.config/md2htmlpdf/
-ln -s -i $HOME/.config/md2htmlpdf/templates/lesson.template $HOME/.config/md2htmlpdf/templates/default.template
+cp -R -i graphviz $HOME/.config/md2all/
+ln -s -i $HOME/.config/md2all/graphviz/graphviz.py $HOME/.config/md2all/graphviz/default.py
+
+cp -R -i js $HOME/.config/md2all/
+ln -s -i $HOME/.config/md2all/js/script.js $HOME/.config/md2all/js/default.js
+
+cp -R -i templates $HOME/.config/md2all/
+ln -s -i $HOME/.config/md2all/templates/lesson.template $HOME/.config/md2all/templates/default.template
 
 echo "================================================"
 echo "==> Install completed ..."
