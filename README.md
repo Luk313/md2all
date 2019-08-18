@@ -59,6 +59,11 @@ If you want to use LaTeX equations, you can choose alternatively one (or both) o
 * cd inside the directory: ```cd md2all```
 * Launch installer, i.e. run .sh file: ```./install.sh``` or ```sh install.sh```
 
+## How to uninstall md2all?
+* in a Terminal: cd to the directory where ```unsinstall.sh``` is located... probably:
+* ```cd md2all```
+* Launch uninstaller, i.e. run .sh file: ```./uninstall.sh``` or ```sh uninstall.sh```
+
 # Usage of md2all :
 
 ## **md2all** requires 1, 2 or 3 arguments.
