@@ -16,16 +16,12 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-echo "================================================"
 echo "==> Install bin file in /usr/bin/"
-echo "================================================"
 
 sudo cp md2all /usr/bin/
 sudo chmod 755 /usr/bin/md2all
 
-echo "================================================"
 echo "==> Install config dir in ~/.config/md2all/"
-echo "================================================"
 
 mkdir $HOME/.config/md2all
 cp -R -i css $HOME/.config/md2all/
@@ -40,6 +36,9 @@ ln -s -i $HOME/.config/md2all/js/script.js $HOME/.config/md2all/js/default.js
 cp -R -i templates $HOME/.config/md2all/
 ln -s -i $HOME/.config/md2all/templates/lesson.template $HOME/.config/md2all/templates/default.template
 
+echo "==> Install Correctly Completed ..."
+echo "==> To export any .md file both in HTML and PDF,"
+echo "==> In a Terminal, you can now type (as non-root user):"
 echo "================================================"
-echo "==> Install completed ..."
+echo "==> md2all yourMarkdownFile.md"
 echo "================================================"
