@@ -90,5 +90,5 @@ Author=$(head -2 "$Title".md | tail -1)
 Author=${Author:2}
 
 # EXPORT HTML to PDF
-wkhtmltopdf --encoding 'utf-8' --print-media-type --footer-line --footer-spacing 2 --footer-font-name "$FooterFont" --footer-font-size "$FooterSize" --footer-left "$Author" --footer-right "[page] / [topage]" --margin-top "$TopMargin" --margin-left "$LeftMargin" --margin-right "$RightMargin" --margin-bottom "$BottomMargin" -O "$PageOrientation" -s "$PageSize" --debug-javascript --enable-javascript --javascript-delay 1000 "$Title".html "$Title".pdf
+wkhtmltopdf --encoding 'utf-8' --print-media-type --footer-line --footer-spacing 2 --footer-font-name "$FooterFont" --footer-font-size "$FooterSize" --footer-left "$Author" --footer-right "[page] / [topage]" --margin-top "$TopMargin" --margin-left "$LeftMargin" --margin-right "$RightMargin" --margin-bottom "$BottomMargin" -O "$PageOrientation" -s "$PageSize" --enable-javascript --javascript-delay 1000 "$Title".html "$Title".pdf
 
