@@ -39,8 +39,8 @@ LaTeX is a good tool but styling markdown with CSS is easier and more flexible t
 
  * [pandoc](https://pandoc.org/) for HTML export
  * [wkhtmltopdf](https://wkhtmltopdf.org/) for PDF export. ️⚠️ **Watch out!** ⚠️ According to your linux distribution, You may need the **Qt-patched version of wkhtmltopdf** if you are in one of the following cases:
-   * ⚠️ if you want footers in PDF, or..
-   * ⚠️ if you just want to use the ***--print-media-type*** option in wkhtmltopdf (which md2all uses intensively, by default) 
+   * if you want footers in PDF, or..
+   * if you just want to use the ***--print-media-type*** option in wkhtmltopdf (which md2all uses intensively, by default) 
    * then you **NEED** the QT-patched version (in Arch Linux: the **wktohtmlpdf-static** package in AUR)!
 
 Optionnally, If you wish to use the following additionnal fonctionnalities, You **can** install these tools via your preferred package manager:
