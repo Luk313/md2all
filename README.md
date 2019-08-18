@@ -50,11 +50,11 @@ If you want to use LaTeX equations, you can choose alternatively one (or both) o
 * **Graphviz**: You must install the **graphviz** package, of your preferred Linux distribution.
 * **PlantUML**: You must install the **plantuml** package, and the **pandoc-plantuml-filter** package, of your preferred Linux distribution.
 
-## How to install md2all?
-* In a Terminal, cd /some/where/you/want/anywhere
+## Next, How to install md2all?
+* In a Terminal, cd /some/where/you/want/../anywhere
 * Clone this repository: ```git clone https://github.com/Luk313/md2all.git```
 * cd inside the directory: ```cd md2all```
-* launch installer, i.e. run sh file ```./install.sh``` or ```sh install.sh```
+* Launch installer, i.e. run .sh file: ```./install.sh``` or ```sh install.sh```
 
 # Usage of md2all :
 
