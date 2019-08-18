@@ -71,8 +71,8 @@ $body$
 $for(include-after)$
 $include-after$
 $endfor$
-<script src="/home/luke/.config/md2htmlpdf/js/default.js"></script>
-<link rel="stylesheet" href="/home/luke/.config/md2htmlpdf/css/massilia.css">
+<script src="/home/luke/.config/md2all/js/default.js"></script>
+<link rel="stylesheet" href="/home/luke/.config/md2all/css/massilia.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/prism.min.js"></script>
 </body>
 </html>
