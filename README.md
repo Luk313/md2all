@@ -34,6 +34,7 @@ LaTeX is a good tool but styling markdown with CSS is easier and more flexible t
 
 # What do I need to install ?
 
+## Install dependencies first:
 **md2all** mainly uses 2 external tools you **must** install at first, via your preferred package manager:
 
  * [pandoc](https://pandoc.org/) for HTML export
@@ -48,6 +49,12 @@ If you want to use LaTeX equations, you can choose alternatively one (or both) o
 * **Maplotlib**: You must install **python** (>=3.xx advised), the **python-matplotlib** package, and the **pandoc-pyplot** package.
 * **Graphviz**: You must install the **graphviz** package, of your preferred Linux distribution.
 * **PlantUML**: You must install the **plantuml** package, and the **pandoc-plantuml-filter** package, of your preferred Linux distribution.
+
+## How to install md2all?
+* In a Terminal, cd /some/where/you/want/anywhere
+* Clone this repository: ```git clone https://github.com/Luk313/md2all.git```
+* cd inside the directory: ```cd md2all```
+* launch installer, i.e. run sh file ```./install.sh``` or ```sh install.sh```
 
 # Usage of md2all :
 
