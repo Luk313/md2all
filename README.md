@@ -38,9 +38,9 @@ LaTeX is a good tool but styling markdown with CSS is easier and more flexible t
 **md2all** mainly uses 2 external tools you **must** install at first, via your preferred package manager:
 
  * [pandoc](https://pandoc.org/) for HTML export
- * [wkhtmltopdf](https://wkhtmltopdf.org/) for PDF export. ️⚠️ **Watch out!** ⚠️ According to your linux distribution, You may need the **Qt-patched version of wkhtmltopdf** if you are in one of the following cases:
-   * if you want footers in PDF, or..
-   * if you just want to use the ***--print-media-type*** option in wkhtmltopdf (which md2all uses intensively, by default) 
+ * [wkhtmltopdf](https://wkhtmltopdf.org/) for PDF export. ️⚠️ **Watch Out!** ⚠️ According to your linux distribution and to what functionnalities of **md2all** you want to take advantage of, you may need the **Qt-patched version of wkhtmltopdf**. Typically, if you are in one of the following cases:
+   * if you want footers in PDF, or...
+   * if you just want to use the ***--print-media-type*** option in wkhtmltopdf, so to customize PDF exports via print media specific css (which is md2all case, by default)
    * then you **NEED** the QT-patched version (in Arch Linux: the **wktohtmlpdf-static** package in AUR)!
 
 Optionnally, If you wish to use the following additionnal fonctionnalities, You **can** install these tools via your preferred package manager:
