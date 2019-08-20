@@ -8,7 +8,8 @@ Needs `plantuml.jar` from http://plantuml.com/.
 
 import os
 import sys
-from subprocess import call
+import subprocess
+# from subprocess import call,Popen
 
 from pandocfilters import toJSONFilter, Para, Image, get_filename4code, get_caption, get_extension
 
@@ -24,17 +25,13 @@ def plantuml(key, value, format, _):
 
         if "plantuml" in classes:
             caption, typef, keyvals = get_caption(keyvals)
-            for key,value in caption:
-                sys.stderr.write('Caption Detected ' + str(key)+","+str(value) + '\n')
 
             filename = get_filename4code("plantuml", code)
-            # sys.stderr.write("Original File Name = "+str(filename))
 
             # If name attribute exists, overwrite standard filename
             for eachKeys in keyvals:
                 if 'name' in eachKeys[0]:
                     filename="plantuml-images/"+eachKeys[1][:-4]
-                    sys.stderr.write("Custom File Name = "+str(filename))
 
             filetype = get_extension(format, "png", html="svg", latex="eps")
 
@@ -43,13 +40,25 @@ def plantuml(key, value, format, _):
 
             if not os.path.isfile(dest):
                 txt = code.encode(sys.getfilesystemencoding())
-                # txt = "".join(chr(x) for x in bytearray(txt,'utf-8'))
-                txt=txt.decode('utf-8')
+                txt=txt.decode(sys.getfilesystemencoding())
                 if not txt.startswith("@start"):
                     txt = "@startuml\n" + txt + "\n@enduml\n"
                 with open(src, "w") as f:
                     f.write(txt)
-                call(["java", "-jar", "/usr/share/java/plantuml/plantuml.jar", "-t"+filetype, src])
+                pathsListCmd=subprocess.Popen(['locate','plantuml.jar'],stdout=subprocess.PIPE)
+                pathsList = pathsListCmd.stdout.read().decode('utf-8').split("\n")
+                for eachPossiblePath in pathsList:
+                    if 'home' in eachPossiblePath:
+                        pass
+                    else:
+                        plantumlJarPath=str(eachPossiblePath)
+                        sys.stderr.write('Path detected for plantuml.jar = ' + eachPossiblePath + '\n')
+                        break
+                else:
+                    sys.stderr.write('plantuml.jar path not detected. Please install plantuml first ' + '\n')
+
+                # plantumlJarPath should be something like: "/usr/share/java/plantuml/plantuml.jar", or to be adapted
+                subprocess.call(["java", "-jar", plantumlJarPath , "-t"+filetype, src])
                 sys.stderr.write('Created image ' + dest + '\n')
 
             return Para([Image([ident, classes, keyvals], caption, [dest, typef])])
