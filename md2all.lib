@@ -1,0 +1,171 @@
+# md2all.lib
+# No #!/bin/bash should be spawn up here
+
+# Author : Rodrigo SCHWENCKE
+
+splitOptionsAndFilename()
+{
+for arg in $*
+    do
+        case $arg in
+            -hi | -hs | -highlight | -highlight-style | --highlight | --highlight-style)
+                # echo "Highlight detected"
+                HighlightStyle=$2
+                HightlighStyleChanged=1
+                # echo "HightlighStyleChanged = $HightlighStyleChanged"
+                # echo "Hightlight Style= $HighlightStyle"
+                shift
+                shift
+                ;;
+            -c | -css | --css) 
+                # echo "page css detected"
+                PageStyleCss=$2
+                PageStyleCssChanged=1
+                # echo "Page Style Css="
+                # echo $PageStyleCss
+                shift
+                shift
+                ;;
+            -cs | --code-css | --code-style) 
+                # echo "code style detected"
+                CodeStyleCss=$2
+                if [ "$CodeStyleCss" = "light" ]; then
+                    HighlightStyle="$HOME/.config/md2all/css/massiliaLight.theme"
+                    CodeStyle="light"
+                    hack="Light"
+                    echo "Massilia Light Detected"
+                fi
+
+                if [ "$CodeStyleCss" = "dark" ]; then
+                    HighlightStyle="$HOME/.config/md2all/css/massiliaDark.theme"
+                    CodeStyle="dark"
+                    hack="Dark"
+                    echo "Massilia Dark Detected"
+                fi
+
+                if [ "$CodeStyleCss" = "dual" ]; then
+                    HighlightStyle="$HOME/.config/md2all/css/massiliaDark.theme"
+                    CodeStyle="dual"
+                    hack="Light"
+                    echo "Massilia Dual Detected"
+                fi
+
+                CodeStyleCssChanged=1
+                # echo "CodeStyleCss"
+                # echo $CodeStyleCss
+                shift
+                shift
+                ;;
+            -t | -template | --template) 
+                # echo "Template detected"
+                Template=$2
+                TemplateChanged=1
+                # echo "Template Style="
+                # echo $Template
+                shift
+                shift
+                ;;
+            -h | -help | --help) 
+                # echo "Help detected"
+                Help=$2
+                # echo "Help Style="
+                # echo $HelpTemplate
+                shift
+                shift
+                ;;
+        esac
+    done
+
+if [ "$HightlighStyleChanged" ]; then
+    # echo "md2all Called with HighlightStyle= $HighlightStyle"
+    IsDefaultHighlightStyle=""
+else
+    # echo "md2all Called with Default Massilia Dark HightlightStyle"
+    IsDefaultHighlightStyle=" (default)"
+fi
+
+if [ "$PageStyleCssChanged" ]; then
+    # echo "md2all Called with PageStyle= $PageStyleCss"
+    IsDefaultPageStyleCss=""
+else
+    # echo "md2all called with Default Lesson Style"
+    IsDefaultPageStyleCss=" (default)"
+fi
+
+if [ "$CodeStyleCssChanged" ]; then
+    # echo "md2all Called with CodeStyleCss= $CodeStyleCss"
+    IsDefaultCodeStyleCss=""
+else
+    # echo "md2all called with Default Dark Code Style"
+    IsDefaultCodeStyleCss=" (default)"
+fi
+
+if [ "$TemplateChanged" ]; then
+    # echo "md2all Called with Template= $Template"
+    IsDefaultTemplate=""
+else
+    # echo "md2all called with Default Template Style"
+    IsDefaultTemplate=" (default)"
+fi
+
+export filename=$*
+}
+
+checkSyntax()
+{
+# Detect if one and only one parameter was passed
+if [ $# != 1 ]; then
+  if [ $# \> 1 ]; then
+    echo "==> Two many ($#) arguments passed."
+  elif [ $# \< 1 ]; then
+    echo "==> Insufficient ($#) arguments passed."
+  fi
+  echo "==> md2all requires EXACTLY 1 argument: yourMarkdownFile.md"
+  echo "==> All other parameters must be passed first, through options syntax"
+  echo "==> Type md2all -h or md2all -help or md2all --help to get more info"
+  exit 1
+fi
+
+if [ `echo $1 | cut -f2 -d'.'` != "md" ]; then
+    echo "Bad file type (.`echo $1 | cut -f2 -d'.'`)"
+    echo "Last Argument must be a Mardown File .md"
+    exit 1
+fi
+}
+
+detectIfDualExport()
+{
+    if [ "$CodeStyle" = "dual" ]; then
+    CodeStyle="light"
+    HighlightStyle="$HOME/.config/md2all/css/massiliaLight.theme"
+    echo "Dual Detected Twice"
+    hack="Light"
+    exportToHTML
+
+    # EXPORT HTML to PDF
+    exportToPDF
+
+    CodeStyle="dark"
+    HighlightStyle="$HOME/.config/md2all/css/massiliaDark.theme"
+    hack="Dark"
+    exportToHTML
+    exit 0
+fi
+}
+
+exportToHTML()
+{
+    # EXPORT MD to HTML : BY DEFAULT, EXPORT WEB LATEX from MD to HTML
+    #pandoc "$Title".md --from=markdown+emoji --to=html5 --self-contained --highlight-style="$HighlightStyle" --standalone --webtex="http://latex.codecogs.com/svg.latex?" --template="$Template" -c "$PageStyleCss"  --filter "$GraphvizFilter" --filter pandoc-pyplot --filter pandoc-plantuml --number-sections -o "$Title".html
+
+    # ALTERNATIVELY, EXPORT LATEX via MATHJAX
+    pandoc -s --variable=hack:"$hack" --variable=home:"$HOME" --variable=CodeCssName:"$CodeCssName" --variable=JsStyle:"$JsStyle" --template="$Template" --mathjax -c "$PageStyleCss" --from=markdown+emoji --to=html5 --highlight-style="$HighlightStyle" --filter "$GraphvizFilter" --filter pandoc-pyplot --filter pandoc-plantuml --number-sections < "$Title".md -o "$Title".html
+    #pandoc -s --mathjax -c "$PageStyleCss" --from=markdown+emoji --to=html5 --template="$Template" --highlight-style="$HighlightStyle" --filter "$GraphvizFilter" --filter pandoc-pyplot --filter pandoc-plantuml --number-sections < "$Title".md -o "$Title".html
+
+}
+
+exportToPDF()
+{
+    # EXPORT HTML to PDF
+    wkhtmltopdf --encoding 'utf-8' --print-media-type --footer-line --footer-spacing 2 --footer-font-name "$FooterFont" --footer-font-size "$FooterSize" --footer-left "$Author" --footer-right "[page] / [topage]" --margin-top "$TopMargin" --margin-left "$LeftMargin" --margin-right "$RightMargin" --margin-bottom "$BottomMargin" -O "$PageOrientation" -s "$PageSize" --enable-javascript --javascript-delay 1000 "$Title".html "$Title".pdf
+}

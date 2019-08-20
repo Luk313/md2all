@@ -1,6 +1,7 @@
 #!/bin/bash
+. /usr/lib/md2all.lib
 
-# Author : Rodrigo SCHWENCKE & Valery BRUNIAUX
+# Author : Rodrigo SCHWENCKE
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -24,63 +25,43 @@ LeftMargin="1cm"
 RightMargin="1cm"
 FooterFont="Bell MT"
 FooterSize="8"
-StyleTemplate="$1"
-StyleCss="$2"
-Title=`echo $3 | cut -f1 -d'.'`
 
-if [[ $# -lt 1 || $# -gt 3 ]]; then
-		echo "============================================================="
-		echo "==> md2all require 1, 2 or 3 arguments"
-		echo "============================================================="
-		echo "Usage with 1 argument : md2all markdownFile.md"
-		echo "Example : md2all examples/proportionnalite.md"
-		echo "============================================================="
-		echo "Usage with 2 arguments : md2all cssFile.css markdownFile.md"
-		echo "Example : md2all css/lesson.css examples/proportionnalite.md"
-		echo "============================================================="
-		echo "Usage with 3 arguments : md2all templateFile.template cssFile.css markdownFile.md"
-		echo "1) Template file to apply"
-		echo "2) Css file to apply"
-		echo "3) Markdown file to convert"
-		echo "Example : md2all templates/lesson.template css/lesson.css examples/proportionnalite.md"
-		echo "============================================================="
-		exit 1
-fi
+#Template="$1"
+#PageStyleCss "$2"
+#Title=`echo $3 | cut -f1 -d'.'`
 
-if [ $# -eq 1 ]; then
-	Title=`echo $1 | cut -f1 -d'.'`
-	StyleTemplate="$HOME/.config/md2all/templates/default.template"
-	StyleCss="$HOME/.config/md2all/css/default.css"
-	GraphvizFilter="$HOME/.config/md2all/graphviz/default.py"
-	HighlightStyle="$HOME/.config/md2all/css/massilia.theme"
-	echo "============================================================="
-	echo "=> You invoque md2all with default template and css files"
-	echo "============================================================="
-fi
+# Code Layout, EXCEPT COLORS
+CodeCss="$HOME/.config/md2all/css/massilia.css"
+# Code COLORS (name coherent with pandoc options)
+HighlightStyle="$HOME/.config/md2all/css/massiliaDark.theme"
+# For Shortcut purposes,possible values: light, dark, or dual
+CodeStyle="dual"
+PageStyleCss="$HOME/.config/md2all/css/lesson.css"
+GraphvizFilter="$HOME/.config/md2all/graphviz/default.py"
+Template="$HOME/.config/md2all/templates/lesson.template"
+JsStyle="$HOME/.config/md2all/js/script.js"
 
-if [ $# -eq 2 ]; then
-	StyleCss="$1"
-	Title=`echo $2 | cut -f1 -d'.'`
-	StyleTemplate="$HOME/.config/md2all/templates/default.template"
-	GraphvizFilter="$HOME/.config/md2all/graphviz/default.py"
-	HighlightStyle="$HOME/.config/md2all/css/massilia.theme"
-	echo "============================================================="
-	echo "=> You invoque md2all with default template file"
-	echo "============================================================="
-fi
+echo "Code Style BEFORE $CodeStyle"
+LastElemInCodeCss=`echo $CodeCss | rev | cut -d'/' -f 1 | rev`
+CodeCssName=`echo $LastElemInCodeCss | cut -f1 -d'.'`
+
+splitOptionsAndFilename $*
+checkSyntax $filename
+Title=`echo $filename | cut -f1 -d'.'`
+echo "Code Style AFTER $CodeStyle"
 
 echo "============================================================="
 echo "=> Processing Markdown file : "$Title".md"
-echo "=> Make HTML file : $Title.html"
-echo "=> With Template file : $StyleTemplate"
-echo "=> And CSS file : $StyleCss"
+echo "=> Make HTML file : "$Title".html"
+echo "=> And Highlight file"$IsDefaultHighlightStyle" : $HighlightStyle"
+echo "=> And Coding Style file"$IsDefaultCodeStyleCss" : $CodeStyleCss"
+echo "=> And CSS file"$IsDefaultPageStyleCss" : $PageStyleCss"
+echo "=> With Template file"$IsDefaultTemplate" : $Template"
 echo "============================================================="
 
-# EXPORT MD to HTML : BY DEFAULT, EXPORT WEB LATEX from MD to HTML
-pandoc "$Title".md --from=markdown+emoji --to=html5 --self-contained --highlight-style="$HighlightStyle" --standalone --webtex="http://latex.codecogs.com/svg.latex?" --template="$StyleTemplate" -c "$StyleCss" --filter "$GraphvizFilter" --filter pandoc-pyplot --filter pandoc-plantuml --number-sections -o "$Title".html
+detectIfDualExport
 
-# ALTERNATIVELY, EXPORT LATEX via MATHJAX
-#pandoc -s --mathjax -c "$StyleCss" --from=markdown+emoji --to=html5 --template="$StyleTemplate" --highlight-style="$HighlightStyle" --filter "$GraphvizFilter" --filter pandoc-pyplot --filter pandoc-plantuml --number-sections < "$Title".md -o "$Title".html
+exportToHTML
 
 echo "============================================================="
 echo "=> Make PDF file : $Title.pdf ..."
@@ -89,6 +70,4 @@ echo "============================================================="
 Author=$(head -2 "$Title".md | tail -1)
 Author=${Author:2}
 
-# EXPORT HTML to PDF
-wkhtmltopdf --encoding 'utf-8' --print-media-type --footer-line --footer-spacing 2 --footer-font-name "$FooterFont" --footer-font-size "$FooterSize" --footer-left "$Author" --footer-right "[page] / [topage]" --margin-top "$TopMargin" --margin-left "$LeftMargin" --margin-right "$RightMargin" --margin-bottom "$BottomMargin" -O "$PageOrientation" -s "$PageSize" --enable-javascript --javascript-delay 1000 "$Title".html "$Title".pdf
-
+exportToPDF

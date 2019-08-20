@@ -1,11 +1,11 @@
 {
-    "text-color": null,
-    "background-color": null,
+    "text-color": "#0f0f0f",
+    "background-color": "#f5f2f0",
     "line-number-color": "#aaaaaa",
     "line-number-background-color": null,
     "text-styles": {
         "Other": {
-            "text-color": "#e6db74",
+            "text-color": "#ffa704",
             "background-color": null,
             "bold": false,
             "italic": false,
@@ -19,14 +19,14 @@
             "underline": false
         },
         "SpecialString": {
-            "text-color": "#f92672",
+            "text-color": "#990055",
             "background-color": null,
             "bold": false,
             "italic": false,
             "underline": false
         },
         "Annotation": {
-            "text-color": "#66d9ef",
+            "text-color": "#0077aa",
             "background-color": null,
             "bold": true,
             "italic": true,
@@ -40,14 +40,14 @@
             "underline": false
         },
         "String": {
-            "text-color": "#a6e22e",
+            "text-color": "#00a050",
             "background-color": null,
             "bold": false,
             "italic": false,
             "underline": false
         },
         "ControlFlow": {
-            "text-color": "#66d9ef",
+            "text-color": "#0077aa",
             "background-color": null,
             "bold": true,
             "italic": false,
@@ -82,7 +82,7 @@
             "underline": false
         },
         "Variable": {
-            "text-color": "#66d9ef",
+            "text-color": "#0077aa",
             "background-color": null,
             "bold": false,
             "italic": false,
@@ -103,14 +103,14 @@
             "underline": false
         },
         "Preprocessor": {
-            "text-color": "#bc7a00",
+            "text-color": "#ffa704",
             "background-color": null,
             "bold": false,
             "italic": false,
             "underline": false
         },
         "Information": {
-            "text-color": "#66d9ef",
+            "text-color": "#0077aa",
             "background-color": null,
             "bold": true,
             "italic": true,
@@ -124,7 +124,7 @@
             "underline": false
         },
         "Warning": {
-            "text-color": "#66d9ef",
+            "text-color": "#0077aa",
             "background-color": null,
             "bold": true,
             "italic": true,
@@ -138,7 +138,7 @@
             "underline": false
         },
         "Import": {
-            "text-color": "#f92672",
+            "text-color": "#990055",
             "background-color": null,
             "bold": true,
             "italic": false,
@@ -152,7 +152,7 @@
             "underline": false
         },
         "DataType": {
-            "text-color": "#66d9ef",
+            "text-color": "#0077aa",
             "background-color": null,
             "bold": true,
             "italic": false,
@@ -166,14 +166,14 @@
             "underline": false
         },
         "Comment": {
-            "text-color": "#66d9ef",
+            "text-color": "#0077aa",
             "background-color": null,
             "bold": false,
             "italic": true,
             "underline": false
         },
         "CommentVar": {
-            "text-color": "#66d9ef",
+            "text-color": "#0077aa",
             "background-color": null,
             "bold": true,
             "italic": true,
@@ -201,7 +201,7 @@
             "underline": false
         },
         "Keyword": {
-            "text-color": "#f92672",
+            "text-color": "#990055",
             "background-color": null,
             "bold": true,
             "italic": false,

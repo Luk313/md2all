@@ -11,7 +11,7 @@ window.onload = function () {
     console.log("codesList:");
     console.log(codesList);
     
-    // For Prism.js: add language-XXX class to pre tags
+    // (For Prism.js:) add language-XXX class to pre tags
     var preList = document.querySelectorAll('pre.sourceCode');
     for (var i = 0; i < preList.length; i++) {
         // codeClasses.push(codesList[i].classList[1]);

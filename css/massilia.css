@@ -6,7 +6,7 @@
 
  code[class*="language-"],
  pre[class*="language-"] {
-	 color: #f8f8f2;
+	 /* color: #f8f8f2; */
 	 background: none;
 	 text-shadow: 0 1px rgba(0, 0, 0, 0.3);
 	 font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
@@ -35,10 +35,16 @@
 	 border-radius: 0.3em;
  }
  
- :not(pre) > code[class*="language-"],
+ /* Code Background Colors */
+ /* :not(pre) > code[class*="language-"],
  pre[class*="language-"] {
 	 background: #272822;
- }
+ } */
+
+ /* :not(pre) > code[class*="language-"],
+ pre[class*="language-"] {
+	 background: #b7b8b2;
+ } */
  
  /* Inline code */
  :not(pre) > code[class*="language-"] {

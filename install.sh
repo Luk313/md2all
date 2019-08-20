@@ -17,15 +17,17 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 echo "==> Install bin file in /usr/bin/"
-
 sudo cp md2all /usr/bin/
 sudo chmod 755 /usr/bin/md2all
 
-echo "==> Install config dir in ~/.config/md2all/"
+echo "==> Install lib file in /usr/lib/"
+sudo cp md2all.lib /usr/lib/
+sudo chmod 755 /usr/lib/md2all.lib
 
+echo "==> Install config dir in ~/.config/md2all/"
 mkdir $HOME/.config/md2all
 cp -R -i css $HOME/.config/md2all/
-ln -s -i $HOME/.config/md2all/css/lesson.css $HOME/.config/md2all/css/default.css
+# ln -s -i $HOME/.config/md2all/css/lesson.css $HOME/.config/md2all/css/default.css
 
 cp -R -i graphviz $HOME/.config/md2all/
 ln -s -i $HOME/.config/md2all/graphviz/graphviz.py $HOME/.config/md2all/graphviz/default.py
