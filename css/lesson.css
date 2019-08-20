@@ -229,7 +229,8 @@
  
  .center {
 	 display: block;
-	 margin: auto;
+	 /* margin: auto; */
+	 margin: 10px auto 10px auto;
 	 text-align: center;
  }
  
