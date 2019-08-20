@@ -26,7 +26,7 @@ def plantuml(key, value, format, _):
         if "plantuml" in classes:
             caption, typef, keyvals = get_caption(keyvals)
 
-            filename = get_filename4code("plantuml", code)
+            filename = get_filename4code(document_name(), code)
 
             # If name attribute exists, overwrite standard filename
             for eachKeys in keyvals:
@@ -45,6 +45,8 @@ def plantuml(key, value, format, _):
                     txt = "@startuml\n" + txt + "\n@enduml\n"
                 with open(src, "w") as f:
                     f.write(txt)
+                
+                # Attempt to auto-detect plantuml.jar OUTSIDE HOME directory
                 pathsListCmd=subprocess.Popen(['locate','plantuml.jar'],stdout=subprocess.PIPE)
                 pathsList = pathsListCmd.stdout.read().decode('utf-8').split("\n")
                 for eachPossiblePath in pathsList:
@@ -58,6 +60,7 @@ def plantuml(key, value, format, _):
                     sys.stderr.write('plantuml.jar path not detected. Please install plantuml first ' + '\n')
 
                 # plantumlJarPath should be something like: "/usr/share/java/plantuml/plantuml.jar", or to be adapted
+                # If unsuccessful, replace following plantumlJarPath varriable by YOUR plantuml.jar path
                 subprocess.call(["java", "-jar", plantumlJarPath , "-t"+filetype, src])
                 sys.stderr.write('Created image ' + dest + '\n')
 

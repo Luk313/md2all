@@ -27,8 +27,16 @@ def graphviz(key, value, format, _):
             caption, typef, keyvals = get_caption(keyvals)
             prog, keyvals = get_value(keyvals, u"prog", u"dot")
             filetype = get_extension(format, "svg", html="svg", latex="pdf")
-            dest = get_filename4code(document_name(), code, filetype)
 
+            dest = get_filename4code(document_name(), code, filetype)
+            sys.stderr.write('Standard dest ' + dest + '\n')
+            # If name attribute exists, overwrite standard filename
+            for eachKeys in keyvals:
+                if 'name' in eachKeys[0]:
+                    filename="graph-images/"+eachKeys[1][:-4]
+                    dest = filename + '.' + filetype
+                    sys.stderr.write('Custom dest ' + dest + '\n')
+                    
             if not os.path.isfile(dest):
                 g = pygraphviz.AGraph(string=code)
                 g.layout()
