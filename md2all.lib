@@ -66,37 +66,7 @@ for arg in $*
         esac
     done
 
-if [ "$HightlighStyleChanged" ]; then
-    # echo "md2all Called with HighlightStyle= $HighlightStyle"
-    IsDefaultHighlightStyle=""
-else
-    # echo "md2all Called with Default Massilia Dark HightlightStyle"
-    IsDefaultHighlightStyle=" (default)"
-fi
 
-if [ "$PageStyleCssChanged" ]; then
-    # echo "md2all Called with PageStyle= $PageStyleCss"
-    IsDefaultPageStyleCss=""
-else
-    # echo "md2all called with Default Lesson Style"
-    IsDefaultPageStyleCss=" (default)"
-fi
-
-if [ "$CodeStyleCssChanged" ]; then
-    # echo "md2all Called with CodeStyleCss= $CodeStyleCss"
-    IsDefaultCodeStyleCss=""
-else
-    # echo "md2all called with Default Dark Code Style"
-    IsDefaultCodeStyleCss=" (default)"
-fi
-
-if [ "$TemplateChanged" ]; then
-    # echo "md2all Called with Template= $Template"
-    IsDefaultTemplate=""
-else
-    # echo "md2all called with Default Template Style"
-    IsDefaultTemplate=" (default)"
-fi
 
 export filename=$*
 }
@@ -131,6 +101,7 @@ detectIfDualExport()
     hack="Light"
     exportToHTML
 
+    echo "=> Make PDF file : $Title.pdf ..."
     # EXPORT HTML to PDF
     exportToPDF
 
@@ -148,7 +119,7 @@ exportToHTML()
     #pandoc "$Title".md --from=markdown+emoji --to=html5 --self-contained --highlight-style="$HighlightStyle" --standalone --webtex="http://latex.codecogs.com/svg.latex?" --template="$Template" -c "$PageStyleCss"  --filter "$GraphvizFilter" --filter pandoc-pyplot --filter pandoc-plantuml --number-sections -o "$Title".html
 
     # ALTERNATIVELY, EXPORT LATEX via MATHJAX
-    pandoc -s --variable=hack:"$hack" --variable=home:"$HOME" --variable=CodeCssName:"$CodeCssName" --variable=JsStyle:"$JsStyle" --template="$Template" --mathjax -c "$PageStyleCss" --from=markdown+emoji --to=html5 --highlight-style="$HighlightStyle" --filter "$GraphvizFilter" --filter pandoc-pyplot --filter pandoc-plantuml --number-sections < "$Title".md -o "$Title".html
+    pandoc -s --variable=hack:"$hack" --variable=home:"$HOME" --variable=CodeLayoutCssName:"$CodeLayoutCssName" --variable=JsStyle:"$JsStyle" --template="$Template" --mathjax -c "$PageStyleCss" --from=markdown+emoji --to=html5 --highlight-style="$HighlightStyle" --filter "$GraphvizFilter" --filter pandoc-pyplot --filter pandoc-plantuml --number-sections < "$Title".md -o "$Title".html
     #pandoc -s --mathjax -c "$PageStyleCss" --from=markdown+emoji --to=html5 --template="$Template" --highlight-style="$HighlightStyle" --filter "$GraphvizFilter" --filter pandoc-pyplot --filter pandoc-plantuml --number-sections < "$Title".md -o "$Title".html
 
 }

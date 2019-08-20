@@ -1,8 +1,18 @@
 /**
- * okaidia theme for JavaScript, CSS and HTML
- * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * Massilia Css theme for JavaScript, CSS and HTML, is inspired by Okaidia theme,
+ * which itself is loosely based on Monokai textmate theme by http://www.monokai.nl/
  * @author ocodia
  */
+
+/* TO CREATE A NEW CODE COLOR THEME for md2all:
+Create all the following files in the $HOME/.config/md2all/css directory:
+- a new JSON-pandoc color theme File (name.theme) like massiliaDark.theme (named and modified as you wish)
+- a Code Css Layout File (name.css) like this file (massilia.css) mainly for layout purposes
+- a nameDarkHack.css (or nameLightHack.css) File to get border radius correctly displayed in code blocks: 
+Modify configs in /usr/bin/md2all:
+- CodeLayoutCss path should be adapted
+- HighlightStyle path should be adapted
+*/
 
  code[class*="language-"],
  pre[class*="language-"] {

@@ -1,4 +1,8 @@
- /* Code Background Colors */
+/* The ONLY purpose of this Hack File is to get clean round border radius for the code Blocks */
+/* I know: This SHOULD logically be set in the pandoc theme: massiliaDark.theme or massiliaLight.theme */
+/* BUT, doing so breaks the border radius property in code blocks, which are than ugly */
+/* This is why this is kind of a Hack */
+/* Code Background Colors */
  :not(pre) > code[class*="language-"],
  pre[class*="language-"] {
 	 background: #272822;

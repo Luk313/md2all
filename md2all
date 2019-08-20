@@ -1,6 +1,7 @@
 #!/bin/bash
 . /usr/lib/md2all.lib
 
+# md2all is initially inspired by the work of Valery BRUNIAUX (https://github.com/ValeryBruniaux/md2htmlpdf)
 # Author : Rodrigo SCHWENCKE
 
 # This program is free software: you can redistribute it and/or modify
@@ -26,12 +27,8 @@ RightMargin="1cm"
 FooterFont="Bell MT"
 FooterSize="8"
 
-#Template="$1"
-#PageStyleCss "$2"
-#Title=`echo $3 | cut -f1 -d'.'`
-
 # Code Layout, EXCEPT COLORS
-CodeCss="$HOME/.config/md2all/css/massilia.css"
+CodeLayoutCss="$HOME/.config/md2all/css/massilia.css"
 # Code COLORS (name coherent with pandoc options)
 HighlightStyle="$HOME/.config/md2all/css/massiliaDark.theme"
 # For Shortcut purposes,possible values: light, dark, or dual
@@ -41,29 +38,25 @@ GraphvizFilter="$HOME/.config/md2all/graphviz/default.py"
 Template="$HOME/.config/md2all/templates/lesson.template"
 JsStyle="$HOME/.config/md2all/js/script.js"
 
-LastElemInCodeCss=`echo $CodeCss | rev | cut -d'/' -f 1 | rev`
-CodeCssName=`echo $LastElemInCodeCss | cut -f1 -d'.'`
+LastElemInCodeLayoutCss=`echo $CodeLayoutCss | rev | cut -d'/' -f 1 | rev`
+CodeLayoutCssName=`echo $LastElemInCodeLayoutCss | cut -f1 -d'.'`
 
 splitOptionsAndFilename $*
 checkSyntax $filename
 Title=`echo $filename | cut -f1 -d'.'`
 
-echo "============================================================="
-echo "=> Processing Markdown file : "$Title".md"
+echo "=> Processing from Markdown file : "$Title".md"
 echo "=> Make HTML file : "$Title".html"
-echo "=> And Highlight file"$IsDefaultHighlightStyle" : $HighlightStyle"
-echo "=> And Coding Style file"$IsDefaultCodeStyleCss" : $CodeStyleCss"
-echo "=> And CSS file"$IsDefaultPageStyleCss" : $PageStyleCss"
-echo "=> With Template file"$IsDefaultTemplate" : $Template"
-echo "============================================================="
+# echo "=> with Highlight Style : $HighlightStyle"
+# echo "=> with Code Style : $CodeStyle"
+# echo "=> with Page Style CSS : $PageStyleCss"
+# echo "=> with Template : $Template"
 
 detectIfDualExport
 
 exportToHTML
 
-echo "============================================================="
 echo "=> Make PDF file : $Title.pdf ..."
-echo "============================================================="
 
 Author=$(head -2 "$Title".md | tail -1)
 Author=${Author:2}
