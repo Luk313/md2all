@@ -41,14 +41,12 @@ GraphvizFilter="$HOME/.config/md2all/graphviz/default.py"
 Template="$HOME/.config/md2all/templates/lesson.template"
 JsStyle="$HOME/.config/md2all/js/script.js"
 
-echo "Code Style BEFORE $CodeStyle"
 LastElemInCodeCss=`echo $CodeCss | rev | cut -d'/' -f 1 | rev`
 CodeCssName=`echo $LastElemInCodeCss | cut -f1 -d'.'`
 
 splitOptionsAndFilename $*
 checkSyntax $filename
 Title=`echo $filename | cut -f1 -d'.'`
-echo "Code Style AFTER $CodeStyle"
 
 echo "============================================================="
 echo "=> Processing Markdown file : "$Title".md"

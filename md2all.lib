@@ -12,8 +12,6 @@ for arg in $*
                 # echo "Highlight detected"
                 HighlightStyle=$2
                 HightlighStyleChanged=1
-                # echo "HightlighStyleChanged = $HightlighStyleChanged"
-                # echo "Hightlight Style= $HighlightStyle"
                 shift
                 shift
                 ;;
@@ -21,8 +19,6 @@ for arg in $*
                 # echo "page css detected"
                 PageStyleCss=$2
                 PageStyleCssChanged=1
-                # echo "Page Style Css="
-                # echo $PageStyleCss
                 shift
                 shift
                 ;;
@@ -33,26 +29,24 @@ for arg in $*
                     HighlightStyle="$HOME/.config/md2all/css/massiliaLight.theme"
                     CodeStyle="light"
                     hack="Light"
-                    echo "Massilia Light Detected"
+                    # echo "Massilia Light Detected"
                 fi
 
                 if [ "$CodeStyleCss" = "dark" ]; then
                     HighlightStyle="$HOME/.config/md2all/css/massiliaDark.theme"
                     CodeStyle="dark"
                     hack="Dark"
-                    echo "Massilia Dark Detected"
+                    # echo "Massilia Dark Detected"
                 fi
 
                 if [ "$CodeStyleCss" = "dual" ]; then
                     HighlightStyle="$HOME/.config/md2all/css/massiliaDark.theme"
                     CodeStyle="dual"
                     hack="Light"
-                    echo "Massilia Dual Detected"
+                    # echo "Massilia Dual Detected"
                 fi
 
                 CodeStyleCssChanged=1
-                # echo "CodeStyleCss"
-                # echo $CodeStyleCss
                 shift
                 shift
                 ;;
@@ -60,16 +54,12 @@ for arg in $*
                 # echo "Template detected"
                 Template=$2
                 TemplateChanged=1
-                # echo "Template Style="
-                # echo $Template
                 shift
                 shift
                 ;;
             -h | -help | --help) 
                 # echo "Help detected"
                 Help=$2
-                # echo "Help Style="
-                # echo $HelpTemplate
                 shift
                 shift
                 ;;
@@ -138,7 +128,6 @@ detectIfDualExport()
     if [ "$CodeStyle" = "dual" ]; then
     CodeStyle="light"
     HighlightStyle="$HOME/.config/md2all/css/massiliaLight.theme"
-    echo "Dual Detected Twice"
     hack="Light"
     exportToHTML
 
