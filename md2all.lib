@@ -116,11 +116,11 @@ fi
 exportToHTML()
 {
     # EXPORT MD to HTML : BY DEFAULT, EXPORT WEB LATEX from MD to HTML
-    #pandoc "$Title".md --from=markdown+emoji --to=html5 --self-contained --highlight-style="$HighlightStyle" --standalone --webtex="http://latex.codecogs.com/svg.latex?" --template="$Template" -c "$PageStyleCss"  --filter "$GraphvizFilter" --filter pandoc-pyplot --filter pandoc-plantuml --number-sections -o "$Title".html
+    # pandoc "$Title".md --from=markdown+emoji --to=html5 --self-contained --highlight-style="$HighlightStyle" --standalone --webtex="http://latex.codecogs.com/svg.latex?" --variable=hack:"$hack" --variable=home:"$HOME" --variable=CodeLayoutCssName:"$CodeLayoutCssName" --variable=JsStyle:"$JsStyle" --template="$Template" -c "$PageStyleCss"  --filter "$GraphvizFilter" --filter pandoc-pyplot --filter "$PlantUMLFilter" --number-sections -o "$Title".html
 
     # ALTERNATIVELY, EXPORT LATEX via MATHJAX
-    pandoc -s --variable=hack:"$hack" --variable=home:"$HOME" --variable=CodeLayoutCssName:"$CodeLayoutCssName" --variable=JsStyle:"$JsStyle" --template="$Template" --mathjax -c "$PageStyleCss" --from=markdown+emoji --to=html5 --highlight-style="$HighlightStyle" --filter "$GraphvizFilter" --filter pandoc-pyplot --filter pandoc-plantuml --number-sections < "$Title".md -o "$Title".html
-    #pandoc -s --mathjax -c "$PageStyleCss" --from=markdown+emoji --to=html5 --template="$Template" --highlight-style="$HighlightStyle" --filter "$GraphvizFilter" --filter pandoc-pyplot --filter pandoc-plantuml --number-sections < "$Title".md -o "$Title".html
+    #pandoc -s --variable=hack:"$hack" --variable=home:"$HOME" --variable=CodeLayoutCssName:"$CodeLayoutCssName" --variable=JsStyle:"$JsStyle" --template="$Template" --mathjax -c "$PageStyleCss" --from=markdown+emoji --to=html5 --highlight-style="$HighlightStyle" --filter "$GraphvizFilter" --filter pandoc-pyplot --filter pandoc-plantuml --number-sections < "$Title".md -o "$Title".html
+    pandoc -s --variable=hack:"$hack" --variable=home:"$HOME" --variable=CodeLayoutCssName:"$CodeLayoutCssName" --variable=JsStyle:"$JsStyle" --template="$Template" --mathjax -c "$PageStyleCss" --from=markdown+emoji --to=html5 --highlight-style="$HighlightStyle" --filter "$GraphvizFilter" --filter pandoc-pyplot --filter "$PlantUMLFilter" --number-sections < "$Title".md -o "$Title".html
 
 }
 

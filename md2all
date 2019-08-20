@@ -34,7 +34,8 @@ HighlightStyle="$HOME/.config/md2all/css/massiliaDark.theme"
 # For Shortcut purposes,possible values: light, dark, or dual
 CodeStyle="dual"
 PageStyleCss="$HOME/.config/md2all/css/lesson.css"
-GraphvizFilter="$HOME/.config/md2all/graphviz/default.py"
+GraphvizFilter="$HOME/.config/md2all/filters/graphviz/graphviz.py"
+PlantUMLFilter="$HOME/.config/md2all/filters/plantuml/plantuml.py"
 Template="$HOME/.config/md2all/templates/lesson.template"
 JsStyle="$HOME/.config/md2all/js/script.js"
 

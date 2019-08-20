@@ -134,6 +134,14 @@ The caption !]{.floatright}
 ```
 - Image is a block in the center with caption under : ```![The caption](theImage.png)```
 
+### Nice image boxing
+
+Add nice borders to your images with the class **imgbox** like this :
+
+```
+![My caption](imagefile){.imgbox}
+```
+
 ## Multiple columns
 
 Insert your columns in a block :

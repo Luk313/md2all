@@ -178,18 +178,36 @@
  }
  
  img {
-	 /* margin:auto; */
-	 margin: 10px 0 15px 0;
-	 filter: drop-shadow(6px 6px 5px #666666);
-	 box-shadow: 6px 6px 6px #666666;
- }
+	 border: 1px solid #ddd;
+	 border-radius: 4px;
+	 padding: 5px;
+	 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	}
  
- img[src^="plantuml-images"] {
+ /* img[src^="plantuml-images"] {
 	 display: block;
 	 margin: 10px auto 15px auto;
 	 text-align: center;
- }
+ } */
  
+ .noimgbox {
+	border: none;
+	border-radius: 0;
+	padding: 0;
+	box-shadow: none;
+}
+
+.imgbox {
+	/* Uncomment the following lines to remove default behavior and */
+	/* start from removing default image box css */
+	/* border: none;
+	border-radius: 0;
+	padding: 0;
+	box-shadow: none; */
+
+	/* Your custom image box css comes here */
+}
+
  figure {
 	 text-align: center;
 	 font-style: italic;

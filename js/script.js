@@ -6,10 +6,6 @@ window.onload = function () {
         codeClasses.push(codesList[i].classList[1]);
         codesList[i].classList.add("language-"+codeClasses[i]);
     }
-    console.log("codeClasses:");
-    console.log(codeClasses);
-    console.log("codesList:");
-    console.log(codesList);
     
     // (For Prism.js:) add language-XXX class to pre tags
     var preList = document.querySelectorAll('pre.sourceCode');
@@ -17,8 +13,6 @@ window.onload = function () {
         // codeClasses.push(codesList[i].classList[1]);
         preList[i].classList.add("language-"+codeClasses[i]);
     }
-    console.log("Prelist:");
-    console.log(preList);
 
     // Get List of Parent Nodes for next spanList of Languages
     var positionList = document.querySelectorAll('div >pre > code.sourceCode');
@@ -26,8 +20,6 @@ window.onload = function () {
     for (var i = 0; i < positionList.length; i++) {
         parentList.push(positionList[i].parentNode);
     }
-    console.log("PositionList:");
-    console.log(positionList);
 
     // CREATE NEW LANGUAGE SPAN List, to be detected automatically by Pandoc, and ADD it to DOM, stylish blue upper right corner
     var newSpan = [];
@@ -77,7 +69,7 @@ window.onload = function () {
         }
       }
       
-    //   DO NOTE ERASE: LISTENER TO DETECT if MEDIA PRINT or NOT
+    //   DO NOT ERASE: LISTENER TO DETECT if MEDIA PRINT or NOT
       var isPrint = window.matchMedia("print")
       detectMedia(isPrint) // Call listener function at run time
       isPrint.addListener(detectMedia) // Attach listener function on state changes 
