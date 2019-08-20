@@ -16,8 +16,11 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-echo "==> Uninstalling bin file in /usr/bin/"
+echo "==> Uninstalling /usr/bin/md2all"
 sudo rm /usr/bin/md2all
+
+echo "==> Uninstalling /usr/lib/md2all.lib"
+sudo rm /usr/lib/md2all.lib
 
 echo "==> Uninstalling config dir in ~/.config/md2all/"
 sudo rm -R $HOME/.config/md2all
