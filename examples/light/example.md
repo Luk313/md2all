@@ -1,12 +1,18 @@
 % TD : My Nice Lesson Title
 % Rodrigo SCHWENCKE, schwencke@lyceeperier.fr
 
-# First Some code Exemples with Massilia Dark Theme
+>Note: 1°)  the .md file is strictly the same than the other theme example. the only difference is the command hereafter. 2°) The auto-numbering of markdown (sub-)headlines.
+
+# First Some code Exemples with Massilia Light Theme
+
+## Command to Type
 
 Command to type in Terminal:
 ```{.bash}
-md2all -light example.md
+md2all -dark example.md
 ```
+
+## HTML
 
 ```{.html .numberLines}
     <body>
@@ -41,6 +47,8 @@ md2all -light example.md
 </html>
 ```
 
+## CSS
+
 ```{.css .numberLines}
  body, p, .warning, .inlinewarning {
 	 font-family: "Souvenir Lt Bt", Andika, "Amerigo BT", Century, "Bookman URW", "Bitstream Vera Serif", "Free Sans", Georgia, Serif, Aerial, "Times New Roman", "STSong", "PT Serif";
@@ -57,6 +65,8 @@ md2all -light example.md
  }
 ```
 
+## Javascript
+
 ```{.javascript .numberLines startFrom="14"}
 var codeClasses = [];
     var codesList = document.querySelectorAll('code.sourceCode');
@@ -66,13 +76,15 @@ var codeClasses = [];
     }
 ```
 
+## PHP
+
 ```{.php .numberLines  startFrom="4"}
 <?php
 echo "Hello World!";
 ?>
 ```
 
-# Python Code
+## Python
 
 ```{.python .numberLines}
 #!/usr/bin/env python

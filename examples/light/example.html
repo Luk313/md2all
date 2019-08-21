@@ -96,9 +96,14 @@ code span.wa { color: #0077aa; font-weight: bold; font-style: italic; } /* Warni
 <p class="author">Rodrigo SCHWENCKE, schwencke@lyceeperier.fr</p>
 -->
 </header>
-<h1 id="first-some-code-exemples-with-massilia-dark-theme"><span class="header-section-number">1</span> First Some code Exemples with Massilia Dark Theme</h1>
+<blockquote>
+<p>Note: 1°) the .md file is strictly the same than the other theme example. the only difference is the command hereafter. 2°) The auto-numbering of markdown (sub-)headlines.</p>
+</blockquote>
+<h1 id="first-some-code-exemples-with-massilia-light-theme"><span class="header-section-number">1</span> First Some code Exemples with Massilia Light Theme</h1>
+<h2 id="command-to-type"><span class="header-section-number">1.1</span> Command to Type</h2>
 <p>Command to type in Terminal:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">md2all</span> -light example.md</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">md2all</span> -dark example.md</span></code></pre></div>
+<h2 id="html"><span class="header-section-number">1.2</span> HTML</h2>
 <div class="sourceCode" id="cb2"><pre class="sourceCode numberSource html numberLines"><code class="sourceCode html"><span id="cb2-1"><a href="#cb2-1"></a>    <span class="kw">&lt;body&gt;</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a>        <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;box&quot;</span><span class="kw">&gt;</span></span>
 <span id="cb2-3"><a href="#cb2-3"></a>            <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;morpion&quot;</span><span class="kw">&gt;</span></span>
@@ -126,6 +131,7 @@ code span.wa { color: #0077aa; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-18"><a href="#cb3-18"></a>    </span>
 <span id="cb3-19"><a href="#cb3-19"></a><span class="kw">&lt;/body&gt;</span></span>
 <span id="cb3-20"><a href="#cb3-20"></a><span class="kw">&lt;/html&gt;</span></span></code></pre></div>
+<h2 id="css"><span class="header-section-number">1.3</span> CSS</h2>
 <div class="sourceCode" id="cb4"><pre class="sourceCode numberSource css numberLines"><code class="sourceCode css"><span id="cb4-1"><a href="#cb4-1"></a> body<span class="op">,</span> p<span class="op">,</span> <span class="fu">.warning</span><span class="op">,</span> <span class="fu">.inlinewarning</span> {</span>
 <span id="cb4-2"><a href="#cb4-2"></a>     <span class="kw">font-family</span>: <span class="st">&quot;Souvenir Lt Bt&quot;</span><span class="op">,</span> Andika<span class="op">,</span> <span class="st">&quot;Amerigo BT&quot;</span><span class="op">,</span> Century<span class="op">,</span> <span class="st">&quot;Bookman URW&quot;</span><span class="op">,</span> <span class="st">&quot;Bitstream Vera Serif&quot;</span><span class="op">,</span> <span class="st">&quot;Free Sans&quot;</span><span class="op">,</span> Georgia<span class="op">,</span> <span class="dv">Serif</span><span class="op">,</span> Aerial<span class="op">,</span> <span class="st">&quot;Times New Roman&quot;</span><span class="op">,</span> <span class="st">&quot;STSong&quot;</span><span class="op">,</span> <span class="st">&quot;PT Serif&quot;</span><span class="op">;</span></span>
 <span id="cb4-3"><a href="#cb4-3"></a>     <span class="kw">line-height</span>: <span class="dv">1.5</span><span class="dt">rem</span><span class="op">;</span></span>
@@ -139,16 +145,18 @@ code span.wa { color: #0077aa; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb4-11"><a href="#cb4-11"></a>     <span class="kw">text-align</span>: <span class="dv">justify</span><span class="op">;</span></span>
 <span id="cb4-12"><a href="#cb4-12"></a>     <span class="kw">margin</span> : <span class="dv">0.1</span><span class="dt">rem</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb4-13"><a href="#cb4-13"></a> }</span></code></pre></div>
+<h2 id="javascript"><span class="header-section-number">1.4</span> Javascript</h2>
 <div class="sourceCode" id="cb5" data-startFrom="14"><pre class="sourceCode numberSource javascript numberLines"><code class="sourceCode javascript" style="counter-reset: source-line 13;"><span id="cb5-14"><a href="#cb5-14"></a><span class="kw">var</span> codeClasses <span class="op">=</span> []<span class="op">;</span></span>
 <span id="cb5-15"><a href="#cb5-15"></a>    <span class="kw">var</span> codesList <span class="op">=</span> <span class="va">document</span>.<span class="at">querySelectorAll</span>(<span class="st">&#39;code.sourceCode&#39;</span>)<span class="op">;</span></span>
 <span id="cb5-16"><a href="#cb5-16"></a>    <span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="va">codesList</span>.<span class="at">length</span><span class="op">;</span> i<span class="op">++</span>) <span class="op">{</span></span>
 <span id="cb5-17"><a href="#cb5-17"></a>        <span class="va">codeClasses</span>.<span class="at">push</span>(codesList[i].<span class="at">classList</span>[<span class="dv">1</span>])<span class="op">;</span></span>
 <span id="cb5-18"><a href="#cb5-18"></a>        codesList[i].<span class="va">classList</span>.<span class="at">add</span>(<span class="st">&quot;language-&quot;</span><span class="op">+</span>codeClasses[i])<span class="op">;</span></span>
 <span id="cb5-19"><a href="#cb5-19"></a>    <span class="op">}</span></span></code></pre></div>
+<h2 id="php"><span class="header-section-number">1.5</span> PHP</h2>
 <div class="sourceCode" id="cb6" data-startFrom="4"><pre class="sourceCode numberSource php numberLines"><code class="sourceCode php" style="counter-reset: source-line 3;"><span id="cb6-4"><a href="#cb6-4"></a><span class="kw">&lt;?php</span></span>
 <span id="cb6-5"><a href="#cb6-5"></a><span class="kw">echo</span> <span class="st">&quot;Hello World!&quot;</span><span class="ot">;</span></span>
 <span id="cb6-6"><a href="#cb6-6"></a><span class="kw">?&gt;</span></span></code></pre></div>
-<h1 id="python-code"><span class="header-section-number">2</span> Python Code</h1>
+<h2 id="python"><span class="header-section-number">1.6</span> Python</h2>
 <div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="co">#!/usr/bin/env python</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a></span>
 <span id="cb7-3"><a href="#cb7-3"></a><span class="co">&quot;&quot;&quot;</span></span>
@@ -170,24 +178,24 @@ code span.wa { color: #0077aa; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb7-19"><a href="#cb7-19"></a>        <span class="cf">return</span> os.environ[<span class="st">&quot;PANDOC_INPUT_FILE&quot;</span>]</span>
 <span id="cb7-20"><a href="#cb7-20"></a>    <span class="cf">else</span>:</span>
 <span id="cb7-21"><a href="#cb7-21"></a>        <span class="cf">return</span> <span class="st">&quot;graph&quot;</span></span></code></pre></div>
-<h1 id="latex"><span class="header-section-number">3</span> LateX</h1>
+<h1 id="latex"><span class="header-section-number">2</span> LateX</h1>
 <p>Hello, this is how to insert LaTeX code in your .md File, as a math inline formula <span class="math inline">\sqrt 4 = 2</span> , so this line goes on after the other inline formula <span class="math inline">i^2</span>, or, as a block code: <span class="math display">i_0=1; i_1=2</span> That’s it!</p>
-<h1 id="matplotlib"><span class="header-section-number">4</span> Matplotlib</h1>
+<h1 id="matplotlib"><span class="header-section-number">3</span> Matplotlib</h1>
 <p>A Matplotlib rendered Image, with Matplotlib syntax</p>
 <figure>
 <img src="generated/-2254304317340054494.png" class="imgbox" alt="" /><figcaption> (<a href="generated/-2254304317340054494.txt">Source code</a>, <a href="generated/-2254304317340054494.hires.png">high res.</a>)</figcaption>
 </figure>
-<h1 id="graphviz"><span class="header-section-number">5</span> Graphviz</h1>
+<h1 id="graphviz"><span class="header-section-number">4</span> Graphviz</h1>
 <p>A Graphviz rendered Image, with the .dot syntax</p>
 <figure>
 <img src="graph-images/jolifichier.svg" class="graph center imgbox" name="jolifichier.svg" alt="" /><figcaption>This was generated using the graphviz.py filter.</figcaption>
 </figure>
-<h1 id="plantuml"><span class="header-section-number">6</span> PlantUML</h1>
+<h1 id="plantuml"><span class="header-section-number">5</span> PlantUML</h1>
 <p>A plantUML rendered image :</p>
 <figure>
 <img src="plantuml-images/jolifichier.png" class="plantuml center" name="jolifichier.uml" alt="" /><figcaption>test</figcaption>
 </figure>
-<h1 id="multi-columns"><span class="header-section-number">7</span> Multi-Columns</h1>
+<h1 id="multi-columns"><span class="header-section-number">6</span> Multi-Columns</h1>
 <p>First Normal Paragraph</p>
 <p><br />
 </p>
@@ -214,7 +222,7 @@ code span.wa { color: #0077aa; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Last Normal Paragraph. Last Normal Paragraph. Last Normal Paragraph.</p>
 <p>Last Normal Paragraph. Last Normal Paragraph. Last Normal Paragraph.</p>
-<h1 id="images"><span class="header-section-number">8</span> Images</h1>
+<h1 id="images"><span class="header-section-number">7</span> Images</h1>
 <figure>
 <img src="grid.png" alt="" /><figcaption>Caption 0: Original Size</figcaption>
 </figure>
