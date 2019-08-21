@@ -50,7 +50,7 @@ md2all -light example.md
 ## CSS{.pagebreakbefore}
 
 ```{.css .numberLines}
- body, p, .warning, .inlinewarning {
+ body, p, #visible, .warning, {
 	 font-family: "Souvenir Lt Bt", Andika, "Amerigo BT", Century, "Bookman URW", "Bitstream Vera Serif", "Free Sans", Georgia, Serif, Aerial, "Times New Roman", "STSong", "PT Serif";
 	 line-height: 1.5rem;
  }
