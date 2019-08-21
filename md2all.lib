@@ -50,6 +50,42 @@ for arg in $*
                 shift
                 shift
                 ;;
+
+            -light | --light)
+                CodeStyleCss="light"
+                HighlightStyle="$HOME/.config/md2all/css/massiliaLight.theme"
+                CodeStyle="light"
+                hack="Light"
+                shift
+                # echo "Massilia Light Detected"
+                ;;
+            -dark | --dark)
+                CodeStyleCss="dark"
+                HighlightStyle="$HOME/.config/md2all/css/massiliaDark.theme"
+                CodeStyle="dark"
+                hack="Dark"
+                shift
+                # echo "Massilia Dark Detected"
+                ;;
+            -dual | --dual)
+                CodeStyleCss="dual"
+                HighlightStyle="$HOME/.config/md2all/css/massiliaDark.theme"
+                CodeStyle="dual"
+                hack="Light"
+                shift
+                # echo "Massilia Dual Detected"
+                ;;
+
+            -web | --web)
+                exportType="web"
+                shift
+                ;;
+
+            -off | -offline | --offline | -loc | -local | --local)
+                exportType="offline"
+                shift
+                ;;
+
             -t | -template | --template) 
                 # echo "Template detected"
                 Template=$2
@@ -113,15 +149,28 @@ detectIfDualExport()
 fi
 }
 
+echoExportType()
+{
+    if [ "$exportType" = "web" ]; then
+        echo "Exporting via the Web: NO dependencies needed"
+    fi
+
+    if [ "$exportType" = "offline" ]; then
+        echo "Exporting Offline: With dependencies installed"
+    fi
+}
+
 exportToHTML()
 {
-    # EXPORT MD to HTML : BY DEFAULT, EXPORT WEB LATEX from MD to HTML
-    # pandoc "$Title".md --from=markdown+emoji --to=html5 --self-contained --highlight-style="$HighlightStyle" --standalone --webtex="http://latex.codecogs.com/svg.latex?" --variable=hack:"$hack" --variable=home:"$HOME" --variable=CodeLayoutCssName:"$CodeLayoutCssName" --variable=JsStyle:"$JsStyle" --template="$Template" -c "$PageStyleCss"  --filter "$GraphvizFilter" --filter pandoc-pyplot --filter "$PlantUMLFilter" --number-sections -o "$Title".html
+    if [ "$exportType" = "web" ]; then
+        # EXPORT MD to HTML : BY DEFAULT, EXPORT WEB LATEX from MD to HTML
+        pandoc "$Title".md --from=markdown+emoji --to=html5 --self-contained --highlight-style="$HighlightStyle" --standalone --webtex="http://latex.codecogs.com/svg.latex?" --variable=hack:"$hack" --variable=home:"$HOME" --variable=CodeLayoutCssName:"$CodeLayoutCssName" --variable=JsStyle:"$JsStyle" --template="$Template" -c "$PageStyleCss"  --filter "$GraphvizFilter" --filter pandoc-pyplot --filter "$PlantUMLFilter" --number-sections -o "$Title".html
+    fi
 
-    # ALTERNATIVELY, EXPORT LATEX via MATHJAX
-    #pandoc -s --variable=hack:"$hack" --variable=home:"$HOME" --variable=CodeLayoutCssName:"$CodeLayoutCssName" --variable=JsStyle:"$JsStyle" --template="$Template" --mathjax -c "$PageStyleCss" --from=markdown+emoji --to=html5 --highlight-style="$HighlightStyle" --filter "$GraphvizFilter" --filter pandoc-pyplot --filter "$PlantUMLFilter" --number-sections < "$Title".md -o "$Title".html
-    pandoc -s --variable=hack:"$hack" --variable=home:"$HOME" --variable=CodeLayoutCssName:"$CodeLayoutCssName" --variable=JsStyle:"$JsStyle" --template="$Template" --katex -c "$PageStyleCss" --from=markdown+emoji --to=html5 --highlight-style="$HighlightStyle" --filter "$GraphvizFilter" --filter pandoc-pyplot --filter "$PlantUMLFilter" --number-sections < "$Title".md -o "$Title".html
-
+    if [ "$exportType" = "offline" ]; then
+        # ALTERNATIVELY, EXPORT LATEX via MATHJAX
+        pandoc -s --variable=hack:"$hack" --variable=home:"$HOME" --variable=CodeLayoutCssName:"$CodeLayoutCssName" --variable=JsStyle:"$JsStyle" --template="$Template" --katex -c "$PageStyleCss" --from=markdown+emoji --to=html5 --highlight-style="$HighlightStyle" --filter "$GraphvizFilter" --filter pandoc-pyplot --filter "$PlantUMLFilter" --number-sections < "$Title".md -o "$Title".html
+    fi
 }
 
 exportToPDF()

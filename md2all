@@ -38,6 +38,7 @@ GraphvizFilter="$HOME/.config/md2all/filters/graphviz/graphviz.py"
 PlantUMLFilter="$HOME/.config/md2all/filters/plantuml/plantuml.py"
 Template="$HOME/.config/md2all/templates/lesson.template"
 JsStyle="$HOME/.config/md2all/js/script.js"
+exportType="offline"
 
 LastElemInCodeLayoutCss=`echo $CodeLayoutCss | rev | cut -d'/' -f 1 | rev`
 CodeLayoutCssName=`echo $LastElemInCodeLayoutCss | cut -f1 -d'.'`
@@ -45,6 +46,8 @@ CodeLayoutCssName=`echo $LastElemInCodeLayoutCss | cut -f1 -d'.'`
 splitOptionsAndFilename $*
 checkSyntax $filename
 Title=`echo $filename | cut -f1 -d'.'`
+
+echoExportType
 
 echo "=> Processing from Markdown file : "$Title".md"
 echo "=> Make HTML file : "$Title".html"
@@ -63,3 +66,4 @@ Author=$(head -2 "$Title".md | tail -1)
 Author=${Author:2}
 
 exportToPDF
+
