@@ -216,7 +216,7 @@ Last Normal Paragraph. Last Normal Paragraph. Last Normal Paragraph.
 
 ![Caption 3](grid.png){style="width:80px;height:50px;"}
 
-![Caption 1](grid.png){.noimgbox width="60%}
+![Caption 1](grid.png){.noimgbox width="60%} 
 
 ![Caption 2](grid.png){myAttribute="myValue" height="40%}
 
