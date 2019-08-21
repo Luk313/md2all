@@ -9,46 +9,8 @@ The purpose is to replace **LaTeX** to **produce standard documents** like lesso
 LaTeX is a good tool but styling markdown with CSS is easier and more flexible than old LaTeX syntax.
 * **Style the HTML and PDF export files in CSS and JS**, via media print for PDF export, edit contents with markdown and you can generate beautiful documents in HTML and PDF.
 * **Beautiful Code Highlightling**: This includes:
-  * **Automatic LineNumbering**: Natively included in md2all. All you need is to type your code in your md file as follows:
-    * \`\`\`{.YourLanguage .numberLines} *(Your code comes here)* \`\`\` , or, if you need more precision:
-    * \`\`\`{.YourLanguage .numberLines startFrom="4"} *(Your code comes here)* \`\`\`
-  * **Two Beautiful Code Themes named Massilia themes AND a *DUAL* Theme** (inspired by prism.js themes) 
-    * **a Dark Theme**, named ***Massilia Dark Theme***: This code Highlighting theme is easily customisable via three files: 
-      * **For Code Color (letters, keywords, etc)**: a Pandoc exported and customisable theme file, named ***```massiliaDark.theme```***
-      * **For Code Layout** : ***```massilia.css```*** file
-      * **For Code Background Color** (just a Hack, purely technical): ***```massiliaDarkHack.css```***
-    
-      Usage: the following commands export the **Dark Theme to BOTH HTML *AND* PDF**
-        ```
-        md2all -dark yourMarkdownFile.md
-        ```
-        Alternatively, use the CodeStyle -cs option :
-        ```
-        md2all -cs dark yourMarkdownFile.md
-        ```
-    * **a Light Theme**, named ***Massilia Light Theme***: This code Highlighting theme is easily customisable via three files: 
-      * **For Code Color (letters, keywords, etc)**: a Pandoc exported and customisable theme file, named ***```massiliaLight.theme```***
-      * **For Code Layout** : ***```massilia.css```*** file
-      * **For Code Background Color** (just a Hack, purely technical): ***```massiliaLightHack.css```***
-    
-      Usage: the following commands export the **Light Theme to BOTH HTML *AND* PDF**
-        ```
-        md2all -light yourMarkdownFile.md
-        ```
-        Alternatively, use the CodeStyle -cs option :
-        ```
-        md2all -cs light yourMarkdownFile.md
-        ```
-    * **a DUAL Theme : Dark for HTML AND Light for PDF printing**: This code Highlighting theme is easily customisable via the config files of the Dark and the Light Themes :
-      
-      Usage: the following commands export the **Dark Theme to HTML *AND* the Light Theme to PDF**. **AUTOMATIC ! Magic ! :sparkles: :star: :star: :star: :star: :star:**
-        ```
-        md2all -dual yourMarkdownFile.md
-        ```
-        Alternatively, use the CodeStyle -cs option :
-        ```
-        md2all -cs dual yourMarkdownFile.md
-        ```
+  * **Automatic LineNumbering**: Natively included in md2all.
+  * **Two Beautiful Code Themes named Massilia themes AND a *DUAL* Theme** (inspired by prism.js themes)
   * **Automatic Code Language Detection AND Labelisation**, both in HTML and PDF exports. Nothing to do here... **AUTOMATIC ! Magic ! :sparkles: :star: :star: :star: :star: :star:**
 * [**Matplotlib**](https://matplotlib.org): Natively include Matplotlib rendered images in your HTML and PDF exports, in **Python language** with **Matplotplib's pyplot syntax**. All you need is to type your Matplotlib code in your md file as follows: 
   * \`\`\`{.pyplot } *(Matplotlib code comes here)* \`\`\`
@@ -114,7 +76,7 @@ md2all myMarkdownDile.md
 md2all [options] myMarkdownDile.md
 ```
 Currently, the help (-h or --help) option is still not implemented.
-Some usage examples are found in this page, belong to:
+Some useful options details are found hereafter:
 * -hi | -hs | -highlight | -highlight-style | --highlight | --highlight-style
   * sets the highlight style (default is: *$HOME/.config/md2all/css/massiliaDark.theme*)
 * -c | -css | --css
@@ -172,6 +134,56 @@ Use ***-web*** or ***--web***  option to force offline (/local) export mode. Exa
   md2all -web myMardownFile.md
   ```
 >Note that web rendered LaTeX pictures (SVGs) will have the default images boxes borders. To solve this, Customize your css or use offline version.
+
+## Code Styling:
+Code Styling can be used or customised via the following instructions:
+### LineNumering
+All you need is to type your code in your md file as follows:
+```
+`` ``` `` 
+{.YourLanguage .numberLines} (Your code comes here)
+`` ``` ``
+```
+, or, if you need more precision:
+* \`\`\`{.YourLanguage .numberLines startFrom="4"} *(Your code comes here)* \`\`\`
+
+* **a Dark Theme**, named ***Massilia Dark Theme***: This code Highlighting theme is easily customisable via three files: 
+    * **For Code Color (letters, keywords, etc)**: a Pandoc exported and customisable theme file, named ***```massiliaDark.theme```***
+    * **For Code Layout** : ***```massilia.css```*** file
+    * **For Code Background Color** (just a Hack, purely technical): ***```massiliaDarkHack.css```***
+  
+    Usage: the following commands export the **Dark Theme to BOTH HTML *AND* PDF**
+    ```
+    md2all -dark yourMarkdownFile.md
+    ```
+    Alternatively, use the CodeStyle -cs option :
+    ```
+    md2all -cs dark yourMarkdownFile.md
+    ```
+* **a Light Theme**, named ***Massilia Light Theme***: This code Highlighting theme is easily customisable via three files: 
+  * **For Code Color (letters, keywords, etc)**: a Pandoc exported and customisable theme file, named ***```massiliaLight.theme```***
+  * **For Code Layout** : ***```massilia.css```*** file
+  * **For Code Background Color** (just a Hack, purely technical): ***```massiliaLightHack.css```***
+
+  Usage: the following commands export the **Light Theme to BOTH HTML *AND* PDF**
+    ```
+    md2all -light yourMarkdownFile.md
+    ```
+    Alternatively, use the CodeStyle -cs option :
+    ```
+    md2all -cs light yourMarkdownFile.md
+    ```
+* **a DUAL Theme : Dark for HTML AND Light for PDF printing**: This code Highlighting theme is easily customisable via the config files of the Dark and the Light Themes :
+  
+  Usage: the following commands export the **Dark Theme to HTML *AND* the Light Theme to PDF**. **AUTOMATIC ! Magic ! :sparkles: :star: :star: :star: :star: :star:**
+    ```
+    md2all -dual yourMarkdownFile.md
+    ```
+    Alternatively, use the CodeStyle -cs option :
+    ```
+    md2all -cs dual yourMarkdownFile.md
+    ```
+
 
 ## Images
 
