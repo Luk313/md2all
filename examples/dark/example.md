@@ -47,7 +47,7 @@ md2all -dark example.md
 </html>
 ```
 
-## CSS
+## CSS{.pagebreakbefore}
 
 ```{.css .numberLines}
  body, p, .warning, .inlinewarning {
@@ -110,7 +110,7 @@ def document_name():
         return "graph"
 ```
 
-# LateX
+# LateX{.pagebreakbefore}
 Hello, this is how to insert LaTeX code in your .md File, as a math inline formula $\sqrt 4  = 2$ , so this line goes on after the other inline formula $i^2$, or, as a block code:
 $$i_0=1; i_1=2$$
 That's it!
@@ -127,7 +127,7 @@ plt.plot([0,1,2,3,4], [1,2,3,4,5])
 plt.title('This is an example figure')
 ```
 
-# Graphviz
+# Graphviz{.pagebreakbefore}
 
 A Graphviz rendered Image, with the .dot syntax
 
@@ -180,7 +180,7 @@ app -> client
 @enduml
 ```
 
-# Multi-Columns
+# Multi-Columns{.pagebreakbefore}
 
 First Normal Paragraph
 

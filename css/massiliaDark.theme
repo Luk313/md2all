@@ -33,7 +33,7 @@
             "underline": false
         },
         "Function": {
-            "text-color": "#06287e",
+            "text-color": "#3593ff",
             "background-color": null,
             "bold": false,
             "italic": false,
@@ -180,7 +180,7 @@
             "underline": false
         },
         "Constant": {
-            "text-color": "#880000",
+            "text-color": "#ff0000",
             "background-color": null,
             "bold": false,
             "italic": false,
