@@ -17,7 +17,8 @@ LaTeX is a good tool but styling markdown with CSS is easier and more flexible t
       * **For Code Color (letters, keywords, etc)**: a Pandoc exported and customisable theme file, named ***```massiliaDark.theme```***
       * **For Code Layout** : ***```massilia.css```*** file
       * **For Code Background Color** (just a Hack, purely technical): ***```massiliaDarkHack.css```***
-    Usage: the following commands export the **Dark Theme to BOTH HTML *AND* PDF**
+    
+      Usage: the following commands export the **Dark Theme to BOTH HTML *AND* PDF**
         ```
         md2all -dark yourMarkdownFile.md
         ```
@@ -29,7 +30,8 @@ LaTeX is a good tool but styling markdown with CSS is easier and more flexible t
       * **For Code Color (letters, keywords, etc)**: a Pandoc exported and customisable theme file, named ***```massiliaLight.theme```***
       * **For Code Layout** : ***```massilia.css```*** file
       * **For Code Background Color** (just a Hack, purely technical): ***```massiliaLightHack.css```***
-    Usage: the following commands export the **Dark Theme to BOTH HTML *AND* PDF**
+    
+      Usage: the following commands export the **Light Theme to BOTH HTML *AND* PDF**
         ```
         md2all -light yourMarkdownFile.md
         ```
@@ -37,8 +39,9 @@ LaTeX is a good tool but styling markdown with CSS is easier and more flexible t
         ```
         md2all -cs light yourMarkdownFile.md
         ```
-    * **a DUAL Theme : Dark for HTML AND Light for PDF printing**: This code Highlighting theme is easily customisable via the config files of the Dark and the Light Themes : 
-    Usage: the following commands export the **Dark Theme to BOTH HTML *AND* PDF**
+    * **a DUAL Theme : Dark for HTML AND Light for PDF printing**: This code Highlighting theme is easily customisable via the config files of the Dark and the Light Themes :
+      
+      Usage: the following commands export the **Dark Theme to HTML *AND* the Light Theme to PDF**. **AUTOMATIC ! Magic ! :sparkles: :star: :star: :star: :star: :star:**
         ```
         md2all -dual yourMarkdownFile.md
         ```
@@ -46,7 +49,7 @@ LaTeX is a good tool but styling markdown with CSS is easier and more flexible t
         ```
         md2all -cs dual yourMarkdownFile.md
         ```
-  * **Automatic Code Language Detection AND Labelisation**, both in HTML and PDF exports. Nothing to do here... **AUTOMATIC ! MAGIC !:+1:** 
+  * **Automatic Code Language Detection AND Labelisation**, both in HTML and PDF exports. Nothing to do here... **AUTOMATIC ! Magic ! :sparkles: :star: :star: :star: :star: :star:**
 * [**Matplotlib**](https://matplotlib.org): Natively include Matplotlib rendered images in your HTML and PDF exports, in **Python language** with **Matplotplib's pyplot syntax**. All you need is to type your Matplotlib code in your md file as follows: 
   * \`\`\`{.pyplot } *(Matplotlib code comes here)* \`\`\`
 
@@ -80,7 +83,7 @@ Optionnally, If you wish to use the following additionnal fonctionnalities, You 
 
 * **LaTeX :**
 If you want to use LaTeX equations, you can choose alternatively one (or both) of the following:
-  * __offline (by default):__ install your preferred local LaTeX distribution (mainly ***texlive-most***, optionally ***texlive-lang***): **md2all** will automatically export LaTeX formulas of your md file in [MathJax](https://www.mathjax.org) format in the HTML export file, and hence PDF. 
+  * __offline (by default):__ install your preferred local LaTeX distribution (mainly ***texlive-most***, optionally ***texlive-lang***): **md2all** will automatically export LaTeX formulas of your md file using [KaTeX](https://katex.org/)for the HTML export file, and hence also PDF. 
 
   * __web :__ do NOT install any local LaTeX distribution (by default), and use **internet access** to reach the transform application [codecogs](http://latex.codecogs.com/svg.latex) to convert LaTeX formulas in SVG.
 * **Maplotlib**: You must install **python** (>=3.xx), the **python-matplotlib** package, and the **pandoc-pyplot** package.
@@ -99,25 +102,40 @@ If you want to use LaTeX equations, you can choose alternatively one (or both) o
 
 # Usage of md2all :
 
-## **md2all** requires 1 and only argument and optional options : *yourMarkdownFile.md*
+## **md2all** requires 1 and only argument, but it accepts options (linux style) : *yourMarkdownFile.md*
 
 * **Usage** : the following command exports the md file, both in HTML and PDF, in the same folder.
 ```{.bash}
 md2all myMarkdownDile.md
 ```
 
-	**Example** : *md2all examples/proportionnalite.md*
-
-- **Usage with 2 arguments** : md2all cssFile.css markdownFile.md
-	1) Css file to apply
-	2) Markdown file to convert
-
-- **Usage with 3 arguments** : md2all templateFile.template cssFile.css markdownFile.md
-	1) Template file to apply
-	2) Css file to apply
-	3) Markdown file to convert
-
-	**Example** : *md2all templates/lesson.template css/lesson.css examples/proportionnalite.md*
+* **General Syntax** :
+```{.bash}
+md2all [options] myMarkdownDile.md
+```
+Currently, the help (-h or --help) option is still not implemented.
+Some usage examples are found in this page, belong to:
+* -hi | -hs | -highlight | -highlight-style | --highlight | --highlight-style
+  * sets the highlight style (default is: *$HOME/.config/md2all/css/massiliaDark.theme*)
+* -c | -css | --css
+  * sets the page css style file (default is : *$HOME/.config/md2all/css/lesson.css*)
+* -t | -template | --template
+  * sets the template config file (default is : *$HOME/.config/md2all/templates/lesson.template*)
+* -cs | --code-css | --code-style
+  * sets the code style, possible values: *dark*, *light* or *dual*
+* -dual | --dual (the default)
+  * sets the code style to dual (dark for HTML and light for PDF)
+* -dark | --dark
+  * sets the code style to dark (for both HTML and PDF)
+* -light | --light
+  * sets the code style to light (for both HTML and PDF)
+* -web | --web
+  * render HTML and PDF via web servers (for LaTeX mainly for the moment)
+* -off | -offline | --offline | -loc | -local | --local
+  * render HTML and PDF offline/locally (for LaTeX mainly for the moment)
+* -h | -help | --help
+  * Help... not implemented yet (this page is a reference) 
+* See example folder for some .md examples.
 
 ## Header and Pandoc Title Block
 
