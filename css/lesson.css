@@ -52,9 +52,15 @@
 
  header > p.title {
 	 font-family: invasion;
-	 background-image: url("../images/laptop.svg");
-	 background-size: 100% auto;
-}
+	 font-size: 200%;
+	 text-align: center;
+	 border: 3px solid black;
+	 border-radius: 4px;
+	 padding : 0.5rem;
+	 box-shadow: 5px 5px 5px #222;
+	 /* background: lightgrey; */
+
+	}
 
  h1, h2, h3, h4, h5, h6, .title:not(header>p.title) {
 	 font-family: OpenDyslexic, "Lucida Sans", "Bitstream Vera Sans", "Arial Rounded MT Bold", Arbeka, "Lucida Grande", "Lucida Sans Unicode", "Luxi Sans", "Lato", sans-serif, "Aerial";
