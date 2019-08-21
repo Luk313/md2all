@@ -5,7 +5,7 @@
 
 Command to type in Terminal:
 ```{.bash}
-md2all -dark exampleDark.md
+md2all -light example.md
 ```
 
 ```{.html .numberLines}
@@ -105,6 +105,8 @@ That's it!
 
 # Matplotlib
 
+A Matplotlib rendered Image, with Matplotlib syntax
+
 ```{.pyplot .imgbox}
 import matplotlib.pyplot as plt
 
@@ -115,7 +117,7 @@ plt.title('This is an example figure')
 
 # Graphviz
 
-Some .dot syntax code:
+A Graphviz rendered Image, with the .dot syntax
 
 ```{.graph .center .imgbox caption="This was generated using the graphviz.py filter." name="jolifichier.svg"}
 digraph G {
@@ -153,7 +155,7 @@ digraph G {
 
 # PlantUML
 
-Here's somme UML code:
+A plantUML rendered image :
 
 ```{.plantuml .center caption="test" name="jolifichier.uml"}
 @startuml
@@ -186,7 +188,10 @@ Column 2, Normal Paragraph. Column 2, Normal Paragraph. Column 2, Normal Paragra
 
 :::
 
-Middle Paragraph. Middle Paragraph. Middle Paragraph. Middle Paragraph. Middle Paragraph. Middle Paragraph. 
+Middle Paragraph. Middle Paragraph.
+Middle Paragraph. Middle Paragraph.
+Middle Paragraph. Middle Paragraph.
+Middle Paragraph. Middle Paragraph.
 
 ::: cols
 
@@ -210,14 +215,12 @@ Last Normal Paragraph. Last Normal Paragraph. Last Normal Paragraph.
 
 # Images
 
-![Caption 1](grid.png){width="60%}
+![Caption 0: Original Size](grid.png)
 
-![Caption 2](grid.png){height="40%}
+![Caption 1: 40% width](grid.png){width="40%"} 
 
-![Caption 3](grid.png){style="width:80px;height:50px;"}
+![Caption 2: Fixed width=300px and height=200px with style attribute](grid.png){style="width:300px;height:200px;"}
 
-![Caption 1](grid.png){.noimgbox width="60%} 
+![Caption 3, with .noimgbox and width 20%](grid.png){.noimgbox width="20%"} 
 
-![Caption 2](grid.png){myAttribute="myValue" height="40%}
-
-![Caption 3](grid.png){style="width:80px;height:50px;"}
+![Caption 4, with custom class and attribute (cf html)](grid.png){.myClass myAttribute="myValue" width="40%"}
