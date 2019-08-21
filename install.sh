@@ -27,16 +27,14 @@ sudo chmod 755 /usr/lib/md2all.lib
 echo "==> Install config dir in ~/.config/md2all/"
 mkdir $HOME/.config/md2all
 cp -R -i css $HOME/.config/md2all/
-# ln -s -i $HOME/.config/md2all/css/lesson.css $HOME/.config/md2all/css/default.css
 
-# cp -R -i graphviz $HOME/.config/md2all/
-# ln -s -i $HOME/.config/md2all/graphviz/graphviz.py $HOME/.config/md2all/graphviz/default.py
+cp -R -i fonts $HOME/.config/md2all/
+
+cp -R -i images $HOME/.config/md2all/
 
 cp -R -i filters $HOME/.config/md2all/
-# ln -s -i $HOME/.config/md2all/graphviz/graphviz.py $HOME/.config/md2all/graphviz/default.py
 
 cp -R -i js $HOME/.config/md2all/
-# ln -s -i $HOME/.config/md2all/js/script.js $HOME/.config/md2all/js/default.js
 
 cp -R -i templates $HOME/.config/md2all/
 ln -s -i $HOME/.config/md2all/templates/lesson.template $HOME/.config/md2all/templates/default.template

@@ -16,6 +16,11 @@
 
  @charset "UTF-8";
 
+ @font-face {
+	font-family: "invasion";
+	src: url("../fonts/invasion.ttf");
+ }
+
  body {
 	 /*-webkit-font-smoothing: antialiased;*/
 	 font-size: 120%;
@@ -35,7 +40,7 @@
  .toc-title {
 	 color:red;
  }
- 
+
  p, ul {
 	 text-align: justify;
 	 margin : 0.1rem 0 0 0;
@@ -43,16 +48,22 @@
  
  sub, sup {
 	 font-size: 70%;
- }
- 
- h1, h2, h3, h4, h5, h6, .title {
+ } 
+
+ header > p.title {
+	 font-family: invasion;
+	 background-image: url("../images/laptop.svg");
+	 background-size: 100% auto;
+}
+
+ h1, h2, h3, h4, h5, h6, .title:not(header>p.title) {
 	 font-family: OpenDyslexic, "Lucida Sans", "Bitstream Vera Sans", "Arial Rounded MT Bold", Arbeka, "Lucida Grande", "Lucida Sans Unicode", "Luxi Sans", "Lato", sans-serif, "Aerial";
 	 font-weight: bold;
 	 /* font-style: italic; */
 	 line-height: 2rem;
  }
- 
- .title {
+
+ .title:not(header>p.title) {
 	 font-size: 200%;
 	 text-align: center;
 	 border: 1px solid black;
@@ -271,7 +282,7 @@
  .pagebreakafter {
 	 page-break-after: always;
  }
- 
+
  @page
  {
 	 size: 21cm 29.7cm;
