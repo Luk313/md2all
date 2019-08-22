@@ -234,13 +234,21 @@
  
  /* CUSTOM BLUE LEFT LINE */
  blockquote {
+	 /* User agent Default Style :
+	 /* display: block; */
 	 padding: 0.2em 0.5em 0.2em 1.5em;
 	 box-shadow: inset 0.5em 0em #78b5de;
 	 background-color: #f2f2f2;
+	 /* User agent Default Style :
+	 margin-block-start: 1em;
+     margin-block-end: 1em;
+     margin-inline-start: 40px;
+     margin-inline-end: 40px; */
 	}
 	
 	blockquote blockquote {
-	 display: block;
+	 /* Default: */
+	 /* display: block; */
 	 padding: 0.1em 0 0.1em 1.5em;
 	 box-shadow: inset 0.5em 0em #ad7777;
 	 background-color: #f2f2f2;
