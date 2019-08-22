@@ -50,8 +50,9 @@ md2all -dark example.md
 ## CSS{.pagebreakbefore}
 
 ```{.css .numberLines}
- body, p, .warning, .inlinewarning {
-	 font-family: "Souvenir Lt Bt", Andika, "Amerigo BT", Century, "Bookman URW", "Bitstream Vera Serif", "Free Sans", Georgia, Serif, Aerial, "Times New Roman", "STSong", "PT Serif";
+@import url(https://fonts.googleapis.com/css?family=Questrial);
+ body, p, #visible, .warning, {
+	 font-family: Questrial, Andika, "Amerigo BT", Century, "Bookman URW", "Bitstream Vera Serif", "Free Sans", Georgia, Serif, Aerial, "Times New Roman", "STSong", "PT Serif";
 	 line-height: 1.5rem;
  }
  
@@ -90,29 +91,31 @@ echo "Hello World!";
 #!/usr/bin/env python
 
 """
-Pandoc filter to process code blocks with class "graph" into
-graphviz-generated images.
-Requires pygraphviz, pandocfilters
+This Script does strictly nothing!
 """
 
 import os
-import sys
 
-import pygraphviz
+i=0
+name = "me"
+list = [1,2,3]
 
-from pandocfilters import toJSONFilter, Para, Image, get_filename4code
-from pandocfilters import get_caption, get_extension, get_value
+for i in range(100):
+    if i%2==0:
+        print("Pair!")
 
-def document_name():
-    if "PANDOC_INPUT_FILE" in os.environ:
-        return os.environ["PANDOC_INPUT_FILE"]
-    else:
-        return "graph"
+while i<10:
+    i += 1
+
+def maFonction(x):
+    print("Hello",x)
+
+if __name__ == "__main__":
+    maFonction(" you!")
 ```
 
 # LateX{.pagebreakbefore}
-Hello, this is how to insert LaTeX code in your .md File, as a math inline formula $\sqrt 4  = 2$ , so this line goes on after the other inline formula $i^2$, or, as a block code:
-$$i_0=1; i_1=2$$
+Hey! This is how to insert LaTeX code in your .md File, as a math inline formula $\sqrt 4  = 2$ , so this line goes on after the other inline formula $i^2$, or, as a block code: $$i_0=1; i_1=2$$
 That's it!
 
 # Matplotlib
@@ -169,7 +172,7 @@ digraph G {
 
 A plantUML rendered image :
 
-```{.plantuml .center caption="test" name="jolifichier.uml"}
+```{.plantuml .center caption="This was generated using the PlantUML filter." name="jolifichier.uml"}
 @startuml
 actor client
 node app

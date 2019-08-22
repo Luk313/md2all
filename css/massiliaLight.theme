@@ -28,14 +28,14 @@
         "Annotation": {
             "text-color": "#0077aa",
             "background-color": null,
-            "bold": true,
+            "bold": false,
             "italic": true,
             "underline": false
         },
         "Function": {
-            "text-color": "#022172",
+            "text-color": "#0077aa",
             "background-color": null,
-            "bold": true,
+            "bold": false,
             "italic": false,
             "underline": false
         },
@@ -49,21 +49,21 @@
         "ControlFlow": {
             "text-color": "#0077aa",
             "background-color": null,
-            "bold": true,
+            "bold": false,
             "italic": false,
             "underline": false
         },
         "Operator": {
-            "text-color": "#022172",
+            "text-color": "#d67900",
             "background-color": null,
-            "bold": false,
+            "bold": true,
             "italic": false,
             "underline": false
         },
         "Error": {
             "text-color": "#ff0000",
             "background-color": null,
-            "bold": true,
+            "bold": false,
             "italic": false,
             "underline": false
         },
@@ -77,7 +77,7 @@
         "Alert": {
             "text-color": "#ff0000",
             "background-color": null,
-            "bold": true,
+            "bold": false,
             "italic": false,
             "underline": false
         },
@@ -103,16 +103,16 @@
             "underline": false
         },
         "Preprocessor": {
-            "text-color": "#034b0c",
+            "text-color": "#ff3a3a",
             "background-color": null,
-            "bold": true,
+            "bold": false,
             "italic": false,
             "underline": false
         },
         "Information": {
             "text-color": "#0077aa",
             "background-color": null,
-            "bold": true,
+            "bold": false,
             "italic": true,
             "underline": false
         },
@@ -126,7 +126,7 @@
         "Warning": {
             "text-color": "#0077aa",
             "background-color": null,
-            "bold": true,
+            "bold": false,
             "italic": true,
             "underline": false
         },
@@ -140,7 +140,7 @@
         "Import": {
             "text-color": "#990055",
             "background-color": null,
-            "bold": true,
+            "bold": false,
             "italic": false,
             "underline": false
         },
@@ -154,7 +154,7 @@
         "DataType": {
             "text-color": "#0077aa",
             "background-color": null,
-            "bold": true,
+            "bold": false,
             "italic": false,
             "underline": false
         },
@@ -166,7 +166,7 @@
             "underline": false
         },
         "Comment": {
-            "text-color": "#0077aa",
+            "text-color": "#07a362",
             "background-color": null,
             "bold": false,
             "italic": true,
@@ -175,12 +175,12 @@
         "CommentVar": {
             "text-color": "#0077aa",
             "background-color": null,
-            "bold": true,
+            "bold": false,
             "italic": true,
             "underline": false
         },
         "Constant": {
-            "text-color": "#ff0000",
+            "text-color": "#d67900",
             "background-color": null,
             "bold": false,
             "italic": false,
@@ -203,7 +203,7 @@
         "Keyword": {
             "text-color": "#990055",
             "background-color": null,
-            "bold": true,
+            "bold": false,
             "italic": false,
             "underline": false
         }
