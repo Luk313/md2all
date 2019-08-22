@@ -354,16 +354,22 @@ Example:
     ```
 ```
 
-## Force page breaks (before or after)
+## Force page breaks (before or after), and newpage class
 
 You can use the previous tip to force page breaks. At the end of the default CSS file you can find the **@media print** section.
 
 In this section you can set values for **widows** and **orphans** and choose if you want to avoid a page break after the titles.
 
-But you can also use the classes **.pagebreakbefore** and **.pagebreakafter** in your Markdown file to force a page break everywhere you want. Just add {.pagebreakbefore} after a title, like this :
+But you can also use the classes **.pagebreakbefore**, which is equivalent to **.newpage** (which I find more intuitive) and **.pagebreakafter** in your Markdown file to force a page break everywhere you want. Just add {.pagebreakbefore} or {.newpage} after a title, like this :
 
 ```
 # Wonderful title{.pagebreakbefore}
+```
+
+or
+
+```
+# Wonderful title{.newpage}
 ```
 
 You can also assign these 2 classes to any piece of text using the previous tip.

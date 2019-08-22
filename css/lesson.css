@@ -275,7 +275,7 @@
 	 word-break: break-word;
  }
  
- .pagebreakbefore {
+ .pagebreakbefore, .newpage {
 	 page-break-before: always;
  }
  
@@ -302,7 +302,7 @@
 	 }
 	 
 	 /* ATTENTION : AUCUN ESPACE avant le {.pagebr..} du md !!! */
-	 .pagebreakbefore
+	 .pagebreakbefore, .newpage
 	 {
 		 page-break-before: always;
 	 }
