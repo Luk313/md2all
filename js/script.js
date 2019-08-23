@@ -43,19 +43,16 @@ window.onload = function () {
         newSpan[i].style.pageBreakAfter = "avoid";
     }
 
+    // Fix {.pagebreakafter} not working inside ul, li, normal parapgraphs, etc.. 
     var pageBreakAfterList = document.querySelectorAll('.pagebreakafter');
-    // console.log(pageBreakAfterList);
     for (var i = 0; i < pageBreakAfterList.length; i++) {
-        // console.log(pageBreakAfterList[i]); // <span class="pagebreak">selectedText</span
         pageBreakAfterList[i].innerHTML += "<div style='page-break-after: always;'></div><div></div>";
-        }
-
+    }
+    
+    // Fix {.pagebreakbefore} not working inside ul, li, normal parapgraphs, etc.. 
     var pageBreakBeforeList = document.querySelectorAll('.pagebreakbefore, .newpage');
-    // console.log(pageBreakBeforeList);
     for (var i = 0; i < pageBreakBeforeList.length; i++) {
-        // console.log(pageBreakBeforeList[i]); // <span class="pagebreak">selectedText</span
         pageBreakBeforeList[i].parentElement.previousElementSibling.innerHTML += "<div style='page-break-after: always;'></div><div></div>";
-        // append("<div style='page-break-after: always;'></div><div></div>");
         }
 
     // Detect and configure media query print vs screen/others:
