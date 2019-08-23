@@ -43,6 +43,13 @@ window.onload = function () {
         newSpan[i].style.pageBreakAfter = "avoid";
     }
 
+    var pageBreakAfterList = document.querySelectorAll('.pagebreakafter');
+    console.log(pageBreakAfterList);
+    for (var i = 0; i < pageBreakAfterList.length; i++) {
+        console.log(pageBreakAfterList[i]); // <span class="pagebreak">selectedText</span
+        pageBreakAfterList[i].innerHTML += "<div style='page-break-after: always;'></div><div></div>";
+        }
+
     // Detect and configure media query print vs screen/others:
     function detectMedia(isPrint) { // DO NOT USE LET... assignment: problem in export of pdf! Always prefer VAR ...
         if (isPrint.matches) { // If media query matches

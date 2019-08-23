@@ -332,13 +332,12 @@
 	 {
 		 page-break-after: always;
 	 }
- 
-	 div, code, pre, blockquote, li, span, table
+
+	 /* div, code, pre, blockquote, li, span, table */
+	code.sourCode, pre.sourceCode, blockquote, table
 	 {
 		 page-break-inside: avoid;
 	 }
-	 
- 
  
 	 h1, h2, h3, h4
 	 {
