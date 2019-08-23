@@ -44,10 +44,18 @@ window.onload = function () {
     }
 
     var pageBreakAfterList = document.querySelectorAll('.pagebreakafter');
-    console.log(pageBreakAfterList);
+    // console.log(pageBreakAfterList);
     for (var i = 0; i < pageBreakAfterList.length; i++) {
-        console.log(pageBreakAfterList[i]); // <span class="pagebreak">selectedText</span
+        // console.log(pageBreakAfterList[i]); // <span class="pagebreak">selectedText</span
         pageBreakAfterList[i].innerHTML += "<div style='page-break-after: always;'></div><div></div>";
+        }
+
+    var pageBreakBeforeList = document.querySelectorAll('.pagebreakbefore, .newpage');
+    // console.log(pageBreakBeforeList);
+    for (var i = 0; i < pageBreakBeforeList.length; i++) {
+        // console.log(pageBreakBeforeList[i]); // <span class="pagebreak">selectedText</span
+        pageBreakBeforeList[i].parentElement.previousElementSibling.innerHTML += "<div style='page-break-after: always;'></div><div></div>";
+        // append("<div style='page-break-after: always;'></div><div></div>");
         }
 
     // Detect and configure media query print vs screen/others:
