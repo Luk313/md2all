@@ -39,6 +39,8 @@ PlantUMLFilter="$HOME/.config/md2all/filters/plantuml/plantuml.py"
 Template="$HOME/.config/md2all/templates/lesson.template"
 JsStyle="$HOME/.config/md2all/js/script.js"
 exportType="offline"
+IncludeSlides="no"
+SlidesTheme="PaloAlto"
 
 LastElemInCodeLayoutCss=`echo $CodeLayoutCss | rev | cut -d'/' -f 1 | rev`
 CodeLayoutCssName=`echo $LastElemInCodeLayoutCss | cut -f1 -d'.'`
@@ -55,6 +57,8 @@ echo "=> Make HTML file : "$Title".html"
 # echo "=> with Code Style : $CodeStyle"
 # echo "=> with Page Style CSS : $PageStyleCss"
 # echo "=> with Template : $Template"
+
+detectIfSlideExport
 
 detectIfDualExport
 
