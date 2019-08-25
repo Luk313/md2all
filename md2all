@@ -40,7 +40,8 @@ Template="$HOME/.config/md2all/templates/lesson.template"
 JsStyle="$HOME/.config/md2all/js/script.js"
 exportType="offline"
 IncludeSlides="no"
-SlidesTheme="PaloAlto"
+# SlidesTheme="Frankfurt"
+SlidesTheme="Antibes"
 
 LastElemInCodeLayoutCss=`echo $CodeLayoutCss | rev | cut -d'/' -f 1 | rev`
 CodeLayoutCssName=`echo $LastElemInCodeLayoutCss | cut -f1 -d'.'`

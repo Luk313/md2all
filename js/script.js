@@ -5,14 +5,24 @@ window.onload = function () {
     for (var i = 0; i < codesList.length; i++) {
         codeClasses.push(codesList[i].classList[1]);
         codesList[i].classList.add("language-"+codeClasses[i]);
+        codesList[i].style.borderRadius = "0.3em";
     }
-    
+
     // (For Prism.js:) add language-XXX class to pre tags
     var preList = document.querySelectorAll('pre.sourceCode');
     for (var i = 0; i < preList.length; i++) {
         // codeClasses.push(codesList[i].classList[1]);
         preList[i].classList.add("language-"+codeClasses[i]);
+        preList[i].style.backgroundColor = "transparent";
     }
+    
+    // To try to force border-radius with pandoc background color set. Non concluant
+    var codesListBorderRadius = document.querySelectorAll(':not(pre) > code[class*="language-"], pre[class*="language-"], code[class*="language-"]');
+    for (var i = 0; i < codesListBorderRadius.length; i++) {
+        codesListBorderRadius[i].style.borderRadius = "0.5em";
+        codesListBorderRadius[i].style.backgroundColor = "transparent";
+    }
+    console.log(codesListBorderRadius);
 
     // Get List of Parent Nodes for next spanList of Languages
     var positionList = document.querySelectorAll('div >pre > code.sourceCode');

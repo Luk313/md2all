@@ -88,8 +88,6 @@ for arg in $*
 
             -sl | --sl | -slides | --slides)
                 IncludeSlides="yes"
-                echo "SLIDES PARAM DETECTED"
-                echo "$IncludeSlides"
                 shift
                 ;;
 
@@ -164,7 +162,6 @@ echoExportType()
         echo "Exporting Offline: With dependencies installed"
     fi
 
-    echo "IncludeSlides From inside echoExportType : $IncludeSlides"
     if [ "$IncludeSlides" = "yes" ]; then
         echo "Exporting Slides"
     fi
@@ -173,13 +170,12 @@ echoExportType()
 detectIfSlideExport()
 {
     if [ "$IncludeSlides" = "yes" ]; then
-        echo "Slides Detected with Theme : $SlidesTheme"
         SLIDES="SLIDES"
         SlidesTitle="$Title$SLIDES"
 
         # EXPORT  MD to SLIDES
-        # pandoc -s --variable slidesTheme:"$SlidesTheme" --from=markdown+emoji --highlight-style="$HighlightStyle" -t beamer "$Title".md  -o "$SlidesTitle".pdf
-        pandoc -s --variable=hack:"$hack" --variable=home:"$HOME" --variable=CodeLayoutCssName:"$CodeLayoutCssName" --highlight-style="$HighlightStyle" --katex --from=markdown+emoji -V theme:"$SlidesTheme" -t beamer "$Title".md  -o "$SlidesTitle".pdf
+        # pandoc -s --variable=hack:"$hack" --variable=home:"$HOME" --variable=CodeLayoutCssName:"$CodeLayoutCssName" --variable=JsStyle:"$JsStyle" --katex --from=markdown+emoji --highlight-style="$HighlightStyle" --filter "$GraphvizFilter" --filter pandoc-pyplot --filter "$PlantUMLFilter" -V theme:"$SlidesTheme" -t beamer "$Title".md  -o "$SlidesTitle".pdf
+        pandoc -s --variable=hack:"$hack" --variable=home:"$HOME" --variable=CodeLayoutCssName:"$CodeLayoutCssName" --variable=JsStyle:"$JsStyle" --mathjax --from=markdown+emoji --highlight-style="$HighlightStyle" --filter "$GraphvizFilter" --filter pandoc-pyplot --filter "$PlantUMLFilter" -V theme:"$SlidesTheme" -t beamer "$Title".md  -o "$SlidesTitle".pdf
     fi
 
 }
