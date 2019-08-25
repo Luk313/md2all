@@ -88,8 +88,8 @@ for arg in $*
 
             -sl | --sl | -slides | --slides)
                 IncludeSlides="yes"
-                echo "slides detected"
-                echo "$SlidesTheme"
+                echo "SLIDES PARAM DETECTED"
+                echo "$IncludeSlides"
                 shift
                 ;;
 
@@ -164,16 +164,16 @@ echoExportType()
         echo "Exporting Offline: With dependencies installed"
     fi
 
-    if [ "$IncludeSlides"="yes" ]; then
+    echo "IncludeSlides From inside echoExportType : $IncludeSlides"
+    if [ "$IncludeSlides" = "yes" ]; then
         echo "Exporting Slides"
     fi
 }
 
 detectIfSlideExport()
 {
-    echo "from inside Slide Function"
-    echo "$SlidesTheme"
-    if [ "$IncludeSlides"="yes" ]; then
+    if [ "$IncludeSlides" = "yes" ]; then
+        echo "Slides Detected with Theme : $SlidesTheme"
         SLIDES="SLIDES"
         SlidesTitle="$Title$SLIDES"
 
@@ -181,6 +181,7 @@ detectIfSlideExport()
         # pandoc -s --variable slidesTheme:"$SlidesTheme" --from=markdown+emoji --highlight-style="$HighlightStyle" -t beamer "$Title".md  -o "$SlidesTitle".pdf
         pandoc -s --variable=hack:"$hack" --variable=home:"$HOME" --variable=CodeLayoutCssName:"$CodeLayoutCssName" --highlight-style="$HighlightStyle" --katex --from=markdown+emoji -V theme:"$SlidesTheme" -t beamer "$Title".md  -o "$SlidesTitle".pdf
     fi
+
 }
 
 exportToHTML()
@@ -200,4 +201,5 @@ exportToPDF()
 {
     # EXPORT HTML to PDF
     wkhtmltopdf --encoding 'utf-8' --print-media-type --footer-line --footer-spacing 2 --footer-font-name "$FooterFont" --footer-font-size "$FooterSize" --footer-left "$Author" --footer-right "[page] / [topage]" --margin-top "$TopMargin" --margin-left "$LeftMargin" --margin-right "$RightMargin" --margin-bottom "$BottomMargin" -O "$PageOrientation" -s "$PageSize" --enable-javascript --javascript-delay 500 "$Title".html "$Title".pdf
+    return 0
 }

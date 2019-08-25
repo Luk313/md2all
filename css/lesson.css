@@ -17,8 +17,8 @@
  @charset "UTF-8";
 
  @font-face {
-	font-family: "invasion";
-	src: url("../fonts/invasion.ttf");
+	font-family: "ledbright";
+	src: url("../fonts/ledbright.ttf");
  }
 
  body {
@@ -51,7 +51,7 @@
  }
 
  header > p.title {
-	 font-family: invasion;
+	 font-family: ledbright;
 	 font-size: 200%;
 	 text-align: center;
 	 border: 3px solid black;
