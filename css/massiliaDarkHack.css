@@ -7,3 +7,7 @@
  pre[class*="language-"] {
 	 background: #272822;
  }
+
+ p  {
+	 color: red;
+ }

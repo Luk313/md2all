@@ -28,15 +28,20 @@ echo "==> Install config dir in ~/.config/md2all/"
 mkdir $HOME/.config/md2all
 cp -R -i css $HOME/.config/md2all/
 
+cp -R -i examples $HOME/.config/md2all/
+
+cp -R -i filters $HOME/.config/md2all/
+
 cp -R -i fonts $HOME/.config/md2all/
 
 cp -R -i images $HOME/.config/md2all/
 
-cp -R -i filters $HOME/.config/md2all/
-
 cp -R -i js $HOME/.config/md2all/
 
 cp -R -i templates $HOME/.config/md2all/
+# sudo ln -s $HOME/.config/md2all/templates/revealsjs/massilia.revealsjs /usr/share/pandoc/data/templates
+sudo cp -R -i templates/revealsjs/massilia.revealsjs /usr/share/pandoc/data/templates
+
 ln -s -i $HOME/.config/md2all/templates/lesson.template $HOME/.config/md2all/templates/default.template
 
 echo "==> Install Correctly Completed ..."

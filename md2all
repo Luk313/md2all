@@ -41,7 +41,11 @@ JsStyle="$HOME/.config/md2all/js/script.js"
 exportType="offline"
 IncludeSlides="no"
 # SlidesTheme="Frankfurt"
-SlidesTheme="Antibes"
+SlidesTheme="Frankfurt"
+TemplateSlidy="$HOME/.config/md2all/templates/slidy/massilia.slidy"
+# Pandoc Template
+TemplateReveals="massilia.revealsjs"
+ThemeReveals="beige"
 
 LastElemInCodeLayoutCss=`echo $CodeLayoutCss | rev | cut -d'/' -f 1 | rev`
 CodeLayoutCssName=`echo $LastElemInCodeLayoutCss | cut -f1 -d'.'`
@@ -50,10 +54,10 @@ splitOptionsAndFilename $*
 checkSyntax $filename
 Title=`echo $filename | cut -f1 -d'.'`
 
-echoExportType
+# echoExportType
 
-echo "=> Processing from Markdown file : "$Title".md"
-echo "=> Make HTML file : "$Title".html"
+# echo "=> Processing from Markdown file : "$Title".md"
+# echo "=> Make HTML file : "$Title".html"
 # echo "=> with Highlight Style : $HighlightStyle"
 # echo "=> with Code Style : $CodeStyle"
 # echo "=> with Page Style CSS : $PageStyleCss"
@@ -65,7 +69,7 @@ detectIfDualExport
 
 exportToHTML
 
-echo "=> Make PDF file : $Title.pdf ..."
+# echo "=> Make PDF file : $Title.pdf ..."
 
 Author=$(head -2 "$Title".md | tail -1)
 Author=${Author:2}

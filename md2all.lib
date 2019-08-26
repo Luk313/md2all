@@ -152,42 +152,31 @@ detectIfDualExport()
 fi
 }
 
-echoExportType()
-{
-    if [ "$exportType" = "web" ]; then
-        echo "Exporting via the Web: NO dependencies needed"
-    fi
+# echoExportType()
+# {
+#     if [ "$exportType" = "web" ]; then
+#         echo "Exporting via the Web: NO dependencies needed"
+#     fi
 
-    if [ "$exportType" = "offline" ]; then
-        echo "Exporting Offline: With dependencies installed"
-    fi
+#     if [ "$exportType" = "offline" ]; then
+#         echo "Exporting Offline: With dependencies installed"
+#     fi
 
-    if [ "$IncludeSlides" = "yes" ]; then
-        echo "Exporting Slides"
-    fi
-}
-
-detectIfSlideExport()
-{
-    if [ "$IncludeSlides" = "yes" ]; then
-        SLIDES="SLIDES"
-        SlidesTitle="$Title$SLIDES"
-
-        # EXPORT  MD to SLIDES
-        # pandoc -s --variable=hack:"$hack" --variable=home:"$HOME" --variable=CodeLayoutCssName:"$CodeLayoutCssName" --variable=JsStyle:"$JsStyle" --katex --from=markdown+emoji --highlight-style="$HighlightStyle" --filter "$GraphvizFilter" --filter pandoc-pyplot --filter "$PlantUMLFilter" -V theme:"$SlidesTheme" -t beamer "$Title".md  -o "$SlidesTitle".pdf
-        pandoc -s --variable=hack:"$hack" --variable=home:"$HOME" --variable=CodeLayoutCssName:"$CodeLayoutCssName" --variable=JsStyle:"$JsStyle" --mathjax --from=markdown+emoji --highlight-style="$HighlightStyle" --filter "$GraphvizFilter" --filter pandoc-pyplot --filter "$PlantUMLFilter" -V theme:"$SlidesTheme" -t beamer "$Title".md  -o "$SlidesTitle".pdf
-    fi
-
-}
+#     if [ "$IncludeSlides" = "yes" ]; then
+#         echo "Exporting Slides"
+#     fi
+# }
 
 exportToHTML()
 {
     if [ "$exportType" = "web" ]; then
+        echo "=> Make via the Web: NO dependencies needed"
         # EXPORT MD to HTML : BY DEFAULT, EXPORT WEB LATEX from MD to HTML
         pandoc "$Title".md --from=markdown+emoji --to=html5 --self-contained --highlight-style="$HighlightStyle" --standalone --webtex="http://latex.codecogs.com/svg.latex?" --variable=hack:"$hack" --variable=home:"$HOME" --variable=CodeLayoutCssName:"$CodeLayoutCssName" --variable=JsStyle:"$JsStyle" --template="$Template" -c "$PageStyleCss"  --filter "$GraphvizFilter" --filter pandoc-pyplot --filter "$PlantUMLFilter" --number-sections -o "$Title".html
     fi
 
     if [ "$exportType" = "offline" ]; then
+        echo "=> Make Offline: WITH dependencies installed"
         # ALTERNATIVELY, EXPORT LATEX via MATHJAX
         pandoc -s --variable=hack:"$hack" --variable=home:"$HOME" --variable=CodeLayoutCssName:"$CodeLayoutCssName" --variable=JsStyle:"$JsStyle" --template="$Template" --katex -c "$PageStyleCss" --from=markdown+emoji --to=html5 --highlight-style="$HighlightStyle" --filter "$GraphvizFilter" --filter pandoc-pyplot --filter "$PlantUMLFilter" --number-sections < "$Title".md -o "$Title".html
     fi
@@ -198,4 +187,34 @@ exportToPDF()
     # EXPORT HTML to PDF
     wkhtmltopdf --encoding 'utf-8' --print-media-type --footer-line --footer-spacing 2 --footer-font-name "$FooterFont" --footer-font-size "$FooterSize" --footer-left "$Author" --footer-right "[page] / [topage]" --margin-top "$TopMargin" --margin-left "$LeftMargin" --margin-right "$RightMargin" --margin-bottom "$BottomMargin" -O "$PageOrientation" -s "$PageSize" --enable-javascript --javascript-delay 500 "$Title".html "$Title".pdf
     return 0
+}
+
+detectIfSlideExport()
+{
+    if [ "$IncludeSlides" = "yes" ]; then
+        SLIDES="_SLIDES_BEAMER"
+        DZSLIDES="_DZSLIDES"
+        SLIDY="_SLIDY"
+        REVEALS="_REVEALS"
+        SlidesBeamerTitle="$Title$SLIDES"
+        DzSlidesTitle="$Title$DZSLIDES"
+        SlidyTitle="$Title$SLIDY"
+        RevealsTitle="$Title$REVEALS"
+        echo "=> Make Slides with titlename: $Title"
+        echo "hack: $hack"
+
+        # EXPORT  MD to SLIDES
+        echo "=> Make $SlidesBeamerTitle"
+        pandoc -s --variable=hack:"$hack" --variable=home:"$HOME" --variable=CodeLayoutCssName:"$CodeLayoutCssName" --variable=JsStyle:"$JsStyle" --katex --pdf-engine=xelatex --from=markdown+emoji --highlight-style="$HighlightStyle" --filter "$GraphvizFilter" --filter pandoc-pyplot --filter "$PlantUMLFilter" -V theme:"$SlidesTheme" -t beamer "$Title".md  -o "$SlidesBeamerTitle".pdf
+        echo "=> Make $DzSlidesTitle"
+        pandoc -s --variable=hack:"$hack" --variable=home:"$HOME" --variable=CodeLayoutCssName:"$CodeLayoutCssName" --variable=JsStyle:"$JsStyle" --mathjax --from=markdown+emoji --highlight-style="$HighlightStyle" --filter "$GraphvizFilter" --filter pandoc-pyplot --filter "$PlantUMLFilter" --number-sections -i -t dzslides "$Title".md -o "$DzSlidesTitle".html
+        echo "=> Make $SlidyTitle"
+        pandoc -s --variable=hack:"$hack" --variable=home:"$HOME" --template="$TemplateSlidy" --variable=CodeLayoutCssName:"$CodeLayoutCssName" --variable=JsStyle:"$JsStyle" --katex --from=markdown+emoji --highlight-style="$HighlightStyle" --filter "$GraphvizFilter" --filter pandoc-pyplot --filter "$PlantUMLFilter" --number-sections -i -t slidy "$Title".md -o "$SlidyTitle".html
+        echo "=> Make $RevealsTitle"
+        echo "TemplateReveals = $TemplateReveals"
+        echo "ThemeReveals = $ThemeReveals"
+        # pandoc -s --variable=hack:"$hack" --variable=home:"$HOME" --variable=CodeLayoutCssName:"$CodeLayoutCssName" --variable=JsStyle:"$JsStyle" --katex --from=markdown+emoji --highlight-style="$HighlightStyle" --filter "$GraphvizFilter" --filter pandoc-pyplot --filter "$PlantUMLFilter" --number-sections --template="$TemplateReveals" --variable=theme:"$ThemeReveals" -o "$RevealsTitle".html "$Title".md
+        pandoc -s --variable=hack:"$hack" --variable=home:"$HOME" --variable=CodeLayoutCssName:"$CodeLayoutCssName" --variable=JsStyle:"$JsStyle" --katex --from=markdown+emoji --highlight-style="$HighlightStyle" --filter "$GraphvizFilter" --filter pandoc-pyplot --filter "$PlantUMLFilter" --number-sections -t revealjs --variable=theme:"$ThemeReveals" -o "$RevealsTitle".html "$Title".md -V revealjs-url=https://revealjs.com
+    fi
+
 }

@@ -1,18 +1,22 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="">
+<html>
 <head>
-  <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <meta name="author" content="Rodrigo SCHWENCKE, schwencke@lyceeperier.fr" />
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Rodrigo SCHWENCKE, schwencke@lyceeperier.fr">
   <title>TD : My Nice Lesson Title</title>
-  <style type="text/css">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reset.css">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style>
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
       span.underline{text-decoration: underline;}
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
-  <style type="text/css">
+  <style>
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -42,7 +46,7 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  { color: #ffffff;  }
+  { color: #ffffff; background-color: #272822; }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
@@ -76,7 +80,18 @@ code span.va { color: #66d9ef; } /* Variable */
 code span.vs { color: #ba2121; } /* VerbatimString */
 code span.wa { color: #66d9ef; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="/home/luke/.config/md2all/css/lesson.css">
+  <link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
     var mathElements = document.getElementsByClassName("math");
@@ -85,28 +100,33 @@ code span.wa { color: #66d9ef; font-style: italic; } /* Warning */
       if (mathElements[i].tagName == "SPAN") { katex.render(texText.data, mathElements[i], { displayMode: mathElements[i].classList.contains("display"), throwOnError: false } );
     }}});</script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css" />
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
-<header>
-<p class="title">TD : My Nice Lesson Title</p>
-<!--
-<p class="author">Rodrigo SCHWENCKE, schwencke@lyceeperier.fr</p>
--->
-</header>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">TD : My Nice Lesson Title</h1>
+  <p class="author">Rodrigo SCHWENCKE, schwencke@lyceeperier.fr</p>
+</section>
+
+<section class="slide level1">
+
 <blockquote>
 <p>Note: 1°) the .md file is strictly the same than the other theme example. the only difference is the command hereafter. 2°) The auto-numbering of markdown (sub-)headlines.</p>
 </blockquote>
-<h1 id="first-some-code-exemples-with-massilia-dark-theme"><span class="header-section-number">1</span> First Some code Exemples with Massilia Dark Theme</h1>
-<h2 id="command-to-type"><span class="header-section-number">1.1</span> Command to Type</h2>
+</section>
+<section id="first-some-code-exemples-with-massilia-light-theme" class="slide level1">
+<h1><span class="header-section-number">2</span> First Some code Exemples with Massilia Light Theme</h1>
+<h2 id="command-to-type"><span class="header-section-number">2.1</span> Command to Type</h2>
 <p>Command to type in Terminal:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">md2all</span> -dark example.md</span></code></pre></div>
-<h1 id="page-2"><span class="header-section-number">2</span> Page 2</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">md2all</span> -light example.md</span></code></pre></div>
+</section>
+<section id="page-2" class="slide level1">
+<h1><span class="header-section-number">3</span> Page 2</h1>
 <p>Command to type in Terminal:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="ex">md2all</span> -dark example.md</span></code></pre></div>
-<h2 id="html"><span class="header-section-number">2.1</span> HTML</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="ex">md2all</span> -light example.md</span></code></pre></div>
+<h2 id="html"><span class="header-section-number">3.1</span> HTML</h2>
 <div class="sourceCode" id="cb3"><pre class="sourceCode numberSource html numberLines"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1"></a>    <span class="kw">&lt;body&gt;</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a>        <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;box&quot;</span><span class="kw">&gt;</span></span>
 <span id="cb3-3"><a href="#cb3-3"></a>            <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;morpion&quot;</span><span class="kw">&gt;</span></span>
@@ -134,7 +154,7 @@ code span.wa { color: #66d9ef; font-style: italic; } /* Warning */
 <span id="cb4-18"><a href="#cb4-18"></a>    </span>
 <span id="cb4-19"><a href="#cb4-19"></a><span class="kw">&lt;/body&gt;</span></span>
 <span id="cb4-20"><a href="#cb4-20"></a><span class="kw">&lt;/html&gt;</span></span></code></pre></div>
-<h2 id="css" class="pagebreakbefore"><span class="header-section-number">2.2</span> CSS</h2>
+<h2 id="css" class="pagebreakbefore"><span class="header-section-number">3.2</span> CSS</h2>
 <div class="sourceCode" id="cb5"><pre class="sourceCode numberSource css numberLines"><code class="sourceCode css"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">@import</span> <span class="fu">url(</span><span class="st">https://fonts.googleapis.com/css?family=Questrial</span><span class="fu">)</span><span class="op">;</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a> body<span class="op">,</span> p<span class="op">,</span> <span class="pp">#visible</span><span class="op">,</span> <span class="fu">.warning</span><span class="op">,</span> {</span>
 <span id="cb5-3"><a href="#cb5-3"></a>     <span class="kw">font-family</span>: Questrial<span class="op">,</span> Andika<span class="op">,</span> <span class="st">&quot;Amerigo BT&quot;</span><span class="op">,</span> Century<span class="op">,</span> <span class="st">&quot;Bookman URW&quot;</span><span class="op">,</span> <span class="st">&quot;Bitstream Vera Serif&quot;</span><span class="op">,</span> <span class="st">&quot;Free Sans&quot;</span><span class="op">,</span> Georgia<span class="op">,</span> <span class="dv">Serif</span><span class="op">,</span> Aerial<span class="op">,</span> <span class="st">&quot;Times New Roman&quot;</span><span class="op">,</span> <span class="st">&quot;STSong&quot;</span><span class="op">,</span> <span class="st">&quot;PT Serif&quot;</span><span class="op">;</span></span>
@@ -149,18 +169,18 @@ code span.wa { color: #66d9ef; font-style: italic; } /* Warning */
 <span id="cb5-12"><a href="#cb5-12"></a>     <span class="kw">text-align</span>: <span class="dv">justify</span><span class="op">;</span></span>
 <span id="cb5-13"><a href="#cb5-13"></a>     <span class="kw">margin</span> : <span class="dv">0.1</span><span class="dt">rem</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb5-14"><a href="#cb5-14"></a> }</span></code></pre></div>
-<h2 id="javascript"><span class="header-section-number">2.3</span> Javascript</h2>
+<h2 id="javascript"><span class="header-section-number">3.3</span> Javascript</h2>
 <div class="sourceCode" id="cb6" data-startFrom="14"><pre class="sourceCode numberSource javascript numberLines"><code class="sourceCode javascript" style="counter-reset: source-line 13;"><span id="cb6-14"><a href="#cb6-14"></a><span class="kw">var</span> codeClasses <span class="op">=</span> []<span class="op">;</span></span>
 <span id="cb6-15"><a href="#cb6-15"></a>    <span class="kw">var</span> codesList <span class="op">=</span> <span class="va">document</span>.<span class="at">querySelectorAll</span>(<span class="st">&#39;code.sourceCode&#39;</span>)<span class="op">;</span></span>
 <span id="cb6-16"><a href="#cb6-16"></a>    <span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="va">codesList</span>.<span class="at">length</span><span class="op">;</span> i<span class="op">++</span>) <span class="op">{</span></span>
 <span id="cb6-17"><a href="#cb6-17"></a>        <span class="va">codeClasses</span>.<span class="at">push</span>(codesList[i].<span class="at">classList</span>[<span class="dv">1</span>])<span class="op">;</span></span>
 <span id="cb6-18"><a href="#cb6-18"></a>        codesList[i].<span class="va">classList</span>.<span class="at">add</span>(<span class="st">&quot;language-&quot;</span><span class="op">+</span>codeClasses[i])<span class="op">;</span></span>
 <span id="cb6-19"><a href="#cb6-19"></a>    <span class="op">}</span></span></code></pre></div>
-<h2 id="php"><span class="header-section-number">2.4</span> PHP</h2>
+<h2 id="php"><span class="header-section-number">3.4</span> PHP</h2>
 <div class="sourceCode" id="cb7" data-startFrom="4"><pre class="sourceCode numberSource php numberLines"><code class="sourceCode php" style="counter-reset: source-line 3;"><span id="cb7-4"><a href="#cb7-4"></a><span class="kw">&lt;?php</span></span>
 <span id="cb7-5"><a href="#cb7-5"></a><span class="kw">echo</span> <span class="st">&quot;Hello World!&quot;</span><span class="ot">;</span></span>
 <span id="cb7-6"><a href="#cb7-6"></a><span class="kw">?&gt;</span></span></code></pre></div>
-<h2 id="python"><span class="header-section-number">2.5</span> Python</h2>
+<h2 id="python"><span class="header-section-number">3.5</span> Python</h2>
 <div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="co">#!/usr/bin/env python</span></span>
 <span id="cb8-2"><a href="#cb8-2"></a></span>
 <span id="cb8-3"><a href="#cb8-3"></a><span class="co">&quot;&quot;&quot;</span></span>
@@ -185,24 +205,34 @@ code span.wa { color: #66d9ef; font-style: italic; } /* Warning */
 <span id="cb8-22"><a href="#cb8-22"></a></span>
 <span id="cb8-23"><a href="#cb8-23"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</span>
 <span id="cb8-24"><a href="#cb8-24"></a>    maFonction(<span class="st">&quot; you!&quot;</span>)</span></code></pre></div>
-<h1 id="latex" class="pagebreakbefore"><span class="header-section-number">3</span> LateX</h1>
+</section>
+<section id="latex" class="slide level1 pagebreakbefore">
+<h1><span class="header-section-number">4</span> LateX</h1>
 <p>Hey! This is how to insert LaTeX code in your .md File, as a math inline formula <span class="math inline">\sqrt 4 = 2</span> , so this line goes on after the other inline formula <span class="math inline">i^2</span>, or, as a block code: <span class="math display">i_0=1; i_1=2</span> That’s it!</p>
-<h1 id="matplotlib"><span class="header-section-number">4</span> Matplotlib</h1>
+</section>
+<section id="matplotlib" class="slide level1">
+<h1><span class="header-section-number">5</span> Matplotlib</h1>
 <p>A Matplotlib rendered Image, with Matplotlib syntax</p>
 <figure>
-<img src="generated/-2254304317340054494.png" class="imgbox" alt="" /><figcaption> (<a href="generated/-2254304317340054494.txt">Source code</a>, <a href="generated/-2254304317340054494.hires.png">high res.</a>)</figcaption>
+<img data-src="generated/-2254304317340054494.png" class="imgbox" alt="" /><figcaption> (<a href="generated/-2254304317340054494.txt">Source code</a>, <a href="generated/-2254304317340054494.hires.png">high res.</a>)</figcaption>
 </figure>
-<h1 id="graphviz" class="pagebreakbefore"><span class="header-section-number">5</span> Graphviz</h1>
+</section>
+<section id="graphviz" class="slide level1 pagebreakbefore">
+<h1><span class="header-section-number">6</span> Graphviz</h1>
 <p>A Graphviz rendered Image, with the .dot syntax</p>
 <figure>
-<img src="graph-images/jolifichier.svg" class="graph center imgbox" name="jolifichier.svg" alt="" /><figcaption>This was generated using the graphviz.py filter.</figcaption>
+<img data-src="graph-images/jolifichier.svg" class="graph center imgbox" name="jolifichier.svg" alt="" /><figcaption>This was generated using the graphviz.py filter.</figcaption>
 </figure>
-<h1 id="plantuml"><span class="header-section-number">6</span> PlantUML</h1>
+</section>
+<section id="plantuml" class="slide level1">
+<h1><span class="header-section-number">7</span> PlantUML</h1>
 <p>A plantUML rendered image :</p>
 <figure>
-<img src="plantuml-images/jolifichier.png" class="plantuml center" name="jolifichier.uml" alt="" /><figcaption>This was generated using the PlantUML filter.</figcaption>
+<img data-src="plantuml-images/jolifichier.png" class="plantuml center" name="jolifichier.uml" alt="" /><figcaption>This was generated using the PlantUML filter.</figcaption>
 </figure>
-<h1 id="multi-columns" class="pagebreakbefore"><span class="header-section-number">7</span> Multi-Columns</h1>
+</section>
+<section id="multi-columns" class="slide level1 pagebreakbefore">
+<h1><span class="header-section-number">8</span> Multi-Columns</h1>
 <p>First Normal Paragraph</p>
 <p><br />
 </p>
@@ -229,24 +259,45 @@ code span.wa { color: #66d9ef; font-style: italic; } /* Warning */
 </div>
 <p>Last Normal Paragraph. Last Normal Paragraph. Last Normal Paragraph.</p>
 <p>Last Normal Paragraph. Last Normal Paragraph. Last Normal Paragraph.</p>
-<h1 id="images"><span class="header-section-number">8</span> Images</h1>
+</section>
+<section id="images" class="slide level1">
+<h1><span class="header-section-number">9</span> Images</h1>
 <figure>
-<img src="grid.png" alt="" /><figcaption>Caption 0: Original Size</figcaption>
+<img data-src="grid.png" alt="" /><figcaption>Caption 0: Original Size</figcaption>
 </figure>
 <figure>
-<img src="grid.png" style="width:40.0%" alt="" /><figcaption>Caption 1: 40% width</figcaption>
+<img data-src="grid.png" style="width:40.0%" alt="" /><figcaption>Caption 1: 40% width</figcaption>
 </figure>
 <figure>
-<img src="grid.png" style="width:300px;height:200px;" alt="" /><figcaption>Caption 2: Fixed width=300px and height=200px with style attribute</figcaption>
+<img data-src="grid.png" style="width:300px;height:200px;" alt="" /><figcaption>Caption 2: Fixed width=300px and height=200px with style attribute</figcaption>
 </figure>
 <figure>
-<img src="grid.png" class="noimgbox" style="width:20.0%" alt="" /><figcaption>Caption 3, with .noimgbox and width 20%</figcaption>
+<img data-src="grid.png" class="noimgbox" style="width:20.0%" alt="" /><figcaption>Caption 3, with .noimgbox and width 20%</figcaption>
 </figure>
 <figure>
-<img src="grid.png" class="myClass" data-myAttribute="myValue" style="width:40.0%" alt="" /><figcaption>Caption 4, with custom class and attribute (cf html)</figcaption>
+<img data-src="grid.png" class="myClass" data-myAttribute="myValue" style="width:40.0%" alt="" /><figcaption>Caption 4, with custom class and attribute (cf html)</figcaption>
 </figure>
-<link rel="stylesheet" href="/home/luke/.config/md2all/css/massilia.css">
-<link rel="stylesheet" href="/home/luke/.config/md2all/css/massiliaDarkHack.css">
-<script src="/home/luke/.config/md2all/js/script.js"></script>
-</body>
+</section>
+    </div>
+  </div>
+
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
 </html>

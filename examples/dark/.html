@@ -1,18 +1,22 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="">
+<html>
 <head>
-  <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <meta name="author" content="Rodrigo SCHWENCKE, schwencke@lyceeperier.fr" />
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Rodrigo SCHWENCKE, schwencke@lyceeperier.fr">
   <title>TD : My Nice Lesson Title</title>
-  <style type="text/css">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reset.css">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style>
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
       span.underline{text-decoration: underline;}
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
-  <style type="text/css">
+  <style>
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -76,7 +80,18 @@ code span.va { color: #66d9ef; } /* Variable */
 code span.vs { color: #ba2121; } /* VerbatimString */
 code span.wa { color: #66d9ef; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="/home/luke/.config/md2all/css/lesson.css">
+  <link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
     var mathElements = document.getElementsByClassName("math");
@@ -85,17 +100,16 @@ code span.wa { color: #66d9ef; font-style: italic; } /* Warning */
       if (mathElements[i].tagName == "SPAN") { katex.render(texText.data, mathElements[i], { displayMode: mathElements[i].classList.contains("display"), throwOnError: false } );
     }}});</script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css" />
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
-<header>
-<p class="title">TD : My Nice Lesson Title</p>
-<!--
-<p class="author">Rodrigo SCHWENCKE, schwencke@lyceeperier.fr</p>
--->
-</header>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">TD : My Nice Lesson Title</h1>
+  <p class="author">Rodrigo SCHWENCKE, schwencke@lyceeperier.fr</p>
+</section>
+
 <blockquote>
 <p>Note: 1°) the .md file is strictly the same than the other theme example. the only difference is the command hereafter. 2°) The auto-numbering of markdown (sub-)headlines.</p>
 </blockquote>
@@ -245,8 +259,29 @@ code span.wa { color: #66d9ef; font-style: italic; } /* Warning */
 <figure>
 <img src="grid.png" class="myClass" data-myAttribute="myValue" style="width:40.0%" alt="" /><figcaption>Caption 4, with custom class and attribute (cf html)</figcaption>
 </figure>
-<link rel="stylesheet" href="/home/luke/.config/md2all/css/massilia.css">
-<link rel="stylesheet" href="/home/luke/.config/md2all/css/massiliaDarkHack.css">
-<script src="/home/luke/.config/md2all/js/script.js"></script>
-</body>
+    </div>
+  </div>
+
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    <link rel="stylesheet" href="/home/luke/.config/md2all/css/massilia.css">
+  <link rel="stylesheet" href="/home/luke/.config/md2all/css/massiliaDarkHack.css">
+  <script src="/home/luke/.config/md2all/js/script.js"></script>
+  </body>
 </html>

@@ -12,6 +12,13 @@ Command to type in Terminal:
 md2all -dark example.md
 ```
 
+# Page 2
+
+Command to type in Terminal:
+```{.bash}
+md2all -dark example.md
+```
+
 ## HTML
 
 ```{.html .numberLines}
