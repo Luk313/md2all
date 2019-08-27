@@ -62,7 +62,9 @@ window.onload = function () {
     // Fix {.pagebreakbefore} not working inside ul, li, normal parapgraphs, etc.. 
     var pageBreakBeforeList = document.querySelectorAll('.pagebreakbefore, .newpage');
     for (var i = 0; i < pageBreakBeforeList.length; i++) {
-        pageBreakBeforeList[i].parentElement.previousElementSibling.innerHTML += "<div style='page-break-after: always;'></div><div></div>";
+        if (pageBreakBeforeList[i].parentElement.previousElementSibling) {
+            pageBreakBeforeList[i].parentElement.previousElementSibling.innerHTML += "<div style='page-break-after: always;'></div><div></div>";
+            }
         }
 
     // Detect and configure media query print vs screen/others:

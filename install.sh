@@ -40,7 +40,7 @@ cp -R -i js $HOME/.config/md2all/
 
 cp -R -i templates $HOME/.config/md2all/
 # sudo ln -s $HOME/.config/md2all/templates/revealsjs/massilia.revealsjs /usr/share/pandoc/data/templates
-sudo cp -R -i templates/revealsjs/massilia.revealsjs /usr/share/pandoc/data/templates
+sudo cp -R -i templates/revealjs/massilia.revealjs /usr/share/pandoc/data/templates
 
 ln -s -i $HOME/.config/md2all/templates/lesson.template $HOME/.config/md2all/templates/default.template
 

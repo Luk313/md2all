@@ -8,8 +8,8 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="https://revealjs.com/css/reset.css">
-  <link rel="stylesheet" href="https://revealjs.com/css/reveal.css">
+  <link rel="stylesheet" href="/home/luke/.config/md2all/templates/reveal.js//css/reset.css">
+  <link rel="stylesheet" href="/home/luke/.config/md2all/templates/reveal.js//css/reveal.css">
   <style>
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -80,17 +80,17 @@ code span.va { color: #66d9ef; } /* Variable */
 code span.vs { color: #ba2121; } /* VerbatimString */
 code span.wa { color: #66d9ef; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="https://revealjs.com/css/theme/beige.css" id="theme">
+  <link rel="stylesheet" href="/home/luke/.config/md2all/templates/reveal.js//css/theme/black.css" id="theme">
   <!-- Printing and PDF exports -->
   <script>
     var link = document.createElement( 'link' );
     link.rel = 'stylesheet';
     link.type = 'text/css';
-    link.href = window.location.search.match( /print-pdf/gi ) ? 'https://revealjs.com/css/print/pdf.css' : 'https://revealjs.com/css/print/paper.css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? '/home/luke/.config/md2all/templates/reveal.js//css/print/pdf.css' : '/home/luke/.config/md2all/templates/reveal.js//css/print/paper.css';
     document.getElementsByTagName( 'head' )[0].appendChild( link );
   </script>
   <!--[if lt IE 9]>
-  <script src="https://revealjs.com/lib/js/html5shiv.js"></script>
+  <script src="/home/luke/.config/md2all/templates/reveal.js//lib/js/html5shiv.js"></script>
   <![endif]-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
@@ -281,21 +281,33 @@ code span.wa { color: #66d9ef; font-style: italic; } /* Warning */
     </div>
   </div>
 
-  <script src="https://revealjs.com/js/reveal.js"></script>
+  <script src="/home/luke/.config/md2all/templates/reveal.js//js/reveal.js"></script>
 
   <script>
 
       // Full list of configuration options available at:
       // https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+        // Display a presentation progress bar
+        progress: true,
         // Push each slide change to the browser history
         history: true,
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+        // Transition style
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+        // Transition speed
+        transitionSpeed: 'default', // default/fast/slow
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'slide', // none/fade/slide/convex/concave/zoom
 
         // Optional reveal.js plugins
         dependencies: [
-          { src: 'https://revealjs.com/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-          { src: 'https://revealjs.com/plugin/zoom-js/zoom.js', async: true },
-          { src: 'https://revealjs.com/plugin/notes/notes.js', async: true }
+          { src: '/home/luke/.config/md2all/templates/reveal.js//lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '/home/luke/.config/md2all/templates/reveal.js//plugin/zoom-js/zoom.js', async: true },
+          { src: '/home/luke/.config/md2all/templates/reveal.js//plugin/notes/notes.js', async: true }
         ]
       });
     </script>

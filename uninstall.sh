@@ -22,8 +22,8 @@ sudo rm /usr/bin/md2all
 echo "==> Uninstalling /usr/lib/md2all.lib"
 sudo rm /usr/lib/md2all.lib
 
-echo "==> Uninstalling /usr/share/pandoc/data/templates/massilia.revealsjs"
-sudo rm /usr/share/pandoc/data/templates/massilia.revealsjs
+echo "==> Uninstalling /usr/share/pandoc/data/templates/massilia.revealjs"
+sudo rm /usr/share/pandoc/data/templates/massilia.revealjs
 
 echo "==> Uninstalling config dir in ~/.config/md2all/"
 sudo rm -R $HOME/.config/md2all

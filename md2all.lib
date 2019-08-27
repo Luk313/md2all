@@ -195,11 +195,11 @@ detectIfSlideExport()
         SLIDES="_SLIDES_BEAMER"
         DZSLIDES="_DZSLIDES"
         SLIDY="_SLIDY"
-        REVEALS="_REVEALS"
+        REVEAL="_REVEAL"
         SlidesBeamerTitle="$Title$SLIDES"
         DzSlidesTitle="$Title$DZSLIDES"
         SlidyTitle="$Title$SLIDY"
-        RevealsTitle="$Title$REVEALS"
+        RevealTitle="$Title$REVEAL"
         echo "=> Make Slides with titlename: $Title"
         echo "hack: $hack"
 
@@ -211,10 +211,14 @@ detectIfSlideExport()
         echo "=> Make $SlidyTitle"
         pandoc -s --variable=hack:"$hack" --variable=home:"$HOME" --template="$TemplateSlidy" --variable=CodeLayoutCssName:"$CodeLayoutCssName" --variable=JsStyle:"$JsStyle" --katex --from=markdown+emoji --highlight-style="$HighlightStyle" --filter "$GraphvizFilter" --filter pandoc-pyplot --filter "$PlantUMLFilter" --number-sections -i -t slidy "$Title".md -o "$SlidyTitle".html
         echo "=> Make $RevealsTitle"
-        echo "TemplateReveals = $TemplateReveals"
-        echo "ThemeReveals = $ThemeReveals"
-        # pandoc -s --variable=hack:"$hack" --variable=home:"$HOME" --variable=CodeLayoutCssName:"$CodeLayoutCssName" --variable=JsStyle:"$JsStyle" --katex --from=markdown+emoji --highlight-style="$HighlightStyle" --filter "$GraphvizFilter" --filter pandoc-pyplot --filter "$PlantUMLFilter" --number-sections --template="$TemplateReveals" --variable=theme:"$ThemeReveals" -o "$RevealsTitle".html "$Title".md
-        pandoc -s --variable=hack:"$hack" --variable=home:"$HOME" --variable=CodeLayoutCssName:"$CodeLayoutCssName" --variable=JsStyle:"$JsStyle" --katex --from=markdown+emoji --highlight-style="$HighlightStyle" --filter "$GraphvizFilter" --filter pandoc-pyplot --filter "$PlantUMLFilter" --number-sections -t revealjs --variable=theme:"$ThemeReveals" -o "$RevealsTitle".html "$Title".md -V revealjs-url=https://revealjs.com
+        echo "TemplateReveal = $TemplateReveal"
+        echo "ThemeReveal = $ThemeReveal"
+        # REVEALJS via the Web
+        # pandoc -s --variable=hack:"$hack" --variable=home:"$HOME" --variable=CodeLayoutCssName:"$CodeLayoutCssName" --variable=JsStyle:"$JsStyle" --katex --from=markdown+emoji --highlight-style="$HighlightStyle" --filter "$GraphvizFilter" --filter pandoc-pyplot --filter "$PlantUMLFilter" --number-sections -t revealjs --variable=theme:"$ThemeReveal" -o "$RevealTitle".html "$Title".md -V revealjs-url=https://revealjs.com
+        # REVEALJS Custom Files
+        pandoc -s --variable=hack:"$hack" --variable=home:"$HOME" --variable=CodeLayoutCssName:"$CodeLayoutCssName" --variable=JsStyle:"$JsStyle" --variable=controls:"true" --variable=progress:"true" --variable=transition:"slide" --variable=transitionSpeed:"default" --variable=keyboard:"true" --variable=backgroundTransition:"slide" --katex --from=markdown+emoji --highlight-style="$HighlightStyle" --filter "$GraphvizFilter" --filter pandoc-pyplot --filter "$PlantUMLFilter" --number-sections -t revealjs --variable=theme:"$ThemeReveal" -o "$RevealTitle".html "$Title".md -V revealjs-url="$revealjsUrl"
+        echo "=> Make Impress.js"
+        pandoc --template impress-template.html -V impress-url=impress.js -s -t html5 --section-divs -o impress.html impress.txt
     fi
 
 }
