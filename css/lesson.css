@@ -284,6 +284,12 @@
 	 margin: 0;
 	 padding: 0 0 0 0.5em;
  }
+
+ .clearboth {
+	 clear:both;
+	 border:none;
+	 box-shadow:none;
+ }
  
  p, td, div, ul, li {
 	 -webkit-hyphens: auto;
