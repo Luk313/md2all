@@ -13,14 +13,12 @@ window.onload = function () {
     for (var i = 0; i < preList.length; i++) {
         // codeClasses.push(codesList[i].classList[1]);
         preList[i].classList.add("language-"+codeClasses[i]);
-        preList[i].style.backgroundColor = "transparent";
     }
     
     // To try to force border-radius with pandoc background color set. Non concluant
     var codesListBorderRadius = document.querySelectorAll(':not(pre) > code[class*="language-"], pre[class*="language-"], code[class*="language-"]');
     for (var i = 0; i < codesListBorderRadius.length; i++) {
         codesListBorderRadius[i].style.borderRadius = "0.5em";
-        codesListBorderRadius[i].style.backgroundColor = "transparent";
     }
     console.log(codesListBorderRadius);
 
