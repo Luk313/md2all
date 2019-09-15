@@ -56,14 +56,8 @@ splitOptionsAndFilename $*
 checkSyntax $filename
 Title=`echo $filename | cut -f1 -d'.'`
 
-# echoExportType
-
-# echo "=> Processing from Markdown file : "$Title".md"
-# echo "=> Make HTML file : "$Title".html"
-# echo "=> with Highlight Style : $HighlightStyle"
-# echo "=> with Code Style : $CodeStyle"
-# echo "=> with Page Style CSS : $PageStyleCss"
-# echo "=> with Template : $Template"
+Author=$(head -2 "$Title".md | tail -1)
+Author=${Author:2}
 
 detectIfSlideExport
 
@@ -72,9 +66,6 @@ detectIfDualExport
 exportToHTML
 
 # echo "=> Make PDF file : $Title.pdf ..."
-
-Author=$(head -2 "$Title".md | tail -1)
-Author=${Author:2}
 
 exportToPDF
 
