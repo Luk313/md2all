@@ -6,6 +6,7 @@ window.onload = function () {
         codeClasses.push(codesList[i].classList[1]);
         codesList[i].classList.add("language-"+codeClasses[i]);
         codesList[i].style.borderRadius = "0.3em";
+        // codesList[i].style.fontFamily = "Source Code Pro";
     }
 
     // (For Prism.js:) add language-XXX class to pre tags
@@ -70,6 +71,7 @@ window.onload = function () {
         if (isPrint.matches) { // If media query matches
             // document.body.style.backgroundColor = "beige";
             // IMPORTANT: To prevent code highlight to BREAK in @media print
+
             var preCodeList = document.querySelectorAll('pre > code.sourceCode');
             for (var i = 0; i < preCodeList.length; i++) {
                 preCodeList[i].style.whiteSpace = "pre";
