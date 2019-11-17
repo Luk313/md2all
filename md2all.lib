@@ -205,7 +205,14 @@ detectIfSlideExport()
 
         # EXPORT  MD to SLIDES
         echo "=> Make $SlidesBeamerTitle"
-        pandoc -s --variable=hack:"$hack" --variable=home:"$HOME" --variable=CodeLayoutCssName:"$CodeLayoutCssName" --variable=JsStyle:"$JsStyle" --katex --pdf-engine=xelatex --from=markdown+emoji --highlight-style="$HighlightStyle" --filter "$GraphvizFilter" --filter pandoc-pyplot --filter "$PlantUMLFilter" -V theme:"$SlidesTheme" -t beamer "$Title".md  -o "$SlidesBeamerTitle".pdf
+        if [ ! -f ./beamerconfig.yaml ]; then
+            echo "NO BEAMERCONFIG.YAML file FOUND!!!"
+            cp "$HOME/.config/md2all/beamerconfig.yaml" .
+        else
+            echo "CONFIG FILE FOUND!!!"
+        fi
+
+        pandoc -s --variable=hack:"$hack" --variable=home:"$HOME" --variable=CodeLayoutCssName:"$CodeLayoutCssName" --variable=JsStyle:"$JsStyle" --katex --pdf-engine=xelatex --from=markdown+emoji --highlight-style="$HighlightStyle" --filter "$GraphvizFilter" --filter pandoc-pyplot --filter "$PlantUMLFilter" --metadata-file=beamerconfig.yaml -t beamer "$Title".md  -o "$SlidesBeamerTitle".pdf
         echo "=> Make $DzSlidesTitle"
         pandoc -s --variable=hack:"$hack" --variable=home:"$HOME" --variable=CodeLayoutCssName:"$CodeLayoutCssName" --variable=JsStyle:"$JsStyle" --mathjax --from=markdown+emoji --highlight-style="$HighlightStyle" --filter "$GraphvizFilter" --filter pandoc-pyplot --filter "$PlantUMLFilter" --number-sections -i -t dzslides "$Title".md -o "$DzSlidesTitle".html
         echo "=> Make $SlidyTitle"

@@ -42,6 +42,8 @@ cp -R -i templates $HOME/.config/md2all/
 # sudo ln -s $HOME/.config/md2all/templates/revealsjs/massilia.revealsjs /usr/share/pandoc/data/templates
 sudo cp -R -i templates/revealjs/massilia.revealjs /usr/share/pandoc/data/templates
 
+cp -i beamerconfig.yaml $HOME/.config/md2all
+
 ln -s -i $HOME/.config/md2all/templates/lesson.template $HOME/.config/md2all/templates/default.template
 
 echo "==> Install Correctly Completed ..."
