@@ -1,17 +1,17 @@
 ---
 theme: Darmstadt
-colortheme: "orchid"
+colortheme: orchid
 outertheme: miniframes
 fonttheme: structuresmallcapsserif 
 title: Introduction à Python
 subtitle:  2nde SNT
 author: 'Rodrigo SCHWENCKE'
 institute: 'Lycée PÉRIER of Marseille'
-date: Novembre 2019
+date: \today
 # background-image: /home/luke/Documents/Images/AdminNSI.png
 fontsize: 14pt
 toc: false
 slide_level: 1
-in_header: header_beamer.tex
+navigation: horizontal
 # logo: /home/luke/Images/perier.png
 ---

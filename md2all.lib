@@ -56,6 +56,7 @@ for arg in $*
                 HighlightStyle="$HOME/.config/md2all/css/massiliaLight.theme"
                 CodeStyle="light"
                 hack="Light"
+                CodeStyleCssChanged=1
                 shift
                 # echo "Massilia Light Detected"
                 ;;
@@ -65,6 +66,7 @@ for arg in $*
                 CodeStyle="dark"
                 hack="Dark"
                 shift
+                CodeStyleCssChanged=1
                 # echo "Massilia Dark Detected"
                 ;;
             -dual | --dual)
@@ -72,6 +74,14 @@ for arg in $*
                 HighlightStyle="$HOME/.config/md2all/css/massiliaDark.theme"
                 CodeStyle="dual"
                 hack="Light"
+                if [ "$BeamerSlides" = "yes" ]; then
+                    # echo "BEAMER DETECTED"
+                    # CodeStyleCss="light"
+                    HighlightStyle="$HOME/.config/md2all/css/massiliaLight.theme"
+                    # CodeStyle="light"
+                    hack="Light"
+                fi
+                CodeStyleCssChanged=1
                 shift
                 # echo "Massilia Dual Detected"
                 ;;
@@ -88,6 +98,14 @@ for arg in $*
 
             -sl | --sl | -slides | --slides)
                 BeamerSlides="yes"
+                echo "CodeStyleCssChanged = $CodeStyleCssChanged"
+                if [ "$CodeStyleCssChanged" != 1 -o "$CodeStyleCss" == "dual" ]; then
+                    echo "CODE STYLE NOT CHANGED !!"
+                    CodeStyleCss="light"
+                    HighlightStyle="$HOME/.config/md2all/css/massiliaLight.theme"
+                    CodeStyle="light"
+                    hack="Light"
+                fi
                 shift
                 ;;
 
@@ -207,7 +225,7 @@ detectIfBeamerSlideExport()
             cp "$HOME/.config/md2all/beamerconfig.yaml" .
         fi
 
-        # EXPORT  MD to SLIDES
+        # EXPORT MD to BEAMER SLIDES
         echo "=> Make $SlidesBeamerTitle.pdf"
 
         pandoc -s --variable=hack:"$hack" --variable=home:"$HOME" --variable=CodeLayoutCssName:"$CodeLayoutCssName" --variable=JsStyle:"$JsStyle" --katex --pdf-engine=xelatex --from=markdown+emoji --highlight-style="$HighlightStyle" --filter "$GraphvizFilter" --filter pandoc-pyplot --filter "$PlantUMLFilter" --metadata-file=beamerconfig.yaml -t beamer "$Title".md  -o "$SlidesBeamerTitle".pdf
