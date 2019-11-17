@@ -87,7 +87,12 @@ for arg in $*
                 ;;
 
             -sl | --sl | -slides | --slides)
-                IncludeSlides="yes"
+                BeamerSlides="yes"
+                shift
+                ;;
+
+            -hsl | -htsl | --htsl | -html-slides | --html-slides)
+                HtmlSlides="yes"
                 shift
                 ;;
 
@@ -135,21 +140,21 @@ fi
 detectIfDualExport()
 {
     if [ "$CodeStyle" = "dual" ]; then
-    CodeStyle="light"
-    HighlightStyle="$HOME/.config/md2all/css/massiliaLight.theme"
-    hack="Light"
-    exportToHTML
+        CodeStyle="light"
+        HighlightStyle="$HOME/.config/md2all/css/massiliaLight.theme"
+        hack="Light"
+        exportToHTML
 
-    echo "=> Make PDF file : $Title.pdf ..."
-    # EXPORT HTML to PDF
-    exportToPDF
+        echo "=> Make PDF file : $Title.pdf ..."
+        # EXPORT HTML to PDF
+        exportToPDF
 
-    CodeStyle="dark"
-    HighlightStyle="$HOME/.config/md2all/css/massiliaDark.theme"
-    hack="Dark"
-    exportToHTML
-    exit 0
-fi
+        CodeStyle="dark"
+        HighlightStyle="$HOME/.config/md2all/css/massiliaDark.theme"
+        hack="Dark"
+        exportToHTML
+        exit 0
+    fi
 }
 
 # echoExportType()
@@ -189,9 +194,32 @@ exportToPDF()
     return 0
 }
 
-detectIfSlideExport()
+detectIfBeamerSlideExport()
 {
-    if [ "$IncludeSlides" = "yes" ]; then
+    if [ "$BeamerSlides" = "yes" ]; then
+        SLIDES="_SLIDES_BEAMER"
+        SlidesBeamerTitle="$Title$SLIDES"
+        # echo "hack: $hack"
+
+        # COPY Config File if not exists
+        if [ ! -f ./beamerconfig.yaml ]; then
+            echo "copying beamerconfig.yaml file in current directory"
+            cp "$HOME/.config/md2all/beamerconfig.yaml" .
+        fi
+
+        # EXPORT  MD to SLIDES
+        echo "=> Make $SlidesBeamerTitle.pdf"
+
+        pandoc -s --variable=hack:"$hack" --variable=home:"$HOME" --variable=CodeLayoutCssName:"$CodeLayoutCssName" --variable=JsStyle:"$JsStyle" --katex --pdf-engine=xelatex --from=markdown+emoji --highlight-style="$HighlightStyle" --filter "$GraphvizFilter" --filter pandoc-pyplot --filter "$PlantUMLFilter" --metadata-file=beamerconfig.yaml -t beamer "$Title".md  -o "$SlidesBeamerTitle".pdf
+        exit 0
+    fi
+
+}
+
+detectIfHtmlSlideExport()
+{
+    if [ "$HtmlSlides" = "yes" ]; then
+        echo "INSIDE HTML SLIDES !!"
         SLIDES="_SLIDES_BEAMER"
         DZSLIDES="_DZSLIDES"
         SLIDY="_SLIDY"
@@ -206,10 +234,8 @@ detectIfSlideExport()
         # EXPORT  MD to SLIDES
         echo "=> Make $SlidesBeamerTitle"
         if [ ! -f ./beamerconfig.yaml ]; then
-            echo "NO BEAMERCONFIG.YAML file FOUND!!!"
+            echo "copying beamerconfig.yaml file in current directory"
             cp "$HOME/.config/md2all/beamerconfig.yaml" .
-        else
-            echo "CONFIG FILE FOUND!!!"
         fi
 
         pandoc -s --variable=hack:"$hack" --variable=home:"$HOME" --variable=CodeLayoutCssName:"$CodeLayoutCssName" --variable=JsStyle:"$JsStyle" --katex --pdf-engine=xelatex --from=markdown+emoji --highlight-style="$HighlightStyle" --filter "$GraphvizFilter" --filter pandoc-pyplot --filter "$PlantUMLFilter" --metadata-file=beamerconfig.yaml -t beamer "$Title".md  -o "$SlidesBeamerTitle".pdf
@@ -226,6 +252,8 @@ detectIfSlideExport()
         pandoc -s --variable=hack:"$hack" --variable=home:"$HOME" --variable=CodeLayoutCssName:"$CodeLayoutCssName" --variable=JsStyle:"$JsStyle" --variable=controls:"true" --variable=progress:"true" --variable=transition:"slide" --variable=transitionSpeed:"default" --variable=keyboard:"true" --variable=backgroundTransition:"slide" --katex --from=markdown+emoji --highlight-style="$HighlightStyle" --filter "$GraphvizFilter" --filter pandoc-pyplot --filter "$PlantUMLFilter" --number-sections -t revealjs --variable=theme:"$ThemeReveal" -o "$RevealTitle".html "$Title".md -V revealjs-url="$revealjsUrl"
         echo "=> Make Impress.js"
         pandoc --template impress-template.html -V impress-url=impress.js -s -t html5 --section-divs -o impress.html impress.txt
+    else
+        echo "HTML SLIDES NOT DETECTED"
     fi
 
 }

@@ -39,7 +39,9 @@ PlantUMLFilter="$HOME/.config/md2all/filters/plantuml/plantuml.py"
 Template="$HOME/.config/md2all/templates/lesson.template"
 JsStyle="$HOME/.config/md2all/js/script.js"
 exportType="offline"
-IncludeSlides="no"
+BeamerSlides="no"
+HtmlSlides="no"
+
 # SlidesTheme="Frankfurt"
 SlidesTheme="Frankfurt"
 TemplateSlidy="$HOME/.config/md2all/templates/slidy/massilia.slidy"
@@ -59,7 +61,9 @@ Title=`echo $filename | cut -f1 -d'.'`
 Author=$(head -2 "$Title".md | tail -1)
 Author=${Author:2}
 
-detectIfSlideExport
+detectIfBeamerSlideExport
+
+detectIfHtmlSlideExport
 
 detectIfDualExport
 
