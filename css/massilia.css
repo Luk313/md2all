@@ -14,6 +14,15 @@ Modify configs in /usr/bin/md2all:
 - HighlightStyle path should be adapted
 */
 
+p.title { /* Titre du TD */
+	line-height: 0.9em;
+}
+
+h1[data-number] { /* Paragraphes */
+	background-color: #78b5de;
+	line-height: 1em;
+}
+
  code[class*="language-"],
  pre[class*="language-"] {
 	 /* color: #f8f8f2; */
@@ -153,3 +162,7 @@ pre.numberLines > code.sourceCode > span > a {
 	 cursor: help;
  }
  
+ /* workaround for clickable images */
+ a { 
+	display: inline;
+}
