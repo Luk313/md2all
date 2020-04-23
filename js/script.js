@@ -70,28 +70,22 @@ window.onload = function () {
     var clickableImgList = document.querySelectorAll('a > img');
     for (var i = 0; i < clickableImgList.length; i++) {
         var img = clickableImgList[i];
-        
         var aTag = img.parentNode;
         var imgOld = aTag.removeChild(img);
-        
         var altText = imgOld.getAttribute("alt");
         var figure = document.createElement("figure");
         var figcaption = document.createElement("figcaption");
-        figcaption.textContent = altText;
-        
+        figcaption.textContent = altText;        
         figure.appendChild(imgOld);
         figure.appendChild(figcaption);
         aTag.insertBefore(figure,aTag.firstChild);
-
-
-        img.parentNode.replaceChild(imgAvecFigCaption,img);
-
+        // img.parentNode.replaceChild(imgAvecFigCaption,img);
     }
 
-    function insertInside(element,nomTag) {
-        nouveauTag = document.createElement(nomTag);
-        return nouveauTag.appendChild(element);
-    }
+    // function insertInside(element,nomTag) {
+    //     nouveauTag = document.createElement(nomTag);
+    //     return nouveauTag.appendChild(element);
+    // }
 
     // function insertAfter(newNode, existingNode) {
     //     existingNode.parentNode.insertBefore(newNode, existingNode.nextSibling);
