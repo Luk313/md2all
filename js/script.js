@@ -21,7 +21,7 @@ window.onload = function () {
     for (var i = 0; i < codesListBorderRadius.length; i++) {
         codesListBorderRadius[i].style.borderRadius = "0.5em";
     }
-    console.log(codesListBorderRadius);
+    // console.log(codesListBorderRadius);
 
     // Get List of Parent Nodes for next spanList of Languages
     var positionList = document.querySelectorAll('div >pre > code.sourceCode');
@@ -65,6 +65,37 @@ window.onload = function () {
             pageBreakBeforeList[i].parentElement.previousElementSibling.innerHTML += "<div style='page-break-after: always;'></div><div></div>";
             }
         }
+
+    // Fix figcaption to disappear in Clickable Images
+    var clickableImgList = document.querySelectorAll('a > img');
+    for (var i = 0; i < clickableImgList.length; i++) {
+        var img = clickableImgList[i];
+        
+        var aTag = img.parentNode;
+        var imgOld = aTag.removeChild(img);
+        
+        var altText = imgOld.getAttribute("alt");
+        var figure = document.createElement("figure");
+        var figcaption = document.createElement("figcaption");
+        figcaption.textContent = altText;
+        
+        figure.appendChild(imgOld);
+        figure.appendChild(figcaption);
+        aTag.insertBefore(figure,aTag.firstChild);
+
+
+        img.parentNode.replaceChild(imgAvecFigCaption,img);
+
+    }
+
+    function insertInside(element,nomTag) {
+        nouveauTag = document.createElement(nomTag);
+        return nouveauTag.appendChild(element);
+    }
+
+    // function insertAfter(newNode, existingNode) {
+    //     existingNode.parentNode.insertBefore(newNode, existingNode.nextSibling);
+    // }
 
     // Detect and configure media query print vs screen/others:
     function detectMedia(isPrint) { // DO NOT USE LET... assignment: problem in export of pdf! Always prefer VAR ...

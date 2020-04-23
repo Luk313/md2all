@@ -201,6 +201,7 @@ exportToHTML()
     if [ "$exportType" = "offline" ]; then
         echo "=> Make Offline: WITH dependencies installed"
         # ALTERNATIVELY, EXPORT LATEX via MATHJAX
+        # pandoc -s --variable=hack:"$hack" --variable=home:"$HOME" --variable=CodeLayoutCssName:"$CodeLayoutCssName" --variable=JsStyle:"$JsStyle" --template="$Template" --katex -c "$PageStyleCss" --from=markdown+emoji --to=html5 --highlight-style="$HighlightStyle" --filter "$GraphvizFilter" --filter pandoc-pyplot --filter "$PlantUMLFilter" --number-sections < "$Title".md -o "$Title".html
         pandoc -s --variable=hack:"$hack" --variable=home:"$HOME" --variable=CodeLayoutCssName:"$CodeLayoutCssName" --variable=JsStyle:"$JsStyle" --template="$Template" --katex -c "$PageStyleCss" --from=markdown+emoji --to=html5 --highlight-style="$HighlightStyle" --filter "$GraphvizFilter" --filter pandoc-pyplot --filter "$PlantUMLFilter" --number-sections < "$Title".md -o "$Title".html
     fi
 }
