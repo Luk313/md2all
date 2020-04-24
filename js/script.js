@@ -116,7 +116,7 @@ window.onload = function () {
             //             figure.setAttribute('style',newStyle);
             //         }
             //     }
-            // }
+            // } 
 
             var figcaption = document.createElement("figcaption");
             figcaption.textContent = altText;
