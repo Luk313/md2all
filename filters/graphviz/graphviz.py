@@ -34,7 +34,7 @@ def graphviz(key, value, format, _):
                 if 'name' in eachKeys[0]:
                     filename="graph-images/"+eachKeys[1][:-4]
                     dest = filename + '.' + filetype
-                    
+
             if not os.path.isfile(dest):
                 g = pygraphviz.AGraph(string=code)
                 g.layout()
