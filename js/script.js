@@ -66,10 +66,11 @@ window.onload = function () {
             }
         }
 
-    // Fix figcaption to disappear in Clickable Images
+    // Fix figcaption to disappear and Positionning in Clickable Images
     var clickableImgList = document.querySelectorAll('a > img');
     for (var i = 0; i < clickableImgList.length; i++) {
         var img = clickableImgList[i];
+        img.classList.add("isClickable");
         var aTag = img.parentNode;
         var imgOld = aTag.removeChild(img);
         var altText = imgOld.getAttribute("alt");
@@ -82,14 +83,26 @@ window.onload = function () {
         // img.parentNode.replaceChild(imgAvecFigCaption,img);
     }
 
-    // function insertInside(element,nomTag) {
-    //     nouveauTag = document.createElement(nomTag);
-    //     return nouveauTag.appendChild(element);
-    // }
+    // Fix figcaption positionning NOT in Clickable Images
+    var imgList = document.querySelectorAll('img:not(.isClickable)');
+    this.console.log("ImgList = ",imgList);
+    for (var i = 0; i < imgList.length; i++) {
+        var img = imgList[i];
+        var styleText = img.getAttribute("style");
+        this.console.log("styleText="+styleText);
+        img.removeAttribute("style");
+        var figure = img.parentNode;
+        figure.setAttribute('style',styleText);
 
-    // function insertAfter(newNode, existingNode) {
-    //     existingNode.parentNode.insertBefore(newNode, existingNode.nextSibling);
-    // }
+        // var imgOld = aTag.removeChild(img);
+        // var figure = document.createElement("figure");
+        // var figcaption = document.createElement("figcaption");
+        // figcaption.textContent = altText;        
+        // figure.appendChild(imgOld);
+        // figure.appendChild(figcaption);
+        // aTag.insertBefore(figure,aTag.firstChild);
+        // img.parentNode.replaceChild(imgAvecFigCaption,img);
+    }
 
     // Detect and configure media query print vs screen/others:
     function detectMedia(isPrint) { // DO NOT USE LET... assignment: problem in export of pdf! Always prefer VAR ...
