@@ -96,28 +96,6 @@ window.onload = function () {
             var altText = imgOld.getAttribute("alt");
             var figure = document.createElement("figure");
 
-            /* move all attributes, except 'href', from "A" to "img" */
-            // for (var i = 0; i < n; i++) {
-            //     var attribName = tagAttributes[i][0];
-            //     // this.console.log("Node Name= "+attribName);
-            //     var attribValue = tagAttributes[i][1];
-            //     this.console.log("Node Value= "+attribValue);
-            //     if ((attribName != "href") && (attribName !== "width") && (attribName !== "height")) {
-            //         figure.setAttribute(attribName,attribValue);
-            //         aTag.removeAttribute(attribName);
-            //     } else if ((attribName == "width") || (attribName == "height")) {
-            //         var styleText = figure.getAttribute('style');
-            //         var monTexte = " "+attribName+":"+attribValue+";"
-            //         if (styleText == null) {
-            //             figure.setAttribute('style',monTexte);
-            //             this.console.log("monTexte = ",monTexte);
-            //         } else { 
-            //             var newStyle = styleText+monTexte;
-            //             figure.setAttribute('style',newStyle);
-            //         }
-            //     }
-            // } 
-
             var figcaption = document.createElement("figcaption");
             figcaption.textContent = altText;
             figure.appendChild(imgOld);
