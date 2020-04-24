@@ -16,7 +16,7 @@ window.onload = function () {
           }
       }
 
-  treatImagesForHTML();
+  treatImages();
 
   function treatCode() {
     // CREATE an ordered list of all languages in blocks of the page
@@ -73,7 +73,7 @@ window.onload = function () {
     }
   }
 
-  function treatImagesForHTML() {
+  function treatImages() {
     // Fix figcaption appeareance (in clickable images) and Positionning for all images
     var imgList = document.querySelectorAll('img');
     for (var i = 0; i < imgList.length; i++) {
