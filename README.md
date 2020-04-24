@@ -193,9 +193,9 @@ You can change this behavior this way (compatible with Matplotlib, PlantUML and 
 ### Resizing
 
 * Image width can be set as ```![](theImage.png){width="60%"}``` (percentages only)
-* Image height can be set as ```![](theImage.png){height="40%"}``` (percentages only)
+* Image height can be set as ```![](theImage.png){height="40%"}``` (percentages only) (:bomb: currently not working. To be Done:bomb:)
 * Image width and height can be set as ```![](theImage.png){width="60%" height="40%"}``` (percentages only)
-  * If you encounter problems with this last double setting, you can still type: ```![](theImage.png){style="width:60px; height:40px;"}``` (Here: every css unit allowed: px, em, % etc..)
+* Other possible Syntax : ```![](theImage.png){style="width:60px; height:40px;"}``` (Here: every css unit allowed: px, em, % etc..)
 
 >Note: you can add ANY additionnal class to image
   <!-- <img src="divsTexteFictif.png" alt="image"  />{.imgbox} -->
