@@ -164,6 +164,6 @@ pre.numberLines > code.sourceCode > span > a {
  
  /* workaround for clickable images */
  a { 
-	display: inline;
+	display: inherit;
 }
 
