@@ -85,7 +85,7 @@ window.onload = function () {
             var tagAttributes = toArrayNodeNamedMap(aTag.attributes);
             var n = aTag.attributes.length;
             if (n==1 && tagAttributes[0][0] == "href") {
-                this.console.log("raw image detected.")
+                this.console.log("raw image detected.");
                 this.console.log("Natural width = ",img.naturalWidth);
                 this.console.log("Natural height = ",img.naturalHeight);
                 img.setAttribute("class","center");
@@ -95,6 +95,28 @@ window.onload = function () {
             var imgOld = aTag.removeChild(img);
             var altText = imgOld.getAttribute("alt");
             var figure = document.createElement("figure");
+
+            // /* move all attributes, except 'href', from "A" to "img" */
+            for (var i = 0; i < n; i++) {
+                var attribName = tagAttributes[i][0];
+                // this.console.log("Node Name= "+attribName);
+                var attribValue = tagAttributes[i][1];
+                // this.console.log("Node Value= "+attribValue);
+                if ((attribName != "href") && (attribName !== "width") && (attribName !== "height")) {
+                    figure.setAttribute(attribName,attribValue);
+                    aTag.removeAttribute(attribName);
+                } else if ((attribName == "width") || (attribName == "height")) {
+                    var styleText = figure.getAttribute('style');
+                    var monTexte = " "+attribName+":"+attribValue+";"
+                    if (styleText == null) {
+                        figure.setAttribute('style',monTexte);
+                        this.console.log("monTexte = ",monTexte);
+                    } else { 
+                        var newStyle = styleText+monTexte;
+                        figure.setAttribute('style',newStyle);
+                    }
+                }
+            } 
 
             var figcaption = document.createElement("figcaption");
             figcaption.textContent = altText;
