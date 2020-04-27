@@ -16,7 +16,7 @@ window.onload = function () {
           }
       }
 
-  treatImages();
+  // treatImages();
 
   function treatCode() {
     // CREATE an ordered list of all languages in blocks of the page
@@ -74,9 +74,10 @@ window.onload = function () {
   }
 
   function treatImages() {
+    // OK for Code Blocks
     // Fix figcaption appeareance (in clickable images) and Positionning for all images
     var imgList = document.querySelectorAll('img');
-    nbImages = imgList.length;
+    var nbImages = imgList.length;
     var img;
     for (var i = 0; i < nbImages; i++) { /* Pour chaque image */
       img = imgList[i];
@@ -92,6 +93,7 @@ window.onload = function () {
   }
 
   function isAncestorOfElement(ancestor,son) {
+    // OK for Code Blocks
     if (son == null) {
       return false;
     }
@@ -103,15 +105,16 @@ window.onload = function () {
     }
 }
 
-  function isDescendantOfElement(son,ancestor) {
+  function isDescendantOfElement(son,ancestor) { // OK for Code Blocks
     return isAncestorOfElement(ancestor,son);
   }
 
   function isTagAncestorOfElement(tagName,son) {
-    // renvoie null si Tagname n'est PAS un ancêtre de 'son',
-    // ou bien, le Node ancêtre de 'son' dont le nom est 'tagName'
+    // OK for Code Blocks
+    // renvoie null si Tagname n'est PAS un ancÃƒÂªtre de 'son',
+    // ou bien, le Node ancÃƒÂªtre de 'son' dont le nom est 'tagName'
     tagName = tagName.toUpperCase();
-    if (son == null) { // un élément nul n'est le fils d'AUCUN TAG
+    if (son == null) { // un ÃƒÂ©lÃƒÂ©ment nul n'est le fils d'AUCUN TAG
       return null;
     }
     while ((son = son.parentNode) && (son.nodeName != tagName)) {
@@ -119,99 +122,139 @@ window.onload = function () {
     return son;
   }
 
-  var tagFoundFlag = false;
-  var pathNodeArray = Array();
-  function isTagDescendantOfElement(tagName,ancestor,withPath=false) {
-    tagName = tagName.toUpperCase();
-    if (tagFoundFlag == true) {
-      if (withPath) {
-        return pathNodeArray;
-      } else {
-        return true;
-      }
-    }
+  // function isTagDescendantOfElement(tagName,ancestor,withPath) {
+  //   if (typeof withPath == 'undefined') {
+  //     withPath = false;
+  //   }
+  //   var tagFoundFlag = false;
+  //   var pathNodeArray = Array();
+  //   tagName = tagName.toUpperCase();
+  //   if (tagFoundFlag == true) {
+  //     if (withPath) {
+  //       return pathNodeArray;
+  //     } else {
+  //       return true;
+  //     }
+  //   }
     
-    if (ancestor == null) {
-      tagFoundFlag = false;
-      return false;
-    }
+  //   if (ancestor == null) {
+  //     tagFoundFlag = false;
+  //     return false;
+  //   }
+    
+  //   var childrenNodesList = ancestor.childNodes;
+  //   if (tagName == ancestor.parentNode.nodeName) { /* tagname is Descendant of itself */
+  //     // DÃƒÂ©but de la RemontÃƒÂ©e de la RÃƒÂ©currence
+  //     tagFoundFlag = true;
+  //     if (withPath == true) {
+  //       return pathNodeArray;
+  //     } else {
+  //       return true;
+  //     }
+  //   } else { // appel récursif des noeuds enfants
+  //     // Array.from(childrenNodesList).forEach(child => {
+  //       //   return tagFoundFlag || isTagDescendantOfElement(tagName,child,withPath);
+  //       //   });
+  //       console.log("childrenNodesList = "+childrenNodesList);
+  //       var childrenNodesArray = Array.from(childrenNodesList);
+  //       for (var i = 0; i < childrenNodesArray.length; i++) {
+  //         console.log("children = "+isTagDescendantOfElement(tagname,childrenNodesArray[i],withPath));
+  //         return tagFoundFlag || isTagDescendantOfElement(tagName,child,withPath);
+          
+  //       }
 
-    childrenNodesList = ancestor.childNodes;
-    if (tagName == ancestor.parentNode.nodeName) { /* tagname is Descendant of itself */
-      // Début de la Remontée de la Récurrence
-      tagFoundFlag = true;
-      if (withPath == true) {
-        return pathNodeArray;
-      } else {
-        return true;
-      }
-    } else {
-      Array.from(childrenNodesList).forEach(child => {
-        return tagFoundFlag || isTagDescendantOfElement(tagName,child,withPath);
-        });
-      }
+  //       console.log("toto = "+toto);
 
-    // DURANT LA REMONTÉE DE LA RÉCURRENCE
-    if ((withPath == true) && (tagFoundFlag == true) && (ancestor.nodeType == 1)) { /* node is an Element Type */
-        // console.log("ADDING ...",ancestor.nodeName);
-        pathNodeArray[pathNodeArray.length] = ancestor.nodeName;
-        if (tagName != pathNodeArray[0]) {
-          firstElement = pathNodeArray.shift()
-        }
-        return pathNodeArray;
-    } else {
-      return tagFoundFlag;
-    }
-  }
+  //     }
 
-  function copyClassesFromTo(startElement,endElement,exceptClasses=null) { 
+  //   // DURANT LA REMONTÃƒâ€°E DE LA RÃƒâ€°CURRENCE
+  //   if ((withPath == true) && (tagFoundFlag == true) && (ancestor.nodeType == 1)) { /* node is an Element Type */
+  //       // console.log("ADDING ...",ancestor.nodeName);
+  //       pathNodeArray[pathNodeArray.length] = ancestor.nodeName;
+  //       if (tagName != pathNodeArray[0]) {
+  //         var firstElement = pathNodeArray.shift();
+  //       }
+  //       return pathNodeArray;
+  //   } else {
+  //     return tagFoundFlag;
+  //   }
+  // }
+
+  function copyClassesFromTo(startElement,endElement,exceptClasses) { 
+    // OK for Code Blocks
     /* moves all Classes from 'startElement' to 'endElement' */
+    if (typeof exceptClasses == 'undefined') { // exceptClasses is facultative parameter
+      exceptClasses = null;
+    }
     var n = startElement.classList.length;
     var classes = startElement.classList;
     for (var i = 0; i < n; i++) {
       var currentClass = startElement.classList[i];
-      if (!exceptClasses.includes(currentClass)) {
+      if ((exceptClasses == null) || (!exceptClasses.includes(currentClass))) {
         endElement.classList.add(currentClass);
       }
     }
   }
 
-  function copyAttribsFromTo(startElement,endElement,exceptAttribs=null,overwriteAttribs=null) { 
-  /* moves all Attributes, from 'startElement' to 'endElement' */
-  // exceptAttribs est un tableau d'attributs à NE PAS COPIER. Ex: null, "", "id" ou ["id"], ["id","src", "href"]
-  // Note the 'class' attribute is treated differently in the code => You can pass "class" or "className" in the 'exceptsAttribs' Array!!
-  // overwriteAttribs est un tableau d'attributs EN DOUBLON dans endElement, à SURCHARGER. Ex: null, "", "id" ou ["id"], ["id","src", "href"]
-  // Par défaut, les attributs en doublon ne sont PAS surchargés.
-  var n = startElement.attributes.length;
-  var startAttributes = startElement.attributes;
-  var endAttributes = endElement.attributes;
-  if (exceptAttribs == "") {
-    exceptAttribs = null;
-  }
-  if (overwriteAttribs == "") {
-    overwriteAttribs = null;
-  }
+  function copyAttribsFromTo(startElement,endElement,exceptAttribs,overwriteAttribs) { 
+    /* moves all Attributes, from 'startElement' to 'endElement' */
+    // exceptAttribs est un tableau d'attributs Ãƒ  NE PAS COPIER. Ex: null, "", "id" ou ["id"], ["id","src", "href"]
+    // Note the 'class' attribute is treated differently in the code => You can pass "class" or "className" in the 'exceptsAttribs' Array!!
+    // overwriteAttribs est un tableau d'attributs EN DOUBLON dans endElement, Ãƒ  SURCHARGER. Ex: null, "", "id" ou ["id"], ["id","src", "href"]
+    // Par dÃƒÂ©faut, les attributs en doublon ne sont PAS surchargÃƒÂ©s.
+    if ((exceptAttribs == 'undefined') || (exceptAttribs == "")) {
+      exceptAttribs = null;
+    }
+  
+    if ((overwriteAttribs == 'undefined') || (overwriteAttribs == "")) {
+      overwriteAttribs = null;
+    }
+  
+    // console.log("exceptAttributes = "+exceptAttribs);
+    // console.log("overwriteAttribs = "+overwriteAttribs);
 
-  Array.from(startAttributes).forEach(startAttrib => {
-    var currentAttrib = startAttrib.name;
-    if ((currentAttrib == "class") && ((exceptAttribs.includes("class") || exceptAttribs.includes("className")))) { // class attribute is different...
-      // console.log("CLASS DETECTED AND JUMPED !");
-      return;
-    }
-    if ((exceptAttribs == null) || ((exceptAttribs != null) && (!exceptAttribs.includes(currentAttrib)))) {
-      // ou bien, tous les Attribs doivent ÃƒÂªtre copiÃƒÂ©s, ou bien l'attribut currentAttrib n'est PAS dans la liste (non vide) des exceptions
-      if ((!endElement.hasAttribute(currentAttrib)) || ((overwriteAttribs != null) && (overwriteAttribs.includes(currentAttrib)))) {
-        // Si le problÃƒÂ¨me ne se pose pas (currentAttrib PAS dans les attributs de endElement), ou bien si currentAttrib appartient Ãƒ  la liste (non vide) des attributs surchargeables
-        endElement.setAttribute(startAttrib.name,startAttrib.value)
+    var n = startElement.attributes.length;
+    var startAttributes = startElement.attributes;
+    var endAttributes = endElement.attributes;
+  
+    for (var i = 0; i < n; i++) {
+      var currentAttrib = startAttributes[i].name;
+      var startAttrib = startAttributes[i];
+      if ((currentAttrib == "class") && (exceptAttribs != null) && ((exceptAttribs.includes("class") || exceptAttribs.includes("className")))) { // class attribute is different...
+        // console.log("CLASS DETECTED AND JUMPED !");
+        continue;
       }
+      if ((exceptAttribs == null) || ((exceptAttribs != null) && (!exceptAttribs.includes(currentAttrib)))) {
+        // ou bien, tous les Attribs doivent ÃƒÂªtre copiÃƒÂ©s, ou bien l'attribut currentAttrib n'est PAS dans la liste (non vide) des exceptions
+        if ((!endElement.hasAttribute(currentAttrib)) || ((overwriteAttribs != null) && (overwriteAttribs.includes(currentAttrib)))) {
+          // Si le problÃƒÂ¨me ne se pose pas (currentAttrib PAS dans les attributs de endElement), ou bien si currentAttrib appartient Ãƒ   la liste (non vide) des attributs surchargeables
+          endElement.setAttribute(startAttrib.name,startAttrib.value);
+        }
+      }
+
     }
-  });
-}
+
+    // this is correct, BUT breaks the Code Blocks in wkhtmltopdf
+    // Array.from(startAttributes).forEach(startAttrib => {
+    //   var currentAttrib = startAttrib.name;
+    //   if ((currentAttrib == "class") && (exceptAttribs != null) && ((exceptAttribs.includes("class") || exceptAttribs.includes("className")))) { // class attribute is different...
+    //     // console.log("CLASS DETECTED AND JUMPED !");
+    //     return;
+    //   }
+    //   if ((exceptAttribs == null) || ((exceptAttribs != null) && (!exceptAttribs.includes(currentAttrib)))) {
+    //     // ou bien, tous les Attribs doivent ÃƒÂªtre copiÃƒÂ©s, ou bien l'attribut currentAttrib n'est PAS dans la liste (non vide) des exceptions
+    //     if ((!endElement.hasAttribute(currentAttrib)) || ((overwriteAttribs != null) && (overwriteAttribs.includes(currentAttrib)))) {
+    //       // Si le problÃƒÂ¨me ne se pose pas (currentAttrib PAS dans les attributs de endElement), ou bien si currentAttrib appartient Ãƒ   la liste (non vide) des attributs surchargeables
+    //       endElement.setAttribute(startAttrib.name,startAttrib.value);
+    //     }
+    //   }
+    // });
+
+  }
 
   function insertFigureAround(img,altTextNode) {
+    // OK for Code Blocks
     var parentEl = img.parentNode;
-    
-    // var imgOld = aTag.removeChild(img);
     var altText = altTextNode.getAttribute("alt");
     var figure = document.createElement("figure");
     var figcaption = document.createElement("figcaption");
@@ -224,17 +267,19 @@ window.onload = function () {
 
 
   function isClickable(el) {
-    // renvoie 'null' si 'el' n'est pas clickable ('a' n'est PAS un ancêtre de 'el'),
-    // ou bien le Node 'a' qui est ancêtre de 'el'
+    // OK for Code Blocks
+    // renvoie 'null' si 'el' n'est pas clickable ('a' n'est PAS un ancÃƒÂªtre de 'el'),
+    // ou bien le Node 'a' qui est ancÃƒÂªtre de 'el'
     return isTagAncestorOfElement("a",el);
   }
 
-  function isNOTClickable(el) {
+  function isNOTClickable(el) { // OK for Code Blocks
     return !isClickable(el);
   }
 
   function treatClickableImage(img) {
-    // Traite l'image 'img' NON cliquable pour adapter export PANDOC à md2all
+    // OK for Code Blocks
+    // Traite l'image 'img' NON cliquable pour adapter export PANDOC Ãƒ  md2all
     insertFigureAround(img,img);
     copyAttribsFromTo(isClickable(img),img.parentNode,exceptAttribs=["href","class"]);
     copyClassesFromTo(isClickable(img),img.parentNode);
@@ -246,23 +291,25 @@ window.onload = function () {
     img.classList.remove("floatleft");
     img.classList.remove("floatright");
     img.style.textAlign = "center";
-    // revenir à 100% dans img2:
+    // revenir Ãƒ  100% dans img2:
     var newStyle = setWidth100in(img);
   }
 
   function treatNOTClickableImage(img) {
-    // Traite l'image 'img' NON cliquable pour adapter export PANDOC à md2all
+    // OK for Code Blocks
+    // Traite l'image 'img' NON cliquable pour adapter export PANDOC Ãƒ  md2all
     copyAttribsFromTo(img,img.parentNode,exceptAttribs=["id","alt","src"]);
     img.classList.remove("floatleft");
     img.classList.remove("floatright");
     // img.style.textAlign = "center";
-    // revenir à 100% dans img2:
+    // revenir Ãƒ  100% dans img2:
     var newStyle = setWidth100in(img);
   }
 
   function setWidth100in(el) {
-    // remplace l'ancienne width de l'attribut 'style' de 'el' par une width à 100%
-    if (el.getAttribute("width" != null)) {
+    // OK for Code Blocks
+    // remplace l'ancienne width de l'attribut 'style' de 'el' par une width Ãƒ  100%
+    if (el.hasAttribute("width")) {
       el.removeAttribute("width");
     }
 
@@ -270,7 +317,7 @@ window.onload = function () {
     if (styleAttrib == null) {
       return null;
     }
-    var i0 = styleAttrib.indexOf("width"); // début de width
+    var i0 = styleAttrib.indexOf("width"); // dÃƒÂ©but de width
     var n = styleAttrib.length;
     for (var i = i0; i < n; i++) {
       if (styleAttrib[i] == ";") {
@@ -283,6 +330,20 @@ window.onload = function () {
     el.setAttribute("style",newStyle);
     return newStyle;
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -402,13 +463,13 @@ window.onload = function () {
   //     }
   // }
 
-function toArrayNodeNamedMap(aNodeNamedMap) {
-    var array = [];
-    for (var i = aNodeNamedMap.length >>> 0; i--;) { 
-        array[i] = [aNodeNamedMap[i].nodeName,aNodeNamedMap[i].nodeValue];
-    }
-    return array;
-}
+// function toArrayNodeNamedMap(aNodeNamedMap) {
+//     var array = [];
+//     for (var i = aNodeNamedMap.length >>> 0; i--;) { 
+//         array[i] = [aNodeNamedMap[i].nodeName,aNodeNamedMap[i].nodeValue];
+//     }
+//     return array;
+// }
 
 
   // Detect and configure media query print vs screen/others:
