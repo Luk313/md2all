@@ -16,7 +16,7 @@ window.onload = function () {
           }
       }
 
-  // treatImages();
+  treatImages();
 
   function treatCode() {
     // CREATE an ordered list of all languages in blocks of the page
@@ -253,6 +253,7 @@ window.onload = function () {
   function treatNOTClickableImage(img) {
     // OK for Code Blocks
     // Traite l'image 'img' NON cliquable pour adapter export PANDOC Ãƒ  md2all
+    
     copyAttribsFromTo(img,img.parentNode,exceptAttribs=["id","alt","src"]);
     img.classList.remove("floatleft");
     img.classList.remove("floatright");
