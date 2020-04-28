@@ -86,23 +86,18 @@ window.onload = function () {
       } else {
         treatNOTClickableImage(img);
       }
-      // if (!isClickable(img)) {
-      //   treatNOTClickableImage(img);
-      // }
     }
   }
 
   function isAncestorOfElement(ancestor,son) {
     // OK for Code Blocks
+    // renvoie le noeud 'ancêtre' de 'son', ou bien false si pas de lien de parenté
     if (son == null) {
       return false;
     }
-    while (son = son.parentNode) { 
-      if (son == ancestor) {
-          return true;
-      } 
-    return false;
+    while ((son = son.parentNode) && (son != ancestor)) { 
     }
+    return son || false;
 }
 
   function isDescendantOfElement(son,ancestor) { // OK for Code Blocks
@@ -111,74 +106,34 @@ window.onload = function () {
 
   function isTagAncestorOfElement(tagName,son) {
     // OK for Code Blocks
-    // renvoie null si Tagname n'est PAS un ancÃƒÂªtre de 'son',
-    // ou bien, le Node ancÃƒÂªtre de 'son' dont le nom est 'tagName'
+    // renvoie 'false' si 'Tagname' n'est PAS un ancêtre de 'son',
+    // ou bien, le Node ancêtre de 'son' dont le nom est 'tagName'
     tagName = tagName.toUpperCase();
     if (son == null) { // un ÃƒÂ©lÃƒÂ©ment nul n'est le fils d'AUCUN TAG
       return null;
     }
     while ((son = son.parentNode) && (son.nodeName != tagName)) {
     }
-    return son;
+    return son || false;
   }
 
-  // function isTagDescendantOfElement(tagName,ancestor,withPath) {
-  //   if (typeof withPath == 'undefined') {
-  //     withPath = false;
-  //   }
-  //   var tagFoundFlag = false;
-  //   var pathNodeArray = Array();
-  //   tagName = tagName.toUpperCase();
-  //   if (tagFoundFlag == true) {
-  //     if (withPath) {
-  //       return pathNodeArray;
-  //     } else {
-  //       return true;
-  //     }
-  //   }
-    
-  //   if (ancestor == null) {
-  //     tagFoundFlag = false;
-  //     return false;
-  //   }
-    
-  //   var childrenNodesList = ancestor.childNodes;
-  //   if (tagName == ancestor.parentNode.nodeName) { /* tagname is Descendant of itself */
-  //     // DÃƒÂ©but de la RemontÃƒÂ©e de la RÃƒÂ©currence
-  //     tagFoundFlag = true;
-  //     if (withPath == true) {
-  //       return pathNodeArray;
-  //     } else {
-  //       return true;
-  //     }
-  //   } else { // appel récursif des noeuds enfants
-  //     // Array.from(childrenNodesList).forEach(child => {
-  //       //   return tagFoundFlag || isTagDescendantOfElement(tagName,child,withPath);
-  //       //   });
-  //       console.log("childrenNodesList = "+childrenNodesList);
-  //       var childrenNodesArray = Array.from(childrenNodesList);
-  //       for (var i = 0; i < childrenNodesArray.length; i++) {
-  //         console.log("children = "+isTagDescendantOfElement(tagname,childrenNodesArray[i],withPath));
-  //         return tagFoundFlag || isTagDescendantOfElement(tagName,child,withPath);
-          
-  //       }
-
-  //       console.log("toto = "+toto);
-
-  //     }
-
-  //   // DURANT LA REMONTÃƒâ€°E DE LA RÃƒâ€°CURRENCE
-  //   if ((withPath == true) && (tagFoundFlag == true) && (ancestor.nodeType == 1)) { /* node is an Element Type */
-  //       // console.log("ADDING ...",ancestor.nodeName);
-  //       pathNodeArray[pathNodeArray.length] = ancestor.nodeName;
-  //       if (tagName != pathNodeArray[0]) {
-  //         var firstElement = pathNodeArray.shift();
-  //       }
-  //       return pathNodeArray;
-  //   } else {
-  //     return tagFoundFlag;
-  //   }
-  // }
+  function isTagDescendantOfElement(tagName,ancestor,withPath) {
+    // OK for Code Blocks
+    // renvoie le (premier) noeud descendant de 'ancestor', ou bien 'false', si pas de lien de parenté
+    tagName = tagName.toUpperCase();
+    if (ancestor == null) { // un ÃƒÂ©lÃƒÂ©ment nul n'a pas de descendants
+      return null;
+    }
+    var tagNameList = document.getElementsByTagName(tagName);
+    var n = tagNameList.length;
+    for (var i = 0; i < n; i++) {
+      // console.log("tagNameList ["+i+"] = "+tagNameList);
+      if (isAncestorOfElement(ancestor,tagNameList[i])) {
+        return tagNameList[i];
+      }
+    }
+    return false;
+  }
 
   function copyClassesFromTo(startElement,endElement,exceptClasses) { 
     // OK for Code Blocks
