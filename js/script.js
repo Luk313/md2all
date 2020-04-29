@@ -189,6 +189,11 @@ window.onload = function () {
 
     }
 
+    // endElement.style.content = "";
+    // endElement.style.clear = "unset";
+    // endElement.style.display = "block";
+    // endElement.style.textAlign = "center";
+
     // this is correct, BUT breaks the Code Blocks in wkhtmltopdf
     // Array.from(startAttributes).forEach(startAttrib => {
     //   var currentAttrib = startAttrib.name;
