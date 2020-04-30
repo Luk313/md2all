@@ -239,9 +239,12 @@ window.onload = function () {
   function treatClickableImage(img) {
     // OK for Code Blocks
     // Traite l'image 'img' NON cliquable pour adapter export PANDOC à  md2all
-    insertFigureAround(img,img);
-    copyAttribsFromTo(isClickable(img),img.parentNode,exceptAttribs=["href","class"]);
-    copyClassesFromTo(isClickable(img),img.parentNode,["floatleft","floatright"]);
+    var a = img.parentNode;
+    insertFigureAround(a,img);
+    var figure = a.parentNode;
+    // copyAttribsFromTo(isClickable(img),img.parentNode,exceptAttribs=["href","class"]);
+    copyAttribsFromTo(isClickable(img),figure,exceptAttribs=["href","class"]);
+    copyClassesFromTo(isClickable(img),figure,["floatleft","floatright"]);
     isClickable(img).removeAttribute("style");
     isClickable(img).classList.remove("floatleft");
     isClickable(img).classList.remove("floatright");
