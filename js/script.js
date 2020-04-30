@@ -109,7 +109,7 @@ window.onload = function () {
     // renvoie 'false' si 'Tagname' n'est PAS un ancêtre de 'son',
     // ou bien, le Node ancêtre de 'son' dont le nom est 'tagName'
     tagName = tagName.toUpperCase();
-    if (son == null) { // un ÃƒÂ©lÃƒÂ©ment nul n'est le fils d'AUCUN TAG
+    if (son == null) { // un àÂ©làÂ©ment nul n'est le fils d'AUCUN TAG
       return null;
     }
     while ((son = son.parentNode) && (son.nodeName != tagName)) {
@@ -121,7 +121,7 @@ window.onload = function () {
     // OK for Code Blocks
     // renvoie le (premier) noeud descendant de 'ancestor', ou bien 'false', si pas de lien de parenté
     tagName = tagName.toUpperCase();
-    if (ancestor == null) { // un ÃƒÂ©lÃƒÂ©ment nul n'a pas de descendants
+    if (ancestor == null) { // un àÂ©làÂ©ment nul n'a pas de descendants
       return null;
     }
     var tagNameList = document.getElementsByTagName(tagName);
@@ -153,10 +153,10 @@ window.onload = function () {
 
   function copyAttribsFromTo(startElement,endElement,exceptAttribs,overwriteAttribs) { 
     /* moves all Attributes, from 'startElement' to 'endElement' */
-    // exceptAttribs est un tableau d'attributs Ãƒ  NE PAS COPIER. Ex: null, "", "id" ou ["id"], ["id","src", "href"]
+    // exceptAttribs est un tableau d'attributs à  NE PAS COPIER. Ex: null, "", "id" ou ["id"], ["id","src", "href"]
     // Note the 'class' attribute is treated differently in the code => You can pass "class" or "className" in the 'exceptsAttribs' Array!!
-    // overwriteAttribs est un tableau d'attributs EN DOUBLON dans endElement, Ãƒ  SURCHARGER. Ex: null, "", "id" ou ["id"], ["id","src", "href"]
-    // Par dÃƒÂ©faut, les attributs en doublon ne sont PAS surchargÃƒÂ©s.
+    // overwriteAttribs est un tableau d'attributs EN DOUBLON dans endElement, à  SURCHARGER. Ex: null, "", "id" ou ["id"], ["id","src", "href"]
+    // Par dàÂ©faut, les attributs en doublon ne sont PAS surchargàÂ©s.
     if ((exceptAttribs == 'undefined') || (exceptAttribs == "")) {
       exceptAttribs = null;
     }
@@ -179,20 +179,19 @@ window.onload = function () {
         // console.log("CLASS DETECTED AND JUMPED !");
         continue;
       }
+      // Ajouter un ";" dans 'style' au cas où il n'est pas été ajouté à la fin
+      if ((currentAttrib == "style" ) && (startAttributes[i].value.substring(startAttributes[i].value.length-1) !=";")) {
+        startAttributes[i].value += ";"
+      }
       if ((exceptAttribs == null) || ((exceptAttribs != null) && (!exceptAttribs.includes(currentAttrib)))) {
-        // ou bien, tous les Attribs doivent ÃƒÂªtre copiÃƒÂ©s, ou bien l'attribut currentAttrib n'est PAS dans la liste (non vide) des exceptions
+        // ou bien, tous les Attribs doivent àÂªtre copiàÂ©s, ou bien l'attribut currentAttrib n'est PAS dans la liste (non vide) des exceptions
         if ((!endElement.hasAttribute(currentAttrib)) || ((overwriteAttribs != null) && (overwriteAttribs.includes(currentAttrib)))) {
-          // Si le problÃƒÂ¨me ne se pose pas (currentAttrib PAS dans les attributs de endElement), ou bien si currentAttrib appartient Ãƒ   la liste (non vide) des attributs surchargeables
+          // Si le problàÂ¨me ne se pose pas (currentAttrib PAS dans les attributs de endElement), ou bien si currentAttrib appartient à   la liste (non vide) des attributs surchargeables
           endElement.setAttribute(startAttrib.name,startAttrib.value);
         }
       }
 
     }
-
-    // endElement.style.content = "";
-    // endElement.style.clear = "unset";
-    // endElement.style.display = "block";
-    // endElement.style.textAlign = "center";
 
     // this is correct, BUT breaks the Code Blocks in wkhtmltopdf
     // Array.from(startAttributes).forEach(startAttrib => {
@@ -202,9 +201,9 @@ window.onload = function () {
     //     return;
     //   }
     //   if ((exceptAttribs == null) || ((exceptAttribs != null) && (!exceptAttribs.includes(currentAttrib)))) {
-    //     // ou bien, tous les Attribs doivent ÃƒÂªtre copiÃƒÂ©s, ou bien l'attribut currentAttrib n'est PAS dans la liste (non vide) des exceptions
+    //     // ou bien, tous les Attribs doivent àÂªtre copiàÂ©s, ou bien l'attribut currentAttrib n'est PAS dans la liste (non vide) des exceptions
     //     if ((!endElement.hasAttribute(currentAttrib)) || ((overwriteAttribs != null) && (overwriteAttribs.includes(currentAttrib)))) {
-    //       // Si le problÃƒÂ¨me ne se pose pas (currentAttrib PAS dans les attributs de endElement), ou bien si currentAttrib appartient Ãƒ   la liste (non vide) des attributs surchargeables
+    //       // Si le problàÂ¨me ne se pose pas (currentAttrib PAS dans les attributs de endElement), ou bien si currentAttrib appartient à   la liste (non vide) des attributs surchargeables
     //       endElement.setAttribute(startAttrib.name,startAttrib.value);
     //     }
     //   }
@@ -228,8 +227,8 @@ window.onload = function () {
 
   function isClickable(el) {
     // OK for Code Blocks
-    // renvoie 'null' si 'el' n'est pas clickable ('a' n'est PAS un ancÃƒÂªtre de 'el'),
-    // ou bien le Node 'a' qui est ancÃƒÂªtre de 'el'
+    // renvoie 'null' si 'el' n'est pas clickable ('a' n'est PAS un ancàÂªtre de 'el'),
+    // ou bien le Node 'a' qui est ancàÂªtre de 'el'
     return isTagAncestorOfElement("a",el);
   }
 
@@ -239,46 +238,61 @@ window.onload = function () {
 
   function treatClickableImage(img) {
     // OK for Code Blocks
-    // Traite l'image 'img' NON cliquable pour adapter export PANDOC Ãƒ  md2all
+    // Traite l'image 'img' NON cliquable pour adapter export PANDOC à  md2all
     insertFigureAround(img,img);
     copyAttribsFromTo(isClickable(img),img.parentNode,exceptAttribs=["href","class"]);
-    copyClassesFromTo(isClickable(img),img.parentNode);
+    copyClassesFromTo(isClickable(img),img.parentNode,["floatleft","floatright"]);
     isClickable(img).removeAttribute("style");
     isClickable(img).classList.remove("floatleft");
     isClickable(img).classList.remove("floatright");
-
+    
     // copyAttribsFromTo(img,img.parentNode,exceptAttribs=["id","alt","src"]);
     img.classList.remove("floatleft");
     img.classList.remove("floatright");
     img.style.textAlign = "center";
-    // revenir Ãƒ  100% dans img2:
-    var newStyle = setWidth100in(img);
+    // revenir à  100% dans img2:
+    var newStyle = setWidthIn(img,"100%");
   }
-
+  
   function treatNOTClickableImage(img) {
     // OK for Code Blocks
-    // Traite l'image 'img' NON cliquable pour adapter export PANDOC Ãƒ  md2all
-    
-    copyAttribsFromTo(img,img.parentNode,exceptAttribs=["id","alt","src"]);
-    img.classList.remove("floatleft");
-    img.classList.remove("floatright");
+    // Traite l'image 'img' NON cliquable pour adapter export PANDOC à  md2all
+    var figure = img.parentNode;
+    copyAttribsFromTo(img,figure,exceptAttribs=["id","alt","src"]);
+    copyClassesFromTo(img,figure);
+    // img.classList.remove("floatleft");
+    // img.classList.remove("floatright");
+    console.log("getimg.parentNodeWidth = "+getWidthIn(figure));
     // img.style.textAlign = "center";
-    // revenir Ãƒ  100% dans img2:
-    var newStyle = setWidth100in(img);
+    // revenir à  100% dans img2:
+    var widthStringTmp = getWidthIn(figure);
+    if (figure.classList.contains("floatleft")) {
+      img.classList.remove("floatleft");
+      figure.style.textAlign = "center";
+      // figure.style.textAlign = "center";
+      var newStyleInFigure = setWidthIn(figure,widthStringTmp);
+      var newStyleInImg = setWidthIn(img,"100%");
+    } else {
+      var newStyleInFigure = setWidthIn(figure,"100%");
+      var newStyleInImg = setWidthIn(img,widthStringTmp);
+      
+    }
   }
 
-  function setWidth100in(el) {
+  function setWidthIn(el,widthString) {
     // OK for Code Blocks
-    // remplace l'ancienne width de l'attribut 'style' de 'el' par une width Ãƒ  100%
+    // remplace l'ancienne width de l'attribut 'style' de 'el' par une width à  100%
     if (el.hasAttribute("width")) {
       el.removeAttribute("width");
     }
 
     var styleAttrib = el.getAttribute("style");
     if (styleAttrib == null) {
-      return null;
-    }
-    var i0 = styleAttrib.indexOf("width"); // dÃƒÂ©but de width
+      var newStyle = "width:"+widthString+";";
+      el.setAttribute("style",newStyle);
+      return newStyle;
+    } // else 'width' is already defined in 'style' attribute
+    var i0 = styleAttrib.indexOf("width"); // dàÂ©but de width
     var n = styleAttrib.length;
     for (var i = i0; i < n; i++) {
       if (styleAttrib[i] == ";") {
@@ -286,13 +300,35 @@ window.onload = function () {
       }
     }
     var i1 = i+1; // fin de width -> le ';'
-    var newStyle = styleAttrib.substring(0,i0)+"width: 100%;"+styleAttrib.substring(i1,n);
+    var newStyle = styleAttrib.substring(0,i0)+"width: "+widthString+";"+styleAttrib.substring(i1,n);
     el.removeAttribute("style");
     el.setAttribute("style",newStyle);
+    console.log("newStyle = ",newStyle);
     return newStyle;
   }
 
+  function getWidthIn(el) {
+    // OK for Code Blocks
+    // remplace l'ancienne width de l'attribut 'style' de 'el' par une width à  100%
+    if (el.hasAttribute("width")) {
+      console.log("el.getAttribute('width') = ",el.getAttribute("width"));
+      return el.getAttribute("width");
+    } // else the 'width' is set into 'style' Attrib
 
+    var styleAttrib = el.getAttribute("style");
+    if (styleAttrib == null) {
+      return null;
+    }
+
+    // get 'width' initial position
+    var i0 = styleAttrib.indexOf("width"); // première occurence de (1ère lettre de) 'width'
+    var i1 = styleAttrib.indexOf(":",i0+5); // première occurence de ":" après le 'h'
+    var i2 = styleAttrib.indexOf(";",i1); // première occurence de ";" après les ':'
+    //  la valeur de widht se trouve les indices i1 et i2, dont il faut trimmer les espaces
+    var widthStringNOTStriped = styleAttrib.substring(i1+1,i2);
+    var widthStringTrimmed = widthStringNOTStriped.trim();
+    return widthStringTrimmed;
+  }
 
 
 
