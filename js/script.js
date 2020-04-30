@@ -81,6 +81,7 @@ window.onload = function () {
     var img;
     for (var i = 0; i < nbImages; i++) { /* Pour chaque image */
       img = imgList[i];
+      console.log("Clickable Images");
       if (isClickable(img)) {
         treatClickableImage(img);
       } else {
@@ -239,12 +240,9 @@ window.onload = function () {
   function treatClickableImage(img) {
     // OK for Code Blocks
     // Traite l'image 'img' NON cliquable pour adapter export PANDOC à  md2all
-    var a = img.parentNode;
-    insertFigureAround(a,img);
-    var figure = a.parentNode;
-    // copyAttribsFromTo(isClickable(img),img.parentNode,exceptAttribs=["href","class"]);
-    copyAttribsFromTo(isClickable(img),figure,exceptAttribs=["href","class"]);
-    copyClassesFromTo(isClickable(img),figure,["floatleft","floatright"]);
+    insertFigureAround(img,img);
+    copyAttribsFromTo(isClickable(img),img.parentNode,exceptAttribs=["href","class"]);
+    copyClassesFromTo(isClickable(img),img.parentNode,["floatleft","floatright"]);
     isClickable(img).removeAttribute("style");
     isClickable(img).classList.remove("floatleft");
     isClickable(img).classList.remove("floatright");
@@ -265,7 +263,6 @@ window.onload = function () {
     copyClassesFromTo(img,figure);
     // img.classList.remove("floatleft");
     // img.classList.remove("floatright");
-    console.log("getimg.parentNodeWidth = "+getWidthIn(figure));
     // img.style.textAlign = "center";
     // revenir à  100% dans img2:
     var widthStringTmp = getWidthIn(figure);
