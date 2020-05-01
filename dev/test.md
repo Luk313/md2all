@@ -27,3 +27,14 @@ Accedat huc suavitas quaedam oportet sermonum atque morum, haudquaquam mediocre 
 [![Bateau 6, clickable AVEC width](img/bateau.jpg)](https://mersetbateaux.com/financer-achat-bateau/){width=20% .floatright .maClasse1 .maClasse2}
 
 Accedat huc suavitas quaedam oportet sermonum atque morum, haudquaquam mediocre condimentum amicitiae. Tristitia autem et in omni re severitas habet illa quidem gravitatem, sed amicitia remissior esse debet et liberior et dulcior et ad omnem comitatem facilitatemque proclivior.
+
+<div style="clear:both;"></div>
+<br/>
+
+Accedat 2 huc suavitas quaedam oportet sermonum atque morum, haudquaquam mediocre condimentum amicitiae. Tristitia autem et in omni re severitas habet illa quidem gravitatem, sed amicitia remissior esse debet et liberior et dulcior et ad omnem comitatem facilitatemque proclivior.
+
+![Bateau 7, NO Clickable AVEC group1](img/bateau.jpg){.group1}
+
+![Bateau 8, NO Clickable AVEC group1](img/bateau.jpg){.group1}
+
+Accedat 3 huc suavitas quaedam oportet sermonum atque morum, haudquaquam mediocre condimentum amicitiae. Tristitia autem et in omni re severitas habet illa quidem gravitatem, sed amicitia remissior esse debet et liberior et dulcior et ad omnem comitatem facilitatemque proclivior.

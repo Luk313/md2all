@@ -78,6 +78,7 @@ window.onload = function () {
     // Fix figcaption appeareance (in clickable images) and Positionning for all images
     var imgList = document.querySelectorAll('img');
     var nbImages = imgList.length;
+    console.log("nbImages = "+nbImages);
     var img;
     for (var i = 0; i < nbImages; i++) { /* Pour chaque image */
       img = imgList[i];
@@ -88,6 +89,9 @@ window.onload = function () {
         treatNOTClickableImage(img);
       }
     }
+
+  treatGroupImages();
+
   }
 
   function isAncestorOfElement(ancestor,son) {
@@ -238,7 +242,6 @@ window.onload = function () {
     parentEl.insertBefore(outsideElementVariable,tmp); 
   }
 
-
   function isClickable(el) {
     // OK for Code Blocks
     // renvoie 'null' si 'el' n'est pas clickable ('a' n'est PAS un ancêtre de 'el'),
@@ -294,7 +297,6 @@ window.onload = function () {
   }
   }
 
-
   function treatNOTClickableImage(img) {
     // OK for Code Blocks
     // Traite l'image 'img' NON cliquable pour adapter export PANDOC à  md2all
@@ -302,6 +304,7 @@ window.onload = function () {
     setDefaultWidthIn(img,figure);
     // var widthStringTmp = getWidthIn(img);
     treatFloat(img);
+    img.removeAttribute("class");
 
     // Treatment for ALL Not Clickable Images
     // figure.style.color = "red";
@@ -309,10 +312,12 @@ window.onload = function () {
 
   function setDefaultWidthIn(img,figure) {
     var widthStringTmp = getWidthIn(img);
+    copyClassesFromTo(img,figure);
     if (widthStringTmp != null) { // NOT DEFAULT IMAGE i.e. with specific width attribute in img
       img.style.width = widthStringTmp;
       figure.style.width = "100%";
   }
+  // img.removeAttribute("class");
 }
 
   function treatFloat(img) {
@@ -399,9 +404,22 @@ window.onload = function () {
     return widthStringTrimmed;
   }
 
+  function treatGroupImages() {
+    var groupFigureList = document.querySelectorAll('figure[class*="group"]');
+    console.log("nb Figures .Group 1 = "+groupFigureList.length);
+    var imgGroups = getImageDistinctGroups(groupFigureList);
+  }
 
-
-
+function getImageDistinctGroups(groupFigureList) {
+  var nbImagesAyantUneClasseGroup = groupFigureList.lengh;
+  console.log(groupFigureList[0].classList);
+  figureGroups = Array();
+  for (var i = 0; i < nbImagesAyantUneClasseGroup; i++) {
+    figureGroups[i] = groupFigureList[i];
+    console.log("classe i = "+groupFigureList[i].nodeName);
+  }
+  return figureGroups;
+}
 
 
 
