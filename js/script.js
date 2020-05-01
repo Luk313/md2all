@@ -196,23 +196,6 @@ window.onload = function () {
       
     }
 
-
-    // this is correct, BUT breaks the Code Blocks in wkhtmltopdf
-    // Array.from(startAttributes).forEach(startAttrib => {
-    //   var currentAttrib = startAttrib.name;
-    //   if ((currentAttrib == "class") && (exceptAttribs != null) && ((exceptAttribs.includes("class") || exceptAttribs.includes("className")))) { // class attribute is different...
-    //     // console.log("CLASS DETECTED AND JUMPED !");
-    //     return;
-    //   }
-    //   if ((exceptAttribs == null) || ((exceptAttribs != null) && (!exceptAttribs.includes(currentAttrib)))) {
-    //     // ou bien, tous les Attribs doivent être copiés, ou bien l'attribut currentAttrib n'est PAS dans la liste (non vide) des exceptions
-    //     if ((!endElement.hasAttribute(currentAttrib)) || ((overwriteAttribs != null) && (overwriteAttribs.includes(currentAttrib)))) {
-    //       // Si le problème ne se pose pas (currentAttrib PAS dans les attributs de endElement), ou bien si currentAttrib appartient à   la liste (non vide) des attributs surchargeables
-    //       endElement.setAttribute(startAttrib.name,startAttrib.value);
-    //     }
-    //   }
-    // });
-
   }
 
   function removeNullWidth(el) {
@@ -270,43 +253,6 @@ window.onload = function () {
   function treatClickableImage(img) {
     // OK for Code Blocks
     // Traite l'image 'img' NON cliquable pour adapter export PANDOC à  md2all
-    // var a = img.parentNode;
-    // console.log("a=",a.nodeName);
-    // // insertFigureAround(img,img);
-    // insertFigureAround(a,img);
-    // var figure = a.parentNode;
-    // console.log("figure=",figure.nodeName);
-    // // copyAttribsFromTo(isClickable(img),img.parentNode,exceptAttribs=["href","class"]);
-    // // copyClassesFromTo(isClickable(img),img.parentNode,["floatleft","floatright"]);
-    // copyAttribsFromTo(a,figure,exceptAttribs=["href","class"]);
-    // // copyClassesFromTo(a,figure,["floatleft","floatright"]);
-    // copyClassesFromTo(a,figure);
-    
-    // // isClickable(img).removeAttribute("style");
-    // // isClickable(img).classList.remove("floatleft");
-    // // isClickable(img).classList.remove("floatright");
-    
-    // // copyAttribsFromTo(img,img.parentNode,exceptAttribs=["id","alt","src"]);
-    // // img.classList.remove("floatleft");
-    // img.classList.remove("floatright");
-    // img.style.textAlign = "center";
-    // // revenir à  100% dans img2:
-    // // var newStyle = setWidthIn(img,"100%");
-    // var widthStringTmp = getWidthIn(a);
-    // setWidthIn(a,"100%")
-    // if (figure.classList.contains("floatleft")) {
-    //   a.removeAttribute("style");
-    //   // img.classList.remove("floatleft");
-    //   a.classList.remove("floatleft");
-    //   figure.style.textAlign = "center";
-    //   // figure.style.textAlign = "center";
-    //   var newStyleInFigure = setWidthIn(figure,widthStringTmp);
-    //   var newStyleInImg = setWidthIn(img,"100%");
-    // } else {
-    //   var newStyleInFigure = setWidthIn(figure,"100%");
-    //   var newStyleInImg = setWidthIn(img,widthStringTmp);
-      
-    // }
 
   }
   
@@ -316,33 +262,70 @@ window.onload = function () {
     var figure = img.parentNode;
     // img.style.borderRadius = "20px";
     
+    setDefaultWidthIn(img,figure);
+    var widthStringTmp = getWidthIn(img);
+    var toto = img.getAttribute("style");
+    console.log("widthStringTmp in treatNOTClickableImage = "+widthStringTmp);
+    console.log("style = "+toto);
+    // if (widthStringTmp != null) { // NOT DEFAULT IMAGE i.e. with specific width attribute in img
+    //   console.log("widthStringTmp="+widthStringTmp);
+    //   img.style.width = widthStringTmp;
+    //   figure.style.width = "100%";
+
+    treatFloat(img);
+
+    figure.style.color = "red";
+    figure.style.textAlign = "center";
+  }
+
+  function setDefaultWidthIn(img,figure) {
     var widthStringTmp = getWidthIn(img);
     if (widthStringTmp != null) { // NOT DEFAULT IMAGE i.e. with specific width attribute in img
-      console.log("widthStringTmp="+widthStringTmp);
       img.style.width = widthStringTmp;
       figure.style.width = "100%";
-      var currentFloat;
-      if (img.classList.contains("floatleft")) {
-        currentFloat = "floatleft";
-      }
-      if (img.classList.contains("floatright")) {
-        currentFloat = "floatright";
-      }
+  }
+}
 
-      console.log("currentFlaot = "+currentFloat);
-
-      if ((currentFloat != null) && (img.classList.contains(currentFloat))) {
-        img.classList.remove(currentFloat);
-        figure.classList.add(currentFloat);
-        figure.style.width = widthStringTmp;
-        img.style.width = "100%";
-        console.log("float left detected!");
-      }
+  function treatFloat(img) {
+    var figure = img.parentNode;
+    var widthStringTmp = getWidthIn(img);
+    console.log("widthStringTmp = "+widthStringTmp);
+    var currentFloat;
+    if (img.classList.contains("floatleft")) {
+      currentFloat = "floatleft";
     }
-    figure.style.color = "red";
-    console.log("img style attribute = "+img.getAttribute("style"));
+    if (img.classList.contains("floatright")) {
+      currentFloat = "floatright";
+    }
 
- 
+    // var ancestor = figure;
+    // while ((ancestor = ancestor.previousSibling) && ancestor.nodeName != "FIGURE") {
+    //   // DO NOTHING
+    // } // so HERE ancestor = previous FIGURE or null.. if NO previous figure (it was the first FIGURE)
+
+    // if ((ancestor != null) && (ancestor.classList.contains("floatleft"))) {
+    //   console.log("reverse CALLED detected");
+    //   reverseWidthIn(img,figure);
+    // }
+    
+    if ((currentFloat != null) && (img.classList.contains(currentFloat))) {
+      img.classList.remove(currentFloat);
+      figure.classList.add(currentFloat);
+      figure.style.width = widthStringTmp;
+      img.style.width = "100%";
+      console.log("some float detected!");
+    }
+  }
+  
+  function reverseWidthIn(img,figure) {
+    // console.log("reverse CALLED from INSIDE");
+    // var widthStringTmp = getWidthIn(img);
+    // console.log("widString = "+widthStringTmp);
+    // if (widthStringTmp != null) { // NOT DEFAULT IMAGE i.e. with specific width attribute in img
+    //   console.log("widthStringTmp="+widthStringTmp);
+    //   figure.style.width = widthStringTmp;
+    //   img.style.width = "100%";
+    // }
   }
 
   function setWidthIn(el,widthString) {
@@ -391,11 +374,14 @@ window.onload = function () {
 
     // get 'width' initial position
     var i0 = styleAttrib.indexOf("width"); // première occurence de (1ère lettre de) 'width'
-    if (i0<0) {
+    if (i0<0) { // le 'width' n'a pas été trouvé
       return null;
-    }
-    var i1 = styleAttrib.indexOf(":",i0+5); // première occurence de ":" après le 'h'
+    } // sinon, le 'width' a bien été trouvé
+    var i1 = styleAttrib.indexOf(":",i0+5); // première occurence des ":" après le 'h' (sinon erreur de syntaxe..)
     var i2 = styleAttrib.indexOf(";",i1); // première occurence de ";" après les ':'
+    if (i2<0) { // then the following ';' which was due, is in fact lacking, then take last caracter
+      i2 = styleAttrib.length;
+    }
     //  la valeur de widht se trouve les indices i1 et i2, dont il faut trimmer les espaces
     var widthStringNOTStriped = styleAttrib.substring(i1+1,i2);
     var widthStringTrimmed = widthStringNOTStriped.trim();
