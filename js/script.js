@@ -82,7 +82,7 @@ window.onload = function () {
     for (var i = 0; i < nbImages; i++) { /* Pour chaque image */
       img = imgList[i];
       if (isClickable(img)) {
-        // console.log("Clickable Images");
+        console.log("Clickable Images");
         treatClickableImage(img);
       } else {
         treatNOTClickableImage(img);
@@ -256,8 +256,6 @@ window.onload = function () {
     var a = img.parentNode;
     insertFigureAround(a,img);
     var figure = img.parentNode.parentNode;
-    console.log("a = "+a.nodeName);
-    console.log("figure = "+figure.nodeName);
 
     setClickableWidthIn(img,figure,a);
     // var widthStringTmp = getWidthIn(img);
@@ -274,8 +272,17 @@ window.onload = function () {
       p.style.width = "100%";
       figure.style.width = widthStringTmp;
       figure.style.margin = "auto"; // pour centrer l'image
+      // figure.style.padding = "0 5em 0 0"; // pour un peu d'espace à droite de l'image floatée à gauche
+      copyClassesFromTo(a,figure);
+      if (figure.classList.contains("floatleft")) {
+        figure.style.padding = "0 1.5em 0 0"; // pour espace à droite de l'image floatée-gauche
+      }
+      if (figure.classList.contains("floatright")) {
+        figure.style.padding = "0 0 0 1.5em"; // pour espace à droite de l'image floatée-gauche
+      }
       img.style.width = "100%";     // pour resizer correctement l'image
       a.removeAttribute("style");   // sinon: facteur multiplicatif de zoom
+      a.removeAttribute("class");
   } else { // DEFAULT IMAGE : NO width included. 
       // Removes Clickable pointer outside the image with a natural size
       p.style.width = "100%";
@@ -308,18 +315,19 @@ window.onload = function () {
   }
 }
 
-
-
   function treatFloat(img) {
+    console.log("treatFloat");
     var figure = img.parentNode;
     var widthStringTmp = getWidthIn(img);
-    console.log("widthStringTmp = "+widthStringTmp);
     var currentFloat;
     if (img.classList.contains("floatleft")) {
+      console.log("floatleft detected !");
       currentFloat = "floatleft";
     }
+
     if (img.classList.contains("floatright")) {
       currentFloat = "floatright";
+      console.log("floatright detected !");
     }
     
     if ((currentFloat != null) && (img.classList.contains(currentFloat))) {
@@ -328,6 +336,7 @@ window.onload = function () {
       figure.style.width = widthStringTmp;
       img.style.width = "100%";
     }
+
   }
 
   function setWidthIn(el,widthString) {
