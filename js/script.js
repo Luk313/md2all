@@ -252,30 +252,52 @@ window.onload = function () {
 
   function treatClickableImage(img) {
     // OK for Code Blocks
-    // Traite l'image 'img' NON cliquable pour adapter export PANDOC à  md2all
+    // Traite l'image 'img' Cliquable pour adapter export PANDOC à  md2all
+    var a = img.parentNode;
+    insertFigureAround(a,img);
+    var figure = img.parentNode.parentNode;
+    console.log("a = "+a.nodeName);
+    console.log("figure = "+figure.nodeName);
 
+    setClickableWidthIn(img,figure,a);
+    // var widthStringTmp = getWidthIn(img);
+    treatFloat(img);
+
+    // Treatment for ALL Clickable Images
+    // figure.style.color = "red";
   }
-  
+
+  function setClickableWidthIn(img,figure,a) {
+    var p = figure.parentNode;
+    var widthStringTmp = getWidthIn(a);
+    if (widthStringTmp != null) { // NOT A DEFAULT IMAGE : it has a specific 'width' attribute in img
+      p.style.width = "100%";
+      figure.style.width = widthStringTmp;
+      figure.style.margin = "auto"; // pour centrer l'image
+      img.style.width = "100%";     // pour resizer correctement l'image
+      a.removeAttribute("style");   // sinon: facteur multiplicatif de zoom
+  } else { // DEFAULT IMAGE : NO width included. 
+      // Removes Clickable pointer outside the image with a natural size
+      p.style.width = "100%";
+      var imNaturalWidth = img.naturalWidth;
+      figure.style.width = imNaturalWidth+"px";
+      figure.style.margin = "auto";
+      // img.style.width = "100%";
+      a.removeAttribute("style"); // sinon: facteur multiplicatif de zoom
+  }
+  }
+
+
   function treatNOTClickableImage(img) {
     // OK for Code Blocks
     // Traite l'image 'img' NON cliquable pour adapter export PANDOC à  md2all
     var figure = img.parentNode;
-    // img.style.borderRadius = "20px";
-    
     setDefaultWidthIn(img,figure);
-    var widthStringTmp = getWidthIn(img);
-    var toto = img.getAttribute("style");
-    console.log("widthStringTmp in treatNOTClickableImage = "+widthStringTmp);
-    console.log("style = "+toto);
-    // if (widthStringTmp != null) { // NOT DEFAULT IMAGE i.e. with specific width attribute in img
-    //   console.log("widthStringTmp="+widthStringTmp);
-    //   img.style.width = widthStringTmp;
-    //   figure.style.width = "100%";
-
+    // var widthStringTmp = getWidthIn(img);
     treatFloat(img);
 
-    figure.style.color = "red";
-    figure.style.textAlign = "center";
+    // Treatment for ALL Not Clickable Images
+    // figure.style.color = "red";
   }
 
   function setDefaultWidthIn(img,figure) {
@@ -285,6 +307,8 @@ window.onload = function () {
       figure.style.width = "100%";
   }
 }
+
+
 
   function treatFloat(img) {
     var figure = img.parentNode;
@@ -297,35 +321,13 @@ window.onload = function () {
     if (img.classList.contains("floatright")) {
       currentFloat = "floatright";
     }
-
-    // var ancestor = figure;
-    // while ((ancestor = ancestor.previousSibling) && ancestor.nodeName != "FIGURE") {
-    //   // DO NOTHING
-    // } // so HERE ancestor = previous FIGURE or null.. if NO previous figure (it was the first FIGURE)
-
-    // if ((ancestor != null) && (ancestor.classList.contains("floatleft"))) {
-    //   console.log("reverse CALLED detected");
-    //   reverseWidthIn(img,figure);
-    // }
     
     if ((currentFloat != null) && (img.classList.contains(currentFloat))) {
       img.classList.remove(currentFloat);
       figure.classList.add(currentFloat);
       figure.style.width = widthStringTmp;
       img.style.width = "100%";
-      console.log("some float detected!");
     }
-  }
-  
-  function reverseWidthIn(img,figure) {
-    // console.log("reverse CALLED from INSIDE");
-    // var widthStringTmp = getWidthIn(img);
-    // console.log("widString = "+widthStringTmp);
-    // if (widthStringTmp != null) { // NOT DEFAULT IMAGE i.e. with specific width attribute in img
-    //   console.log("widthStringTmp="+widthStringTmp);
-    //   figure.style.width = widthStringTmp;
-    //   img.style.width = "100%";
-    // }
   }
 
   function setWidthIn(el,widthString) {
