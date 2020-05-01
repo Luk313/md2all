@@ -81,8 +81,8 @@ window.onload = function () {
     var img;
     for (var i = 0; i < nbImages; i++) { /* Pour chaque image */
       img = imgList[i];
-      console.log("Clickable Images");
       if (isClickable(img)) {
+        // console.log("Clickable Images");
         treatClickableImage(img);
       } else {
         treatNOTClickableImage(img);
@@ -110,7 +110,7 @@ window.onload = function () {
     // renvoie 'false' si 'Tagname' n'est PAS un ancêtre de 'son',
     // ou bien, le Node ancêtre de 'son' dont le nom est 'tagName'
     tagName = tagName.toUpperCase();
-    if (son == null) { // un àÂ©làÂ©ment nul n'est le fils d'AUCUN TAG
+    if (son == null) { // un élément nul n'est le fils d'AUCUN TAG
       return null;
     }
     while ((son = son.parentNode) && (son.nodeName != tagName)) {
@@ -122,7 +122,7 @@ window.onload = function () {
     // OK for Code Blocks
     // renvoie le (premier) noeud descendant de 'ancestor', ou bien 'false', si pas de lien de parenté
     tagName = tagName.toUpperCase();
-    if (ancestor == null) { // un àÂ©làÂ©ment nul n'a pas de descendants
+    if (ancestor == null) { // un élément nul n'a pas de descendants
       return null;
     }
     var tagNameList = document.getElementsByTagName(tagName);
@@ -157,7 +157,7 @@ window.onload = function () {
     // exceptAttribs est un tableau d'attributs à  NE PAS COPIER. Ex: null, "", "id" ou ["id"], ["id","src", "href"]
     // Note the 'class' attribute is treated differently in the code => You can pass "class" or "className" in the 'exceptsAttribs' Array!!
     // overwriteAttribs est un tableau d'attributs EN DOUBLON dans endElement, à  SURCHARGER. Ex: null, "", "id" ou ["id"], ["id","src", "href"]
-    // Par dàÂ©faut, les attributs en doublon ne sont PAS surchargàÂ©s.
+    // Par défaut, les attributs en doublon ne sont PAS surchargés.
     if ((exceptAttribs == 'undefined') || (exceptAttribs == "")) {
       exceptAttribs = null;
     }
@@ -184,15 +184,18 @@ window.onload = function () {
       if ((currentAttrib == "style" ) && (startAttributes[i].value.substring(startAttributes[i].value.length-1) !=";")) {
         startAttributes[i].value += ";"
       }
+
       if ((exceptAttribs == null) || ((exceptAttribs != null) && (!exceptAttribs.includes(currentAttrib)))) {
-        // ou bien, tous les Attribs doivent àÂªtre copiàÂ©s, ou bien l'attribut currentAttrib n'est PAS dans la liste (non vide) des exceptions
+        // ou bien, tous les Attribs doivent être copiés, ou bien l'attribut currentAttrib n'est PAS dans la liste (non vide) des exceptions
+
         if ((!endElement.hasAttribute(currentAttrib)) || ((overwriteAttribs != null) && (overwriteAttribs.includes(currentAttrib)))) {
-          // Si le problàÂ¨me ne se pose pas (currentAttrib PAS dans les attributs de endElement), ou bien si currentAttrib appartient à   la liste (non vide) des attributs surchargeables
-          endElement.setAttribute(startAttrib.name,startAttrib.value);
+          // Si le problème ne se pose pas (currentAttrib PAS dans les attributs de endElement), ou bien si currentAttrib appartient à   la liste (non vide) des attributs surchargeables
+            endElement.setAttribute(startAttrib.name,startAttrib.value);
         }
       }
-
+      
     }
+
 
     // this is correct, BUT breaks the Code Blocks in wkhtmltopdf
     // Array.from(startAttributes).forEach(startAttrib => {
@@ -202,13 +205,29 @@ window.onload = function () {
     //     return;
     //   }
     //   if ((exceptAttribs == null) || ((exceptAttribs != null) && (!exceptAttribs.includes(currentAttrib)))) {
-    //     // ou bien, tous les Attribs doivent àÂªtre copiàÂ©s, ou bien l'attribut currentAttrib n'est PAS dans la liste (non vide) des exceptions
+    //     // ou bien, tous les Attribs doivent être copiés, ou bien l'attribut currentAttrib n'est PAS dans la liste (non vide) des exceptions
     //     if ((!endElement.hasAttribute(currentAttrib)) || ((overwriteAttribs != null) && (overwriteAttribs.includes(currentAttrib)))) {
-    //       // Si le problàÂ¨me ne se pose pas (currentAttrib PAS dans les attributs de endElement), ou bien si currentAttrib appartient à   la liste (non vide) des attributs surchargeables
+    //       // Si le problème ne se pose pas (currentAttrib PAS dans les attributs de endElement), ou bien si currentAttrib appartient à   la liste (non vide) des attributs surchargeables
     //       endElement.setAttribute(startAttrib.name,startAttrib.value);
     //     }
     //   }
     // });
+
+  }
+
+  function removeNullWidth(el) {
+    var styleString = el.getAttribute("style");
+    var i0 = styleString.indexOf("width: null;");
+    if (i0 <0) {
+      return;
+    }
+    var n = styleString.length;
+    var newStyleString = styleString.substring(0,i0)+style(i0,n);
+    if (newStyleString == "") {
+      el.removeAttribute("style");
+    } else { // preserve style without the "width: null;" part
+      el.setAttribute("style",newStyleString);
+    }
 
   }
 
@@ -223,13 +242,24 @@ window.onload = function () {
     figure.appendChild(figcaption);
     // aTag.insertBefore(figure,aTag.firstChild);
     parentEl.insertBefore(figure,parentEl.firstChild); 
-  } 
+  }
+
+  function insertElementAround(elOutside,elInside) {
+    // OK for Code Blocks
+    // elOutside is a String Tag : "div", "p", etc..
+    // elInside is a Node
+    var parentEl = elInside.parentNode;
+    var tmp = elInside.nextSibling;
+    var outsideElementVariable = document.createElement(elOutside);
+    outsideElementVariable.appendChild(elInside);
+    parentEl.insertBefore(outsideElementVariable,tmp); 
+  }
 
 
   function isClickable(el) {
     // OK for Code Blocks
-    // renvoie 'null' si 'el' n'est pas clickable ('a' n'est PAS un ancàÂªtre de 'el'),
-    // ou bien le Node 'a' qui est ancàÂªtre de 'el'
+    // renvoie 'null' si 'el' n'est pas clickable ('a' n'est PAS un ancêtre de 'el'),
+    // ou bien le Node 'a' qui est ancêtre de 'el'
     return isTagAncestorOfElement("a",el);
   }
 
@@ -240,43 +270,79 @@ window.onload = function () {
   function treatClickableImage(img) {
     // OK for Code Blocks
     // Traite l'image 'img' NON cliquable pour adapter export PANDOC à  md2all
-    insertFigureAround(img,img);
-    copyAttribsFromTo(isClickable(img),img.parentNode,exceptAttribs=["href","class"]);
-    copyClassesFromTo(isClickable(img),img.parentNode,["floatleft","floatright"]);
-    isClickable(img).removeAttribute("style");
-    isClickable(img).classList.remove("floatleft");
-    isClickable(img).classList.remove("floatright");
+    // var a = img.parentNode;
+    // console.log("a=",a.nodeName);
+    // // insertFigureAround(img,img);
+    // insertFigureAround(a,img);
+    // var figure = a.parentNode;
+    // console.log("figure=",figure.nodeName);
+    // // copyAttribsFromTo(isClickable(img),img.parentNode,exceptAttribs=["href","class"]);
+    // // copyClassesFromTo(isClickable(img),img.parentNode,["floatleft","floatright"]);
+    // copyAttribsFromTo(a,figure,exceptAttribs=["href","class"]);
+    // // copyClassesFromTo(a,figure,["floatleft","floatright"]);
+    // copyClassesFromTo(a,figure);
     
-    // copyAttribsFromTo(img,img.parentNode,exceptAttribs=["id","alt","src"]);
-    img.classList.remove("floatleft");
-    img.classList.remove("floatright");
-    img.style.textAlign = "center";
-    // revenir à  100% dans img2:
-    var newStyle = setWidthIn(img,"100%");
+    // // isClickable(img).removeAttribute("style");
+    // // isClickable(img).classList.remove("floatleft");
+    // // isClickable(img).classList.remove("floatright");
+    
+    // // copyAttribsFromTo(img,img.parentNode,exceptAttribs=["id","alt","src"]);
+    // // img.classList.remove("floatleft");
+    // img.classList.remove("floatright");
+    // img.style.textAlign = "center";
+    // // revenir à  100% dans img2:
+    // // var newStyle = setWidthIn(img,"100%");
+    // var widthStringTmp = getWidthIn(a);
+    // setWidthIn(a,"100%")
+    // if (figure.classList.contains("floatleft")) {
+    //   a.removeAttribute("style");
+    //   // img.classList.remove("floatleft");
+    //   a.classList.remove("floatleft");
+    //   figure.style.textAlign = "center";
+    //   // figure.style.textAlign = "center";
+    //   var newStyleInFigure = setWidthIn(figure,widthStringTmp);
+    //   var newStyleInImg = setWidthIn(img,"100%");
+    // } else {
+    //   var newStyleInFigure = setWidthIn(figure,"100%");
+    //   var newStyleInImg = setWidthIn(img,widthStringTmp);
+      
+    // }
+
   }
   
   function treatNOTClickableImage(img) {
     // OK for Code Blocks
     // Traite l'image 'img' NON cliquable pour adapter export PANDOC à  md2all
     var figure = img.parentNode;
-    copyAttribsFromTo(img,figure,exceptAttribs=["id","alt","src"]);
-    copyClassesFromTo(img,figure);
-    // img.classList.remove("floatleft");
-    // img.classList.remove("floatright");
-    // img.style.textAlign = "center";
-    // revenir à  100% dans img2:
-    var widthStringTmp = getWidthIn(figure);
-    if (figure.classList.contains("floatleft")) {
-      img.classList.remove("floatleft");
-      figure.style.textAlign = "center";
-      // figure.style.textAlign = "center";
-      var newStyleInFigure = setWidthIn(figure,widthStringTmp);
-      var newStyleInImg = setWidthIn(img,"100%");
-    } else {
-      var newStyleInFigure = setWidthIn(figure,"100%");
-      var newStyleInImg = setWidthIn(img,widthStringTmp);
-      
+    // img.style.borderRadius = "20px";
+    
+    var widthStringTmp = getWidthIn(img);
+    if (widthStringTmp != null) { // NOT DEFAULT IMAGE i.e. with specific width attribute in img
+      console.log("widthStringTmp="+widthStringTmp);
+      img.style.width = widthStringTmp;
+      figure.style.width = "100%";
+      var currentFloat;
+      if (img.classList.contains("floatleft")) {
+        currentFloat = "floatleft";
+      }
+      if (img.classList.contains("floatright")) {
+        currentFloat = "floatright";
+      }
+
+      console.log("currentFlaot = "+currentFloat);
+
+      if ((currentFloat != null) && (img.classList.contains(currentFloat))) {
+        img.classList.remove(currentFloat);
+        figure.classList.add(currentFloat);
+        figure.style.width = widthStringTmp;
+        img.style.width = "100%";
+        console.log("float left detected!");
+      }
     }
+    figure.style.color = "red";
+    console.log("img style attribute = "+img.getAttribute("style"));
+
+ 
   }
 
   function setWidthIn(el,widthString) {
@@ -292,7 +358,7 @@ window.onload = function () {
       el.setAttribute("style",newStyle);
       return newStyle;
     } // else 'width' is already defined in 'style' attribute
-    var i0 = styleAttrib.indexOf("width"); // dàÂ©but de width
+    var i0 = styleAttrib.indexOf("width"); // début de width
     var n = styleAttrib.length;
     for (var i = i0; i < n; i++) {
       if (styleAttrib[i] == ";") {
@@ -300,18 +366,21 @@ window.onload = function () {
       }
     }
     var i1 = i+1; // fin de width -> le ';'
-    var newStyle = styleAttrib.substring(0,i0)+"width: "+widthString+";"+styleAttrib.substring(i1,n);
-    el.removeAttribute("style");
-    el.setAttribute("style",newStyle);
-    console.log("newStyle = ",newStyle);
-    return newStyle;
+    var newStyle;
+    if (widthString != null) {
+      newStyle = styleAttrib.substring(0,i0)+"width: "+widthString+";"+styleAttrib.substring(i1,n);
+      el.removeAttribute("style");
+      el.setAttribute("style",newStyle);
+      return newStyle;
+    } else {
+      el.removeAttribute("style");
+    }
   }
 
   function getWidthIn(el) {
     // OK for Code Blocks
     // remplace l'ancienne width de l'attribut 'style' de 'el' par une width à  100%
     if (el.hasAttribute("width")) {
-      console.log("el.getAttribute('width') = ",el.getAttribute("width"));
       return el.getAttribute("width");
     } // else the 'width' is set into 'style' Attrib
 
@@ -322,6 +391,9 @@ window.onload = function () {
 
     // get 'width' initial position
     var i0 = styleAttrib.indexOf("width"); // première occurence de (1ère lettre de) 'width'
+    if (i0<0) {
+      return null;
+    }
     var i1 = styleAttrib.indexOf(":",i0+5); // première occurence de ":" après le 'h'
     var i2 = styleAttrib.indexOf(";",i1); // première occurence de ";" après les ':'
     //  la valeur de widht se trouve les indices i1 et i2, dont il faut trimmer les espaces

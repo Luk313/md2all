@@ -11,9 +11,11 @@ print("Hello Mate!")
 
 ![Bateau 1, NO clickable NO style/Attrib No Classe](img/bateau.jpg)
 
-![Bateau 2, NO clickable AVEC style ET Classe](img/bateau.jpg){style="width:20%;" monAttrib="Hey" .maClasse1 .maClasse2 .floatleft}
+![Bateau 2, NO clickable AVEC style ET Classe](img/bateau.jpg){style="width:20%;color:red;" monAttrib="Hey" .maClasse1 .maClasse2 .floatright}
 
-![Bateau 3, NO clickable AVEC width](img/bateau.jpg){width=30% monAttrib="Hey" .maClasse1 .maClasse2}
+bonjour madame il fait très beau
+
+![Bateau 3, NO clickable AVEC width](img/bateau.jpg){width=30% color="red" monAttrib="Hey" .maClasse1 .maClasse2}
 
 [![Bateau 4, clickable NO style/Attrib NO Classe](img/bateau.jpg)](https://mersetbateaux.com/financer-achat-bateau/)
 
