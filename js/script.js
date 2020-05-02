@@ -89,8 +89,9 @@ window.onload = function () {
         treatNOTClickableImage(img);
       }
     }
-    // imgList[6].style.borderRadius = "20px";
+    
     treatGroupImages();
+    // imgList[6].style.borderRadius = "20px";
     // imgList[6].style.borderRadius = "20px";
   }
 
@@ -300,38 +301,42 @@ window.onload = function () {
     // OK for Code Blocks
     // Traite l'image 'img' NON cliquable pour adapter export PANDOC à  md2all
     var figure = img.parentNode;
+
     setDefaultWidthIn(img,figure);
     // var widthStringTmp = getWidthIn(img);
     treatFloat(img);
     img.removeAttribute("class");
 
-    // Treatment for ALL Not Clickable Images
+    // Treatment for ALL Not Clickable Images, even groupable Ones
     // figure.style.color = "red";
   }
 
   function setDefaultWidthIn(img,figure) {
     var widthStringTmp = getWidthIn(img);
     copyClassesFromTo(img,figure);
-    if (widthStringTmp != null) { // NOT DEFAULT IMAGE i.e. with specific width attribute in img
+    // group detectable
+    if ((widthStringTmp != null) && !(isGroupable(img))) {
+      console.log("GROUPABLE IMG DETECTED");
+      widthNumberTmp = parseInt(widthStringTmp)*2;
       img.style.width = widthStringTmp;
       figure.style.width = "100%";
-    }
-    // img.removeAttribute("class");
+    } 
+
   }
 
   function treatFloat(img) {
-    console.log("treatFloat");
+    // console.log("-->treatFloat");
     var figure = img.parentNode;
     var widthStringTmp = getWidthIn(img);
     var currentFloat;
     if (img.classList.contains("floatleft")) {
-      console.log("floatleft detected !");
+      // console.log("floatleft detected !");
       currentFloat = "floatleft";
     }
 
     if (img.classList.contains("floatright")) {
       currentFloat = "floatright";
-      console.log("floatright detected !");
+      // console.log("floatright detected !");
     }
     
     if ((currentFloat != null) && (img.classList.contains(currentFloat))) {
@@ -405,30 +410,35 @@ window.onload = function () {
 
   function treatGroupImages() {
     var groupFigureList = document.querySelectorAll('figure[class*="group"]');
-    console.log("nb Figures .Group 1 = "+groupFigureList.length);
-    // OUI : fonctionne
     var imgGroups = getImageDistinctGroups(groupFigureList);
-    // NON : ne fonctionne PLUS !!
-    groupFigureList[1].firstElementChild.style.borderRadius = "20px";
-    var nbOfGroups = imgGroups.length; 
+    var nbOfGroups = imgGroups.length;
     for (var i = 0; i < nbOfGroups; i++) {
-      var imgGroup = document.querySelectorAll("figure."+imgGroups[i]);
-      console.log("imGroups ["+i+"] = "+imgGroup[i]);
+      // var imgGroup = document.querySelectorAll("figure."+imgGroups[i]);
+      var imgGroup = document.querySelectorAll('figure[class*=\"'+imgGroups[i]+'\"]');
+      console.log("chaine = "+'figure[class*=\"'+imgGroups[i]+'\"]')
       treatAnImageGroup(imgGroup);
     }
   }
 
   function treatAnImageGroup(imgGroup) {
     var nbImagesInSameGroup = imgGroup.length;
-    var widthOfColumn = (100 / nbImagesInSameGroup).toFixed(2)-4;
+    var n = nbImagesInSameGroup;
+    var xString = "2%"; // pourcentage entre les images, par rapport à la largeur totale
+    var x = parseInt(xString);
+    // var widthOfColumn = (100 / nbImagesInSameGroup).toFixed(2)-5;
+    var widthOfColumn = ((100 - (n+1)*x)/n).toFixed(2)-2;
+    console.log("widthOfColumn = "+widthOfColumn);
+
     for (var i = 0; i < nbImagesInSameGroup; i++) {
       // imgGroup[i].style.cssFloat = "left";
       // imgGroup[i].style.width = widthOfColumn.toString()+"%";
+      // imgGroup[i].style.display = "inline";
       imgGroup[i].classList.add("floatleft");
       imgGroup[i].style.width = widthOfColumn.toString()+"%";
+      imgGroup[i].style.margin = "0 0 0 "+xString;
       imgGroup[i].firstElementChild.style.width = "100%";
     }
-
+    // imgGroup[nbImagesInSameGroup-1].style.clear = "both";
   }
 
 function getImageDistinctGroups(groupFigureList) {
@@ -443,23 +453,14 @@ function getImageDistinctGroups(groupFigureList) {
     figureClassValues[i] = groupFigureList[i].classList.toString().split(' ');
     if (includesSubstringIn("group",figureClassValues[i])) { // figureClassValues[i] is a good Candidate Array to be retained
       var j = indexOfSubstringIn("group",figureClassValues[i]);
-      // console.log("i="+i);
-      // console.log("j="+j);
-      // console.log("figureGroups = "+figureGroups);
-      // console.log("figureClassValues["+i+"]["+j+"] = "+figureClassValues[i][j]);
-
-      // OUI : Fonctionne
-      // groupFigureList[0].firstElementChild.style.borderRadius = "20px";
-      // if (!(figureGroups.includes(figureClassValues[i][j]))) { // figureClassValues[i][j] is NOT already in figureGroups, so add it at index 'nb' in Array to return
       if (!(includesSubstringIn(figureClassValues[i][j],figureGroups))) { // figureClassValues[i][j] is NOT already in figureGroups, so add it at index 'nb' in Array to return
-        // NON: ne fonctionne plus !!
-        // groupFigureList[0].firstElementChild.style.borderRadius = "20px";
         figureGroups[nb] = figureClassValues[i][j];
+        console.log("group["+nb+"] = "+figureGroups[nb]);
         nb++;
       }
     }
   }
-
+  console.log("Nb de Groupes distincts = "+figureGroups.length);
   return figureGroups;
 }
 
@@ -468,7 +469,6 @@ function indexOfSubstringIn(aSubstring,anArray){
   var n = anArray.length;
   for (var i = 0; i < n; i++) {
     var indexOfSubstring = anArray[i].indexOf(aSubstring);
-    console.log("anArray["+i+"] = "+anArray[i]);
     if (indexOfSubstring >= 0) { // 'aSubString' is a substring of 'anArray[i]'
       return i;
     }
@@ -484,6 +484,26 @@ function includesSubstringIn(aSubString,anArray) {
   }
 }
 
+function isGroupable(img) {
+  var figure;
+  if (isClickable(img)) {
+    figure = img.parentNode.parentNode;
+  } else {
+    figure = img.parentNode;
+  }
+  var classesArray = figure.classList.toString().split(' ');
+  if (includesSubstringIn("group",classesArray)) {
+    // console.log("DETECTED. GROUP");
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function getSizeGroupable(img) {
+
+
+}
 
   // Detect and configure media query print vs screen/others:
   function detectMedia(isPrint) { // DO NOT USE LET... assignment: problem in export of pdf! Always prefer VAR ...
