@@ -33,11 +33,11 @@ Accedat 2 huc suavitas quaedam oportet sermonum atque morum, haudquaquam mediocr
 
 Accedat 3 huc suavitas quaedam oportet sermonum atque morum, haudquaquam mediocre condimentum amicitiae. Tristitia autem et in omni re severitas habet illa quidem gravitatem, sed amicitia remissior esse debet et liberior et dulcior et ad omnem comitatem facilitatemque proclivior. quaedam oportet sermonum atque morum, haudquaquam mediocre condimentum amicitiae. Tristitia autem et in omni re severitas habet illa quidem gravitatem, sed amicitia remissior esse debet et liberior et dulcior et ad omnem comitatem facilitatemque proclivior.
 
-![Bateau 7, NO Clickable AVEC group1](img/bateau.jpg){.group1 .classe1 style="width:20%;"}
+![Bateau 7, NO Clickable AVEC group1](img/bateau.jpg){.group1 .classe1 style="width:50%;"}
 
 ![Bateau 8, NO Clickable AVEC group1](img/bateau.jpg){.group1 .classe2 width=30%}
 
-![Bateau 8 BIS, NO Clickable AVEC group1](img/bateau.jpg){.group1 .classe2 width=50%}
+![Bateau 8 BIS, NO Clickable AVEC group1](img/bateau.jpg){.group1 .classe2 width=20%}
 
 Accedat 4 huc suavitas quaedam oportet sermonum atque morum, haudquaquam mediocre condimentum amicitiae. Tristitia autem et in omni re severitas habet illa quidem gravitatem, sed amicitia remissior esse debet et liberior et dulcior et ad omnem comitatem facilitatemque proclivior.
 

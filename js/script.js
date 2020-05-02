@@ -200,7 +200,6 @@ window.onload = function () {
       }
       
     }
-
   }
 
   function removeNullWidth(el) {
@@ -432,31 +431,31 @@ window.onload = function () {
     var img;
 
     for (var i = 0; i < nbImagesInSameGroup; i++) {
-      // imgGroup[i].style.cssFloat = "left";
-      // imgGroup[i].style.width = widthOfColumn.toString()+"%";
-      // imgGroup[i].style.display = "inline";
+      // get the image customised width, named width0 (and define img node)
       if (isClickable(imgGroup[i].firstElementChild.firstElementChild)) { // image is clickable
-        console.log("Clickable detected in img = "+img);
         img = imgGroup[i].firstElementChild.firstElementChild;
         width0 = getWidthIn(imgGroup[i]);
       } else { // Image is not Clickable
         img = imgGroup[i].firstElementChild;
         width0 = getWidthIn(img);
       }
-      if (width0 == null) { // if NO width has been set for THIS image, than set "100%" of the column, by default
-        width0 = "100%"
+      if (width0 == null) { // i.e. NO width has been set for THIS image, than set "100%" of the computed column, by default
+        width0 = "100%";
       }
-      console.log("width0 = "+width0);
       
       imgGroup[i].classList.add("floatleft");
       imgGroup[i].style.width = widthOfColumn.toString()+"%";
       imgGroup[i].style.margin = "0 0 0 "+xString;
       img.style.width = "100%";
-      if (width0 != null) { // image has a 'width' = wdith0 attribute
+      if ((width0 != null) && (width0 != "100%")) { // if needed, Set the image 'width' = width0 attribute
         img.style.width = width0;
       }
     }
-    // imgGroup[nbImagesInSameGroup-1].style.clear = "both";
+    // clear both for next paragraph, after horizontally grouping images
+    var nextP = imgGroup[nbImagesInSameGroup-1].nextElementSibling;
+    console.log("next P = "+nextP);
+    // nextP.style.color = "red";
+    nextP.style.clear = "both";
   }
 
 function getImageDistinctGroups(groupFigureList) {
