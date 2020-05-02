@@ -382,7 +382,7 @@ window.onload = function () {
 
   function getWidthIn(el) {
     // OK for Code Blocks
-    // remplace l'ancienne width de l'attribut 'style' de 'el' par une width à  100%
+    // renvoie la valeur de 'width' de l'élément 'el' si existant, ou bien 'null'
     if (el.hasAttribute("width")) {
       return el.getAttribute("width");
     } // else the 'width' is set into 'style' Attrib
@@ -402,7 +402,7 @@ window.onload = function () {
     if (i2<0) { // then the following ';' which was due, is in fact lacking, then take last caracter
       i2 = styleAttrib.length;
     }
-    //  la valeur de widht se trouve les indices i1 et i2, dont il faut trimmer les espaces
+    //  la valeur de width se trouve les indices i1 et i2, dont il faut trimmer les espaces
     var widthStringNOTStriped = styleAttrib.substring(i1+1,i2);
     var widthStringTrimmed = widthStringNOTStriped.trim();
     return widthStringTrimmed;
@@ -428,15 +428,33 @@ window.onload = function () {
     // var widthOfColumn = (100 / nbImagesInSameGroup).toFixed(2)-5;
     var widthOfColumn = ((100 - (n+1)*x)/n).toFixed(2)-2;
     console.log("widthOfColumn = "+widthOfColumn);
+    var width0;
+    var img;
 
     for (var i = 0; i < nbImagesInSameGroup; i++) {
       // imgGroup[i].style.cssFloat = "left";
       // imgGroup[i].style.width = widthOfColumn.toString()+"%";
       // imgGroup[i].style.display = "inline";
+      if (isClickable(imgGroup[i].firstElementChild.firstElementChild)) { // image is clickable
+        console.log("Clickable detected in img = "+img);
+        img = imgGroup[i].firstElementChild.firstElementChild;
+        width0 = getWidthIn(imgGroup[i]);
+      } else { // Image is not Clickable
+        img = imgGroup[i].firstElementChild;
+        width0 = getWidthIn(img);
+      }
+      if (width0 == null) { // if NO width has been set for THIS image, than set "100%" of the column, by default
+        width0 = "100%"
+      }
+      console.log("width0 = "+width0);
+      
       imgGroup[i].classList.add("floatleft");
       imgGroup[i].style.width = widthOfColumn.toString()+"%";
       imgGroup[i].style.margin = "0 0 0 "+xString;
-      imgGroup[i].firstElementChild.style.width = "100%";
+      img.style.width = "100%";
+      if (width0 != null) { // image has a 'width' = wdith0 attribute
+        img.style.width = width0;
+      }
     }
     // imgGroup[nbImagesInSameGroup-1].style.clear = "both";
   }
