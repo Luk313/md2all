@@ -89,9 +89,9 @@ window.onload = function () {
         treatNOTClickableImage(img);
       }
     }
-
-  treatGroupImages();
-
+    // imgList[6].style.borderRadius = "20px";
+    treatGroupImages();
+    // imgList[6].style.borderRadius = "20px";
   }
 
   function isAncestorOfElement(ancestor,son) {
@@ -215,7 +215,6 @@ window.onload = function () {
     } else { // preserve style without the "width: null;" part
       el.setAttribute("style",newStyleString);
     }
-
   }
 
   function insertFigureAround(img,altTextNode) {
@@ -316,9 +315,9 @@ window.onload = function () {
     if (widthStringTmp != null) { // NOT DEFAULT IMAGE i.e. with specific width attribute in img
       img.style.width = widthStringTmp;
       figure.style.width = "100%";
+    }
+    // img.removeAttribute("class");
   }
-  // img.removeAttribute("class");
-}
 
   function treatFloat(img) {
     console.log("treatFloat");
@@ -407,153 +406,83 @@ window.onload = function () {
   function treatGroupImages() {
     var groupFigureList = document.querySelectorAll('figure[class*="group"]');
     console.log("nb Figures .Group 1 = "+groupFigureList.length);
+    // OUI : fonctionne
     var imgGroups = getImageDistinctGroups(groupFigureList);
+    // NON : ne fonctionne PLUS !!
+    groupFigureList[1].firstElementChild.style.borderRadius = "20px";
+    var nbOfGroups = imgGroups.length; 
+    for (var i = 0; i < nbOfGroups; i++) {
+      var imgGroup = document.querySelectorAll("figure."+imgGroups[i]);
+      console.log("imGroups ["+i+"] = "+imgGroup[i]);
+      treatAnImageGroup(imgGroup);
+    }
+  }
+
+  function treatAnImageGroup(imgGroup) {
+    var nbImagesInSameGroup = imgGroup.length;
+    var widthOfColumn = (100 / nbImagesInSameGroup).toFixed(2)-4;
+    for (var i = 0; i < nbImagesInSameGroup; i++) {
+      // imgGroup[i].style.cssFloat = "left";
+      // imgGroup[i].style.width = widthOfColumn.toString()+"%";
+      imgGroup[i].classList.add("floatleft");
+      imgGroup[i].style.width = widthOfColumn.toString()+"%";
+      imgGroup[i].firstElementChild.style.width = "100%";
+    }
+
   }
 
 function getImageDistinctGroups(groupFigureList) {
-  var nbImagesAyantUneClasseGroup = groupFigureList.lengh;
-  console.log(groupFigureList[0].classList);
-  figureGroups = Array();
+  var nbImagesAyantUneClasseGroup = groupFigureList.length;
+  // console.log(groupFigureList[0].classList);
+  
+  var figureGroups = Array();
+  var nb = 0;
+  var figureClassValues = Array();
+
   for (var i = 0; i < nbImagesAyantUneClasseGroup; i++) {
-    figureGroups[i] = groupFigureList[i];
-    console.log("classe i = "+groupFigureList[i].nodeName);
+    figureClassValues[i] = groupFigureList[i].classList.toString().split(' ');
+    if (includesSubstringIn("group",figureClassValues[i])) { // figureClassValues[i] is a good Candidate Array to be retained
+      var j = indexOfSubstringIn("group",figureClassValues[i]);
+      // console.log("i="+i);
+      // console.log("j="+j);
+      // console.log("figureGroups = "+figureGroups);
+      // console.log("figureClassValues["+i+"]["+j+"] = "+figureClassValues[i][j]);
+
+      // OUI : Fonctionne
+      // groupFigureList[0].firstElementChild.style.borderRadius = "20px";
+      // if (!(figureGroups.includes(figureClassValues[i][j]))) { // figureClassValues[i][j] is NOT already in figureGroups, so add it at index 'nb' in Array to return
+      if (!(includesSubstringIn(figureClassValues[i][j],figureGroups))) { // figureClassValues[i][j] is NOT already in figureGroups, so add it at index 'nb' in Array to return
+        // NON: ne fonctionne plus !!
+        // groupFigureList[0].firstElementChild.style.borderRadius = "20px";
+        figureGroups[nb] = figureClassValues[i][j];
+        nb++;
+      }
+    }
   }
+
   return figureGroups;
 }
 
+function indexOfSubstringIn(aSubstring,anArray){
+  // returns the (first) indexOf the element containing the substring 'aSubstring', or -1 if not includes as a substring
+  var n = anArray.length;
+  for (var i = 0; i < n; i++) {
+    var indexOfSubstring = anArray[i].indexOf(aSubstring);
+    console.log("anArray["+i+"] = "+anArray[i]);
+    if (indexOfSubstring >= 0) { // 'aSubString' is a substring of 'anArray[i]'
+      return i;
+    }
+  }
+  return -1;
+}
 
-
-
-
-
-
-
-
-
-
-
-  // function treatImages() {
-  //     // Fix figcaption appeareance (in clickable images) and Positionning for all images
-  //     var imgList = document.querySelectorAll('img');
-  //     for (var i = 0; i < imgList.length; i++) { /* Pour chaque image */
-  //         var img = imgList[i];
-  //         var tmpSibling = img.nextElementSibling;
-  //         var tmpParent = img.parentElement;
-  //         var figure = document.createElement("figure");
-  //         if (img.parentElement.tagName == "A") { /* Clickable image : a Tag is the parent and contains attributes*/
-  //           this.console.log("CLICKABLE, imgAttributes = ",img.attributes);
-  //           this.console.log("parent Element TagName = "+img.parentElement.tagName);
-  //           var aTag = img.parentNode;
-  //           var imgOld = aTag.removeChild(img);
-  //           var altText = imgOld.getAttribute("alt");
-  //           var tagAttributes = toArrayNodeNamedMap(aTag.attributes);
-  //           var n = aTag.attributes.length;
-  //           /* move all attributes, except 'href', from "A" to "img" */
-  //           for (var i = 0; i < n; i++) { /* Pour chaque attribut de 'a' */
-  //               var attribName = tagAttributes[i][0];
-  //               var attribValue = tagAttributes[i][1];
-  //               // this.console.log("Node Value= "+attribValue);
-  //               if ((attribName != "href") && (attribName !== "width") && (attribName !== "height")) {
-  //                   figure.setAttribute(attribName,attribValue);
-  //                   aTag.removeAttribute(attribName);
-  //               } else if ((attribName == "width") || (attribName == "height")) {
-  //                   var styleText = figure.getAttribute('style');
-  //                   var monTexte = " "+attribName+":"+attribValue+";";
-  //                   if (styleText == null) {
-  //                       figure.setAttribute('style',monTexte);
-  //                     //   this.console.log("monTexte = ",monTexte);
-  //                   } else { 
-  //                       var newStyle = styleText+monTexte;
-  //                       figure.setAttribute('style',newStyle);
-  //                       if (attribName == "width") {
-  //                           aTag.setAttribute("style","width:"+attribValue+";");
-  //                       }
-  //                   }
-  //               }
-  //           }
-  //           var figcaption = document.createElement("figcaption");
-  //           figcaption.textContent = altText;
-  //           imgOld.setAttribute("style","width:100%;");
-  //           figure.appendChild(imgOld);
-  //           figure.appendChild(figcaption);
-  //           // img.removeAttribute('style');
-  //           aTag.insertBefore(figure,aTag.firstChild);
-  //           continue;
-  //         } else { /* NOT  clickable image: figure tag is the parent, and img contains attributes */
-  //             var styleText = img.getAttribute("style");
-  //             var classes = img.classList;
-  //             this.console.log("NOT CLICKABLE, imgAttributes = ",img.attributes);
-  //             this.console.log("parent Element TagName = "+img.parentElement.tagName);
-  //             this.console.log("classes = ",classes);
-  //             var imgAttributes = toArrayNodeNamedMap(img.attributes);
-  //               var n = img.attributes.length;
-  //             // var n = imgAttributes.length;
-  //             this.console.log("n=",n);
-  //             if (n==2 && (imgAttributes[0][0]=="src") && (imgAttributes[1][0]=="alt")) {
-  //                 //   img has no additional styles or classes
-  //                 this.console.log("raw image detected.");
-
-  //                 // img.removeAttribute("style");
-  //                 img.setAttribute("style","width:100%;height:auto;");
-  //                 // var figure = document.createElement("figure");
-  //                 var figure = img.parentNode;
-  
-  //                 if (styleText !== null) {
-  //                     figure.setAttribute('style',styleText);
-  //                 }
-  
-  //                 img.removeAttribute("class");
-          
-  //             } else { /* several attributes in the img tag */
-  //               var someTag = img.parentNode;
-  //               var imgOld = someTag.removeChild(img);
-  //               var altText = imgOld.getAttribute("alt");
-  //               var imgAttributes = toArrayNodeNamedMap(someTag.attributes);
-  //               var n = someTag.attributes.length;
-  //               /* move all attributes, except 'src' and 'alt', from "img" to "figure" */
-  //               /* move all attributes, except 'src' and 'alt', from "A" to "img" */
-  //               for (var j = 0; j < n; j++) { /* Pour chaque attribut de 'a' */
-  //                 var attribName = imgAttributes[j][0];
-  //                 var attribValue = imgAttributes[j][1];
-  //                 // this.console.log("Node Value= "+attribValue);
-  //                 if ((attribName != "src") && (attribName != "alt")) {
-  //                     figure.setAttribute(attribName,attribValue);
-  //                     img.removeAttribute(attribName);
-  //                 } else if ((attribName == "width") || (attribName == "height")) {
-  //                     var styleText = figure.getAttribute('style');
-  //                     var monTexte = " "+attribName+":"+attribValue+";";
-  //                     if (styleText == null) {
-  //                         figure.setAttribute('style',monTexte);
-  //                       //   this.console.log("monTexte = ",monTexte);
-  //                     } else { 
-  //                         var newStyle = styleText+monTexte;
-  //                         figure.setAttribute('style',newStyle);
-  //                         if (attribName == "width") {
-  //                           someTag.setAttribute("style","width:"+attribValue+";");
-  //                         }
-  //                     }
-  //                 }
-  //               }
-  //               var figcaption = document.createElement("figcaption");
-  //               figcaption.textContent = altText;
-  //               imgOld.setAttribute("style","width:100%;");
-  //               figure.appendChild(imgOld);
-  //               figure.appendChild(figcaption);
-  //               // img.removeAttribute('style');
-  //               tmpParent.insertBefore(figure,tmpSibling);
-  //               continue;
-  //               }
-  //           }
-  //     }
-  // }
-
-// function toArrayNodeNamedMap(aNodeNamedMap) {
-//     var array = [];
-//     for (var i = aNodeNamedMap.length >>> 0; i--;) { 
-//         array[i] = [aNodeNamedMap[i].nodeName,aNodeNamedMap[i].nodeValue];
-//     }
-//     return array;
-// }
+function includesSubstringIn(aSubString,anArray) {
+  if (indexOfSubstringIn(aSubString,anArray) >= 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
 
 
   // Detect and configure media query print vs screen/others:
