@@ -429,15 +429,18 @@ window.onload = function () {
     console.log("widthOfColumn = "+widthOfColumn);
     var width0;
     var img;
+    var nextP;
 
     for (var i = 0; i < nbImagesInSameGroup; i++) {
       // get the image customised width, named width0 (and define img node)
       if (isClickable(imgGroup[i].firstElementChild.firstElementChild)) { // image is clickable
         img = imgGroup[i].firstElementChild.firstElementChild;
         width0 = getWidthIn(imgGroup[i]);
+        nextP = imgGroup[nbImagesInSameGroup-1].parentNode.nextElementSibling;
       } else { // Image is not Clickable
         img = imgGroup[i].firstElementChild;
         width0 = getWidthIn(img);
+        nextP = imgGroup[nbImagesInSameGroup-1].nextElementSibling;
       }
       if (width0 == null) { // i.e. NO width has been set for THIS image, than set "100%" of the computed column, by default
         width0 = "100%";
@@ -452,7 +455,6 @@ window.onload = function () {
       }
     }
     // clear both for next paragraph, after horizontally grouping images
-    var nextP = imgGroup[nbImagesInSameGroup-1].nextElementSibling;
     console.log("next P = "+nextP);
     // nextP.style.color = "red";
     nextP.style.clear = "both";
