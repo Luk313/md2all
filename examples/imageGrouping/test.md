@@ -1,5 +1,5 @@
-% Histoire & Architecture des Ordinateurs
-% Rodrigo SCHWENCKE
+% The md2all History, and Future
+% the md2all Team !!
 
 # Testing page
 
