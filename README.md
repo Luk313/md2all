@@ -187,15 +187,14 @@ You can change this behavior this way (compatible with Matplotlib, PlantUML and 
   * Add **{.imgbox}** class to a specific Image in your .md file,
   * **AND** modify the **.imgbox property** in the default page css (lesson.css):
 ```
-![My caption](theImage.png){.imgbox}
+![my caption](theImage.png){.imgbox}
 ```
 
 ### Resizing
 
-* Image width can be set as ```![](theImage.png){width="60%"}``` (percentages only)
-* Image height can be set as ```![](theImage.png){height="40%"}``` (percentages only) (:bomb: currently not working. To be Done:bomb:)
-* Image width and height can be set as ```![](theImage.png){width="60%" height="40%"}``` (percentages only)
-* Other possible Syntax : ```![](theImage.png){style="width:60px; height:40px;"}``` (Here: every css unit allowed: px, em, % etc..)
+* Image width can be set as ```![my caption](theImage.png){width="60%"}``` (percentages only)
+* Image width and height can be set as ```![my caption](theImage.png){width="60%" height="40%"}``` (percentages only)
+* Other possible Syntax : ```![my caption](theImage.png){style="width:60px; height:40px;"}``` (Here: every css unit allowed: px, em, % etc..)
 
 >Note: you can add ANY additionnal class to image
   <!-- <img src="divsTexteFictif.png" alt="image"  />{.imgbox} -->
@@ -204,26 +203,66 @@ You can change this behavior this way (compatible with Matplotlib, PlantUML and 
 
 ### Floating
 
-- Image float to left and text fill the right : ```![](theImage.png){.floatleft}```
-- Image float to right and text fill the left : ```![](theImage.png){.floatright}```
-- Image is a block in the center : ```![](theImage.png){.center}```
-
-If you want a caption for this image you need to wrap the content in a span like this :
+- Image float to left and text fill the right : ```![my caption](theImage.png){.floatleft}```
+- Image float to right and text fill the left : ```![my caption](theImage.png){.floatright}```
+- Image is a block in the center : ```![my caption](theImage.png){.center}``` (by default)
 
 - Image float to left with caption under and text fill the right :
 
 ```
-[![](theImage.png)  <= insert 2 blank spaces at the end of line to break the flow!!!
-The caption !]{.floatleft}
+![my caption](theImage.png){.floatleft}
 ```
 
 - Image float to right with caption under and text fill the left :
 
 ```
-[![](theImage.png)  <= insert 2 blank spaces at the end of line to break the flow!!!
-The caption !]{.floatright}
+![my caption](theImage.png){.floatright}
 ```
 - Image is a block in the center with caption under : ```![The caption](theImage.png)```
+
+### Clickable Images
+
+- Clickable Image :
+
+```
+[![my caption](theImage.png)](http://www.somewhere.cool)
+```
+
+- Clickable Image with floats (floatleft or floatright)
+
+```
+[![my caption](theImage.png)](http://www.somewhere.cool){.floatleft}
+```
+
+### Grouping Images Horizontally
+
+- Two Non Clickable Images, Grouped Horizontally adding "group1" class, (with other NON compulsory other classes)
+
+```
+![image 1](img/bateau.jpg){.group1 .classe1}
+
+![image 2](img/bateau.jpg){.group1 .classe2}
+```
+
+- Three Clickable Images, Grouped Horizontally adding "group2" class, (with other NON compulsory other classes)
+
+```
+[![image 1, avec custom width](img/bateau.jpg)](https://mersetbateaux.com/financer-achat-bateau/){style="width:60%; color:red;" monAttrib="Hey" .group2 .maClasse1 .maClasse2}
+
+[![image 2, avec custom width](img/bateau.jpg)](https://mersetbateaux.com/financer-achat-bateau/){width=20% .group2 .maClasse1 .maClasse2}
+
+[![image 3, avec custom width](img/bateau.jpg)](https://mersetbateaux.com/financer-achat-bateau/){width=40% .group2 .maClasse1 .maClasse2}
+```
+
+- the **Computed width** is the automatically computed percentage, corresponding to $1/n$ of the global width, where $n$ is the number of total images, grouped horizontally. For example:  
+  - If you have 2 images, the computed width is 50% of the total width
+  - If you have 3 images, the computed width is 33.3% of the total width
+
+- Default & Custom Percentage of an Image in a Horizontal Grouping:
+  - By default, each image of a grouping has a relative 100% width **of the computed width** (so it takes all the width it is given for its column)
+  - you can customize the size of each image in a grouping, with a width of p% of the computed width. Example: if p% = 50%, then this image will only spread half of the computed column width
+
+Additional Examples of syntax can be found in the examples/*imgGrouping* folder
 
 ## LaTeX, Mathematical Formulas:
 Use the [standard Latex syntax](https://en.wikibooks.org/wiki/LaTeX/Mathematics) : \$math expression here\$ or $$math$$ if you want a center block formula
