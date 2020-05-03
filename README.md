@@ -264,7 +264,7 @@ You can change this behavior this way (compatible with Matplotlib, PlantUML and 
   - By default, each image of a grouping has a relative 100% width **of the computed width** (so it takes all the width it is given for its column)
   - you can customize the size of each image in a grouping, with a width of p% of the computed width. Example: if p% = 50%, then this image will only spread half of the computed column width
 
-Additional Examples of syntax can be found in the examples/*imgGrouping* folder
+Additional Examples of syntax can be found in the *examples/imgGrouping* folder
 
 ## LaTeX, Mathematical Formulas:
 Use the [standard Latex syntax](https://en.wikibooks.org/wiki/LaTeX/Mathematics) : \$math expression here\$ or $$math$$ if you want a center block formula
