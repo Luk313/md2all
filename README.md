@@ -236,7 +236,7 @@ You can change this behavior this way (compatible with Matplotlib, PlantUML and 
 
 ### Grouping Images Horizontally
 
-- Two Non Clickable Images, Grouped Horizontally adding "group1" class, (with other NON compulsory other classes)
+- Two Non Clickable Images, Grouped Horizontally adding "group1" class, (with other NON compulsory classes)
 
 ```
 ![image 1](img/bateau.jpg){.group1 .classe1}
@@ -244,7 +244,7 @@ You can change this behavior this way (compatible with Matplotlib, PlantUML and 
 ![image 2](img/bateau.jpg){.group1 .classe2}
 ```
 
-- Three Clickable Images, Grouped Horizontally adding "group2" class, (with other NON compulsory other classes)
+- Three Clickable Images, Grouped Horizontally adding "group2" class, (with other NON compulsory classes)
 
 ```
 [![image 1, avec custom width](img/bateau.jpg)](https://somewhere.cool){style="width:60%; color:red;" monAttrib="Hey" .group2 .maClasse1}
