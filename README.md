@@ -247,11 +247,11 @@ You can change this behavior this way (compatible with Matplotlib, PlantUML and 
 - Three Clickable Images, Grouped Horizontally adding "group2" class, (with other NON compulsory other classes)
 
 ```
-[![image 1, avec custom width](img/bateau.jpg)](https://mersetbateaux.com/financer-achat-bateau/){style="width:60%; color:red;" monAttrib="Hey" .group2 .maClasse1 .maClasse2}
+[![image 1, avec custom width](img/bateau.jpg)](https://somewhere.cool){style="width:60%; color:red;" monAttrib="Hey" .group2 .maClasse1}
 
-[![image 2, avec custom width](img/bateau.jpg)](https://mersetbateaux.com/financer-achat-bateau/){width=20% .group2 .maClasse1 .maClasse2}
+[![image 2, avec custom width](img/bateau.jpg)](https://somewhere.cool){width=20% .group2 .maClasse1 .maClasse2}
 
-[![image 3, avec custom width](img/bateau.jpg)](https://mersetbateaux.com/financer-achat-bateau/){width=40% .group2 .maClasse1 .maClasse2}
+[![image 3, avec custom width](img/bateau.jpg)](https://somewhere.cool){width=40% .group2 .maClasse3}
 ```
 
 - the **Computed width** is the automatically computed percentage, corresponding to $1/n$ of the global width, where $n$ is the number of total images, grouped horizontally. For example:  
