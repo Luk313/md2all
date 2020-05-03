@@ -526,7 +526,7 @@ function getSizeGroupable(img) {
 
   // Detect and configure media query print vs screen/others:
   function detectMedia(isPrint) { // DO NOT USE LET... assignment: problem in export of pdf! Always prefer VAR ...
-      if (isPrint.matches) { // If media query matches
+      if (isPrint.matches) { // If media query matches, e.g. for PDF exports
           // document.body.style.backgroundColor = "beige";
           // IMPORTANT: To prevent code highlight to BREAK in @media print
 
@@ -542,6 +542,26 @@ function getSizeGroupable(img) {
               positionSpanLanguageList[i].style.margin = "-0.6em 0.7em 0 0";
           }
 
+          // get emoji images down in PDF: they get slided up, but should not
+          var emojiList = document.querySelectorAll("p > span[data-emoji] > img.emoji");
+          var nbEmojis = emojiList.length;
+          var emoji;
+          for (var i = 0; i < nbEmojis; i++) {
+            emoji = emojiList[i];
+            emoji.style.position = "relative";
+            var zoom = emoji.getAttribute("zoom");
+            console.log("emoji ZOOM = "+zoom);
+            // good topNumber, linearly depending on zoom factor is :
+            // for x= zoom =2 => top = 15, and,
+            // for x=zoom = 10 => top =25
+            var m0=(25-15)/(10-2);
+            var p0 = 25-10*m0;
+            var topNumber = m0*zoom+p0;
+            emoji.style.top = topNumber.toString()+"px";
+
+            
+          }
+
       } else {
           document.body.style.backgroundColor = "light blue";
           var preCodeList = document.querySelectorAll('pre > code.sourceCode');
@@ -555,5 +575,4 @@ function getSizeGroupable(img) {
     var isPrint = window.matchMedia("print")
     detectMedia(isPrint) // Call listener function at run time
     isPrint.addListener(detectMedia) // Attach listener function on state changes 
-
 }

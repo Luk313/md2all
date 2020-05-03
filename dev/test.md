@@ -3,11 +3,13 @@
 
 # Testing page
 
-:bomb: :bulb:
+Hello Guys ! :bomb: :bulb: Welcome
 
 ```python
 print("Hello Mate!")
 ```
+
+$\sqrt 2 \approx 1.414..$
 
 ![Bateau 1, NO clickable NO style/Attrib No Classe](img/bateau.jpg)
 
