@@ -256,7 +256,7 @@ You can change this behavior this way (compatible with Matplotlib, PlantUML and 
 
 - **Syntax** : to group images, just add some "groupX" class (the same one), where X is some integer number, to the EACH image you want in the same horizontal group. Note that, the "groupX" classes have to be defined in ascending order.
 
-- the **Computed width** is the automatically computed percentage, corresponding to $1/n$ of the global width, where $n$ is the number of total images, grouped horizontally. For example:  
+- the **Computed width** for an image of the group, is the automatically computed percentage, corresponding to 1/n of the global width, where n is the number of total images, grouped horizontally. For example:  
   - If you have 2 images, the computed width is 50% of the total width
   - If you have 3 images, the computed width is 33.3% of the total width
 
