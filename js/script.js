@@ -539,11 +539,6 @@ function getSizeGroupable(img) {
           for (var i = 0; i < preCodeList.length; i++) {
               console.log("classes = "+preCodeList[i].classList);
               preCodeList[i].style.whiteSpace = "pre-wrap";
-
-              if (preCodeList[i].parentNode.classList.contains("numberLines")) {
-                preCodeList[i].style.position = "relative";
-                preCodeList[i].style.left = "80px";
-              }
           }
 
           // LANGUAGE in TOP RIGHT CORNER,

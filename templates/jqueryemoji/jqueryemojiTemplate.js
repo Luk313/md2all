@@ -18,7 +18,7 @@ $(function(){
         console.log("this = "+this);
         var img = this;  // the img node
         var followingTextElement = img.parentNode.nextSibling;
-        if (followingTextElement == null) {
+        if (followingTextElement == null) { // last Emoji of the line with nothing after it on the line
             var voidTextNode = document.createTextNode("");
             followingTextElement = img.parentNode.parentNode.appendChild(voidTextNode);
         }
