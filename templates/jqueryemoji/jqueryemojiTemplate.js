@@ -1,5 +1,9 @@
 $(function(){
+    // you MAY NEED to refresh your Browser once the very first time, per project 
+    // this param is need in 'script.js' for wkhtmltopdf export in the detectmedia() function
     var zoomAttrib = "zoom";
+    sessionStorage.setItem('zoomAttrib', zoomAttrib);
+
     var userPathStart = getUserPartOfPathToEmoji();
     $('p > span[data-emoji]').Emoji({
         path:  userPathStart+'.config/md2all/libraries/jqueryemoji/img/apple72/',

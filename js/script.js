@@ -1,5 +1,9 @@
 window.onload = function () {
 
+  // you may need to refresh once the first time of the project
+  var zoomAttrib = sessionStorage.getItem('zoomAttrib');
+  // console.log("zoomAttrib from script.js = "+zoomAttrib);
+
   treatCode();
 
   // Fix {.pagebreakafter} not working inside ul, li, normal parapgraphs, etc.. 
@@ -543,13 +547,14 @@ function getSizeGroupable(img) {
           }
 
           // get emoji images down in PDF: they get slided up, but should not
+          // var zoomAttrib = "zoom";
           var emojiList = document.querySelectorAll("p > span[data-emoji] > img.emoji");
           var nbEmojis = emojiList.length;
           var emoji;
           for (var i = 0; i < nbEmojis; i++) {
             emoji = emojiList[i];
             emoji.style.position = "relative";
-            var zoom = emoji.getAttribute("zoom");
+            var zoom = emoji.getAttribute(zoomAttrib);
             // console.log("emoji ZOOM = "+zoom);
             // good topNumber, linearly depending on zoom factor is :
             // for x= zoom =2 => top = 15, and,
