@@ -266,15 +266,15 @@ You can change this behavior this way (compatible with Matplotlib, PlantUML and 
 
 Additional Examples of syntax and some rendered results, can be found in the *examples/imgGrouping* folder
 
-## Emoticons
+## Emojis
 
 ### Use of this [jqueryemoji Library](https://github.com/rodrigopolo/jqueryemoji)
 
 ### Syntax
 
-- Type emoticon name with ```::``` syntax. Example : ```:smile:```. Get Emoticon Cheat Sheet [Here](https://www.webfx.com/tools/emoji-cheat-sheet/)
-- Optionnally, **To Zoom Emoticon** : add a ```:smile:{zoom=3}``` just after the emoticon (no space after the last ```:```)
-- Optionnally, **To Align Vertically Emoticon**: add a ```:smile:{zoom=3 vAlign}``` or ```:smile:{zoom=3;vAlign}``` with a space or a ```;``` between Emoticon attributes (possible syntaxes: ```vAlign``` or ```valign``` or ```vertical-align```)
+- Type Emoji name with ```::``` syntax. Example : ```:smile:```. Get Emoji Cheat Sheet [Here](https://www.webfx.com/tools/emoji-cheat-sheet/)
+- Optionnally, **To Zoom Emoji** : add a ```:smile:{zoom=3}``` just after the Emoji (no space after the last ```:```)
+- Optionnally, **To Align Vertically Emoji**: add a ```:smile:{zoom=3 vAlign}``` or ```:smile:{zoom=3;vAlign}``` with a space or a ```;``` between Emoji attributes (possible syntaxes: ```vAlign``` or ```valign``` or ```vertical-align```)
 
 ## LaTeX, Mathematical Formulas:
 Use the [standard Latex syntax](https://en.wikibooks.org/wiki/LaTeX/Mathematics) : \$math expression here\$ or $$math$$ if you want a center block formula
