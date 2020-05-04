@@ -211,7 +211,7 @@
 
 	}
  
- .noimgbox, img[src*="data:image/svg+xml"] {
+ .noimgbox, img[src*="data:image/svg+xml"] { /* for LaTeX --web rendered images */
 	border: none;
 	border-radius: 0;
 	padding: 0;
