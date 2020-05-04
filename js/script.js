@@ -78,12 +78,12 @@ window.onload = function () {
     // Fix figcaption appeareance (in clickable images) and Positionning for all images
     var imgList = document.querySelectorAll('img');
     var nbImages = imgList.length;
-    console.log("nbImages = "+nbImages);
+    // console.log("nbImages = "+nbImages);
     var img;
     for (var i = 0; i < nbImages; i++) { /* Pour chaque image */
       img = imgList[i];
       if (isClickable(img)) {
-        console.log("Clickable Images");
+        // console.log("Clickable Images");
         treatClickableImage(img);
       } else {
         treatNOTClickableImage(img);
@@ -315,7 +315,7 @@ window.onload = function () {
     copyClassesFromTo(img,figure);
     // group detectable
     if ((widthStringTmp != null) && !(isGroupable(img))) {
-      console.log("GROUPABLE IMG DETECTED");
+      // console.log("GROUPABLE IMG DETECTED");
       widthNumberTmp = parseInt(widthStringTmp)*2;
       img.style.width = widthStringTmp;
       figure.style.width = "100%";
@@ -414,7 +414,7 @@ window.onload = function () {
     for (var i = 0; i < nbOfGroups; i++) {
       // var imgGroup = document.querySelectorAll("figure."+imgGroups[i]);
       var imgGroup = document.querySelectorAll('figure[class*=\"'+imgGroups[i]+'\"]');
-      console.log("chaine = "+'figure[class*=\"'+imgGroups[i]+'\"]')
+      // console.log("chaine = "+'figure[class*=\"'+imgGroups[i]+'\"]');
       treatAnImageGroup(imgGroup);
     }
   }
@@ -426,7 +426,7 @@ window.onload = function () {
     var x = parseInt(xString);
     // var widthOfColumn = (100 / nbImagesInSameGroup).toFixed(2)-5;
     var widthOfColumn = ((100 - (n+1)*x)/n).toFixed(2)-2;
-    console.log("widthOfColumn = "+widthOfColumn);
+    // console.log("widthOfColumn = "+widthOfColumn);
     var width0;
     var img;
     var nextP;
@@ -455,7 +455,7 @@ window.onload = function () {
       }
     }
     // clear both for next paragraph, after horizontally grouping images
-    console.log("next P = "+nextP);
+    // console.log("next P = "+nextP);
     // nextP.style.color = "red";
     nextP.style.clear = "both";
   }
@@ -474,12 +474,12 @@ function getImageDistinctGroups(groupFigureList) {
       var j = indexOfSubstringIn("group",figureClassValues[i]);
       if (!(includesSubstringIn(figureClassValues[i][j],figureGroups))) { // figureClassValues[i][j] is NOT already in figureGroups, so add it at index 'nb' in Array to return
         figureGroups[nb] = figureClassValues[i][j];
-        console.log("group["+nb+"] = "+figureGroups[nb]);
+        // console.log("group["+nb+"] = "+figureGroups[nb]);
         nb++;
       }
     }
   }
-  console.log("Nb de Groupes distincts = "+figureGroups.length);
+  // console.log("Nb de Groupes distincts = "+figureGroups.length);
   return figureGroups;
 }
 
@@ -550,7 +550,7 @@ function getSizeGroupable(img) {
             emoji = emojiList[i];
             emoji.style.position = "relative";
             var zoom = emoji.getAttribute("zoom");
-            console.log("emoji ZOOM = "+zoom);
+            // console.log("emoji ZOOM = "+zoom);
             // good topNumber, linearly depending on zoom factor is :
             // for x= zoom =2 => top = 15, and,
             // for x=zoom = 10 => top =25

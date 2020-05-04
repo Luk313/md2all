@@ -3,7 +3,7 @@
 
 # Testing page
 
-Hello Guys ! :bomb: :bulb: Welcome
+Hello Guys ! :smile: :heart:{zoom=7} :bomb:{zoom=3} :bulb:{zoom=5} Welcome
 
 ```python
 print("Hello Mate!")
