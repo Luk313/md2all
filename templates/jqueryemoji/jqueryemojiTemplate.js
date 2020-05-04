@@ -18,6 +18,10 @@ $(function(){
         console.log("this = "+this);
         var img = this;  // the img node
         var followingTextElement = img.parentNode.nextSibling;
+        if (followingTextElement == null) {
+            var voidTextNode = document.createTextNode("");
+            followingTextElement = img.parentNode.parentNode.appendChild(voidTextNode);
+        }
         var customParamsString = followingTextElement.nodeValue;
         $(this).css("width", function() {
             if ((customParamsString != "") && (customParamsString.indexOf(zoomAttrib) >=0)) {

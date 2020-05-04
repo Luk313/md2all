@@ -163,6 +163,9 @@ pre.numberLines > code.sourceCode > span > a {
  }
  
  /* workaround for clickable images */
- a { 
+ a {  
+	 /* sensitive : 'inherit' breaks figcaption from matplotlib. 
+					 'inline' shifts code blocks in 'HTML' exports 
+					 'inline-block' messes the images library */
 	display: inherit;
 }

@@ -22,21 +22,21 @@ md2all -light example.md
 ## HTML
 
 ```{.html .numberLines}
-    <body>
-        <div class="box">
-            <div class="morpion">
-                <div class="case">X</div>
-                <div class="case">Y</div>
-                <div class="case">Z</div>
-                <div class="case">A</div>
-                <div class="case">B</div>
-                <div class="case">C</div>
-                <div class="case">T</div>
-                <div class="case">U</div>
-                <div class="case">V</div>
-            </div>
+<body>
+    <div class="box">
+        <div class="morpion">
+            <div class="case">X</div>
+            <div class="case">Y</div>
+            <div class="case">Z</div>
+            <div class="case">A</div>
+            <div class="case">B</div>
+            <div class="case">C</div>
+            <div class="case">T</div>
+            <div class="case">U</div>
+            <div class="case">V</div>
         </div>
-    </body>
+    </div>
+</body>
 ```
 
 ```{.html .numberLines startFrom="9"}

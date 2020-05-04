@@ -3,7 +3,7 @@
 
 # Testing page
 
-:bomb: :bulb:
+:bomb: :bulb: :smile:
 
 ```python
 print("Hello Mate!")
