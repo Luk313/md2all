@@ -531,7 +531,7 @@ function getSizeGroupable(img) {
   // Detect and configure media query print vs screen/others:
   function detectMedia(isPrint) { // DO NOT USE LET... assignment: problem in export of pdf! Always prefer VAR ...
       if (isPrint.matches) { // If media query matches, e.g. for PDF exports
-          // document.body.style.backgroundColor = "beige";
+          document.body.style.backgroundColor = "beige";
           // IMPORTANT: To prevent code highlight to BREAK in @media print
 
           var preCodeList = document.querySelectorAll('pre > code.sourceCode');
@@ -562,7 +562,14 @@ function getSizeGroupable(img) {
             var m0=(25-15)/(10-2);
             var p0 = 25-10*m0;
             var topNumber = m0*zoom+p0;
-            emoji.style.top = topNumber.toString()+"px";
+            
+            // get 'Vertical Aligned' Emoji Images EVEN MORE SHIFTED
+            if (emoji.style.verticalAlign != "") {
+              var oneEm = Math.round(parseFloat(window.getComputedStyle(emoji.parentNode).fontSize));
+              emoji.style.top = (-oneEm/3).toString()+"px";
+            } else {
+              emoji.style.top = (topNumber).toString()+"px";
+            }
 
             
           }

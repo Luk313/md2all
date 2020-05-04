@@ -2,6 +2,8 @@ $(function(){
     // you MAY NEED to refresh your Browser once the very first time, per project 
     // this param is need in 'script.js' for wkhtmltopdf export in the detectmedia() function
     var zoomAttrib = "zoom";
+    var verticalAlignList = ["valign","vertical-align"];
+    var vAlign;
     sessionStorage.setItem('zoomAttrib', zoomAttrib);
 
     var userPathStart = getUserPartOfPathToEmoji();
@@ -13,25 +15,41 @@ $(function(){
         var width = $(this).width();
         var height = $(this).height();
         var zoom = 1.4;  // default zoom for ALL Emoticons
-
+        console.log("this = "+this);
+        var img = this;  // the img node
+        var followingTextElement = img.parentNode.nextSibling;
+        var customParamsString = followingTextElement.nodeValue;
         $(this).css("width", function() {
-            var img = this;  // the img node
-            var followingTextElement = img.parentNode.nextSibling;
-            var customZoomString = followingTextElement.nodeValue;
-            if ((customZoomString != "") && (customZoomString.indexOf(zoomAttrib) >=0)) {
-                zoom = getZoom(customZoomString); // number
+            if ((customParamsString != "") && (customParamsString.indexOf(zoomAttrib) >=0)) {
+                zoom = getZoom(customParamsString); // number
                 // console.log("Custom zoom = "+customZoom);
             }
-            followingTextElement.nodeValue = ""; // wkhtmltopdf n'aime pas le .remove() ...
             return (width*zoom).toString()+"px";
         });
-
+        
         $(this).css("height", function() { // zoom has already been set/detected in width !
             return (height*zoom).toString()+"px";
-            });
+        });
+        $(this).attr(zoomAttrib,zoom);
+        
+        if (hasValign(customParamsString)) {
+            $(this).css("vertical-align","middle");
+            var oneEm = Math.round(parseFloat(window.getComputedStyle(img.parentNode).fontSize));
+            $(this).css("position", "relative");
+            $(this).css("top", (-oneEm/3).toString()+"px");
+            vAlign = getValign(customParamsString);
+            $(this).addClass(vAlign);
+        } else {
+            $(this).css("position", "inherit");
+        }
+
 
         $(this).attr(zoomAttrib,zoom);
         $(this).addClass("noimgbox");
+
+        // FAUX, A CORRIGER (supprime la fin du texte après les emojis..)
+        followingTextElement.nodeValue = ""; // wkhtmltopdf n'aime pas le .remove() ...
+
     });
 
     function getZoom(aString) {
@@ -49,6 +67,29 @@ $(function(){
         }
     }
 
+    function hasValign(aString) {
+        // returns true, if vAlign is detected, or false otherwise
+        var n = verticalAlignList.length;
+        for (var i = 0; i < n; i++) {
+            if (aString.indexOf(verticalAlignList[i]) >= 0) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function getValign(aString) {
+        // returns vAlign if detected, or false otherwise
+        var n = verticalAlignList.length;
+        for (var i = 0; i < n; i++) {
+            if (aString.indexOf(verticalAlignList[i]) >= 0) {
+                return verticalAlignList[i];
+            }
+        }
+        return null;
+    }
+
+
     function getUserPartOfPathToEmoji() {
         console.log("path = "+window.location.pathname);
         var globalPath = window.location.pathname;
@@ -58,5 +99,10 @@ $(function(){
         console.log("userPart = "+userPartOfPath);
         return userPartOfPath;
     }
+
+    // function getEmSize(el) {
+    //     return parseFloat(getComputedStyle(el).fontSize);
+    // }
+
 
 });

@@ -3,7 +3,9 @@
 
 # Testing page
 
-Hello Guys ! :smile: :heart:{zoom=7} :bomb:{zoom=3} :bulb:{zoom=5} Welcome
+Hello Guys ! :minidisc:{zoom=1.6; valign} :minidisc:{zoom=2; valign} :minidisc:{zoom=3; valign} :minidisc:{zoom=5; valign} :minidisc:{zoom=7; valign} :minidisc:{zoom=10; valign} :smile: :heart:{zoom=7; valign} :bomb:{zoom=3} :bulb:{zoom=5; valign} Welcome
+
+Second line of Emojis: :minidisc: :smile: :heart: :bulb: aligned correctly
 
 ```python
 print("Hello Mate!")
