@@ -1,4 +1,4 @@
-% The md2all History, and Future
+% MD2ALL Stunning Renders
 % the md2all Team !!
 
 # Testing page
