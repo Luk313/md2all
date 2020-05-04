@@ -531,7 +531,7 @@ function getSizeGroupable(img) {
   // Detect and configure media query print vs screen/others:
   function detectMedia(isPrint) { // DO NOT USE LET... assignment: problem in export of pdf! Always prefer VAR ...
       if (isPrint.matches) { // If media query matches, e.g. for PDF exports
-          document.body.style.backgroundColor = "beige";
+          // document.body.style.backgroundColor = "beige";
           // IMPORTANT: To prevent code highlight to BREAK in @media print
 
           var preCodeList = document.querySelectorAll('pre > code.sourceCode');

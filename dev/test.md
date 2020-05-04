@@ -3,7 +3,7 @@
 
 # Testing page
 
-Hello Guys ! :minidisc:{zoom=1.6; valign} :minidisc:{zoom=2; valign} :minidisc:{zoom=3; valign} :minidisc:{zoom=5; valign} :minidisc:{zoom=7; valign} :minidisc:{zoom=10; valign} :smile: :heart:{zoom=7; valign} :bomb:{zoom=3} :bulb:{zoom=5; valign} Welcome
+Hello Guys ! :minidisc:{zoom=1.6; vAlign} :minidisc:{zoom=2; vAlign} :minidisc:{zoom=3; vAlign} :minidisc:{zoom=5; vAlign} :minidisc:{zoom=7; vAlign} :minidisc:{zoom=10; vAlign} :smile: :heart:{zoom=7; vAlign} :bomb:{zoom=3} :bulb:{zoom=5; vAlign} Welcome
 
 Second line of Emojis: :minidisc: :smile: :heart: :bulb: aligned correctly
 
