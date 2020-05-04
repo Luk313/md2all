@@ -74,15 +74,6 @@ $include-after$
 $endfor$
 <link rel="stylesheet" href="$home$/.config/md2all/css/$CodeLayoutCssName$.css">
 <link rel="stylesheet" href="$home$/.config/md2all/css/$CodeLayoutCssName$$hack$Hack.css">
-/* <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/emoji-toolkit@5.5.0/extras/css/joypixels.min.css"/> */
-
-/* <link rel="stylesheet" href="$home$/.config/md2all/libraries/jqueryemoji/css/style.css"> */
-/* <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script type="text/javascript" src="$home$/.config/md2all/libraries/jqueryemoji/js/jQueryEmoji.js"></script>
-<script type="text/javascript" src="$home$/.config/md2all/templates/jqueryemoji/jqueryemojiTemplate.js"></script> */
-
-/* <script src="https://cdn.jsdelivr.net/npm/emoji-toolkit@5.5.0/lib/js/joypixels.min.js"></script> */
-
 <script src="$JsStyle$"></script>
 </body>
 </html>
