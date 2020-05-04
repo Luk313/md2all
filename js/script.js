@@ -30,12 +30,13 @@ window.onload = function () {
         codeClasses.push(codesList[i].classList[1]);
         codesList[i].classList.add("language-"+codeClasses[i]);
         codesList[i].style.borderRadius = "0.3em";
+        
         // codesList[i].style.fontFamily = "Source Code Pro";
-    }
-
-    // (For Prism.js:) add language-XXX class to pre tags
-    var preList = document.querySelectorAll('pre.sourceCode');
-    for (var i = 0; i < preList.length; i++) {
+      }
+      
+      // (For Prism.js:) add language-XXX class to pre tags
+      var preList = document.querySelectorAll('pre.sourceCode');
+      for (var i = 0; i < preList.length; i++) {
         // codeClasses.push(codesList[i].classList[1]);
         preList[i].classList.add("language-"+codeClasses[i]);
     }
@@ -53,8 +54,8 @@ window.onload = function () {
     for (var i = 0; i < positionList.length; i++) {
         parentList.push(positionList[i].parentNode);
     }
-
-    // CREATE NEW LANGUAGE SPAN List, to be detected automatically by Pandoc, and ADD it to DOM, stylish blue upper right corner
+    // CREATE THE LANGUAGE LOGO (SPAN List): the stylish blue upper right corner
+    // to be detected automatically by Pandoc, and ADD it to DOM,
     var newSpan = [];
     for (var i = 0; i < positionList.length; i++) {
         newSpan[i] = document.createElement("span");
@@ -530,13 +531,19 @@ function getSizeGroupable(img) {
 
   // Detect and configure media query print vs screen/others:
   function detectMedia(isPrint) { // DO NOT USE LET... assignment: problem in export of pdf! Always prefer VAR ...
-      if (isPrint.matches) { // If media query matches, e.g. for PDF exports
+      if (isPrint.matches) { // If media query matches, i.e. for PDF exports
           // document.body.style.backgroundColor = "beige";
           // IMPORTANT: To prevent code highlight to BREAK in @media print
 
           var preCodeList = document.querySelectorAll('pre > code.sourceCode');
           for (var i = 0; i < preCodeList.length; i++) {
-              preCodeList[i].style.whiteSpace = "pre";
+              console.log("classes = "+preCodeList[i].classList);
+              preCodeList[i].style.whiteSpace = "pre-wrap";
+
+              if (preCodeList[i].parentNode.classList.contains("numberLines")) {
+                preCodeList[i].style.position = "relative";
+                preCodeList[i].style.left = "80px";
+              }
           }
 
           // LANGUAGE in TOP RIGHT CORNER,

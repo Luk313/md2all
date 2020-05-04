@@ -12,6 +12,7 @@
       span.underline{text-decoration: underline;}
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
+
   <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
@@ -77,14 +78,20 @@ code span.vs { color: #ba2121; } /* VerbatimString */
 code span.wa { color: #66d9ef; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="/home/luke/.config/md2all/css/lesson.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
-    var mathElements = document.getElementsByClassName("math");
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") { katex.render(texText.data, mathElements[i], { displayMode: mathElements[i].classList.contains("display"), throwOnError: false } );
-    }}});</script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css" />
+   var mathElements = document.getElementsByClassName("math");
+   for (var i = 0; i < mathElements.length; i++) {
+    var texText = mathElements[i].firstChild;
+    if (mathElements[i].tagName == "SPAN") {
+     katex.render(texText.data, mathElements[i], {
+      displayMode: mathElements[i].classList.contains('display'),
+      throwOnError: false,
+      fleqn: false
+     });
+  }}});
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css" />
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
@@ -99,29 +106,29 @@ code span.wa { color: #66d9ef; font-style: italic; } /* Warning */
 <blockquote>
 <p>Note: 1°) the .md file is strictly the same than the other theme example. the only difference is the command hereafter. 2°) The auto-numbering of markdown (sub-)headlines.</p>
 </blockquote>
-<h1 id="first-some-code-exemples-with-massilia-dark-theme"><span class="header-section-number">1</span> First Some code Exemples with Massilia Dark Theme</h1>
-<h2 id="command-to-type"><span class="header-section-number">1.1</span> Command to Type</h2>
+<h1 data-number="1" id="first-some-code-exemples-with-massilia-dark-theme"><span class="header-section-number">1</span> First Some code Exemples with Massilia Dark Theme</h1>
+<h2 data-number="1.1" id="command-to-type"><span class="header-section-number">1.1</span> Command to Type</h2>
 <p>Command to type in Terminal:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">md2all</span> -dark example.md</span></code></pre></div>
-<h1 id="page-2"><span class="header-section-number">2</span> Page 2</h1>
+<h1 data-number="2" id="page-2"><span class="header-section-number">2</span> Page 2</h1>
 <p>Command to type in Terminal:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="ex">md2all</span> -dark example.md</span></code></pre></div>
-<h2 id="html"><span class="header-section-number">2.1</span> HTML</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource html numberLines"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1"></a>    <span class="kw">&lt;body&gt;</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>        <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;box&quot;</span><span class="kw">&gt;</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a>            <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;morpion&quot;</span><span class="kw">&gt;</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a>                <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;case&quot;</span><span class="kw">&gt;</span>X<span class="kw">&lt;/div&gt;</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a>                <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;case&quot;</span><span class="kw">&gt;</span>Y<span class="kw">&lt;/div&gt;</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a>                <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;case&quot;</span><span class="kw">&gt;</span>Z<span class="kw">&lt;/div&gt;</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a>                <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;case&quot;</span><span class="kw">&gt;</span>A<span class="kw">&lt;/div&gt;</span></span>
-<span id="cb3-8"><a href="#cb3-8"></a>                <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;case&quot;</span><span class="kw">&gt;</span>B<span class="kw">&lt;/div&gt;</span></span>
-<span id="cb3-9"><a href="#cb3-9"></a>                <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;case&quot;</span><span class="kw">&gt;</span>C<span class="kw">&lt;/div&gt;</span></span>
-<span id="cb3-10"><a href="#cb3-10"></a>                <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;case&quot;</span><span class="kw">&gt;</span>T<span class="kw">&lt;/div&gt;</span></span>
-<span id="cb3-11"><a href="#cb3-11"></a>                <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;case&quot;</span><span class="kw">&gt;</span>U<span class="kw">&lt;/div&gt;</span></span>
-<span id="cb3-12"><a href="#cb3-12"></a>                <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;case&quot;</span><span class="kw">&gt;</span>V<span class="kw">&lt;/div&gt;</span></span>
-<span id="cb3-13"><a href="#cb3-13"></a>            <span class="kw">&lt;/div&gt;</span></span>
-<span id="cb3-14"><a href="#cb3-14"></a>        <span class="kw">&lt;/div&gt;</span></span>
-<span id="cb3-15"><a href="#cb3-15"></a>    <span class="kw">&lt;/body&gt;</span></span></code></pre></div>
+<h2 data-number="2.1" id="html"><span class="header-section-number">2.1</span> HTML</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource html numberLines"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">&lt;body&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>    <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;box&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>        <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;morpion&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a>            <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;case&quot;</span><span class="kw">&gt;</span>X<span class="kw">&lt;/div&gt;</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>            <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;case&quot;</span><span class="kw">&gt;</span>Y<span class="kw">&lt;/div&gt;</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a>            <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;case&quot;</span><span class="kw">&gt;</span>Z<span class="kw">&lt;/div&gt;</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a>            <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;case&quot;</span><span class="kw">&gt;</span>A<span class="kw">&lt;/div&gt;</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a>            <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;case&quot;</span><span class="kw">&gt;</span>B<span class="kw">&lt;/div&gt;</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a>            <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;case&quot;</span><span class="kw">&gt;</span>C<span class="kw">&lt;/div&gt;</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a>            <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;case&quot;</span><span class="kw">&gt;</span>T<span class="kw">&lt;/div&gt;</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a>            <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;case&quot;</span><span class="kw">&gt;</span>U<span class="kw">&lt;/div&gt;</span></span>
+<span id="cb3-12"><a href="#cb3-12"></a>            <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;case&quot;</span><span class="kw">&gt;</span>V<span class="kw">&lt;/div&gt;</span></span>
+<span id="cb3-13"><a href="#cb3-13"></a>        <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb3-14"><a href="#cb3-14"></a>    <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb3-15"><a href="#cb3-15"></a><span class="kw">&lt;/body&gt;</span></span></code></pre></div>
 <div class="sourceCode" id="cb4" data-startFrom="9"><pre class="sourceCode numberSource html numberLines"><code class="sourceCode html" style="counter-reset: source-line 8;"><span id="cb4-9"><a href="#cb4-9"></a><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></span>
 <span id="cb4-10"><a href="#cb4-10"></a><span class="kw">&lt;html</span><span class="ot"> lang=</span><span class="st">&quot;fr&quot;</span><span class="kw">&gt;</span></span>
 <span id="cb4-11"><a href="#cb4-11"></a><span class="kw">&lt;head&gt;</span></span>
@@ -134,7 +141,7 @@ code span.wa { color: #66d9ef; font-style: italic; } /* Warning */
 <span id="cb4-18"><a href="#cb4-18"></a>    </span>
 <span id="cb4-19"><a href="#cb4-19"></a><span class="kw">&lt;/body&gt;</span></span>
 <span id="cb4-20"><a href="#cb4-20"></a><span class="kw">&lt;/html&gt;</span></span></code></pre></div>
-<h2 id="css" class="pagebreakbefore"><span class="header-section-number">2.2</span> CSS</h2>
+<h2 class="pagebreakbefore" data-number="2.2" id="css"><span class="header-section-number">2.2</span> CSS</h2>
 <div class="sourceCode" id="cb5"><pre class="sourceCode numberSource css numberLines"><code class="sourceCode css"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">@import</span> <span class="fu">url(</span><span class="st">https://fonts.googleapis.com/css?family=Questrial</span><span class="fu">)</span><span class="op">;</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a> body<span class="op">,</span> p<span class="op">,</span> <span class="pp">#visible</span><span class="op">,</span> <span class="fu">.warning</span><span class="op">,</span> {</span>
 <span id="cb5-3"><a href="#cb5-3"></a>     <span class="kw">font-family</span>: Questrial<span class="op">,</span> Andika<span class="op">,</span> <span class="st">&quot;Amerigo BT&quot;</span><span class="op">,</span> Century<span class="op">,</span> <span class="st">&quot;Bookman URW&quot;</span><span class="op">,</span> <span class="st">&quot;Bitstream Vera Serif&quot;</span><span class="op">,</span> <span class="st">&quot;Free Sans&quot;</span><span class="op">,</span> Georgia<span class="op">,</span> <span class="dv">Serif</span><span class="op">,</span> Aerial<span class="op">,</span> <span class="st">&quot;Times New Roman&quot;</span><span class="op">,</span> <span class="st">&quot;STSong&quot;</span><span class="op">,</span> <span class="st">&quot;PT Serif&quot;</span><span class="op">;</span></span>
@@ -149,18 +156,18 @@ code span.wa { color: #66d9ef; font-style: italic; } /* Warning */
 <span id="cb5-12"><a href="#cb5-12"></a>     <span class="kw">text-align</span>: <span class="dv">justify</span><span class="op">;</span></span>
 <span id="cb5-13"><a href="#cb5-13"></a>     <span class="kw">margin</span> : <span class="dv">0.1</span><span class="dt">rem</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb5-14"><a href="#cb5-14"></a> }</span></code></pre></div>
-<h2 id="javascript"><span class="header-section-number">2.3</span> Javascript</h2>
+<h2 data-number="2.3" id="javascript"><span class="header-section-number">2.3</span> Javascript</h2>
 <div class="sourceCode" id="cb6" data-startFrom="14"><pre class="sourceCode numberSource javascript numberLines"><code class="sourceCode javascript" style="counter-reset: source-line 13;"><span id="cb6-14"><a href="#cb6-14"></a><span class="kw">var</span> codeClasses <span class="op">=</span> []<span class="op">;</span></span>
-<span id="cb6-15"><a href="#cb6-15"></a>    <span class="kw">var</span> codesList <span class="op">=</span> <span class="va">document</span>.<span class="at">querySelectorAll</span>(<span class="st">&#39;code.sourceCode&#39;</span>)<span class="op">;</span></span>
-<span id="cb6-16"><a href="#cb6-16"></a>    <span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="va">codesList</span>.<span class="at">length</span><span class="op">;</span> i<span class="op">++</span>) <span class="op">{</span></span>
-<span id="cb6-17"><a href="#cb6-17"></a>        <span class="va">codeClasses</span>.<span class="at">push</span>(codesList[i].<span class="at">classList</span>[<span class="dv">1</span>])<span class="op">;</span></span>
-<span id="cb6-18"><a href="#cb6-18"></a>        codesList[i].<span class="va">classList</span>.<span class="at">add</span>(<span class="st">&quot;language-&quot;</span><span class="op">+</span>codeClasses[i])<span class="op">;</span></span>
-<span id="cb6-19"><a href="#cb6-19"></a>    <span class="op">}</span></span></code></pre></div>
-<h2 id="php"><span class="header-section-number">2.4</span> PHP</h2>
+<span id="cb6-15"><a href="#cb6-15"></a>    <span class="kw">var</span> codesList <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">querySelectorAll</span>(<span class="st">&#39;code.sourceCode&#39;</span>)<span class="op">;</span></span>
+<span id="cb6-16"><a href="#cb6-16"></a>    <span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> codesList<span class="op">.</span><span class="at">length</span><span class="op">;</span> i<span class="op">++</span>) {</span>
+<span id="cb6-17"><a href="#cb6-17"></a>        codeClasses<span class="op">.</span><span class="fu">push</span>(codesList[i]<span class="op">.</span><span class="at">classList</span>[<span class="dv">1</span>])<span class="op">;</span></span>
+<span id="cb6-18"><a href="#cb6-18"></a>        codesList[i]<span class="op">.</span><span class="at">classList</span><span class="op">.</span><span class="fu">add</span>(<span class="st">&quot;language-&quot;</span><span class="op">+</span>codeClasses[i])<span class="op">;</span></span>
+<span id="cb6-19"><a href="#cb6-19"></a>    }</span></code></pre></div>
+<h2 data-number="2.4" id="php"><span class="header-section-number">2.4</span> PHP</h2>
 <div class="sourceCode" id="cb7" data-startFrom="4"><pre class="sourceCode numberSource php numberLines"><code class="sourceCode php" style="counter-reset: source-line 3;"><span id="cb7-4"><a href="#cb7-4"></a><span class="kw">&lt;?php</span></span>
 <span id="cb7-5"><a href="#cb7-5"></a><span class="kw">echo</span> <span class="st">&quot;Hello World!&quot;</span><span class="ot">;</span></span>
 <span id="cb7-6"><a href="#cb7-6"></a><span class="kw">?&gt;</span></span></code></pre></div>
-<h2 id="python"><span class="header-section-number">2.5</span> Python</h2>
+<h2 data-number="2.5" id="python"><span class="header-section-number">2.5</span> Python</h2>
 <div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="co">#!/usr/bin/env python</span></span>
 <span id="cb8-2"><a href="#cb8-2"></a></span>
 <span id="cb8-3"><a href="#cb8-3"></a><span class="co">&quot;&quot;&quot;</span></span>
@@ -185,24 +192,24 @@ code span.wa { color: #66d9ef; font-style: italic; } /* Warning */
 <span id="cb8-22"><a href="#cb8-22"></a></span>
 <span id="cb8-23"><a href="#cb8-23"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</span>
 <span id="cb8-24"><a href="#cb8-24"></a>    maFonction(<span class="st">&quot; you!&quot;</span>)</span></code></pre></div>
-<h1 id="latex" class="pagebreakbefore"><span class="header-section-number">3</span> LateX</h1>
+<h1 class="pagebreakbefore" data-number="3" id="latex"><span class="header-section-number">3</span> LateX</h1>
 <p>Hey! This is how to insert LaTeX code in your .md File, as a math inline formula <span class="math inline">\sqrt 4 = 2</span> , so this line goes on after the other inline formula <span class="math inline">i^2</span>, or, as a block code: <span class="math display">i_0=1; i_1=2</span> That’s it!</p>
-<h1 id="matplotlib"><span class="header-section-number">4</span> Matplotlib</h1>
+<h1 data-number="4" id="matplotlib"><span class="header-section-number">4</span> Matplotlib</h1>
 <p>A Matplotlib rendered Image, with Matplotlib syntax</p>
 <figure>
-<img src="generated/-2254304317340054494.png" class="imgbox" alt="" /><figcaption> (<a href="generated/-2254304317340054494.txt">Source code</a>, <a href="generated/-2254304317340054494.hires.png">high res.</a>)</figcaption>
+<img src="generated/4240052604052452476.png" class="imgbox" alt="" /><figcaption> (<a href="generated/4240052604052452476.txt">Source code</a>, <a href="generated/4240052604052452476.hires.png">high res.</a>)</figcaption>
 </figure>
-<h1 id="graphviz" class="pagebreakbefore"><span class="header-section-number">5</span> Graphviz</h1>
+<h1 class="pagebreakbefore" data-number="5" id="graphviz"><span class="header-section-number">5</span> Graphviz</h1>
 <p>A Graphviz rendered Image, with the .dot syntax</p>
 <figure>
 <img src="graph-images/jolifichier.svg" class="graph center imgbox" name="jolifichier.svg" alt="" /><figcaption>This was generated using the graphviz.py filter.</figcaption>
 </figure>
-<h1 id="plantuml"><span class="header-section-number">6</span> PlantUML</h1>
+<h1 data-number="6" id="plantuml"><span class="header-section-number">6</span> PlantUML</h1>
 <p>A plantUML rendered image :</p>
 <figure>
 <img src="plantuml-images/jolifichier.png" class="plantuml center" name="jolifichier.uml" alt="" /><figcaption>This was generated using the PlantUML filter.</figcaption>
 </figure>
-<h1 id="multi-columns" class="pagebreakbefore"><span class="header-section-number">7</span> Multi-Columns</h1>
+<h1 class="pagebreakbefore" data-number="7" id="multi-columns"><span class="header-section-number">7</span> Multi-Columns</h1>
 <p>First Normal Paragraph</p>
 <p><br />
 </p>
@@ -229,7 +236,7 @@ code span.wa { color: #66d9ef; font-style: italic; } /* Warning */
 </div>
 <p>Last Normal Paragraph. Last Normal Paragraph. Last Normal Paragraph.</p>
 <p>Last Normal Paragraph. Last Normal Paragraph. Last Normal Paragraph.</p>
-<h1 id="images"><span class="header-section-number">8</span> Images</h1>
+<h1 data-number="8" id="images"><span class="header-section-number">8</span> Images</h1>
 <figure>
 <img src="grid.png" alt="" /><figcaption>Caption 0: Original Size</figcaption>
 </figure>
@@ -247,6 +254,10 @@ code span.wa { color: #66d9ef; font-style: italic; } /* Warning */
 </figure>
 <link rel="stylesheet" href="/home/luke/.config/md2all/css/massilia.css">
 <link rel="stylesheet" href="/home/luke/.config/md2all/css/massiliaDarkHack.css">
+<link rel="stylesheet" href="/home/luke/.config/md2all/libraries/jqueryemoji/css/style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="/home/luke/.config/md2all/libraries/jqueryemoji/js/jQueryEmoji.js"></script>
+<script type="text/javascript" src="/home/luke/.config/md2all/templates/jqueryemoji/jqueryemojiTemplate.js"></script>
 <script src="/home/luke/.config/md2all/js/script.js"></script>
 </body>
 </html>
