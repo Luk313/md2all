@@ -8,7 +8,8 @@ $(function(){
 
     var userPathStart = getUserPartOfPathToEmoji();
     $('p > span[data-emoji]').Emoji({
-        path:  userPathStart+'.config/md2all/libraries/jqueryemoji/img/apple72/',
+        // path:  userPathStart+'.config/md2all/libraries/jqueryemoji/img/apple72/',
+        path:  userPathStart+'.config/md2all/libraries/jqueryemoji/img/android/png/128/',
         class: 'emoji',
         ext:   'png'
     }).find("img.emoji").each(function() {

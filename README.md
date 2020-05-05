@@ -268,11 +268,15 @@ Additional Examples of syntax and some rendered results, can be found in the *ex
 
 ## Emojis
 
-### Use of this [jqueryemoji Library](https://github.com/rodrigopolo/jqueryemoji)
+### The software is driven by this [jqueryemoji Library](https://github.com/rodrigopolo/jqueryemoji), and based on jQuery 3.5
+
+### Apple Pictures (40 and 72 px) are from [jqueryemoji Library](https://github.com/rodrigopolo/jqueryemoji)
+
+### Android Pictures (32,64, and 128px=Default) are from [emoji-toolkit](https://github.com/joypixels/emoji-toolkit). SPrites available as well
 
 ### Syntax
 
-- Type Emoji name with ```::``` syntax. Example : ```:smile:```. Get Emoji Cheat Sheet [Here](https://www.webfx.com/tools/emoji-cheat-sheet/)
+- Type Emoji name with ```::``` syntax. Example : ```:smile:```. Reference [Emoji Cheat Sheet] (https://www.webfx.com/tools/emoji-cheat-sheet/)
 - Optionnally, **To Zoom Emoji** : add a ```:smile:{zoom=3}``` just after the Emoji (no space after the last ```:```)
 - Optionnally, **To Align Vertically Emoji**: add a ```:smile:{zoom=3 vAlign}``` or ```:smile:{zoom=3;vAlign}``` with a space or a ```;``` between Emoji attributes (possible syntaxes: ```vAlign``` or ```valign``` or ```vertical-align```)
 
