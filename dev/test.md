@@ -1,19 +1,145 @@
-% MD2ALL Stunning Renders
-% the md2all Team !!
+# Bullet List
 
-# Testing page
+## Bullet List, NON incrémental
+
+* Eat Oranges
+* Drink Coffee
+* Drink Water
+
+## Bullet List NON ordonnée, incrementale
+
+> * Eat Oranges
+> * Drink Coffee
+> * Drink Water
+
+C'est moi\thanks{Salut mon gars}
+
+# Listes ordonnées
+
+## Liste Ordonnée, NON incrementale
+
+1. Fraises
+2. Framboises
+3. Kiwis
+
+## Liste Ordonnée, Incrémentale
+
+> 1. Fraises
+> 2. Framboises
+> 3. Kiwis
+
+C'est moi\thanks{Salut mon gars}
+
+# LaTeX Maths with \$ ... \$
+
+\alert{alert part with \emph{emphasis}}.
+
+## Math Formula
+
+$\sqrt 2 \approx 1.414..$
+
+# Code Source
+
+## Python Code
+
+```{.python .numberLines startFrom="5"}
+for i in range(100):
+    if i%2==0:
+        print("Pair!")
+
+while i<10:
+    i += 1
+
+def maFonction(x):
+    print("Hello",x)
+```
+
+# Images
+
+![Image 1](img/bateau.jpg)
+
+# Images Resizées
+
+![Image 1](img/bateau.jpg){width=80%}
+
+# Beamer blocs
+
+\begin{block}{Normal Bloc}
+{
+\begin{itemize}
+        \item item 1
+        \item item 2
+\end{itemize}
+}
+\end{block}
+
+\begin{exampleblock}{Example Bloc}
+Simmons Dormitory is composed of brick.
+\end{exampleblock}
+
+\begin{alertblock}{Alert Block}
+Simmons Hall $\not=$ Simmons Dormitory.
+\end{alertblock}
+
+# Theorem and Proof (Simple)
+
+\begin{theorem}
+There is no largest prime number
+\end{theorem}
+
+\begin{proof}
+\begin{itemize}
+\item Suppose $p$ were the largest prime\pause
+\item Let $q$ be ... first $p$ numbers\pause
+\item Then $q+1$ is not divisible ...\pause
+\item Thus $q+1$ is a prime ... $p$.\pause
+\end{itemize}
+\end{proof}
+
+# Theorem & Proof (Medium)
+
+\begin{theorem}There is no largest prime number.
+\end{theorem}
+
+\begin{proof}
+\begin{enumerate}
+\item<1-| alert@1> Suppose $p$ were the largest prime number.
+\item<2-> Let $q$ be the product of the first $p$ numbers.
+\item<3-> Then $q+1$ is not divisible by any of them.
+\item<1-> But $q + 1$ is greater than $1$, thus divisible by some primenumber not in the first $p$ numbers.\qedhere
+\end{enumerate}
+\end{proof}
+
+# Emojis
+
+$\ddot\smile$
 
 Vertical Aligned AND ZOOMED Emoticons:  
 this Line :minidisc:{zoom=1.6; vAlign} :minidisc:{zoom=2; vAlign} :minidisc:{zoom=3; vAlign} :minidisc:{zoom=5; vAlign} :minidisc:{zoom=7; vAlign} :heart:{zoom=3; vAlign} :bulb:{zoom=5; vAlign} is vAligned
 
-Other ZOOMED , NO VERTICAL ALIGN, Emoticons :smile: :heart:{zoom=7} :bomb:{zoom=3} :bulb:{zoom=5} with following sentence
+# Itemize (Simple)
 
-NOT ZOOMED, NOT VERTICAL ALIGNED Emojis: :minidisc: :smile: :heart: :bulb: aligned correctly
+\begin{itemize}
+\item
+Use \texttt{itemize} a lot--with \pause
+\item
+Use very short sentences or short phrases.
+\end{itemize}
 
-```python
-print("Hello Mate!")
-```
+# Itemize (Medium)
 
-$\sqrt 2 \approx 1.414..$
+\begin{itemize}[<+-| alert@+>]
+\item Apple
+\item Peach
+\item Plum
+\item Orange
+\end{itemize}
 
-Accedat 1 huc suavitas quaedam oportet sermonum atque morum, haudquaquam mediocre condimentum amicitiae. Tristitia autem et in omni re severitas habet illa quidem gravitatem, sed amicitia remissior esse debet et liberior et dulcior et ad omnem comitatem facilitatemque proclivior.
+# Uncover Equations
+
+\begin{align*}
+A &= \uncover<2->{B}\\
+\uncover<2->{&=C\\}
+\uncover<3->{&=D\\}
+\end{align*}
+

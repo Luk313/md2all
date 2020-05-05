@@ -1,0 +1,29 @@
+---
+# aspectratio: 169
+theme: Darmstadt
+colortheme: orchid
+outertheme: miniframes
+# outertheme: tree
+fonttheme: structuresmallcapsserif
+# fonttheme: professionalfonts
+# themeoptions : (a list)
+title: Introduction à Python
+thanks: OpenClassRooms
+# titlegraphic: /home/luke/Images/AdminNSI.png
+subtitle:  1ère NSI
+author: 'Rodrigo SCHWENCKE'
+institute: 'Lycée PÉRIER of Marseille'
+date: \today
+# background-image: /home/luke/Images/AdminNSI.png
+fontsize: 8pt
+# mainfont: arial
+toc: false
+# section-titles: true
+# incremental: true
+slide_level: 1
+navigation: horizontal
+# header-includes: |
+#   \usepackage{pgfpages}
+#   \setbeameroption{show notes on second screen=right}
+# logo: /home/luke/Images/perier.png
+---
