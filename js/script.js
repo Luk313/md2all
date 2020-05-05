@@ -538,7 +538,7 @@ function getSizeGroupable(img) {
           var preCodeList = document.querySelectorAll('pre > code.sourceCode');
           for (var i = 0; i < preCodeList.length; i++) {
               console.log("classes = "+preCodeList[i].classList);
-              preCodeList[i].style.whiteSpace = "pre-wrap";
+              preCodeList[i].style.whiteSpace = "pre";
           }
 
           // LANGUAGE in TOP RIGHT CORNER,
