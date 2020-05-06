@@ -1,10 +1,55 @@
+# Code
+
+\begin{lightCode}{HTML}
+  \begin{itemize}
+    \item First.
+  \end{itemize}
+\end{lightCode}
+
+## TEST{.fragile}
+
+```{.python .numberLines startFrom="5"}
+for i in range(100):
+    if i%2==0:
+        print("Pair!")
+while i<10:
+    i += 1
+def maFonction(x):
+    print("Hello",x)
+```
+
+# HTML CODE
+
+## HTML
+
+```{.html .numberLines}
+<body>
+    <div class="box">
+        <div class="morpion">
+            <div class="case">X</div>
+            <div class="case">Y</div>
+            <div class="case">Z</div>
+            <div class="case">A</div>
+            <div class="case">B</div>
+            <div class="case">C</div>
+            <div class="case">T</div>
+            <div class="case">U</div>
+            <div class="case">V</div>
+        </div>
+    </div>
+</body>
+```
+
 # Bullet List
 
 ## Bullet List, NON incrémental
 
-* Eat Oranges
+* Eat Oranges[^1]
 * Drink Coffee
 * Drink Water
+
+[^1]: Footnote One
+
 
 ## Bullet List NON ordonnée, incrementale
 

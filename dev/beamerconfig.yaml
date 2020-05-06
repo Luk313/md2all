@@ -5,11 +5,9 @@ colortheme: orchid
 outertheme: miniframes
 # outertheme: tree
 fonttheme: structuresmallcapsserif
-# fonttheme: professionalfonts
 # themeoptions : (a list)
 title: Introduction à Python
 thanks: OpenClassRooms
-# titlegraphic: /home/luke/Images/AdminNSI.png
 subtitle:  1ère NSI
 author: 'Rodrigo SCHWENCKE'
 institute: 'Lycée PÉRIER of Marseille'
@@ -17,13 +15,37 @@ date: \today
 # background-image: /home/luke/Images/AdminNSI.png
 fontsize: 8pt
 # mainfont: arial
-toc: false
+toc: true
 # section-titles: true
-# incremental: true
-slide_level: 1
 navigation: horizontal
-# header-includes: |
-#   \usepackage{pgfpages}
-#   \setbeameroption{show notes on second screen=right}
-# logo: /home/luke/Images/perier.png
+header-includes:
+- |
+  ```{=latex}
+  \logo{\includegraphics[height=1.5cm]{img/chouette.png}}
+  %\titlegraphic{\includegraphics[height=1.5cm]{/home/luke/Images/AdminNSI.png}}
+  \setbeameroption{show notes}
+  \setbeamertemplate{note page}[]
+  \setbeamercolor{block body alerted}{fg=black!90,bg=brown!60!yellow}
+  \definecolor{lightCodeBackground}{HTML}{F5F2F0}
+  \definecolor{languageTitle}{HTML}{3593FF}
+
+  \addtobeamertemplate{navigation symbols}{}{ 
+  \usebeamerfont{footline}%
+  \hspace{1.5em}Page \insertframenumber / \inserttotalframenumber }
+
+  \usepackage[utf8]{inputenc}
+  \newenvironment<>{lightCode}[1]{%
+    \begin{actionenv}#2%
+        \def\insertblocktitle{#1}%
+        \par%
+        \mode<presentation>{%
+         \setbeamercolor{block title}{fg=white,bg=languageTitle!100}
+         \setbeamercolor{block body}{fg=black,bg=lightCodeBackground!50}
+         \setbeamercolor{itemize item}{fg=orange!20!black}
+         \setbeamertemplate{itemize item}[triangle]
+       }%
+        \usebeamertemplate{block begin}}
+      {\par\usebeamertemplate{block end}\end{actionenv}}
+  ```
+
 ---
