@@ -1,12 +1,59 @@
-# Code
+# Fonctionnalités Markdown Simples
 
-\begin{lightCode}{HTML}
-  \begin{itemize}
-    \item First.
-  \end{itemize}
-\end{lightCode}
+## 1.1 : Les Listes
 
-## TEST{.fragile}
+phrase
+
+### Listes NON Ordonnées, NON incrémentales (apparition directe)
+
+* Premier Item
+* Deuxième Item
+* Troisième Item
+
+### Listes NON Ordonnées, incrémentales (apparition avec PAUSE)
+
+> * Premier Item
+> * Deuxième Item
+> * Troisième Item
+
+### Listes NON Ordonnées, incrémentales (apparition avec PAUSE, version LaTeX)
+
+* Premier Item
+\pause
+* Deuxième Item
+\pause
+* Troisième Item
+
+## Liste Ordonnée, NON incrémentale (apparition directe)
+
+1. Fraises
+2. Framboises
+3. Kiwis
+
+## Liste Ordonnée, Incrémentale (apparition avec PAUSE)
+
+> 1. Fraises
+> 2. Framboises
+> 3. Kiwis
+
+### Math Formula
+
+* $\sqrt 2 \approx 1.414..$
+* $\sum \limits_{i=1}^{n} i = 1 + 2 + 3 + ... + n = \frac{n(n+1)}{2}$
+
+### Images
+
+![Image 1](img/bateau.jpg)
+
+### Images Resizées
+
+![Image 1](img/bateau.jpg){width=80%}
+
+## Code Source
+
+### Code Source Python dans un 'block' LaTeX avec Syntax Highlighting, hérité via Pandoc/Markdown
+
+#### PYTHON
 
 ```{.python .numberLines startFrom="5"}
 for i in range(100):
@@ -18,9 +65,9 @@ def maFonction(x):
     print("Hello",x)
 ```
 
-# HTML CODE
+### Code Source HTML dans un 'block' LaTeX avec Syntax Highlighting, hérité via Pandoc/Markdown
 
-## HTML
+#### HTML
 
 ```{.html .numberLines}
 <body>
@@ -40,9 +87,7 @@ def maFonction(x):
 </body>
 ```
 
-# Bullet List
-
-## Bullet List, NON incrémental
+### footnotes
 
 * Eat Oranges[^1]
 * Drink Coffee
@@ -50,141 +95,155 @@ def maFonction(x):
 
 [^1]: Footnote One
 
+# Fonctionnalités LaTeX plus avancées
 
-## Bullet List NON ordonnée, incrementale
+## Texte
 
-> * Eat Oranges
-> * Drink Coffee
-> * Drink Water
+### Mise en Valeur (en Rouge)
 
-C'est moi\thanks{Salut mon gars}
+\alert{Texte en Rouge et \emph{italique}}.
 
-# Listes ordonnées
+## Listes
 
-## Liste Ordonnée, NON incrementale
+### Liste Itemize
 
-1. Fraises
-2. Framboises
-3. Kiwis
-
-## Liste Ordonnée, Incrémentale
-
-> 1. Fraises
-> 2. Framboises
-> 3. Kiwis
-
-C'est moi\thanks{Salut mon gars}
-
-# LaTeX Maths with \$ ... \$
-
-\alert{alert part with \emph{emphasis}}.
-
-## Math Formula
-
-$\sqrt 2 \approx 1.414..$
-
-# Code Source
-
-## Python Code
-
-```{.python .numberLines startFrom="5"}
-for i in range(100):
-    if i%2==0:
-        print("Pair!")
-
-while i<10:
-    i += 1
-
-def maFonction(x):
-    print("Hello",x)
-```
-
-# Images
-
-![Image 1](img/bateau.jpg)
-
-# Images Resizées
-
-![Image 1](img/bateau.jpg){width=80%}
-
-# Beamer blocs
-
-\begin{block}{Normal Bloc}
-{
 \begin{itemize}
-        \item item 1
-        \item item 2
+    \item premier élément de liste,
+    \item deuxième élément de liste,
+    \pause
+    \item troisième élément de liste.  
 \end{itemize}
-}
+
+### Listes de Description, utiles pour des Définitions
+
+ \begin{description}
+    \item [Thème de présentation : ] ces thèmes sont en fait...
+    \item [Thème de couleur : ] gère tout ce qui est couleur...
+    \item [Thème de police : ] s'occupe de tout ce qui est police, gras...
+    \item [Thème interne : ] s'occupe de l'apparence des éléments...
+    \item [Thème externe : ] gère les en-têtes et pieds de page...
+\end{description}
+
+## Les environnements Block: 'block', 'alertblock' et 'exampleblock'
+
+### Les Blocks 'Block', 'alertblock' et 'exampleblock'
+
+\begin{block}{Un bloc normal}
+  Texte du block \texttt{block}
 \end{block}
 
-\begin{exampleblock}{Example Bloc}
-Simmons Dormitory is composed of brick.
-\end{exampleblock}
-
-\begin{alertblock}{Alert Block}
-Simmons Hall $\not=$ Simmons Dormitory.
+\begin{alertblock}{Un bloc alerte}
+ Texte du block \texttt{alertblock}
 \end{alertblock}
 
-# Theorem and Proof (Simple)
+\begin{exampleblock}{Un bloc exemple}
+ Exemple de block \texttt{exampleblock}
+\end{exampleblock}
+
+### Un Block (e.g.) 'lightCode' Customisé
+
+\begin{lightCode}{Un bloc customisé}
+  Apparence et Texte du block cutomisé \texttt{lightCode}
+\end{lightCode}
+
+
+## Quelques Environnements
+
+### Environnement Columns
+
+\begin{columns}
+\begin{column}{0.5\textwidth}
+    \begin{block}{HTML}
+        \begin{itemize}
+            \item premier élément de liste,
+            \item deuxième élément de liste,
+            \pause
+            \item troisième élément de liste.  
+        \end{itemize}    
+    \end{block}
+   Bla bla bla
+\end{column}
+\begin{column}{0.5\textwidth}  %%<--- here
+    \begin{center}
+        \includegraphics[width=0.5\textwidth]{img/chouette.png}
+    \end{center}
+\end{column}
+\end{columns}
+
+### L'environnement Columns ne fonctionne pas avec le Syntax Highlighting dans un bloc, hérité de Markdown
+
+\begin{columns}
+\begin{column}{0.5\textwidth}
+    \begin{block}{HTML}
+        \begin{itemize}
+            \item premier élément de liste,
+            \item deuxième élément de liste,
+            \pause
+            \item troisième élément de liste.  
+        \end{itemize}    
+    \end{block}
+   Bla bla bla
+\end{column}
+\begin{column}{0.5\textwidth}  %%<--- here
+    \begin{center}
+     \includegraphics[width=0.5\textwidth]{img/chouette.png}
+     \end{center}
+        \begin{lightCode}{HTML}
+            for i in range(100):
+                if i%2==0:
+                    print("Pair!")
+            while i<10:
+                i += 1
+            def maFonction(x):
+                print("Hello",x)
+        \end{lightCode}
+\end{column}
+\end{columns}
+
+### les Environnements Cadrés
+
+\begin{definition}
+    environnement definition
+\end{definition}
+  
+\begin{example}
+   environnement example
+\end{example}
 
 \begin{theorem}
-There is no largest prime number
+    Il n'existe PAS de plus grand nombre premier
 \end{theorem}
 
 \begin{proof}
 \begin{itemize}
-\item Suppose $p$ were the largest prime\pause
-\item Let $q$ be ... first $p$ numbers\pause
-\item Then $q+1$ is not divisible ...\pause
-\item Thus $q+1$ is a prime ... $p$.\pause
+    \item Supposons que $p$ soit ce plus grand nombre premier\pause
+    \item Soit $q$ le ... des $p$ premiers nombres premiers\pause
+    \item Alors $q+1$ n'est divisible par ...\pause
+    \item Donc $q+1$ est un nombre premier ... $p$.\pause
 \end{itemize}
 \end{proof}
 
-# Theorem & Proof (Medium)
+### Enumerate
 
-\begin{theorem}There is no largest prime number.
+\begin{theorem}Il n'existe PAS de plus nombre premier.
 \end{theorem}
 
 \begin{proof}
 \begin{enumerate}
-\item<1-| alert@1> Suppose $p$ were the largest prime number.
-\item<2-> Let $q$ be the product of the first $p$ numbers.
-\item<3-> Then $q+1$ is not divisible by any of them.
-\item<1-> But $q + 1$ is greater than $1$, thus divisible by some primenumber not in the first $p$ numbers.\qedhere
+    \item<1-| alert@1> Supposons que  $p$ soit ce plus grand nombre premier.
+    \item<2->Soit $q$ le produit des $p$ premiers nombres premiers\pause
+    \item<3-> Alors $q+1$ n'est divisible par aucun d'entre eux\pause
+    \item<1-> Or $q+1$ est supérieur à $1$, donc Donc $q+1$ est divisible par un nombre premier autre que les $p$ premiers.\pause\qedhere
 \end{enumerate}
 \end{proof}
 
-# Emojis
+### Les Overlays
 
-$\ddot\smile$
+\begin{overlayarea}{6cm}{1cm}
+   \only<1>{\texttt{première idée overlayarea}}
+   \only<2>{\texttt{deuxième idée overlayarea}}
+   \only<3>{\texttt{troisième idée}}
+   \only<4>{dernière idée}
+\end{overlayarea}
 
-Vertical Aligned AND ZOOMED Emoticons:  
-this Line :minidisc:{zoom=1.6; vAlign} :minidisc:{zoom=2; vAlign} :minidisc:{zoom=3; vAlign} :minidisc:{zoom=5; vAlign} :minidisc:{zoom=7; vAlign} :heart:{zoom=3; vAlign} :bulb:{zoom=5; vAlign} is vAligned
-
-# Itemize (Simple)
-
-\begin{itemize}
-\item
-Use \texttt{itemize} a lot--with \pause
-\item
-Use very short sentences or short phrases.
-\end{itemize}
-
-# Itemize (Medium)
-
-\begin{itemize}[<+-| alert@+>]
-\item Apple
-\item Peach
-\item Plum
-\item Orange
-\end{itemize}
-
-# Uncover Equations
-
-\begin{align*}
-A &= \uncover<2->{B}\\
-\uncover<2->{&=C\\}
-\uncover<3->{&=D\\}
-\end{align*}
 

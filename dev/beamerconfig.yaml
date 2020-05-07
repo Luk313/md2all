@@ -21,19 +21,23 @@ navigation: horizontal
 header-includes:
 - |
   ```{=latex}
+  \usepackage[utf8]{inputenc}
+  %\usepackage{bookman}
   \logo{\includegraphics[height=1.5cm]{img/chouette.png}}
   %\titlegraphic{\includegraphics[height=1.5cm]{/home/luke/Images/AdminNSI.png}}
   \setbeameroption{show notes}
   \setbeamertemplate{note page}[]
-  \setbeamercolor{block body alerted}{fg=black!90,bg=brown!60!yellow}
+  % pour customiser un des block système: normal, ou 'alerted', ou 'example'
+  %\setbeamercolor{block title alerted}{fg=black!90,bg=brown!60!yellow}
+  %\setbeamercolor{block body alerted}{fg=black!90,bg=brown!60!yellow}
   \definecolor{lightCodeBackground}{HTML}{F5F2F0}
   \definecolor{languageTitle}{HTML}{3593FF}
 
   \addtobeamertemplate{navigation symbols}{}{ 
   \usebeamerfont{footline}%
-  \hspace{1.5em}Page \insertframenumber / \inserttotalframenumber }
+  \hspace{1.5em}Page \insertframenumber / \inserttotalframenumber
+  }
 
-  \usepackage[utf8]{inputenc}
   \newenvironment<>{lightCode}[1]{%
     \begin{actionenv}#2%
         \def\insertblocktitle{#1}%

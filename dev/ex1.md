@@ -1,12 +1,12 @@
-# Titre de niveau 1
+# Code
 
-## 1.1 : Sous Titre de niveau 2
+\begin{lightCode}{HTML}
+  \begin{itemize}
+    \item First.
+  \end{itemize}
+\end{lightCode}
 
-### 1.1.1 sous-sous title de niveau 3
-
-Phrase dans un sous-sous-titre 3
-
-#### 1.1.2 sous-sous title de niveau 4
+## TEST{.fragile}
 
 ```{.python .numberLines startFrom="5"}
 for i in range(100):
@@ -18,13 +18,9 @@ def maFonction(x):
     print("Hello",x)
 ```
 
-## 1.2 : Sous Titre de niveau 2
+# HTML CODE
 
-### 1.2.1 sous-sous title de niveau 3
-
-Phrase dans un sous-sous-titre 3
-
-#### 1.2.2 sous-sous-sous title de niveau 4
+## HTML
 
 ```{.html .numberLines}
 <body>
@@ -44,28 +40,151 @@ Phrase dans un sous-sous-titre 3
 </body>
 ```
 
-# Titre de niveau 2
+# Bullet List
 
-## title de niveau 2.1
+## Bullet List, NON incrémental
 
-### 2.1.1 sous-sous title de niveau 3
+* Eat Oranges[^1]
+* Drink Coffee
+* Drink Water
 
-Phrase dans un sous-sous-titre 3
+[^1]: Footnote One
 
-#### 2.1.1.1 sous-sous title de niveau 4
 
-```python
-print("Bonjour")
+## Bullet List NON ordonnée, incrementale
+
+> * Eat Oranges
+> * Drink Coffee
+> * Drink Water
+
+C'est moi\thanks{Salut mon gars}
+
+# Listes ordonnées
+
+## Liste Ordonnée, NON incrementale
+
+1. Fraises
+2. Framboises
+3. Kiwis
+
+## Liste Ordonnée, Incrémentale
+
+> 1. Fraises
+> 2. Framboises
+> 3. Kiwis
+
+C'est moi\thanks{Salut mon gars}
+
+# LaTeX Maths with \$ ... \$
+
+\alert{alert part with \emph{emphasis}}.
+
+## Math Formula
+
+$\sqrt 2 \approx 1.414..$
+
+# Code Source
+
+## Python Code
+
+```{.python .numberLines startFrom="5"}
+for i in range(100):
+    if i%2==0:
+        print("Pair!")
+
+while i<10:
+    i += 1
+
+def maFonction(x):
+    print("Hello",x)
 ```
 
-## Autre title 2.2
+# Images
 
-### 2.2.1 sous-sous title de niveau 3
+![Image 1](img/bateau.jpg)
 
-Phrase dans un sous-titre 3
+# Images Resizées
 
-### 2.2.2 sous-sous title de niveau 3
+![Image 1](img/bateau.jpg){width=80%}
 
-```python
-print("Bonjour")
-```
+# Beamer Blocs
+
+\begin{block}{Normal Bloc}
+{
+\begin{itemize}
+        \item item 1
+        \item item 2
+\end{itemize}
+}
+\end{block}
+
+\begin{exampleblock}{Example Bloc}
+Simmons Dormitory is composed of brick.
+\end{exampleblock}
+
+\begin{alertblock}{Alert Block}
+Simmons Hall $\not=$ Simmons Dormitory.
+\end{alertblock}
+
+# Theorem and Proof (Simple)
+
+\begin{theorem}
+There is no largest prime number
+\end{theorem}
+
+\begin{proof}
+\begin{itemize}
+\item Suppose $p$ were the largest prime\pause
+\item Let $q$ be ... first $p$ numbers\pause
+\item Then $q+1$ is not divisible ...\pause
+\item Thus $q+1$ is a prime ... $p$.\pause
+\end{itemize}
+\end{proof}
+
+# Theorem & Proof (Medium)
+
+\begin{theorem}There is no largest prime number.
+\end{theorem}
+
+\begin{proof}
+\begin{enumerate}
+\item<1-| alert@1> Suppose $p$ were the largest prime number.
+\item<2-> Let $q$ be the product of the first $p$ numbers.
+\item<3-> Then $q+1$ is not divisible by any of them.
+\item<1-> But $q + 1$ is greater than $1$, thus divisible by some primenumber not in the first $p$ numbers.\qedhere
+\end{enumerate}
+\end{proof}
+
+# Emojis
+
+$\ddot\smile$
+
+Vertical Aligned AND ZOOMED Emoticons:  
+this Line :minidisc:{zoom=1.6; vAlign} :minidisc:{zoom=2; vAlign} :minidisc:{zoom=3; vAlign} :minidisc:{zoom=5; vAlign} :minidisc:{zoom=7; vAlign} :heart:{zoom=3; vAlign} :bulb:{zoom=5; vAlign} is vAligned
+
+# Itemize (Simple)
+
+\begin{itemize}
+\item
+Use \texttt{itemize} a lot--with \pause
+\item
+Use very short sentences or short phrases.
+\end{itemize}
+
+# Itemize (Medium)
+
+\begin{itemize}[<+-| alert@+>]
+\item Apple
+\item Peach
+\item Plum
+\item Orange
+\end{itemize}
+
+# Uncover Equations
+
+\begin{align*}
+A &= \uncover<2->{B}\\
+\uncover<2->{&=C\\}
+\uncover<3->{&=D\\}
+\end{align*}
+
