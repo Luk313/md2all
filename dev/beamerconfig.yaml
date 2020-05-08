@@ -15,7 +15,7 @@ date: \today
 # background-image: /home/luke/Images/AdminNSI.png
 fontsize: 8pt
 # mainfont: arial
-toc: true
+# toc: true
 # section-titles: true
 navigation: horizontal
 header-includes:
@@ -25,18 +25,73 @@ header-includes:
   %\usepackage{bookman}
   \logo{\includegraphics[height=1.5cm]{img/chouette.png}}
   %\titlegraphic{\includegraphics[height=1.5cm]{/home/luke/Images/AdminNSI.png}}
+  
+  %AUTONUMBERING FORMAT for TOC
+  \defbeamertemplate{section in toc}{sections numbered roman}{%
+  \leavevmode%
+  \MakeUppercase{\romannumeral\inserttocsectionnumber}.\ %
+  \inserttocsection\par}
+  \setbeamertemplate{section in toc}[sections numbered roman]
+  \makeatletter
+  \setbeamertemplate{subsection in toc}{\leavevmode\normalsize\usebeamerfont{subsection in toc}\leftskip=2.4em\usebeamerfont{subsection in toc}\rlap{\hskip-1.2em\inserttocsubsectionnumber. }\inserttocsubsection\par}
+  \setbeamertemplate{subsubsection in toc}{\leavevmode\normalsize\usebeamerfont{subsubsection in toc}\leftskip=4.2em\usebeamerfont{subsubsection in toc}%
+  \rlap{\hskip-1.2em\@alph\inserttocsubsubsectionnumber. }\inserttocsubsubsection\par}
+  \makeatother
+
+  %Table of Contents - Sommaire
+  \AtBeginSection[]
+  {
+  \begin{frame}<beamer>{LE PLAN}
+  \tableofcontents[currentsection,currentsubsection, 
+      hideothersubsections, 
+      sectionstyle=show/shaded,
+  ]
+  \end{frame}
+  }
+
+  %Footnotes
   \setbeameroption{show notes}
   \setbeamertemplate{note page}[]
-  % pour customiser un des block système: normal, ou 'alerted', ou 'example'
+
+  %FOR AUTO NUMBERING SECTIONS IN HEADLINE
+  \addtobeamertemplate{headline}{}
+  {
+    \leavevmode%
+    \hbox{%
+    \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,left]{section in head/foot}%
+      \usebeamerfont{section in head/foot}\thesection\ \insertsectionhead\hspace*{2ex}
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,left]{subsection in head/foot}%
+      \usebeamerfont{subsection in head/foot}\thesubsection\ \insertsubsectionhead\hspace*{2ex}
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,left]{subsubsection in head/foot}%
+      \usebeamerfont{subsubsection in head/foot}\hspace*{2ex}\insertsubsubsectionhead
+    \end{beamercolorbox}}%
+    \vskip0pt%
+  }
+
+
+  %pour customiser le title et/ou le body des block système Beamer: normal, ou 'alerted', ou 'example'
   %\setbeamercolor{block title alerted}{fg=black!90,bg=brown!60!yellow}
   %\setbeamercolor{block body alerted}{fg=black!90,bg=brown!60!yellow}
   \definecolor{lightCodeBackground}{HTML}{F5F2F0}
   \definecolor{languageTitle}{HTML}{3593FF}
 
+  %for enumerate symbol
+  %replace circle by: default, circle, square, ou ball IF option numerostyle is NOT used
+  %pour les items de premier niveau:
+  %\setbeamertemplate{enumerate item}[circle]
+  
+  %pour les items de deuxième niveau:
+  %\setbeamertemplate{enumerate subitem}[circle]
+
+  %for page numbering: bottom right
   \addtobeamertemplate{navigation symbols}{}{ 
-  \usebeamerfont{footline}%
-  \hspace{1.5em}Page \insertframenumber / \inserttotalframenumber
+    \usebeamerfont{footline}\usebeamercolor[bg]{title}%
+    \hspace{1.5em}Page \insertframenumber / \inserttotalframenumber
   }
+
+  \usepackage{url}
 
   \newenvironment<>{lightCode}[1]{%
     \begin{actionenv}#2%
@@ -51,5 +106,4 @@ header-includes:
         \usebeamertemplate{block begin}}
       {\par\usebeamertemplate{block end}\end{actionenv}}
   ```
-
 ---

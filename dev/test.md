@@ -1,8 +1,12 @@
-# Fonctionnalités Markdown Simples
+# Fonctionnalités Markdown Comptatibles Beamer/LaTex
 
-## 1.1 : Les Listes
+## Texte
 
-phrase
+### Liens Hypertexte
+
+[Cliquez moi](https://www.google.com)
+
+## Les Listes
 
 ### Listes NON Ordonnées, NON incrémentales (apparition directe)
 
@@ -16,7 +20,7 @@ phrase
 > * Deuxième Item
 > * Troisième Item
 
-### Listes NON Ordonnées, incrémentales (apparition avec PAUSE, version LaTeX)
+### Listes NON Ordonnées, incrémentales (apparition avec ```\PAUSE```, version LaTeX)
 
 * Premier Item
 \pause
@@ -24,24 +28,28 @@ phrase
 \pause
 * Troisième Item
 
-## Liste Ordonnée, NON incrémentale (apparition directe)
+### Liste Ordonnée, NON incrémentale (apparition directe)
 
 1. Fraises
 2. Framboises
 3. Kiwis
 
-## Liste Ordonnée, Incrémentale (apparition avec PAUSE)
+### Liste Ordonnée, Incrémentale (apparition avec PAUSE)
 
 > 1. Fraises
 > 2. Framboises
 > 3. Kiwis
 
-### Math Formula
+On aurait pu faire les pauses avec ```\pause```
+
+## Math Formula
 
 * $\sqrt 2 \approx 1.414..$
 * $\sum \limits_{i=1}^{n} i = 1 + 2 + 3 + ... + n = \frac{n(n+1)}{2}$
 
-### Images
+## Images
+
+### Images Normales
 
 ![Image 1](img/bateau.jpg)
 
@@ -51,7 +59,7 @@ phrase
 
 ## Code Source
 
-### Code Source Python dans un 'block' LaTeX avec Syntax Highlighting, hérité via Pandoc/Markdown
+### Code Source Python dans un 'block' Beamer avec Syntax Highlighting via Pandoc/Markdown
 
 #### PYTHON
 
@@ -65,7 +73,7 @@ def maFonction(x):
     print("Hello",x)
 ```
 
-### Code Source HTML dans un 'block' LaTeX avec Syntax Highlighting, hérité via Pandoc/Markdown
+### Code Source HTML dans un 'block' LaTeX avec Syntax Highlighting via Pandoc/Markdown
 
 #### HTML
 
@@ -87,7 +95,7 @@ def maFonction(x):
 </body>
 ```
 
-### footnotes
+## Footnotes
 
 * Eat Oranges[^1]
 * Drink Coffee
@@ -95,7 +103,7 @@ def maFonction(x):
 
 [^1]: Footnote One
 
-# Fonctionnalités LaTeX plus avancées
+# Fonctionnalités Beamer/LaTeX plus avancées
 
 ## Texte
 
@@ -103,9 +111,13 @@ def maFonction(x):
 
 \alert{Texte en Rouge et \emph{italique}}.
 
-## Listes
+### Lien hypertextes URLs
 
-### Liste Itemize
+\url{https://youtu.be/VfLe4eCtggc}
+
+## Les Listes Itemize
+
+### Les Listes Itemize Simples
 
 \begin{itemize}
     \item premier élément de liste,
@@ -113,6 +125,44 @@ def maFonction(x):
     \pause
     \item troisième élément de liste.  
 \end{itemize}
+
+## Les Enumerate
+
+### Les Enumerate Simples
+
+\begin{enumerate}
+    \item<1-| alert@1> Premier point
+    \item<2-| alert@2> Deuxième Point\pause
+    \item<3-> Troisième Point\pause
+    \item<1-> Dernier point
+\end{enumerate}
+
+### Listes Enumerate avec customisation des numéros i, ou a, ou a.)
+
+<!-- possible numerostyles : i  a  a.)   -->
+\begin{enumerate}[a]
+    \item<1-| alert@1> Premier point
+    \item<2-| alert@2> Deuxième Point\pause
+    \item<3-> Troisième Point\pause
+    \item<1-> Dernier point
+\end{enumerate}
+
+**Overlay Specifications** in ```\item```  
+
+* ```<-3>``` means from the beginning up to slide 3  
+* ```<4->``` means from slide 4 on (up to the end)  
+* ```<2-5>``` means from slides 2 to 5  
+
+## Les Overlays
+
+### Overlays Simples
+
+\begin{overlayarea}{6cm}{1cm}
+   \only<1>{\texttt{première idée overlayarea}}
+   \only<2>{\texttt{deuxième idée overlayarea}}
+   \only<3>{\texttt{troisième idée}}
+   \only<4>{dernière idée}
+\end{overlayarea}
 
 ### Listes de Description, utiles pour des Définitions
 
@@ -124,9 +174,9 @@ def maFonction(x):
     \item [Thème externe : ] gère les en-têtes et pieds de page...
 \end{description}
 
-## Les environnements Block: 'block', 'alertblock' et 'exampleblock'
+## Les Block Beamer
 
-### Les Blocks 'Block', 'alertblock' et 'exampleblock'
+### Les Blocks standards : 'block', 'alertblock' et 'exampleblock'
 
 \begin{block}{Un bloc normal}
   Texte du block \texttt{block}
@@ -146,10 +196,9 @@ def maFonction(x):
   Apparence et Texte du block cutomisé \texttt{lightCode}
 \end{lightCode}
 
+## L'Environnement Columns
 
-## Quelques Environnements
-
-### Environnement Columns
+### Environnement Columns Simple
 
 \begin{columns}
 \begin{column}{0.5\textwidth}
@@ -161,7 +210,7 @@ def maFonction(x):
             \item troisième élément de liste.  
         \end{itemize}    
     \end{block}
-   Bla bla bla
+   Texte sous le block
 \end{column}
 \begin{column}{0.5\textwidth}  %%<--- here
     \begin{center}
@@ -170,7 +219,7 @@ def maFonction(x):
 \end{column}
 \end{columns}
 
-### L'environnement Columns ne fonctionne pas avec le Syntax Highlighting dans un bloc, hérité de Markdown
+### L'Environnement Columns NE fonctionne PAS avec le Syntax Highlighting dans un bloc, hérité de Markdown
 
 \begin{columns}
 \begin{column}{0.5\textwidth}
@@ -182,7 +231,7 @@ def maFonction(x):
             \item troisième élément de liste.  
         \end{itemize}    
     \end{block}
-   Bla bla bla
+   Texte sous le Block
 \end{column}
 \begin{column}{0.5\textwidth}  %%<--- here
     \begin{center}
@@ -200,7 +249,7 @@ def maFonction(x):
 \end{column}
 \end{columns}
 
-### les Environnements Cadrés
+## les Environnements Cadrés
 
 \begin{definition}
     environnement definition
@@ -223,27 +272,10 @@ def maFonction(x):
 \end{itemize}
 \end{proof}
 
-### Enumerate
+Optionnally, ```\qedhere``` can be added to customised position of QED symbol
 
-\begin{theorem}Il n'existe PAS de plus nombre premier.
-\end{theorem}
-
-\begin{proof}
-\begin{enumerate}
-    \item<1-| alert@1> Supposons que  $p$ soit ce plus grand nombre premier.
-    \item<2->Soit $q$ le produit des $p$ premiers nombres premiers\pause
-    \item<3-> Alors $q+1$ n'est divisible par aucun d'entre eux\pause
-    \item<1-> Or $q+1$ est supérieur à $1$, donc Donc $q+1$ est divisible par un nombre premier autre que les $p$ premiers.\pause\qedhere
-\end{enumerate}
-\end{proof}
-
-### Les Overlays
-
-\begin{overlayarea}{6cm}{1cm}
-   \only<1>{\texttt{première idée overlayarea}}
-   \only<2>{\texttt{deuxième idée overlayarea}}
-   \only<3>{\texttt{troisième idée}}
-   \only<4>{dernière idée}
-\end{overlayarea}
-
+\begin{lemma}[Siclone]
+\label{trivia}
+Si $a=2$ alors $a^2 = 4$.
+\end{lemma}
 
