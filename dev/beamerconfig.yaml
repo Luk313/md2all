@@ -22,12 +22,26 @@ header-includes:
 - |
   ```{=latex}
   \usepackage[utf8]{inputenc}
+  \usepackage{fontenc}
+  \usepackage[french]{babel}
   %\usepackage{bookman}
+  \usepackage{url}
+
+  \usepackage{multicol}       % ATTENTION : PAS de 's', PAS 'multicols'
+  \usepackage{amsthm}
+  \setbeamertemplate{theorems}[numbered]
+  \newtheorem{defi}{Définition}[]
+  \newtheorem{thm}{Théorème}[]
+  \newtheorem{prop}{Proposition}[]
+  \newtheorem{pte}{Propriété}[]
+  \newtheorem{cons}{Conséquence}[]
+  \newtheorem{idee}{Idée}[]
+  \newtheorem{rem}{Remarque}[]
   \logo{\includegraphics[height=1.5cm]{img/chouette.png}}
   %\titlegraphic{\includegraphics[height=1.5cm]{/home/luke/Images/AdminNSI.png}}
   
-  %AUTONUMBERING FORMAT for TOC
-  \defbeamertemplate{section in toc}{sections numbered roman}{%
+  %TABLE OF CONTENTS (TOC) - AUTONUMBERING FORMAT
+  \defbeamertemplate*{section in toc}{sections numbered roman}{%
   \leavevmode%
   \MakeUppercase{\romannumeral\inserttocsectionnumber}.\ %
   \inserttocsection\par}
@@ -38,7 +52,7 @@ header-includes:
   \rlap{\hskip-1.2em\@alph\inserttocsubsubsectionnumber. }\inserttocsubsubsection\par}
   \makeatother
 
-  %Table of Contents - Sommaire
+  %TABLE OF CONTENTS - TOC - Sommaire
   \AtBeginSection[]
   {
   \begin{frame}<beamer>{LE PLAN}
@@ -53,20 +67,25 @@ header-includes:
   \setbeameroption{show notes}
   \setbeamertemplate{note page}[]
 
-  %FOR AUTO NUMBERING SECTIONS IN HEADLINE
+  %FOR AUTO NUMBERING SECTIONS IN HEADLINE (beamerouterthememiniframes.sty modified)
   \addtobeamertemplate{headline}{}
   {
     \leavevmode%
     \hbox{%
     \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,left]{section in head/foot}%
-      \usebeamerfont{section in head/foot}\thesection\ \insertsectionhead\hspace*{2ex}
+     \MakeUppercase{\romannumeral\insertsectionnumber}.\ %
+      \insertsection \usebeamerfont{section in head/foot} \insertsectionhead\hspace*{2ex}
     \end{beamercolorbox}%
+  
     \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,left]{subsection in head/foot}%
-      \usebeamerfont{subsection in head/foot}\thesubsection\ \insertsubsectionhead\hspace*{2ex}
+      \usebeamerfont{subsection in head/foot}\thesubsection)\ \insertsubsectionhead\hspace*{2ex}
     \end{beamercolorbox}%
+
     \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,left]{subsubsection in head/foot}%
-      \usebeamerfont{subsubsection in head/foot}\hspace*{2ex}\insertsubsubsectionhead
-    \end{beamercolorbox}}%
+      \usebeamerfont{subsubsection in head/foot}\thesubsubsection)\ \insertsubsubsectionhead\hspace*{2ex}
+    \end{beamercolorbox}%
+
+     }%
     \vskip0pt%
   }
 
@@ -77,21 +96,19 @@ header-includes:
   \definecolor{lightCodeBackground}{HTML}{F5F2F0}
   \definecolor{languageTitle}{HTML}{3593FF}
 
-  %for enumerate symbol
+  %CUSTOMIZE ENUMERATE SYMBOLS
   %replace circle by: default, circle, square, ou ball IF option numerostyle is NOT used
   %pour les items de premier niveau:
   %\setbeamertemplate{enumerate item}[circle]
-  
   %pour les items de deuxième niveau:
   %\setbeamertemplate{enumerate subitem}[circle]
 
-  %for page numbering: bottom right
+  %PAGE AUTO NUMBERING: (Bottom Right)
   \addtobeamertemplate{navigation symbols}{}{ 
     \usebeamerfont{footline}\usebeamercolor[bg]{title}%
     \hspace{1.5em}Page \insertframenumber / \inserttotalframenumber
   }
 
-  \usepackage{url}
 
   \newenvironment<>{lightCode}[1]{%
     \begin{actionenv}#2%

@@ -139,7 +139,7 @@ def maFonction(x):
 
 ### Listes Enumerate avec customisation des numéros i, ou a, ou a.)
 
-<!-- possible numerostyles : i  a  a.)   -->
+<!-- Autres styles optionnels possibles : [i]  [a]  [a.)]   -->
 \begin{enumerate}[a]
     \item<1-| alert@1> Premier point
     \item<2-| alert@2> Deuxième Point\pause
@@ -153,6 +153,18 @@ def maFonction(x):
 * ```<4->``` means from slide 4 on (up to the end)  
 * ```<2-5>``` means from slides 2 to 5  
 
+## Les Listes de Description
+
+Ces listes sont utiles par exemple pour des Définitions
+
+ \begin{description}
+    \item [Thème de présentation : ] ces thèmes sont en fait...
+    \item [Thème de couleur : ] gère tout ce qui est couleur...
+    \item [Thème de police : ] s'occupe de tout ce qui est police, gras...
+    \item [Thème interne : ] s'occupe de l'apparence des éléments...
+    \item [Thème externe : ] gère les en-têtes et pieds de page...
+\end{description}
+
 ## Les Overlays
 
 ### Overlays Simples
@@ -163,16 +175,6 @@ def maFonction(x):
    \only<3>{\texttt{troisième idée}}
    \only<4>{dernière idée}
 \end{overlayarea}
-
-### Listes de Description, utiles pour des Définitions
-
- \begin{description}
-    \item [Thème de présentation : ] ces thèmes sont en fait...
-    \item [Thème de couleur : ] gère tout ce qui est couleur...
-    \item [Thème de police : ] s'occupe de tout ce qui est police, gras...
-    \item [Thème interne : ] s'occupe de l'apparence des éléments...
-    \item [Thème externe : ] gère les en-têtes et pieds de page...
-\end{description}
 
 ## Les Block Beamer
 
@@ -200,6 +202,8 @@ def maFonction(x):
 
 ### Environnement Columns Simple
 
+Ce package est inclus dans Beamer, pas besoin de préciser un ***usepackage*** particulier
+
 \begin{columns}
 \begin{column}{0.5\textwidth}
     \begin{block}{HTML}
@@ -219,7 +223,7 @@ def maFonction(x):
 \end{column}
 \end{columns}
 
-### L'Environnement Columns NE fonctionne PAS avec le Syntax Highlighting dans un bloc, hérité de Markdown
+### ATTENTION : '***columns***' NE fonctionne PAS avec le Syntax Highlighting dans un bloc, hérité de Markdown/Pandoc
 
 \begin{columns}
 \begin{column}{0.5\textwidth}
@@ -227,16 +231,12 @@ def maFonction(x):
         \begin{itemize}
             \item premier élément de liste,
             \item deuxième élément de liste,
-            \pause
             \item troisième élément de liste.  
         \end{itemize}    
     \end{block}
    Texte sous le Block
 \end{column}
 \begin{column}{0.5\textwidth}  %%<--- here
-    \begin{center}
-     \includegraphics[width=0.5\textwidth]{img/chouette.png}
-     \end{center}
         \begin{lightCode}{HTML}
             for i in range(100):
                 if i%2==0:
@@ -249,6 +249,34 @@ def maFonction(x):
 \end{column}
 \end{columns}
 
+## L'Environnement ***multicols*** (nom de package package ***multicol***)
+
+Cet environnement permet de créer $n$ colonnes, et les remplir automatiquement.
+
+\begin{enumerate}
+\begin{multicols}{3}   % 3 est le nombre de colonnes à remplir
+    \item{item 1}
+    \item{item 2}
+    \item{item 3}
+    \item{item 4}
+    \item{item 5}
+    \onslide<2->{
+        \item{item 6}
+        \item{item 7}
+        \item{item 8}
+        \item{item 9}
+        \item{item 10}
+    }
+    \onslide<3->{
+        \item{item 11}
+        \item{item 12}
+        \item{item 13}
+        \item{item 14}
+        \item{item 15}
+    }
+\end{multicols}
+\end{enumerate}
+
 ## les Environnements Cadrés
 
 \begin{definition}
@@ -258,6 +286,8 @@ def maFonction(x):
 \begin{example}
    environnement example
 \end{example}
+
+## l'environnement ***theorem***
 
 \begin{theorem}
     Il n'existe PAS de plus grand nombre premier
@@ -278,4 +308,34 @@ Optionnally, ```\qedhere``` can be added to customised position of QED symbol
 \label{trivia}
 Si $a=2$ alors $a^2 = 4$.
 \end{lemma}
+
+## l'environnement ***theorem***
+
+Ces Environnements sont définis, et sont modifiables, dans le fichier YAML
+
+\begin{thm}
+    Il n'existe PAS de plus grand nombre premier
+\end{thm}
+
+\begin{prop}
+    Il n'existe PAS de plus grand nombre premier
+\end{prop}
+
+\begin{pte}
+    Il n'existe PAS de plus grand nombre premier
+\end{pte}
+
+\begin{pte}
+    for i in range(100):
+        if i%2==0:
+            print("Pair!")
+    while i<10:
+        i += 1
+    def maFonction(x):
+        print("Hello",x)
+\end{pte}
+
+## Bibliographie
+
+
 
