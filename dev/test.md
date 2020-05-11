@@ -97,6 +97,8 @@ def maFonction(x):
 
 ## Footnotes
 
+### Footnotes
+
 * Eat Oranges[^1]
 * Drink Coffee
 * Drink Water
@@ -155,6 +157,8 @@ def maFonction(x):
 
 ## Les Listes de Description
 
+### Listes de Description
+
 Ces listes sont utiles par exemple pour des Définitions
 
  \begin{description}
@@ -212,7 +216,7 @@ Ce package est inclus dans Beamer, pas besoin de préciser un ***usepackage*** p
             \item deuxième élément de liste,
             \pause
             \item troisième élément de liste.  
-        \end{itemize}    
+        \end{itemize}
     \end{block}
    Texte sous le block
 \end{column}
@@ -251,6 +255,8 @@ Ce package est inclus dans Beamer, pas besoin de préciser un ***usepackage*** p
 
 ## L'Environnement ***multicols*** (nom de package package ***multicol***)
 
+### MULTICOLS
+
 Cet environnement permet de créer $n$ colonnes, et les remplir automatiquement.
 
 \begin{enumerate}
@@ -279,6 +285,8 @@ Cet environnement permet de créer $n$ colonnes, et les remplir automatiquement.
 
 ## les Environnements Cadrés
 
+### CACHES
+
 \begin{definition}
     environnement definition
 \end{definition}
@@ -287,7 +295,11 @@ Cet environnement permet de créer $n$ colonnes, et les remplir automatiquement.
    environnement example
 \end{example}
 
-## l'environnement ***theorem***
+## l'environnement ***theorem*** de BEAMER
+
+### THM BEAMER
+
+Cet environnement numérote les théorèmes, 
 
 \begin{theorem}
     Il n'existe PAS de plus grand nombre premier
@@ -309,7 +321,9 @@ Optionnally, ```\qedhere``` can be added to customised position of QED symbol
 Si $a=2$ alors $a^2 = 4$.
 \end{lemma}
 
-## l'environnement ***theorem***
+## l'environnement ***theorem*** de l'***AMSTHM***
+
+### AMSTHM
 
 Ces Environnements sont définis, et sont modifiables, dans le fichier YAML
 
@@ -337,5 +351,18 @@ Ces Environnements sont définis, et sont modifiables, dans le fichier YAML
 
 ## Bibliographie
 
+### Bibliogrpahie BEAMER
+
+voir la Référence \cite{maReference} et \cite{autreReference}
+
+\begin{thebibliography}{9}
+    \bibitem{maReference}
+    Auteur, Prénom, Editeur, Année
+    \bibitem{autreReference}
+    Autre Référence
+
+\end{thebibliography}
+
+### Bibliographie avec BibTeX
 
 
