@@ -106,22 +106,24 @@ header-includes:
   % Farbe der Elemente der headline
   \setbeamercolor{section in head/foot}{fg = red, bg = bleuMarine!100}
   \setbeamercolor{subsection in head/foot}{fg = green, bg = bleuMoyen!100}
+  \setbeamercolor{frametitle}{fg = green, bg = bleuMoyen!100}
 
   % HEADLINE TEMPLATE
   \setbeamertemplate{headline}
   {
   \leavevmode%
   \hbox{%
-  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,left]{section in head/foot}%
+  %\insertnavigation{0.85\paperwidth}%
+  \includegraphics[width=0.10\paperwidth]{img/chouette.png}% test logo
+  \insertsectionnavigationhorizontal{0.85\paperwidth}{left insert}{right insert}
+  \insertsubsectionnavigationhorizontal{0.85\paperwidth}{left insert}{right insert}
+  \begin{beamercolorbox}[wd=.85\paperwidth,ht=2.25ex,dp=1ex,right]{section in head/foot}%
    \MakeUppercase{\romannumeral\insertsectionnumber}.\ %
     \insertsection \usebeamerfont{section in head/foot} \insertsectionhead\hspace*{2ex}
   \end{beamercolorbox}%
   }%
-  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,left]{subsection in head/foot}%
+  \begin{beamercolorbox}[wd=.85\paperwidth,ht=2.25ex,dp=1ex,right]{subsection in head/foot}%
     \usebeamerfont{subsection in head/foot}\thesubsection)\ \insertsubsectionhead\hspace*{2ex}
-  \end{beamercolorbox}%
-  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,left]{subsubsection in head/foot}%
-    \usebeamerfont{subsubsection in head/foot}\thesubsubsection)\ \insertsubsubsection\hspace*{2ex}
   \end{beamercolorbox}%
   \vskip0pt%
   }
@@ -138,7 +140,6 @@ header-includes:
    \end{beamercolorbox}
    }
   }
-
 
   %pour customiser le title et/ou le body des block système Beamer: normal, ou 'alerted', ou 'example'
   %\setbeamercolor{block title alerted}{fg=black!90,bg=brown!60!yellow}
