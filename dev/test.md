@@ -95,6 +95,30 @@ def maFonction(x):
 </body>
 ```
 
+### Code Source Python dans un 'block' Custom
+
+\begin{lightCode}{Un bloc customisé}
+```{.python .numberLines startFrom="5"}
+    for i in range(100):
+        if i%2==0:
+            print("Pair!")
+    while i<10:
+        i += 1
+    def maFonction(x):
+        print("Hello",x)
+```
+\end{lightCode}
+
+```{.python .numberLines startFrom="5"}
+for i in range(100):
+    if i%2==0:
+        print("Pair!")
+while i<10:
+    i += 1
+def maFonction(x):
+    print("Hello",x)
+```
+
 ## Footnotes
 
 ### Footnotes

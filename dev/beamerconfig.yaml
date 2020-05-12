@@ -2,8 +2,8 @@
 # aspectratio: 169
 theme: Darmstadt
 colortheme: orchid
-outertheme: miniframes
-# outertheme: tree
+# outertheme: miniframes
+outertheme: smoothbars
 fonttheme: structuresmallcapsserif
 # themeoptions : (a list)
 title: Introduction à Python
@@ -21,13 +21,14 @@ navigation: horizontal
 header-includes:
 - |
   ```{=latex}
-  \usepackage[utf8]{inputenc}
-  \usepackage{fontenc}
-  \usepackage[french]{babel}
+  %\usepackage[utf8]{inputenc}
+  %\usepackage{fontenc}
+  %\usepackage[french]{babel}
   %\usepackage{bookman}
   \usepackage{url}
-
   \usepackage{multicol}       % ATTENTION : PAS de 's', PAS 'multicols'
+
+  % MATHS
   \usepackage{amsthm}
   \setbeamertemplate{theorems}[numbered]
   \newtheorem{defi}{Définition}[]
@@ -37,6 +38,7 @@ header-includes:
   \newtheorem{cons}{Conséquence}[]
   \newtheorem{idee}{Idée}[]
   \newtheorem{rem}{Remarque}[]
+
   \logo{\includegraphics[height=1.5cm]{img/chouette.png}}
   %\titlegraphic{\includegraphics[height=1.5cm]{/home/luke/Images/AdminNSI.png}}
   
@@ -63,30 +65,78 @@ header-includes:
   \end{frame}
   }
 
-  %Footnotes
+  %FOOTNOTES
   \setbeameroption{show notes}
   \setbeamertemplate{note page}[]
 
-  %FOR AUTO NUMBERING SECTIONS IN HEADLINE (beamerouterthememiniframes.sty modified)
-  \addtobeamertemplate{headline}{}
-  {
-    \leavevmode%
-    \hbox{%
-    \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,left]{section in head/foot}%
-     \MakeUppercase{\romannumeral\insertsectionnumber}.\ %
-      \insertsection \usebeamerfont{section in head/foot} \insertsectionhead\hspace*{2ex}
-    \end{beamercolorbox}%
+  %===================================================================================================
+  % HEADLINE TEMPLATE & AUTONUMBERING (beamerouterthememiniframes.sty modified)
+  %\addtobeamertemplate{headline}{}
+  %{
+  %  \leavevmode%
+  %  \hbox{%
+  %  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,left]{section in head/foot}%
+  %   \MakeUppercase{\romannumeral\insertsectionnumber}.\ %
+  %    %\insertsection \usebeamerfont{section in head/foot} \insertsectionhead\hspace*{2ex}
+  %  \end{beamercolorbox}%
+  %  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,left]{subsection in head/foot}%
+  %    \usebeamerfont{subsection in head/foot}\thesubsection)\ \insertsubsectionhead\hspace*{2ex}
+  %  \end{beamercolorbox}%
+  %  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,left]{subsubsection in head/foot}%
+  %    \usebeamerfont{subsubsection in head/foot}\thesubsubsection)\ \insertsubsubsection\hspace*{2ex}
+  %  \end{beamercolorbox}%
+  %  }%
+  %  \vskip0pt%
+  %}
+
+  \makeatletter
+  % Comprime la zone miniframe en une ligne. Komprimiert die miniframe Kreise auf eine Linie
+  \beamer@compresstrue
+  \makeatother
   
-    \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,left]{subsection in head/foot}%
-      \usebeamerfont{subsection in head/foot}\thesubsection)\ \insertsubsectionhead\hspace*{2ex}
-    \end{beamercolorbox}%
+  % Bleu Marine
+  \definecolor{bleuMarine}{HTML}{1B4B80}
 
-    \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,left]{subsubsection in head/foot}%
-      \usebeamerfont{subsubsection in head/foot}\thesubsubsection)\ \insertsubsubsectionhead\hspace*{2ex}
-    \end{beamercolorbox}%
+  % Bleu Moyen
+  \definecolor{bleuMoyen}{HTML}{0C649E}
 
-     }%
-    \vskip0pt%
+  % Bleu Clair
+  \definecolor{bleuClair}{HTML}{2CA0EF}
+
+  % Farbe der Elemente der headline
+  \setbeamercolor{section in head/foot}{fg = red, bg = bleuMarine!100}
+  \setbeamercolor{subsection in head/foot}{fg = green, bg = bleuMoyen!100}
+
+  % HEADLINE TEMPLATE
+  \setbeamertemplate{headline}
+  {
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,left]{section in head/foot}%
+   \MakeUppercase{\romannumeral\insertsectionnumber}.\ %
+    \insertsection \usebeamerfont{section in head/foot} \insertsectionhead\hspace*{2ex}
+  \end{beamercolorbox}%
+  }%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,left]{subsection in head/foot}%
+    \usebeamerfont{subsection in head/foot}\thesubsection)\ \insertsubsectionhead\hspace*{2ex}
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,left]{subsubsection in head/foot}%
+    \usebeamerfont{subsubsection in head/foot}\thesubsubsection)\ \insertsubsubsection\hspace*{2ex}
+  \end{beamercolorbox}%
+  \vskip0pt%
+  }
+
+  % FRAMETITLE DEFINITION
+  \setbeamertemplate{frametitle}
+  {
+  %\vskip-24pt % to shift up the frametitle
+  \hbox{ 
+   \begin{beamercolorbox}[wd=.0675\textwidth]{} % left shift
+   \end{beamercolorbox} 
+   \begin{beamercolorbox}[sep=4pt]{section in head/foot}
+   \insertframetitle
+   \end{beamercolorbox}
+   }
   }
 
 
@@ -98,29 +148,41 @@ header-includes:
 
   %CUSTOMIZE ENUMERATE SYMBOLS
   %replace circle by: default, circle, square, ou ball IF option numerostyle is NOT used
-  %pour les items de premier niveau:
+  %pour les items de 1er niveau:
   %\setbeamertemplate{enumerate item}[circle]
-  %pour les items de deuxième niveau:
+  %pour les items de 2ème niveau:
   %\setbeamertemplate{enumerate subitem}[circle]
 
-  %PAGE AUTO NUMBERING: (Bottom Right)
+  %ADD PAGE AUTO NUMBERING TO NAVIGATION SYMBOLS : (Bottom Right)
   \addtobeamertemplate{navigation symbols}{}{ 
     \usebeamerfont{footline}\usebeamercolor[bg]{title}%
     \hspace{1.5em}Page \insertframenumber / \inserttotalframenumber
   }
-
 
   \newenvironment<>{lightCode}[1]{%
     \begin{actionenv}#2%
         \def\insertblocktitle{#1}%
         \par%
         \mode<presentation>{%
-         \setbeamercolor{block title}{fg=white,bg=languageTitle!100}
-         \setbeamercolor{block body}{fg=black,bg=lightCodeBackground!50}
-         \setbeamercolor{itemize item}{fg=orange!20!black}
-         \setbeamertemplate{itemize item}[triangle]
+         \setbeamercolor{block title}{use=structure,fg=white,bg=languageTitle!100}
+         \setbeamercolor{block body}{use=structure,fg=black,bg=lightCodeBackground!50}
+         %\setbeamercolor{itemize item}{fg=orange!20!black}
+         %\setbeamertemplate{itemize item}[triangle]
        }%
-        \usebeamertemplate{block begin}}
+        \usebeamertemplate{block begin}}%
       {\par\usebeamertemplate{block end}\end{actionenv}}
+
+  %\newenvironment<>{lightCode}[1]{%
+  %  \begin{actionenv}#2%
+  %      \def\insertblocktitle{#1}%
+  %      \par%
+  %      \mode<presentation>{%
+  %       \setbeamercolor{block title}{fg=white,bg=languageTitle!100}
+  %       %\setbeamercolor{block body}{fg=black,bg=lightCodeBackground!50}
+  %       %\setbeamercolor{itemize item}{fg=orange!20!black}
+  %       %\setbeamertemplate{itemize item}[triangle]
+  %     }%
+  %      \usebeamertemplate{block begin}}
+  %    {\par\usebeamertemplate{block end}\end{actionenv}}
   ```
 ---
