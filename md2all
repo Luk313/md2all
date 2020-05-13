@@ -43,7 +43,7 @@ BeamerSlides="no"
 HtmlSlides="no"
 
 # SlidesTheme="Frankfurt"
-SlidesTheme="Frankfurt"
+SlidesTheme="Massilia"
 TemplateSlidy="$HOME/.config/md2all/templates/slidy/massilia.slidy"
 # Pandoc Template
 revealjsUrl="$HOME/.config/md2all/templates/reveal.js/"

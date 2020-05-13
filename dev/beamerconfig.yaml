@@ -28,6 +28,30 @@ header-includes:
   \usepackage{url}
   \usepackage{multicol}       % ATTENTION : PAS de 's', PAS 'multicols'
 
+  % Bleu Marine
+  \definecolor{bleuMarine}{HTML}{000D55}
+  % Bleu Moyen
+  \definecolor{bleuMoyen}{HTML}{001789}
+  % Bleu Clair
+  \definecolor{bleuClair}{HTML}{0021CA}
+  % Bleu Très Clair
+  \definecolor{bleuTresClair}{HTML}{002AFF}
+  % Orange Block Title
+  \definecolor{orangeBlockTitle}{HTML}{FFA900}
+  % code Source Light Background
+  \definecolor{codeSourceLightBackground}{HTML}{e5e6ec}
+  % change color palettes:
+  \setbeamercolor{structure}{fg=bleuMoyen!100}
+  \setbeamercolor{palette sidebar secondary}{bg=orangeBlockTitle!100}
+  \setbeamercolor{section in sidebar shaded}{bg=bleuClair!100}
+  \setbeamercolor{subsection in sidebar shaded}{bg=orangeBlockTitle!100}
+  \setbeamercolor{subsection in frame}{bg=red}
+
+  % SIDEBAR TEMPLATE
+  \useoutertheme[width left]{sidebar}
+  \setbeamersize{sidebar width left=0.3\textwidth}
+  \usebeamercolor[bg]{title in sidebar}
+
   % MATHS
   \usepackage{amsthm}
   \setbeamertemplate{theorems}[numbered]
@@ -43,6 +67,8 @@ header-includes:
   %\titlegraphic{\includegraphics[height=1.5cm]{/home/luke/Images/AdminNSI.png}}
   
   %TABLE OF CONTENTS (TOC) - AUTONUMBERING FORMAT
+  \setbeamercolor{section in toc}{fg=bleuMarine!100}
+  \setbeamercolor{subsection in toc}{fg=bleuMarine!100}
   \defbeamertemplate*{section in toc}{sections numbered roman}{%
   \leavevmode%
   \MakeUppercase{\romannumeral\inserttocsectionnumber}.\ %
@@ -64,6 +90,7 @@ header-includes:
   ]
   \end{frame}
   }
+
 
   %FOOTNOTES
   \setbeameroption{show notes}
@@ -89,61 +116,18 @@ header-includes:
   %  \vskip0pt%
   %}
 
-  \makeatletter
-  % Comprime la zone miniframe en une ligne. Komprimiert die miniframe Kreise auf eine Linie
-  \beamer@compresstrue
-  \makeatother
-  
-  % Bleu Marine
-  \definecolor{bleuMarine}{HTML}{1B4B80}
 
-  % Bleu Moyen
-  \definecolor{bleuMoyen}{HTML}{0C649E}
-
-  % Bleu Clair
-  \definecolor{bleuClair}{HTML}{2CA0EF}
-
-  % Farbe der Elemente der headline
-  \setbeamercolor{section in head/foot}{fg = red, bg = bleuMarine!100}
-  \setbeamercolor{subsection in head/foot}{fg = green, bg = bleuMoyen!100}
-  \setbeamercolor{frametitle}{fg = green, bg = bleuMoyen!100}
-
-  % HEADLINE TEMPLATE
-  \setbeamertemplate{headline}
-  {
-  \leavevmode%
-  \hbox{%
-  %\insertnavigation{0.85\paperwidth}%
-  \includegraphics[width=0.10\paperwidth]{img/chouette.png}% test logo
-  \insertsectionnavigationhorizontal{0.85\paperwidth}{left insert}{right insert}
-  \insertsubsectionnavigationhorizontal{0.85\paperwidth}{left insert}{right insert}
-  \begin{beamercolorbox}[wd=.85\paperwidth,ht=2.25ex,dp=1ex,right]{section in head/foot}%
-   \MakeUppercase{\romannumeral\insertsectionnumber}.\ %
-    \insertsection \usebeamerfont{section in head/foot} \insertsectionhead\hspace*{2ex}
-  \end{beamercolorbox}%
-  }%
-  \begin{beamercolorbox}[wd=.85\paperwidth,ht=2.25ex,dp=1ex,right]{subsection in head/foot}%
-    \usebeamerfont{subsection in head/foot}\thesubsection)\ \insertsubsectionhead\hspace*{2ex}
-  \end{beamercolorbox}%
-  \vskip0pt%
-  }
-
-  % FRAMETITLE DEFINITION
-  \setbeamertemplate{frametitle}
-  {
-  %\vskip-24pt % to shift up the frametitle
-  \hbox{ 
-   \begin{beamercolorbox}[wd=.0675\textwidth]{} % left shift
-   \end{beamercolorbox} 
-   \begin{beamercolorbox}[sep=4pt]{section in head/foot}
-   \insertframetitle
-   \end{beamercolorbox}
-   }
-  }
+  % Couleurs des Eléments de HEADLINE
+  \setbeamercolor{section in head/foot}{bg = bleuMarine!100}
+  \setbeamercolor{section in head/foot}{bg = bleuMarine!100}
+  \setbeamercolor{subsection in head/foot}{bg = bleuMoyen!100}
+  \setbeamercolor{frametitle}{bg = bleuClair!100}
 
   %pour customiser le title et/ou le body des block système Beamer: normal, ou 'alerted', ou 'example'
   %\setbeamercolor{block title alerted}{fg=black!90,bg=brown!60!yellow}
   %\setbeamercolor{block body alerted}{fg=black!90,bg=brown!60!yellow}
+  \setbeamercolor{block title}{bg=bleuClair!100}
+  \setbeamercolor{block body}{bg=codeSourceLightBackground!60!codeSourceLightBackground}
   \definecolor{lightCodeBackground}{HTML}{F5F2F0}
   \definecolor{languageTitle}{HTML}{3593FF}
 
@@ -165,25 +149,12 @@ header-includes:
         \def\insertblocktitle{#1}%
         \par%
         \mode<presentation>{%
-         \setbeamercolor{block title}{use=structure,fg=white,bg=languageTitle!100}
-         \setbeamercolor{block body}{use=structure,fg=black,bg=lightCodeBackground!50}
+         \setbeamercolor{block title}{fg=white,bg=languageTitle!100}
+         %\setbeamercolor{block body}{fg=black,bg=lightCodeBackground!50}
          %\setbeamercolor{itemize item}{fg=orange!20!black}
          %\setbeamertemplate{itemize item}[triangle]
        }%
-        \usebeamertemplate{block begin}}%
+        \usebeamertemplate{block begin}}
       {\par\usebeamertemplate{block end}\end{actionenv}}
-
-  %\newenvironment<>{lightCode}[1]{%
-  %  \begin{actionenv}#2%
-  %      \def\insertblocktitle{#1}%
-  %      \par%
-  %      \mode<presentation>{%
-  %       \setbeamercolor{block title}{fg=white,bg=languageTitle!100}
-  %       %\setbeamercolor{block body}{fg=black,bg=lightCodeBackground!50}
-  %       %\setbeamercolor{itemize item}{fg=orange!20!black}
-  %       %\setbeamertemplate{itemize item}[triangle]
-  %     }%
-  %      \usebeamertemplate{block begin}}
-  %    {\par\usebeamertemplate{block end}\end{actionenv}}
   ```
 ---
