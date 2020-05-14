@@ -23,7 +23,6 @@ $if(quotes)$
       q { quotes: "“" "”" "‘" "’"; }
 $endif$
   </style>
-
 $if(highlighting-css)$
   <style type="text/css">
 $highlighting-css$
@@ -48,7 +47,7 @@ $include-before$
 $endfor$
 $if(title)$
 <header>
-<p class="title">$title$</p>
+  <p class="title">$title$</p>
 <!--
 $if(subtitle)$
 <p class="subtitle">$subtitle$</p>

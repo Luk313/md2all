@@ -230,7 +230,7 @@ detectIfBeamerSlideExport()
         echo "=> Make $SlidesBeamerTitle.pdf"
 
         # pandoc -s --variable=hack:"$hack" --variable=home:"$HOME" --variable=CodeLayoutCssName:"$CodeLayoutCssName" --variable=JsStyle:"$JsStyle" --katex --pdf-engine=xelatex --pdf-engine-opt=-shell-escape --slide-level 3 --from=markdown+emoji --highlight-style="$HighlightStyle" --filter "$GraphvizFilter" --filter pandoc-pyplot --filter "$PlantUMLFilter" --metadata-file=beamerconfig.yaml -t beamer "$Title".md  -o "$SlidesBeamerTitle".pdf
-        pandoc -s --variable=hack:"$hack" --variable=home:"$HOME" --variable=CodeLayoutCssName:"$CodeLayoutCssName" --variable=JsStyle:"$JsStyle" --katex --pdf-engine=xelatex --pdf-engine-opt=-shell-escape --slide-level 3 --from=markdown+emoji --highlight-style="$HighlightStyle" --filter "$GraphvizFilter" --filter pandoc-pyplot --filter "$PlantUMLFilter" --template=beamerthemeMassilia.sty -t beamer "$Title".md  -o "$SlidesBeamerTitle".pdf
+        pandoc -s --variable=hack:"$hack" --variable=home:"$HOME" --variable=CodeLayoutCssName:"$CodeLayoutCssName" --variable=JsStyle:"$JsStyle" --katex --pdf-engine=xelatex --pdf-engine-opt=-shell-escape --slide-level 3 --from=markdown+emoji --highlight-style="$HighlightStyle" --filter "$GraphvizFilter" --filter pandoc-pyplot --filter "$PlantUMLFilter" --variable=theme:"$SlidesTheme" -t beamer "$Title".md  -o "$SlidesBeamerTitle".pdf
         exit 0
     fi
 

@@ -525,8 +525,6 @@ function isGroupable(img) {
 }
 
 function getSizeGroupable(img) {
-
-
 }
 
   // Detect and configure media query print vs screen/others:
@@ -572,8 +570,6 @@ function getSizeGroupable(img) {
             } else {
               emoji.style.top = (topNumber).toString()+"px";
             }
-
-            
           }
 
       } else {

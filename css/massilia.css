@@ -23,6 +23,16 @@ h1[data-number] { /* Paragraphes */
 	line-height: 1em;
 }
 
+h2[data-number] { /* Sous-Paragraphes */
+	background-color: #b2d5ec;
+	line-height: 1em;
+}
+
+h3[data-number] { /* Sous-Sous-Paragraphes */
+	background-color: #d2e9f8;
+	line-height: 1em;
+}
+
  code[class*="language-"],
  pre[class*="language-"] {
 	 /* color: #f8f8f2; */
