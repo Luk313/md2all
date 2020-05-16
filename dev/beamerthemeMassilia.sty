@@ -14,21 +14,20 @@
 \usepackage{url}
 \usepackage{multicol}       % ATTENTION : PAS de 's', PAS 'multicols'
 \usepackage{amsthm}
-\small
+% \usepackage{setspace}
 
-
-\useoutertheme[subsection=true]{smoothbars}
+% \usetheme[width=0.12\paperwidth]{Berkeley}
+\usetheme{Darmstadt}
+\useoutertheme[subsection=true]{miniframes}
 \useinnertheme[shadow=true]{rounded}
 \usecolortheme{orchid}
 \usecolortheme{whale}
 
-\setbeamerfont{block title}{size={}}
-
 \title{Introduction à Python}
-%\thanks{OpenClassrooms}
-% \usesubtitle{1ère NSI}
 \author{Rodrigo SCHWENCKE}
-\institute{Lycée PÉRIER of Marseille}
+% \thanks{OpenClassrooms}
+% \usesubtitle{1ère NSI}
+\def\institute{Lycée PÉRIER of Marseille}
 \date{\today}
 
 \logo{\includegraphics[height=1.5cm]{img/chouette.png}}
@@ -43,73 +42,66 @@
 % Bleu Très Clair
 \definecolor{bleuTresClair}{HTML}{002AFF}
 % Orange Block Title
+\definecolor{orangeLight}{HTML}{ffcc68}
 \definecolor{orangeBlockTitle}{HTML}{FFA900}
 % code Source Light Background
 \definecolor{codeSourceLightBackground}{HTML}{e5e6ec}
 
 % change color palettes:
-\setbeamercolor{structure}{fg=bleuMoyen!100}
+\setbeamercolor{structure}{fg=bleuClair!100}
 \setbeamercolor{palette sidebar secondary}{bg=orangeBlockTitle!100}
-\setbeamercolor{section in sidebar shaded}{bg=bleuClair!100}
-\setbeamercolor{subsection in sidebar shaded}{bg=orangeBlockTitle!100}
-\setbeamercolor{subsection in frame}{bg=red}
+\setbeamercolor{section in sidebar shaded}{bg=bleuMoyen!100}
+\setbeamercolor{subsection in sidebar shaded}{bg=orangeLight!100}
 
-% SIDEBAR TEMPLATE
-\def\swidth{0.3}
-\useoutertheme[width left]{sidebar}
-\usebeamercolor[bg]{title in sidebar}
+% HEADLINE TEMPLATE
+\setbeamercolor{section in head/foot}{bg = bleuMarine!100}
+\setbeamercolor{subsection in head/foot}{bg = bleuMoyen!100}
+\setbeamercolor{frametitle}{bg = bleuClair!100}
+% \setbeamerfont{frametitle}{size=\small}
 
-% \setbeamertemplate{sidebar left}
-% {
-%   {\usebeamerfont{title in sidebar}%
-%     \vskip1.5em%
-%     \usebeamercolor[fg]{title in sidebar}%
-%     \insertshorttitle[width=\swidth,center,respectlinebreaks]\par%
-%     \vskip1.25em%
-%   }%
-%   {%
-%     \usebeamercolor[fg]{author in sidebar}%
-%     \usebeamerfont{author in sidebar}%
-%     \insertshortauthor[width=\swidth,center,respectlinebreaks]\par%
-%         \vskip1.25em%
-%       }%
-%       \hbox to2cm{\hss\insertlogo\hss}
-%       \vskip1.25em%
-%       \insertverticalnavigation{\swidth}%
-%       \vfill
-%       \hbox to2cm{\hskip0.6cm\usebeamerfont{subsection in
-%           sidebar}\strut\usebeamercolor[fg]{subsection in
-%           sidebar}\insertframenumber/\inserttotalframenumber\hfill}%
-%       \vskip3pt%
+% % SIDEBAR TEMPLATE. SHOW OR HIDE SIDEBAR
+% % \def\swidth{0.3\paperwidth}
+% \useoutertheme[width left]{sidebar}
+% \usebeamercolor[bg]{title in sidebar}
+% \renewcommand{\baselinestretch}{0.9}
+% \setbeamercolor{frametitle}{bg = bleuMoyen!100}
+
+% % TO GET RID OF TITLE AND AUTHOR IN THE SIDEBAR
+% \makeatletter
+%   \setbeamertemplate{sidebar \beamer@sidebarside}%{sidebar theme}
+%   {
+%     \beamer@tempdim=\beamer@sidebarwidth%
+%     \advance\beamer@tempdim by -6pt%
+%     \insertverticalnavigation{\beamer@sidebarwidth}%
+%     \vfill
+%     \ifx\beamer@sidebarside\beamer@lefttext%
+%     \else%
+%       \usebeamercolor{normal text}%
+%       \llap{\usebeamertemplate***{navigation symbols}\hskip0.1cm}%
+%       %\vskip20pt%
+%     \fi%
 % }%
-
-
-
-
-
-
-
-
-
+% \makeatother
 
 %TABLE OF CONTENTS (TOC) - AUTONUMBERING FORMAT
 \setbeamercolor{section in toc}{fg=bleuMarine!100}
 \setbeamercolor{subsection in toc}{fg=bleuMarine!100}
+% \setbeamerfont{section in toc}{size=\small}
+% \setbeamerfont{subsection in toc}{size=\small}
 \defbeamertemplate*{section in toc}{sections numbered roman}{%
-\leavevmode%
-\MakeUppercase{\romannumeral\inserttocsectionnumber}.\ %
-\inserttocsection\par}
+  \leavevmode%
+  \MakeUppercase{\romannumeral\inserttocsectionnumber}.\ %
+  \inserttocsection\par\vskip-0.7em%
+}
+
 \setbeamertemplate{section in toc}[sections numbered roman]
-\makeatletter
-\setbeamertemplate{subsection in toc}{\leavevmode\normalsize\usebeamerfont{subsection in toc}\leftskip=2.4em\usebeamerfont{subsection in toc}\rlap{\hskip-1.2em\inserttocsubsectionnumber. }\inserttocsubsection\par}
-\setbeamertemplate{subsubsection in toc}{\leavevmode\normalsize\usebeamerfont{subsubsection in toc}\leftskip=4.2em\usebeamerfont{subsubsection in toc}%
-\rlap{\hskip-1.2em\@alph\inserttocsubsubsectionnumber. }\inserttocsubsubsection\par}
-\makeatother
+%\makeatletter
+\setbeamertemplate{subsection in toc}{\leavevmode\small\usebeamerfont{subsection in toc}\leftskip=2.4em\usebeamerfont{subsection in toc}\rlap{\hskip-1.2em\inserttocsubsectionnumber. }\inserttocsubsection\par\vskip-0.7em}
 
 %TABLE OF CONTENTS - TOC - Sommaire
 \AtBeginSection[]
 {
-\begin{frame}<beamer>{LE PLAN}
+\begin{frame}<beamer>{LE PLAN/ OU TITRE DE LA LEçON}
 \tableofcontents[currentsection,currentsubsection, 
     hideothersubsections, 
     sectionstyle=show/shaded,
@@ -122,7 +114,7 @@
 \setbeamertemplate{note page}[]
 
 % MATHS
-\usepackage{amsthm}
+% \usepackage{amsthm}
 \setbeamertemplate{theorems}[numbered]
 \newtheorem{defi}{Définition}[]
 \newtheorem{thm}{Théorème}[]
@@ -132,24 +124,52 @@
 \newtheorem{idee}{Idée}[]
 \newtheorem{rem}{Remarque}[]
 
-% Couleurs des Eléments de HEADLINE
-\setbeamercolor{section in head/foot}{bg = bleuMarine!100}
-\setbeamercolor{section in head/foot}{bg = bleuMarine!100}
-\setbeamercolor{subsection in head/foot}{bg = bleuMoyen!100}
-\setbeamercolor{frametitle}{bg = bleuClair!100}
+% BLOCKS
 %pour customiser le title et/ou le body des block système Beamer: normal, ou 'alerted', ou 'example'
 %\setbeamercolor{block title alerted}{fg=black!90,bg=brown!60!yellow}
 %\setbeamercolor{block body alerted}{fg=black!90,bg=brown!60!yellow}
+\setbeamerfont{block title}{size={}}
 \setbeamercolor{block title}{bg=bleuClair!100}
 \setbeamercolor{block body}{bg=codeSourceLightBackground!60!codeSourceLightBackground}
 \definecolor{lightCodeBackground}{HTML}{F5F2F0}
 \definecolor{languageTitle}{HTML}{3593FF}
+
+% \addtobeamertemplate{block begin}{
+%         \setlength{\textwidth}{0.9\textwidth}%
+%         \linespread{0.5}%
+% }
+
+% FOR BLOCK HORIZONTAL RESIZING
+\def\myblockfactor{0.4}
+\newlength\myblockwd
+\newlength\myleftlen
+
+\makeatletter
+\setbeamertemplate{block begin}{
+  \setlength\myblockwd{\myblockfactor\textwidth}  % 40% of the textwidth
+  \setlength\myleftlen{\dimexpr(\myblockwd-\textwidth)/2\relax}
+  \par\vskip\medskipamount%
+  \hspace*{-1\myleftlen}\begin{beamerboxesrounded}[upper=block title,lower=block body,shadow=true,width=\myblockwd]%
+    {\raggedright\usebeamerfont*{block title}\insertblocktitle}%
+    \raggedright%
+    \usebeamerfont{block body}%
+}
+
+\defbeamertemplate{block end}{}
+{\end{beamerboxesrounded}\vskip\smallskipamount}
+\makeatother
+
+\addtobeamertemplate{block begin}{
+  \linespread{0.5}%
+}
+
 %CUSTOMIZE ENUMERATE SYMBOLS
 %replace circle by: default, circle, square, ou ball IF option numerostyle is NOT used
 %pour les items de 1er niveau:
 %\setbeamertemplate{enumerate item}[circle]
 %pour les items de 2ème niveau:
 %\setbeamertemplate{enumerate subitem}[circle]
+
 %ADD PAGE AUTO NUMBERING TO NAVIGATION SYMBOLS : (Bottom Right)
 \addtobeamertemplate{navigation symbols}{}{ 
   \usebeamerfont{footline}\usebeamercolor[bg]{title}%
@@ -162,12 +182,10 @@
       \par%
       \mode<presentation>{%
        \setbeamercolor{block title}{fg=white,bg=languageTitle!100}
-       %\setbeamercolor{block body}{fg=black,bg=lightCodeBackground!50}
-       %\setbeamercolor{itemize item}{fg=orange!20!black}
-       %\setbeamertemplate{itemize item}[triangle]
      }%
       \usebeamertemplate{block begin}}
-    {\par\usebeamertemplate{block end}\end{actionenv}}
+    {\par\usebeamertemplate{block end}
+  \end{actionenv}}
 
 \mode
 <all>

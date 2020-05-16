@@ -98,7 +98,7 @@ def maFonction(x):
 ### Code Source Python dans un 'block' Custom
 
 \begin{lightCode}{Un bloc customisé}
-```{.python .numberLines startFrom="5"}
+<!-- ```{.python .numberLines startFrom="5"} -->
     for i in range(100):
         if i%2==0:
             print("Pair!")
@@ -106,7 +106,7 @@ def maFonction(x):
         i += 1
     def maFonction(x):
         print("Hello",x)
-```
+<!-- ``` -->
 \end{lightCode}
 
 ```{.python .numberLines startFrom="5"}
@@ -260,20 +260,20 @@ Ce package est inclus dans Beamer, pas besoin de préciser un ***usepackage*** p
             \item premier élément de liste,
             \item deuxième élément de liste,
             \item troisième élément de liste.  
-        \end{itemize}    
+        \end{itemize}
     \end{block}
    Texte sous le Block
 \end{column}
 \begin{column}{0.5\textwidth}  %%<--- here
-        \begin{lightCode}{HTML}
-            for i in range(100):
-                if i%2==0:
-                    print("Pair!")
-            while i<10:
-                i += 1
-            def maFonction(x):
-                print("Hello",x)
-        \end{lightCode}
+    \begin{lightCode}{HTML}
+        for i in range(100):
+            if i%2==0:
+                print("Pair!")
+        while i<10:
+            i += 1
+        def maFonction(x):
+            print("Hello",x)
+    \end{lightCode}
 \end{column}
 \end{columns}
 
