@@ -73,11 +73,34 @@ def maFonction(x):
     print("Hello",x)
 ```
 
+```python {cmd=true .numberLines startFrom="5"}
+for i in range(5):
+    print("Salut")
+```
+
+```gnuplot {cmd=true output="html"}
+set terminal svg
+set title "Simple Plots" font ",20"
+set key left box
+set samples 50
+set style data points
+
+plot [-10:10] sin(x),atan(x),cos(atan(x))
+```
+
+```latex {cmd=true .numberLines}
+\documentclass{standalone}
+\begin{document}
+    \frac{2}{3}
+\end{document}
+```
+
+
 ### Code Source HTML dans un 'block' LaTeX avec Syntax Highlighting via Pandoc/Markdown
 
 #### HTML
 
-```{.html .numberLines}
+```html {.numberLines}
 <body>
     <div class="box">
         <div class="morpion">
